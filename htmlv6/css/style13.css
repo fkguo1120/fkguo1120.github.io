@@ -628,5 +628,3 @@ main { background: url(../img/bg2.jpg) no-repeat center top; }
 @media (max-width: 576px) { #game__modal p { font-size: 18px; max-width: 170px; left: 50%; margin-left: -82px; } }
 
 #game__modal button.close { position: absolute; right: -10px; top: -10px; z-index: 9999; width: 40px; height: 40px; font-size: 2rem; background-color: #fff; color: #666; border-radius: 50%; opacity: 1; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3); box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3); }
-
-@media (max-width: 932px) { .modal:before { content: ''; display: inline !important; vertical-align: middle; margin-right: -4px; } }
