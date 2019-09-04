@@ -319,10 +319,14 @@
 	<img class="desktop flowerright" src="img/flower2.png" alt="" style="position: absolute;right:10%; margin-right: -421px;transform-origin: left center;opacity: 0;">
 
 	<section id="section_01" style="position: relative;overflow: hidden;">
-		<img class="top_m mobile" src="img/top_m.png" alt="" style="max-width: auto;width: 100%;" usemap="#image-map">
+		<div style="position: relative;">
+			<img class="top_m mobile" src="img/top_m.png" alt="" style="max-width: auto;width: 100%;" usemap="#image-map">
+			<a data-toggle="modal" data-target="#gameModal" style="display:block;position:absolute;z-index: 99;width:30%;height:45%;background: #333;right:0px;top:20px;"></a>
+			<a data-toggle="modal" data-target="#noticeModal" style="display:block;position:absolute;z-index: 99;width:30%;height:15%;background: #777;right:0px;top:50%;"></a>	
+		</div>
 		<map name="image-map">
-			<area  data-toggle="modal" data-target="#gameModal" coords="767,66,555,299" shape="rect">
-			<area  data-toggle="modal" data-target="#noticeModal" coords="609,362,743,306" shape="rect">
+			<area data-toggle="modal" data-target="#gameModal" coords="767,66,555,299" shape="rect">
+			<area data-toggle="modal" data-target="#noticeModal" coords="609,362,743,306" shape="rect">
 		</map>
 		<div class="container">
 			<div class="row">

@@ -2,7 +2,14 @@
 @import 'base';
 
 
-
+html,
+body {
+  padding-right: 0 !important;
+  -webkit-overflow-scrolling: touch;
+}
+.modal-open {
+  overflow: initial !important;
+}
 
 #noticeModal{
     h2{
@@ -207,5 +214,12 @@
 
 
 
-
+.modal:before{
+  @include breakpoint(s) {
+    content:'';
+    display: inline !important;
+    vertical-align: middle;
+    margin-right: -4px;
+  }
+}
 
