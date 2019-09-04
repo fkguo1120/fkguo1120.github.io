@@ -571,10 +571,6 @@ main { background: url(../img/bg2.jpg) no-repeat center top; }
 
 #section_07 .container .row .pd_wrap .main ul li a .price small { font-weight: normal; font-size: 65%; vertical-align: 0; }
 
-html, body { padding-right: 0 !important; -webkit-overflow-scrolling: touch; }
-
-.modal-open { overflow: initial !important; }
-
 #noticeModal h2 { font-size: 21px; font-weight: 700; color: #ef2827; padding-bottom: 10px; border-bottom: solid 1px #dfdfdf; }
 
 #noticeModal ul.notice { padding-left: 15px; }

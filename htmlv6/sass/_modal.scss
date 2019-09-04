@@ -2,14 +2,7 @@
 @import 'base';
 
 
-html,
-body {
-  padding-right: 0 !important;
-  -webkit-overflow-scrolling: touch;
-}
-.modal-open {
-  overflow: initial !important;
-}
+
 
 #noticeModal{
     h2{
