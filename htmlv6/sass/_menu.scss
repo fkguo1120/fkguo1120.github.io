@@ -1,0 +1,163 @@
+//變數
+@import 'base';
+
+#menu {
+    width: 100%;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+    z-index: 9999;
+    @include breakpoint(s) {
+        z-index: 1000;
+    }    
+    &.mFixed {
+        position: fixed;
+        top: -1px !important;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .menu_arrow {
+        position: fixed;
+        top: 40px;
+        right: 0;
+        width: 40px;
+        padding: 8px;
+        cursor: pointer;
+      
+        line-height: 0;
+        background-color: #444;
+        -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+
+        &.arrow_left {
+            display: none;
+        }
+
+        &:hover {
+            background-color: #009ce1;
+        }
+
+        @include breakpoint(s) {
+            display: none;
+        }
+
+        img{
+            max-width: 100%;
+        }
+    }
+
+    ul.menu_box {
+        width: 120px;
+        position: fixed;
+        right: 0;
+        top: 80px;
+        background-color: #444;
+        -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        text-align: center;
+        color: #fff;
+        &.scroll_pc::-webkit-scrollbar{
+            height: 5px
+        }
+        &.scroll_pc::-webkit-scrollbar-track {
+            background-color: #EAEAEA;
+        }
+        &.scroll_pc::-webkit-scrollbar-thumb {
+            background-color: darkgrey;
+            outline: 1px solid slategrey;
+        }
+        &.scroll_mob::-webkit-scrollbar {
+            height: 0px
+        }
+        @include breakpoint(s) {
+            width: 100%;
+            z-index: 999;
+            text-align: center;
+            color: #777;
+            font-size: 18px;
+            line-height: 0px;
+            padding: 13px 0 7px 5px;
+            font-weight: bold;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+            transition: 0s;
+            -webkit-transition: 0s;
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+            white-space: nowrap;
+            position: relative;
+            right: auto;
+            top: auto;
+        }
+
+        li {
+            margin-bottom: 1px;
+            font-size: 14px;
+            cursor: pointer;
+            position: relative;
+            
+
+            &:hover {
+                background-color: #0089c8;
+                @include breakpoint(-webkit-overflow-scrolling) {
+                    background-color: transparent;
+                }
+                @include breakpoint(s) {
+                    background-color: transparent;
+                }
+            }
+
+            &::before {
+                content: '';
+                background: rgba(0, 0, 0, .5);
+                z-index: 9;
+                @include breakpoint(s) {
+                    display:none;
+                }
+            }
+
+            @include breakpoint(s) {
+                padding: 0;
+                margin-bottom: 0px;
+                font-size: 14px;
+                display: inline-block;
+            }
+
+            a {
+                padding: 12px 0;                
+                color: #fff;
+                text-decoration: none;
+                display:block;
+                border-bottom: 1px solid #666;
+                @include breakpoint(s) {
+                    color: #777;
+                    text-decoration: none;
+                    display:inline-block;
+                    border-bottom: none;
+
+                    &:hover{
+                        border-color: #009ce1;
+                        
+                    }
+                }
+            }
+
+            span {
+                display: none;
+                @include breakpoint(s) {
+                    display: inline-block;
+                    vertical-align: baseline;
+                    font-weight: normal;
+                    color: #cacaca;
+                }
+            }
+
+        }
+    }
+}
+
+
+
+
+
