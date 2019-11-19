@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>comparative-and-superlative</title>
+	<meta name="description" content="comparative-and-superlative">
+	<meta name="keywords" content="comparative-and-superlative">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit|ie-comp|ie-stand">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="format-detection" content="address=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<!-- CSS-->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style13.css">
+
+
+</head>
+
+<body>
+
+<div></div>
+
+<main role="main">
+  <div class="container marketing">
+  	<h1 class="display-4 text-center font-weight-bold">Tall and Short</h1>
+  	<!--人物比較區-->
+    <div class="row mt-4 tallbox">
+    	<div class="col-4">
+			<div class="card">
+			  <img src="img/tall111.png" class="card-img-top" alt="">
+			  <div class="card-body">
+			    <h5 class="card-title">John</h5>
+			  </div>
+			</div>
+		</div>	
+		<div class="col-4">
+			<div class="card">
+			  <img src="img/tall333.png" class="card-img-top" alt="">
+			  <div class="card-body">
+			    <h5 class="card-title">Allen</h5>
+			  </div>
+			</div>
+		</div>
+		<div class="col-4">
+			<div class="card">
+			  <img src="img/tall222.png" class="card-img-top" alt="">
+			  <div class="card-body">
+			    <h5 class="card-title">Frank</h5>
+			  </div>
+			</div>
+		</div>
+    </div>
+    <!--人物比較區-->
+
+    <!--人物比較開始扭-->
+    <div class="row justify-content-center mt-5">
+    	<button type="button" class="btn btn-info col-3 py-3 start1">Start</button>
+    </div>
+    <!--人物比較開始扭-->
+
+	<!--人物比較答案區-->
+	<div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative mt-5">
+		<div class="col p-4 d-flex flex-column position-static">
+		  <strong class="d-inline-block mb-2 text-primary">Answer!</strong>
+		  <div class="answer1">
+			</div>
+		</div>
+	</div>
+	<!--人物比較答案區-->
+  </div>
+
+<hr class="mb-5">
+
+    <div class="container marketing">
+   	<h1 class="display-4 text-center font-weight-bold">Price</h1>
+  	<!--人物比較區-->
+    <div class="row mt-4 tallbox2">
+    	<div class="col-4">
+			<div class="card">
+			  <img src="img/food111.png" class="card-img-top" alt="...">
+			  <div class="card-body">
+			    <h5 class="card-title">Bread</h5>
+			  </div>
+			</div>
+		</div>	
+		<div class="col-4">
+			<div class="card">
+			  <img src="img/food222.png" class="card-img-top" alt="...">
+			  <div class="card-body">
+			    <h5 class="card-title">Cake</h5>
+			  </div>
+			</div>
+		</div>
+		<div class="col-4">
+			<div class="card">
+			  <img src="img/food333.png" class="card-img-top" alt="...">
+			  <div class="card-body">
+			    <h5 class="card-title">Fruit Pie</h5>
+			  </div>
+			</div>
+		</div>
+    </div>
+    <!--人物比較區-->
+
+    <!--人物比較開始扭-->
+    <div class="row justify-content-center mt-5">
+    	<button type="button" class="btn btn-warning col-3 py-3 start2">Start</button>
+    </div>
+    <!--人物比較開始扭-->
+
+	<!--人物比較答案區-->
+	<div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative mt-5">
+		<div class="col p-4 d-flex flex-column position-static">
+		  <strong class="d-inline-block mb-2 text-warning">Answer!</strong>
+		  <div class="answer2">  
+			</div>
+		</div>
+	</div>
+	<!--人物比較答案區-->
+  </div>
+</main>
+
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/jquery.3.2.1min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/common2.js"></script>
+<style>
+.container{
+	max-width: 932px;
+}
+.col-4 .card{transition: all .2s ease-in-out;cursor: pointer;}
+.col-4 .card:hover{	box-shadow: 0px 7px 8px -4px rgba(0, 0, 0, 0.2), 0px 12px 17px 2px rgba(0, 0, 0, 0.14), 0px 5px 22px 4px rgba(0, 0, 0, 0.12) !important;
+}
+.col-4.active .card{
+	box-shadow: 0px 7px 8px -4px rgba(0, 0, 0, 0.2), 0px 12px 17px 2px rgba(0, 0, 0, 0.14), 0px 5px 22px 4px rgba(0, 0, 0, 0.12) !important;
+	border: 4px solid rgb(23, 162, 184);
+}
+.tallbox2 .col-4.active .card{
+	box-shadow: 0px 7px 8px -4px rgba(0, 0, 0, 0.2), 0px 12px 17px 2px rgba(0, 0, 0, 0.14), 0px 5px 22px 4px rgba(0, 0, 0, 0.12) !important;
+	border: 4px solid #66321d;
+}
+</style>
+
+</body>
+</html>

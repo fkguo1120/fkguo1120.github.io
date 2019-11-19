@@ -1,0 +1,437 @@
+//變數
+@import 'base';
+@-webkit-keyframes drift { from { left: 60%; }
+  50% { left: 40%; }
+  100% { left: 60%; } }
+
+@keyframes drift { from { left: 50%; }
+  50% { left: 40%; }
+  100% { left: 60%; } }
+@keyframes drift2 { from { left: 80%; }
+50% { left: 60%; }
+100% { left: 80%; } }
+.cloud1 { 
+    -webkit-animation: drift 60s; 
+    animation: drift 60s; 
+    -webkit-animation-timing-function: linear; 
+    animation-timing-function: linear; 
+    -webkit-animation-iteration-count: infinite; 
+    animation-iteration-count: infinite; 
+    @include breakpoint(s){
+        display: none;
+    }
+}
+.cloud2 { 
+    -webkit-animation: drift 30s; 
+    animation: drift 30s; 
+    -webkit-animation-timing-function: linear; 
+    animation-timing-function: linear; 
+    -webkit-animation-iteration-count: infinite; 
+    animation-iteration-count: infinite; 
+    @include breakpoint(s){
+        display: none;
+    }
+}
+
+.flowerright{
+    @include breakpoint(xl){
+        display: none;
+    }
+}
+
+#section_01{
+    margin-top: 0px;
+    visibility: visible;
+    padding: 0;
+    position: relative; 
+    @include breakpoint(s){
+        background: url(../img/bg_m1.jpg) no-repeat center ;
+        background-size: 100% auto;
+    }
+    .container{
+        position: relative;
+        max-width: 1280px;
+        .row{
+            .light{
+                @include flexbox();
+                @include flex-direction(row);
+                @include flex-wrap(wrap);
+                @include justify-content(center);
+                @include align-items(flex-start);
+                animation: brightness 4s linear infinite alternate;
+                margin: 0;
+                position: absolute;
+                top:0;
+                left:50%;
+                width: 1600px;
+                margin-left: -800px;
+                z-index: 2;
+            }
+            .content{
+                @include flexbox();
+                @include flex-direction(row);
+                @include flex-wrap(nowrap);
+                @include justify-content(space-between);
+                @include align-items(flex-start);
+                min-height: 466px;
+
+                .balloonBox{
+                    .balloon2{
+                        position: absolute;
+                        left: -150px;
+                        bottom: 80px;
+                        animation: balloon2 6s ease-in-out infinite;
+                        transform-origin: right bottom;
+                        @include breakpoint(s){
+                            left:0px;
+                            bottom: 0px;
+                            z-index: 3;
+                            width: 90px;
+                        }
+                    }
+                }
+                    
+                .left{
+                    text-align: left;
+                    position: relative;
+                    z-index: 4;
+                    width: 46%;
+                    left: -100px;
+                    @include breakpoint(l){
+                        width: 50%;
+                        left: -50px;
+                    }
+                    @include breakpoint(s){
+                       width: 100%;
+                    }
+
+                    .stair{
+                        position: absolute;
+                        left: -150px;
+                        max-width: 500px;
+                        transform-origin: top right;
+                        @include breakpoint(l){
+                            display:none;
+                         }
+                    }
+                    .markTie{
+                        position: relative;
+                        @include breakpoint(s){
+                            margin: 20px 0 0 0;
+                        }
+                        .balloon1{
+                            position: absolute;
+                            right: 0px;
+                            top: 0px;
+                            transform: rotate(-6deg);
+                            animation: balloon1 6s 1s ease-in-out infinite;
+                        }    
+                        .host{
+                            position: absolute;
+                            z-index: 1;
+                        } 
+                        .logoo{
+                            position: relative;
+                            z-index: 3;
+                        }
+                        .boxman{
+                            position: absolute;
+                            z-index: 12;
+                            right:-90px;
+                            bottom:20px;
+
+                        }
+                    }
+                }
+
+                .mid{
+                    position: absolute;
+                    left: 50%;
+                    margin-left: -135px;
+                    z-index: 2;
+                    .bar{
+                        position: relative;
+                        margin-top: 15px;
+                        .barlight{
+                            position: absolute;
+                            z-index: 15;
+                            bottom:60px;
+                            left:50%;
+                            margin-left: -63px;
+                        }
+                    }
+                }
+
+                .right{
+                    text-align: center;
+                    position: relative;
+                    z-index: 4;
+                    width: 43%;
+                    @include breakpoint(l){
+                        width: 50%;
+                    }
+                    @include breakpoint(s){
+                        width: 100%;
+                    }
+                    .horse{
+                        position: absolute;
+                        bottom:30px;
+                        right:-100px;
+                        max-width: 300px;
+                        transform-origin: center bottom;
+                    }
+                    #myCarousel-A{
+                        position: absolute;
+                        left: 8%;
+                        bottom: -10px;
+                        max-width: 450px;
+                        margin: 10px auto 0 auto;
+                    }
+                    .tent{
+                        position: relative;
+                        @include breakpoint(s){
+                            top:0px;
+                            width: 90%;
+                            left: 10%;  
+                            margin-top: 0%;
+                        }
+                    }                  
+                }
+
+                .land{
+                    position: relative;
+                    text-align: center;
+                    z-index: 10;
+                    margin-top: -100px;
+                    width: 100%;
+                    @include breakpoint(m){
+                        margin-top: 0;
+                    }
+                    @include breakpoint(s){
+                        margin-top: -30px;
+                    }
+                    .s-tittle{
+                        display: block;
+                        position: absolute;
+                        text-align: center;
+                        width: 100%;
+                        top:-15px;
+                        @include breakpoint(s){
+                            display:none;
+                        }
+                    }
+                }
+            }
+
+
+            .subtittle{
+                margin: 160px 0 0 0 ;
+                text-align: center;
+                @include breakpoint(s){
+                    margin: 0 0 0 0 ;
+                }
+            }
+
+
+            .subcontent{
+                margin: 0 0 145px 0;
+                text-align: center;
+        
+                #myCarousel-D{
+                    max-width: 928px;
+                    margin: 0 auto;
+                    .owl-dots{
+                        margin-top: 0px;
+                        min-height: 20px;
+                        .owl-dot{
+                            span{
+                                margin: 0px 7px;
+                            }
+                        }
+                    }
+                }
+            }
+
+
+        }
+    }
+}
+
+@media screen and (min-width: 932px) and (max-width: 1150px) {
+    #section_01 .container .row .content{
+        @include align-items(flex-end);
+        padding-bottom: 30px;
+    }
+    #section_01 .container .row .content .right #myCarousel-A {
+        position: absolute;
+        left: 0%;
+        bottom: -10px;
+        max-width: 400px;
+        margin: 10px auto  auto;
+    }
+    #section_01 .container .row .content .left {
+        text-align: left;
+        position: relative;
+        z-index: 4;
+        width: 45%;
+        left: 0px;
+    }
+    #section_01 .container .row .content .mid {
+        position: relative;
+        width: 20%;
+        left: 5%;
+        margin-left: 0px;
+        z-index: 2;
+    }
+    #section_01 .container .row .content .right {
+        text-align: center;
+        position: relative;
+        z-index: 4;
+        width: 35%;
+    }
+}
+
+@keyframes rounder1 {
+    from {transform:scale(1.2) rotate(0deg);}
+    to {transform:scale(1.3) rotate(10deg);}
+}
+
+@keyframes brightness { 
+    from {filter: brightness(100%) blur(5px);transform:rotate(-5deg);}
+    to {filter: brightness(150%) blur(5px);transform:rotate(5deg);}
+}
+
+@keyframes balloon1 {
+    0%, 100% {
+        transform: translateY(0) rotate(-6deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(8deg);
+    }
+}
+
+@keyframes balloon2 {
+    0%, 100% {
+        transform: translateY(0) rotate(-6deg);
+    }
+    50% {
+        transform: translateY(-30px) rotate(8deg);
+    }
+}
+
+@keyframes balloon3 {
+    0%, 100% {
+        transform: translate(0, -10px) rotate(6deg);
+    }
+    50% {
+        transform: translate(-20px, 30px) rotate(-8deg);
+    }
+}
+
+@keyframes balloon4 {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-30px) rotate(8deg);
+    }
+}
+
+@keyframes jackInTheBox {
+    0% {
+        opacity: 0;
+        transform: scale(.1) rotate(30deg);
+        transform-origin: center bottom;
+        top: 0px;
+        z-index: 1;
+    }
+
+    50% {
+        transform: rotate(-10deg);
+        top: -200px;
+        z-index: 1;
+    }
+
+    70% {
+        transform: rotate(3deg);
+        top: -200px;
+        z-index: 22;
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+        top: -15px;
+        z-index: 22;
+    }
+}
+
+.jackInTheBox {
+    -webkit-animation-name: jackInTheBox;
+    animation-name: jackInTheBox;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both
+}
+
+@keyframes rubberBand { 0% { opacity: 0;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1); }
+  30% { opacity: 1;
+    -webkit-transform: scale3d(1.25, 0.75, 1);
+    transform: scale3d(1.25, 0.75, 1); }
+  40% { -webkit-transform: scale3d(0.75, 1.25, 1);
+    transform: scale3d(0.75, 1.25, 1); }
+  50% { -webkit-transform: scale3d(1.15, 0.85, 1);
+    transform: scale3d(1.15, 0.85, 1); }
+  65% { -webkit-transform: scale3d(0.95, 1.05, 1);
+    transform: scale3d(0.95, 1.05, 1); }
+  75% { -webkit-transform: scale3d(1.05, 0.95, 1);
+    transform: scale3d(1.05, 0.95, 1); }
+  to { -webkit-transform: scaleX(1);
+    transform: scaleX(1); } }
+    
+.rubberBand {
+        -webkit-animation-name: rubberBand;
+        animation-name: rubberBand;
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+        -webkit-animation-iteration-count: 1; 
+        animation-iteration-count: 1; 
+}
+
+/*閃光*/
+.brightness3-play { -webkit-animation: brightness3-play 3s infinite; }
+
+@-webkit-keyframes brightness3-play { 0% { -webkit-filter: brightness(100%);
+    opacity: 1; }
+  91% { -webkit-filter: brightness(100%);
+    opacity: 1; }
+  92% { -webkit-filter: brightness(100%);
+    opacity: 1; }
+  94% { -webkit-filter: brightness(150%);
+    opacity: 1; }
+  96% { -webkit-filter: brightness(100%);
+    opacity: 1; }
+  98% { -webkit-filter: brightness(150%);
+    opacity: 1; }
+  100% { -webkit-filter: brightness(100%);
+    opacity: 1; } }
+
+    @-webkit-keyframes zoomInDown {
+        from{opacity:0;-webkit-transform:scale3d(0.1,0.1,0.1) translate3d(0,-1000px,0);transform:scale3d(0.1,0.1,0.1) translate3d(0,-1000px,0) rotatex(-147deg);-webkit-animation-timing-function:cubic-bezier(0.55,0.055,0.675,0.19);animation-timing-function:cubic-bezier(0.55,0.055,0.675,0.19);-webkit-filter:brightness(200%);-moz-filter:brightness(200%);-ms-filter:brightness(200%)}
+        60%{opacity:1;-webkit-transform:scale3d(0.475,0.475,0.475) translate3d(0,60px,0);transform:scale3d(0.475,0.475,0.475) translate3d(0,60px,0) rotatex(0deg);-webkit-animation-timing-function:cubic-bezier(0.175,0.885,0.32,1);animation-timing-function:cubic-bezier(0.175,0.885,0.32,1)}
+        80%{opacity:1;-webkit-filter:brightness(100%);-moz-filter:brightness(100%);-ms-filter:brightness(100%)}
+        100%{opacity:1;-webkit-filter:brightness(100%);-moz-filter:brightness(100%);-ms-filter:brightness(100%)}
+        }
+        
+        @keyframes zoomInDown {
+        from{opacity:0;-webkit-transform:scale3d(0.1,0.1,0.1) translate3d(0,-1000px,0);transform:scale3d(0.1,0.1,0.1) translate3d(0,-1000px,0) rotatex(-147deg);-webkit-animation-timing-function:cubic-bezier(0.55,0.055,0.675,0.19);animation-timing-function:cubic-bezier(0.55,0.055,0.675,0.19);-webkit-filter:brightness(200%);-moz-filter:brightness(200%);-ms-filter:brightness(200%)}
+        60%{opacity:1;-webkit-transform:scale3d(0.475,0.475,0.475) translate3d(0,60px,0);transform:scale3d(0.475,0.475,0.475) translate3d(0,60px,0) rotatex(0deg);-webkit-animation-timing-function:cubic-bezier(0.175,0.885,0.32,1);animation-timing-function:cubic-bezier(0.175,0.885,0.32,1)}
+        80%{opacity:1;-webkit-filter:brightness(100%);-moz-filter:brightness(100%);-ms-filter:brightness(100%)}
+        100%{opacity:1;-webkit-filter:brightness(100%);-moz-filter:brightness(100%);-ms-filter:brightness(100%)}
+        }
+        .zoomInDown{-webkit-animation-name:zoomInDown;animation-name:zoomInDown;-webkit-animation-duration:1s;animation-duration:1s;-webkit-animation-fill-mode:both;animation-fill-mode:both}
