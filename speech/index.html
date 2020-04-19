@@ -1,0 +1,90 @@
+<html>
+
+<head>
+	<title>國語即席演說語言分析工具:(測試版)</title>
+	<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.1/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+
+<body>
+
+	<span style="font-size: 15px;color: black; font-weight: lighter;"></span></h1>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<h2>國語即席演說語言分析工具:(測試版)</h2>
+			</div>
+		</div>
+		<form>
+			<div class="form-group">
+				<label for="exampleFormControlTextarea1"><h4>翻譯內容於此:</h4></label>
+				<textarea class="form-control" id="result1" name="Name" rows="5"></textarea>
+			</div>
+		</form>
+		<div class="row">
+			<div class="col-sm">
+				<div id="result" align="center">
+					<button onclick="startConverting();" type="button" class="btn btn-outline-danger"><i class="fa fa-microphone"></i></button>
+					<button onclick="stopConverting();" type="button" class="btn btn-outline-danger"><i class="fa fa-remove"></i></button>
+
+					<br>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+		<!-- <form action="http://localhost:5000/result" method="POST">
+			<br>
+			</br>
+			<p><input type="submit" value="submit" /></p>
+		</form> -->
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+var overlay = document.getElementById("overlay");
+var r = document.getElementById('result1');
+var speechRecognizer = new webkitSpeechRecognition();// a new speech recognition object
+
+function startConverting() {
+	if ('webkitSpeechRecognition' in window) {
+
+		speechRecognizer.continuous = true;
+		speechRecognizer.interimResults = true;
+		speechRecognizer.lang = 'cmn-Hant-TW';
+		speechRecognizer.start();
+		var finalTranscripts = '';
+		speechRecognizer.onresult = function (event) {
+			var interimTranscripts = '';
+			for (var i = event.resultIndex; i < event.results.length; i++) {
+				var transcript = event.results[i][0].transcript;
+				transcript.replace("\n", "<br>");
+				if (event.results[i].isFinal) {
+					finalTranscripts += transcript;
+				} else {
+					interimTranscripts += transcript;
+				}
+			}
+			r.value = finalTranscripts + interimTranscripts;
+		};
+		speechRecognizer.onerror = function (event) {
+		};
+	} else {
+		r.innerHTML = 'No browser support. Please upgrade your browser';
+	}
+}
+function stopConverting() {
+	speechRecognizer.stop();
+}
+
+</script>
+
+</body>
+
+</html>
