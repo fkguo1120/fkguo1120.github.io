@@ -1,2 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["c055"],{c055:function(t,e,n){"use strict";n.r(e);var c=function(){var t=this,e=t.$createElement,n=t._self._c||e;return n("v-card",{attrs:{color:"white"}},[n("v-card-text",[t._v("Logs")])],1)},o=[],r={},s=r,l=n("2877"),a=Object(l["a"])(s,c,o,!1,null,null,null);a.options.__file="Logs.vue";e["default"]=a.exports}}]);
-//# sourceMappingURL=c055.c61f20c7.js.map

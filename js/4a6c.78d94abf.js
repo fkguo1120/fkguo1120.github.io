@@ -1,2 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["4a6c"],{"4a6c":function(t,e,n){"use strict";n.r(e);var c=function(){var t=this,e=t.$createElement,n=t._self._c||e;return n("v-card",{attrs:{color:"white"}},[n("v-card-text",[t._v("即時錄音")])],1)},a=[],r={},o=r,l=n("2877"),s=Object(l["a"])(o,c,a,!1,null,null,null);s.options.__file="Indicators.vue";e["default"]=s.exports}}]);
-//# sourceMappingURL=4a6c.78d94abf.js.map
