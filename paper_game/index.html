@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>paper_game</title>
+	<meta property="og:title" content="全民搶搶搶">
+	<meta property="og:description" content="台北市6小時到貨(試營運)，全台灣24小時到貨！" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit|ie-comp|ie-stand">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="format-detection" content="address=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, shrink-to-fit=no, user-scalable=0">
+	<!--CSS-->
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.css">
+	<link type="text/css" rel="stylesheet" href="css/animate.css">
+	<link type="text/css" rel="stylesheet" href="css/magnific-popup.css">
+	<!-- <link type="text/css" rel="stylesheet" href="css/layout_1225.css">
+	<link tpye="text/css" rel="stylesheet" href="css/all_1226v2.css"> -->
+	<style>
+		.txt_support,.img_support,.word_support{
+			display: none;
+		}
+		.btn-outline-success.disabled, .btn-outline-success:disabled {
+			color: #808080;
+			background-color: #d4d4d4;
+			border-color: #888;
+		}
+	</style>
+</head>
+
+<body class="bg-light">
+	<header class="blog-header py-3">
+		<div class="container">
+			<div class="row flex-nowrap justify-content-between align-items-center">
+				<div class="col-4 text-left">
+					<button type="button" class="btn btn-labeled btn-success">
+						<span class="btn-label">題數：</span><span id="topic">1</span><span> / </span><span> 6 </span>
+					</button>
+				</div>
+				<div>
+					<button type="button" class="btn  btn-success text-center second_top-time">
+						<h3><span>30</span>s</h3>
+					</button>
+				</div>
+				<div class="col-4 text-right">
+					<button type="button" class="btn btn-labeled btn-success">
+						<span class="btn-label">遊戲得分：</span><span id="score">1000</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div class="container">
+		<main role="main" class="container">
+			<div class="row align-items-end">
+				<div class="col-md-1 blog-main">
+					<button class="light-3 col-12 btn btn-lg btn-outline-success my-2"> </button>
+					<button class="light-2 col-12 btn btn-lg btn-outline-success my-2"> </button>
+					<button class="light-1 col-12 btn btn-lg btn-outline-success my-2"> </button>
+				</div>
+				<div class="col-md-3 blog-main">
+					<img class="img_support" width="100%" src="" />
+					<div class="word_support"></div>
+					<div class="txt_support"></div>
+					<button class="image_toggle col-12 btn btn-lg shadow-sm btn-outline-success my-2">圖片提示</button>
+					<button class="word_toggle col-12 btn btn-lg shadow-sm btn-outline-success my-2">單字提示</button>
+					<button class="clause_toggle col-12 btn btn-lg shadow-sm btn-outline-success my-2">主要子句提示</button>
+					<button class="remove_toggle col-12 btn btn-lg shadow-sm btn-outline-success my-2">刪去選項</button>					
+				</div>
+				<div class="col-md-8 question">
+					<div style="display: flex;height: 200px;">
+						<h3 class="text-break" style="align-self: flex-end;"></h3>
+					</div>
+
+					<div class="answers">
+						<button class="col-12 btn btn-lg btns btn1 shadow-sm btn-outline-success text-left my-2" type="button"></button>
+						<button class="col-12 btn btn-lg btn-lgbtns btn2 shadow-sm btn-outline-success text-left my-2"></button>
+						<button class="col-12 btn btn-lg btns btn3 shadow-sm btn-outline-success text-left my-2"></button>
+						<button class="col-12 btn btn-lg btns btn4 shadow-sm btn-outline-success text-left my-2"></button>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+	<div id="stock">
+		
+	</div>
+
+	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+		  <div class="modal-content">
+			<div class="modal-body wrong_support">
+				
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-secondary next_q" data-dismiss="modal">下一題</button>
+			</div>
+		  </div>
+		</div>
+	</div>
+
+	<!--JS-->
+	<script type="text/javascript" src="js/jquery.3.2.1min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript" src="js/common2.js"></script>
+
+</body>
+
+</html>
