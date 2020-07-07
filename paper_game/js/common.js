@@ -28,7 +28,7 @@ var testArray = [
 		],
 		wordSupport:'elementary(形容詞): 初級的',
 		support:'who 引導形容詞子句，其先行詞為 I，子句的動詞應依先行詞變化，所以用 am',
-		translateSupport:'瑪麗的學習並不十分努力，但是她可以通過參加的所有考試獲得高分。 因此，所有學生都非常嫉妒她的才智，不想與她交朋友。'
+		translateSupport:'約翰上小學時，他不喜歡瑪麗，她的頭髮總是三色，所以他沒有借錢給她買食物。'
 	},
 	{
 		id:2,
@@ -58,7 +58,7 @@ var testArray = [
 		],
 		wordSupport:'jealous(形容詞): 忌妒的',
 		support:'satisfying,現在分詞表示主動的意義，通常指某物使某人產生某種感覺。',
-		translateSupport:'約翰上小學時，他不喜歡瑪麗，她的頭髮總是三色，所以他沒有借錢給她買食物'
+		translateSupport:'瑪麗的學習並不十分努力，但是她參加的所有考試可以獲得高分。 因此，所有學生都非常嫉妒她的才智，不想與她交朋友。'
 	},
 	{
 		id:3,
@@ -88,7 +88,7 @@ var testArray = [
 		],
 		wordSupport:'elementary(形容詞): 初級的',
 		support:'who 引導形容詞子句，其先行詞為 I，子句的動詞應依先行詞變化，所以用 am',
-		translateSupport:'瑪麗的學習並不十分努力，但是她可以通過參加的所有考試獲得高分。 因此，所有學生都非常嫉妒她的才智，不想與她交朋友。'
+		translateSupport:'約翰上小學時，他不喜歡瑪麗，她的頭髮總是三色，所以他沒有借錢給她買食物。'
 	},
 	{
 		id:4,
@@ -118,7 +118,7 @@ var testArray = [
 		],
 		wordSupport:'jealous(形容詞): 忌妒的',
 		support:'satisfying,現在分詞表示主動的意義，通常指某物使某人產生某種感覺。',
-		translateSupport:'約翰上小學時，他不喜歡瑪麗，她的頭髮總是三色，所以他沒有借錢給她買食物'
+		translateSupport:'瑪麗的學習並不十分努力，但是她參加的所有考試可以獲得高分。 因此，所有學生都非常嫉妒她的才智，不想與她交朋友。'
 	},
 	{
 		id:5,
@@ -148,7 +148,7 @@ var testArray = [
 		],
 		wordSupport:'elementary(形容詞): 初級的',
 		support:'who 引導形容詞子句，其先行詞為 I，子句的動詞應依先行詞變化，所以用 am',
-		translateSupport:'瑪麗的學習並不十分努力，但是她可以通過參加的所有考試獲得高分。 因此，所有學生都非常嫉妒她的才智，不想與她交朋友。'
+		translateSupport:'約翰上小學時，他不喜歡瑪麗，她的頭髮總是三色，所以他沒有借錢給她買食物。'
 	},
 	{
 		id:6,
@@ -178,7 +178,7 @@ var testArray = [
 		],
 		wordSupport:'jealous(形容詞): 忌妒的',
 		support:'satisfying,現在分詞表示主動的意義，通常指某物使某人產生某種感覺。',
-		translateSupport:'約翰上小學時，他不喜歡瑪麗，她的頭髮總是三色，所以他沒有借錢給她買食物'
+		translateSupport:'瑪麗的學習並不十分努力，但是她參加的所有考試可以獲得高分。 因此，所有學生都非常嫉妒她的才智，不想與她交朋友。'
 	},	
 ]
 
