@@ -1,13 +1,14 @@
 (function () {
+ 
   // ie GG
   if (navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > 0) {
     $('.ie-mask').css('display', 'block');
   }
 
-  $(window).on("load", function () {
-    // $('.loading_mask').addClass('fadeOut').show().delay(500).fadeOut(0);
-    setTimeout(animation, 400);
-  })
+  // $(window).on("load", function () {
+  //   // $('.loading_mask').addClass('fadeOut').show().delay(500).fadeOut(0);
+  //   setTimeout(animation, 400);
+  // })
 
   function animation() {
     var obj = [
@@ -41,8 +42,8 @@
 
     //印出&於父層加入屬性data-value
     $(".back.face").each(function (index) {
-      var backHtml = '<img src="' + obj[index].img + '">'
-      $(this).html(backHtml);
+      // var backHtml = 
+      $(this).html('<img src="' + obj[index]["img"] + '">');
       $(this).parent().attr('data-value', obj[index].type);
     });
 
@@ -108,5 +109,6 @@
       return Math.random() > .5 ? -1 : 1;
     }
   }
+  animation()
 })();
 
