@@ -84,7 +84,7 @@ $(function () {
 		imgSupport.attr('src',testArray[qaStart].img);
 		clauseSupport.text(testArray[qaStart].support);
 		wordSupport.text(testArray[qaStart].wordSupport);
-		$('.wrong_support').html("<h5>文章翻譯:</h5>"+testArray[qaStart].translateSupport+"</br></br>"+"<h5>文法提示:</h5>"+testArray[qaStart].support+"</br></br>"+"<h5>單字提示:</h5>"+testArray[qaStart].wordSupport);
+		// $('.wrong_support').html("<h5>文章翻譯:</h5>"+testArray[qaStart].translateSupport+"</br></br>"+"<h5>文法提示:</h5>"+testArray[qaStart].support+"</br></br>"+"<h5>單字提示:</h5>"+testArray[qaStart].wordSupport);
 	}
 
 	//答案按鈕按下時
@@ -99,11 +99,16 @@ $(function () {
 			// testArray.splice(qatatle, 1);
 			qaStart++
 			time = 30
-			score+=100
+			timeCount.text(time);
+
 			imgSupport.hide();
 			clauseSupport.hide();
+			wordSupport.hide();
 			wrongSupport=0;
+
+			score+=100
 			$('#score').text(score)
+
 			lightCount+=1
 			if(lightCount===1){
 				$('.light-1').removeClass("btn-outline-success").addClass("btn-success")
@@ -112,10 +117,11 @@ $(function () {
 			}else if(lightCount===3){
 				$('.light-3').removeClass("btn-outline-success").addClass("btn-success")
 			}
+
 			alert("答對了")
 			showgame2(qaStart)
 		}else{
-			score-=50			
+			score-=50		
 			lightCount=0
 			$('.light-1').removeClass("btn-success").addClass("btn-outline-success")
 			$('.light-2').removeClass("btn-success").addClass("btn-outline-success")
@@ -125,6 +131,7 @@ $(function () {
 			//答錯兩次時
 			if(wrongSupport===2){
 				$('#exampleModalCenter').modal('show')
+				clearInterval(interval)
 			}
 			alert("答錯了")
 			return false
@@ -133,12 +140,13 @@ $(function () {
 	//初始下一個題目
 	function showgame2(qaStart) {
 		topic+= 1
-		$('#topic').html(topic)
-		if(topic===7){
+		if(topic>(qatatle+1)){
 			clearInterval(interval)
 			alert("遊戲結束。")
 			return
 		}
+		$('#topic').html(topic)
+
 		clauseSupport.hide();
 		imgSupport.hide();
 		wordSupport.hide();
@@ -156,9 +164,27 @@ $(function () {
 		clauseSupport.text(testArray[qaStart].support);
 		imgSupport.attr('src',testArray[qaStart].img);
 		wordSupport.text(testArray[qaStart].wordSupport);
-		$('.wrong_support').html("<h5>文章翻譯:</h5>"+testArray[qaStart].translateSupport+"</br></br>"+"<h5>文法提示:</h5>"+testArray[qaStart].support+"</br></br>"+"<h5>單字提示:</h5>"+testArray[qaStart].wordSupport);
-
+		// $('.wrong_support').html("<h5>文章翻譯:</h5>"+testArray[qaStart].translateSupport+"</br></br>"+"<h5>文法提示:</h5>"+testArray[qaStart].support+"</br></br>"+"<h5>單字提示:</h5>"+testArray[qaStart].wordSupport);
 	}
+
+	//popup文章翻譯開啟時
+	$('.wrong_support_translate_toggle').on("click", function() {
+		$('.wrong_support_toggle').hide()
+		$('.wrong_support').show()
+		$('.wrong_support').html("<h5>文章翻譯:</h5>"+testArray[qaStart].translateSupport+"</br>");
+	});
+	//popup單字提示開啟時
+	$('.wrong_support_word_toggle').on("click", function() {
+		$('.wrong_support_toggle').hide()
+		$('.wrong_support').show()
+		$('.wrong_support').html("<h5>單字提示:</h5>"+testArray[qaStart].wordSupport+"</br>");
+	});
+	//popup文法提示開啟時
+	$('.wrong_support_clause_toggle').on("click", function() {
+		$('.wrong_support_toggle').hide()
+		$('.wrong_support').show()
+		$('.wrong_support').html("<h5>文法提示:</h5>"+testArray[qaStart].support+"</br>");
+	});	
 
 	//錯誤兩次出現的popup 下一題按鈕
 	$('.next_q').on("click",function() {
@@ -168,77 +194,42 @@ $(function () {
 	function next_q() {
 		qaStart++
 		time = 30
+		timeCount.text(time);
+		interval = setInterval(intervalCall, 1000);
 		clauseSupport.hide();
 		imgSupport.hide();
 		wordSupport.hide();
 		wrongSupport=0
+		$('.wrong_support_toggle').show()
+		$('.wrong_support').hide()
 		$('#score').text(score)
 		lightCount=0
 		if(lightCount===1){
-			$('.light-1').removeClass("btn-outline-success").addClass("btn-success")
+			$('.light-1').removeClass("btn-outline-success").addClass("btn-success");
 		}else if(lightCount===2){
-			$('.light-2').removeClass("btn-outline-success").addClass("btn-success")
+			$('.light-2').removeClass("btn-outline-success").addClass("btn-success");
 		}else if(lightCount===3){
-			$('.light-3').removeClass("btn-outline-success").addClass("btn-success")
+			$('.light-3').removeClass("btn-outline-success").addClass("btn-success");
 		}
 		showgame2(qaStart)
 	}
 
-	var interval = setInterval(function() {
+	//循環倒數
+	var interval;
+	var intervalCall = function() {
 		if (time >= 0) { 
 			timeCount.text(time);
 			time--
 		}else{
 			time = 30
+			timeCount.text(time);
 			qaStart++
 			showgame2(qaStart)
 		}
-
-		// } else { 
-			// setInterval(interval);
-		// } 
-		
-	}, 1000);
-	
-		
-
-	// function nextqa() {
-	// 	imgSupport.attr('src',testArray[0].img);
-	// 	question.text(testArray[0].question);
-	// 	btn1.text(testArray[0].answers[0].answer);
-	// 	btn2.text(testArray[0].answers[1].answer);
-	// 	btn3.text(testArray[0].answers[2].answer);
-	// 	btn4.text(testArray[0].answers[3].answer);
-	// 	clauseSupport.text(testArray[0].support);
-	// };
-
-	// function nextqa2() {
-	// 	var iii = getRandom(0 , qatatle);
-	// 	console.log(qatatle);
-	// 	imgSupport.attr('src',testArray[iii].img);
-	// 	question.text(testArray[iii].question);
-	// 	btn1.text(testArray[iii].answers[0].answer);
-	// 	btn2.text(testArray[iii].answers[1].answer);
-	// 	btn3.text(testArray[iii].answers[2].answer);
-	// 	btn4.text(testArray[iii].answers[3].answer);
-	// 	clauseSupport.text(testArray[iii].support);	
-	// };
-
-	// $('.btngo').click(function() {
-	// 	var select = $(this).index();
-	// 	if(testArray[iii].answers[select].isright==true){
-	// 		testArray.splice(iii, 1);
-	// 		qatatle--
-	// 		time = 10
-	// 		imageSupport.hide();
-	// 		clauseSupport.hide();
-	// 		nextqa2()
-	// 	}else if(testArray[iii].answers[select].isright!==true){
-	// 		return
-	// 	}
-	// });
+		clearInterval(interval);
+		interval = setInterval(intervalCall, 1000);
+	};
+	interval = setInterval(intervalCall, 1000);
 
 	showgame()
-	// interval()
-
 });

@@ -19,7 +19,7 @@
 	<!-- <link type="text/css" rel="stylesheet" href="css/layout_1225.css">
 	<link tpye="text/css" rel="stylesheet" href="css/all_1226v2.css"> -->
 	<style>
-		.txt_support,.img_support,.word_support{
+		.clause_support,.img_support,.word_support{
 			display: none;
 		}
 		.btn-outline-success.disabled, .btn-outline-success:disabled {
@@ -64,7 +64,7 @@
 				<div class="col-md-3 blog-main">
 					<img class="img_support" width="100%" src="" />
 					<div class="word_support"></div>
-					<div class="txt_support"></div>
+					<div class="clause_support"></div>
 					<button class="image_toggle col-12 btn btn-lg shadow-sm btn-outline-success my-2">圖片提示</button>
 					<button class="word_toggle col-12 btn btn-lg shadow-sm btn-outline-success my-2">單字提示</button>
 					<button class="clause_toggle col-12 btn btn-lg shadow-sm btn-outline-success my-2">主要子句提示</button>
@@ -89,11 +89,21 @@
 		
 	</div>
 
+	<!--popUp-->
 	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 		  <div class="modal-content">
-			<div class="modal-body wrong_support">
-				
+			<div class="modal-body p-5">
+				<div class="wrong_support">
+
+				</div>
+				<div class="wrong_support_toggle">
+					<div class="row align-items-end">
+						<button class="wrong_support_translate_toggle col-4 btn btn-lg shadow-sm btn-outline-success p-5">文章翻譯</button>
+						<button class="wrong_support_word_toggle col-4 btn btn-lg shadow-sm btn-outline-success p-5">單字提示</button>
+						<button class="wrong_support_clause_toggle col-4 btn btn-lg shadow-sm btn-outline-success py-5 px-4">文法提示</button>
+					</div>
+				</div>
 			</div>
 			<div class="modal-footer">
 			  <button type="button" class="btn btn-secondary next_q" data-dismiss="modal">下一題</button>
