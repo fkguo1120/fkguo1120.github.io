@@ -1,15 +1,16 @@
-(function () {
- 
-  // ie GG
-  if (navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > 0) {
-    $('.ie-mask').css('display', 'block');
-  }
+// (function () {
+
+function game2(score) {
+  // // ie GG
+  // if (navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > 0) {
+  //   $('.ie-mask').css('display', 'block');
+  // }
 
   // $(window).on("load", function () {
   //   // $('.loading_mask').addClass('fadeOut').show().delay(500).fadeOut(0);
   //   setTimeout(animation, 400);
   // })
-
+  var score1 = score
   function animation() {
     var obj = [
       {
@@ -62,11 +63,14 @@
       } else {
         count++;
         nowValue = thisValue;
-        console.log(count, nowValue);
         if (count > 0 && count % 2 == 0) {
+          score1+=50
+          $('#score').text(score1)
           borderLight();
         }
         if (count === 6) {
+          score1+=500
+			    $('#score').text(score1)
           // 六格全開遊戲結束
           setTimeout(success, 1000);
         }
@@ -102,7 +106,7 @@
         $('.flip_card-item[data-value="' + nowValue2 + '"]').addClass('box-shadow');
       }, 300);
     }
-    $cardItem.on('click', flipCard);
+    $cardItem.on("click",flipCard);
 
     //用Math.random()函式生成0~1之間的隨機數與0.5比較，返回-1或1
     function randomsort(a, b) {
@@ -110,5 +114,6 @@
     }
   }
   animation()
-})();
+};
+// })();
 

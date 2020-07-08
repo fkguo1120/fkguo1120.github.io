@@ -1,5 +1,5 @@
-$(function () {
-	
+// $(function () {
+	$('#game2').css('display', 'none');
 	// function countDown() {	
 	// 	timeCount.text(time);
 	// 	time--
@@ -116,6 +116,9 @@ $(function () {
 				$('.light-2').removeClass("btn-outline-success").addClass("btn-success")
 			}else if(lightCount===3){
 				$('.light-3').removeClass("btn-outline-success").addClass("btn-success")
+				$('#game1').css('display', 'none');
+    			$('#game2').css('display', 'block');
+				game2(score)
 			}
 
 			alert("答對了")
@@ -232,4 +235,4 @@ $(function () {
 	interval = setInterval(intervalCall, 1000);
 
 	showgame()
-});
+// });
