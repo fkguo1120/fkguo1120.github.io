@@ -1,5 +1,6 @@
 // $(function () {
 	$('#game2').css('display', 'none');
+	$('#game_score_box').css('display', 'none');
 	// function countDown() {	
 	// 	timeCount.text(time);
 	// 	time--
@@ -18,9 +19,9 @@
 	var clauseSupport = $('.clause_support');//子句提示解釋
 	var qaStart = 0; //開始題數
 	var qatatle = 5; //總題數
-	var score = 1000 //起始得分
+	var score = 1000 //任務起始得分
+	var game_score = 0 //遊戲起始得分
 	var topic = 1 //題目數
-	var lightCount = 0 //燈數
 	var wrongSupport = 0
 
     function getRandom(min, max) {
@@ -109,23 +110,10 @@
 			score+=100
 			$('#score').text(score)
 
-			lightCount+=1
-			if(lightCount===1){
-				$('.light-1').removeClass("btn-outline-success").addClass("btn-success")
-			}else if(lightCount===2){
-				$('.light-2').removeClass("btn-outline-success").addClass("btn-success")
-			}else if(lightCount===3){
-				$('.light-3').removeClass("btn-outline-success").addClass("btn-success")
-				$('#game1').css('display', 'none');
-    			$('#game2').css('display', 'block');
-				game2(score)
-			}
-
 			alert("答對了")
 			showgame2(qaStart)
 		}else{
 			score-=50		
-			lightCount=0
 			$('.light-1').removeClass("btn-success").addClass("btn-outline-success")
 			$('.light-2').removeClass("btn-success").addClass("btn-outline-success")
 			$('.light-3').removeClass("btn-success").addClass("btn-outline-success")
@@ -145,7 +133,12 @@
 		topic+= 1
 		if(topic>(qatatle+1)){
 			clearInterval(interval)
-			alert("遊戲結束。")
+			alert("測驗結束。")
+			$('#game1').css('display', 'none');
+			$('#game2').css('display', 'block');
+			$('#mission_score_box').css('display', 'none');
+			$('#game_score_box').css('display', 'block');
+			game2(game_score)
 			return
 		}
 		$('#topic').html(topic)
@@ -206,14 +199,6 @@
 		$('.wrong_support_toggle').show()
 		$('.wrong_support').hide()
 		$('#score').text(score)
-		lightCount=0
-		if(lightCount===1){
-			$('.light-1').removeClass("btn-outline-success").addClass("btn-success");
-		}else if(lightCount===2){
-			$('.light-2').removeClass("btn-outline-success").addClass("btn-success");
-		}else if(lightCount===3){
-			$('.light-3').removeClass("btn-outline-success").addClass("btn-success");
-		}
 		showgame2(qaStart)
 	}
 

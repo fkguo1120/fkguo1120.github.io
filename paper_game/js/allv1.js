@@ -1,6 +1,6 @@
 // (function () {
 
-function game2(score) {
+function game2(game_score) {
   // // ie GG
   // if (navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > 0) {
   //   $('.ie-mask').css('display', 'block');
@@ -10,7 +10,7 @@ function game2(score) {
   //   // $('.loading_mask').addClass('fadeOut').show().delay(500).fadeOut(0);
   //   setTimeout(animation, 400);
   // })
-  var score1 = score
+  var score1 = game_score
   function animation() {
     var obj = [
       {
@@ -59,18 +59,18 @@ function game2(score) {
       thisValue = $(this).data('value');
       if (count % 2 !== 0 && thisValue !== nowValue) {
         //條件符合則全部關閉
-        allFlipBack();
+        allFlipBack(thisValue);
       } else {
         count++;
         nowValue = thisValue;
         if (count > 0 && count % 2 == 0) {
           score1+=50
-          $('#score').text(score1)
+          $('#game_score').text(score1)
           borderLight();
         }
         if (count === 6) {
           score1+=500
-			    $('#score').text(score1)
+			    $('#game_score').text(score1)
           // 六格全開遊戲結束
           setTimeout(success, 1000);
         }
@@ -78,16 +78,19 @@ function game2(score) {
     }
     //關閉並重置
     function allFlipBack() {
-      count = 0;
-      nowValue = '';
       $cardItem.addClass('pointer_none');
       setTimeout(function () {
-        $cardItem.removeClass('rotation box-shadow');
+        $('.flip_card-item[data-value="' + nowValue + '"]').removeClass('rotation box-shadow');
+        $('.flip_card-item[data-value="' + thisValue + '"]').removeClass('rotation box-shadow');
       }, 800)
       setTimeout(function () {
         $cardItem.removeClass('pointer_none');
+        count = 0;
+        nowValue = '';
       }, 1000);
     }
+
+
     function success() {
       var $successMask = $('.success_mask');
       var $successModal = $('.success_modal');
