@@ -15,28 +15,68 @@ function game2(game_score) {
     var obj = [
       {
         type: 1,
-        img: 'images/card_back1.png',
+        img: '1',
       },
       {
         type: 1,
-        img: 'images/card_back1.png',
+        img: '1',
       },
       {
         type: 2,
-        img: 'images/card_back2.png',
+        img: '2',
       },
       {
         type: 2,
-        img: 'images/card_back2.png',
+        img: '2',
       },
       {
         type: 3,
-        img: 'images/card_back3.png',
+        img: '3',
       },
       {
         type: 3,
-        img: 'images/card_back3.png',
+        img: '3',
       },
+      {
+        type: 4,
+        img: '4',
+      },
+      {
+        type: 4,
+        img: '4',
+      }, 
+      {
+        type: 5,
+        img: '5',
+      },
+      {
+        type: 5,
+        img: '5',
+      },
+      {
+        type: 6,
+        img: '6',
+      },
+      {
+        type: 6,
+        img: '6',
+      }, 
+      {
+        type: 7,
+        img: '7',
+      },
+      {
+        type: 7,
+        img: '7',
+      },
+      {
+        type: 8,
+        img: '8',
+      },
+      {
+        type: 8,
+        img: '8',
+      }                            
     ]
     //隨機排列陣列
     obj.sort(randomsort);
@@ -44,7 +84,7 @@ function game2(game_score) {
     //印出&於父層加入屬性data-value
     $(".back.face").each(function (index) {
       // var backHtml = 
-      $(this).html('<img src="' + obj[index]["img"] + '">');
+      $(this).html('<h1 class="facevalue">' + obj[index]["img"] + '</h1>');
       $(this).parent().attr('data-value', obj[index].type);
     });
 
