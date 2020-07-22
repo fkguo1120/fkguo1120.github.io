@@ -76,17 +76,54 @@ function game2(game_score) {
       {
         type: 8,
         img: '8',
-      }                            
+      },
+      {
+        type: 9,
+        img: '9',
+      },
+      {
+        type: 9,
+        img: '9',
+      }                                   
     ]
     //隨機排列陣列
     obj.sort(randomsort);
 
     //印出&於父層加入屬性data-value
-    $(".back.face").each(function (index) {
+    var htmlPD = '';
+    $.each(obj,function ( index, item ) {
       // var backHtml = 
-      $(this).html('<h1 class="facevalue">' + obj[index]["img"] + '</h1>');
-      $(this).parent().attr('data-value', obj[index].type);
+      // $(this).html('<h1 class="facevalue">' + obj[index]["img"] + '</h1>');
+      // $(this).parent().attr('data-value', obj[index].type);
+      htmlPD += '<div class="col-2">';
+      htmlPD += '<div class="flip_card-container">'
+        htmlPD += '<div class="flip_card-item" data-value="' + obj[index].type + '">'
+          htmlPD += '<div class="front face">'
+            htmlPD += '<img src="images/card.png">'
+          htmlPD += '</div>'
+          htmlPD += '<div class="back face">'
+            htmlPD += '<h1 class="facevalue">' + obj[index]["img"] + '</h1>'
+          htmlPD += '</div>'          
+      htmlPD += '</div><img src="images/card_height.png"></div></div>';
     });
+    $('#cardcard').html(htmlPD);
+
+
+  /* 版身顯示商品內容 */ 
+  // var htmlPD = '';
+  // for (var i = 0; i < obj; i++) {
+  //   htmlPD += '<div class="col-3">';
+  //     htmlPD += '<div class="flip_card-container">'
+  //       htmlPD += '<div class="flip_card-item">'
+  //         htmlPD += '<div class="flip_card-item" data-value="' + obj[i].type + '">'
+  //           htmlPD += '<img src="images/card.png">'
+  //         htmlPD += '</div>'
+  //         htmlPD += '<div class="back face">'
+  //           htmlPD += '<h1 class="facevalue">' + obj[i]["img"] + '</h1>'
+  //         htmlPD += '</div>'          
+  //   htmlPD += '</div><img src="images/card_height.png"></div></div>';
+  // }
+  // $('#cardcard').html(htmlPD);
 
     //點擊卡片數量
     var count = 0;
