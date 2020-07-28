@@ -17,6 +17,7 @@
 	<link type="text/css" rel="stylesheet" href="css/animate.css">
 	<link type="text/css" rel="stylesheet" href="css/magnific-popup.css">
 	<link type="text/css" rel="stylesheet" href="css/allv1.css">
+	<link type="text/css" rel="stylesheet" href="css/allv2.css">
 	<!-- <link type="text/css" rel="stylesheet" href="css/layout_1225.css">
 	<link tpye="text/css" rel="stylesheet" href="css/all_1226v2.css"> -->
 	<style>
@@ -27,6 +28,9 @@
 			color: #808080;
 			background-color: #d4d4d4;
 			border-color: #888;
+		}
+		#game2,#game3{
+			display: none;
 		}
 	</style>
 </head>
@@ -95,6 +99,47 @@
 		
 	</div>
 
+	<main id="game2" role="main" class="container" >
+		<!-- END 翻轉成功燈箱 -->
+		<div id="cardcard" class="row">
+			<!-- 卡片1 -->
+			<!-- <div class="col-3">
+				<div class="flip_card-container">
+					<div class="flip_card-item">
+						<div class="front face">
+							<img src="images/card.png">
+						</div>
+						<div class="back face">
+
+						</div>
+					</div>
+					<img src="images/card_height.png">
+				</div>
+			</div>	 -->
+		</div>
+	</main>
+
+	
+	<main id="game3" role="main" class="container" >
+		<div id="aaa"></div>
+		<button id="game2_next_btn" type="button">下一題</button>
+		<button id="game2_reset_btn" type="button">Reset</button>
+		<button id="game2_submit_btn" type="button">submit</button>
+		<h1 id="data_v"></h1>
+		<div class="out">
+			<div class="in"><h3>1</h3></div>
+			<div class="in"><h3>1</h3></div>
+			<div class="in"><h3>1</h3></div>
+			<div class="in"><h3>1</h3></div>
+			<div class="in"><h3>1</h3></div>
+			<div class="in"><h3>1</h3></div>
+			<div class="in"><h3>1</h3></div>
+			<div class="in"><h3>1</h3></div>
+			<div class="in"><h3>1</h3></div>
+			<div class='no_see'></div>
+		</div>
+	</main>
+
 	<!--popUp-->
 	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
@@ -119,25 +164,7 @@
 	</div>
 
 
-	<main id="game2" role="main" class="container" >
-		<!-- END 翻轉成功燈箱 -->
-		<div id="cardcard" class="row">
-			<!-- 卡片1 -->
-			<!-- <div class="col-3">
-				<div class="flip_card-container">
-					<div class="flip_card-item">
-						<div class="front face">
-							<img src="images/card.png">
-						</div>
-						<div class="back face">
 
-						</div>
-					</div>
-					<img src="images/card_height.png">
-				</div>
-			</div>	 -->
-		</div>
-	</main>
 
 	<!--JS-->
 	<script type="text/javascript" src="js/jquery.3.2.1min.js"></script>
@@ -145,6 +172,7 @@
 	<script type="text/javascript" src="js/common.js"></script>
 	<script type="text/javascript" src="js/common2.js"></script>
 	<script type="text/javascript" src="js/allv1.js"></script>
+	<script type="text/javascript" src="js/allv2.js"></script>
 </body>
 
 </html>

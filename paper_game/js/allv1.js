@@ -13,7 +13,7 @@ function game2(game_score) {
   var score1 = game_score
   function animation() {
     var game1_right_total = 0
-    var game1_time = 180;
+    var game1_time = 10;
     var timeCount = $('.second_top-time span'); //倒數計時dom
     timeCount.text(game1_time);
     //第一關遊戲循環倒數
@@ -22,13 +22,17 @@ function game2(game_score) {
       if (game1_time >= 0) { 
         timeCount.text(game1_time);
         game1_time--
+        clearInterval(interval);
+        interval = setInterval(intervalCall, 1000);
       }else{
         clearInterval(interval);
         alert("第一關遊戲結束");
+        $('#game2').css('display', 'none');
+        $('#game3').css('display', 'block');
+        game3(score1)
       }
-      clearInterval(interval);
-      interval = setInterval(intervalCall, 1000);
     };
+
     interval = setInterval(intervalCall, 1000);
 
 
@@ -169,6 +173,9 @@ function game2(game_score) {
           if(game1_right_total===9){
             setTimeout(function () {
               alert("第一關遊戲結束")
+              $('#game2').css('display', 'none');
+              $('#game3').css('display', 'block');
+              game3(score1)
             }, 1500);
           }
         }
