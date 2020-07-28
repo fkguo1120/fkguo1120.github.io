@@ -12,6 +12,26 @@ function game2(game_score) {
   // })
   var score1 = game_score
   function animation() {
+    var game1_right_total = 0
+    var game1_time = 180;
+    var timeCount = $('.second_top-time span'); //倒數計時dom
+    timeCount.text(game1_time);
+    //第一關遊戲循環倒數
+    var interval;
+    var intervalCall = function() {
+      if (game1_time >= 0) { 
+        timeCount.text(game1_time);
+        game1_time--
+      }else{
+        clearInterval(interval);
+        alert("第一關遊戲結束");
+      }
+      clearInterval(interval);
+      interval = setInterval(intervalCall, 1000);
+    };
+    interval = setInterval(intervalCall, 1000);
+
+
     var obj = [
       {
         type: 1,
@@ -132,6 +152,7 @@ function game2(game_score) {
     var $cardItem = $('.flip_card-item');
 
     function flipCard() {
+      console.log(count)
       $(this).addClass('rotation');
       thisValue = $(this).data('value');
       if (count % 2 !== 0 && thisValue !== nowValue) {
@@ -141,9 +162,15 @@ function game2(game_score) {
         count++;
         nowValue = thisValue;
         if (count > 0 && count % 2 == 0) {
+          game1_right_total++
           score1+=50
           $('#game_score').text(score1)
           borderLight();
+          if(game1_right_total===9){
+            setTimeout(function () {
+              alert("第一關遊戲結束")
+            }, 1500);
+          }
         }
         if (count === 6) {
           score1+=500
