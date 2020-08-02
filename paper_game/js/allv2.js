@@ -1,11 +1,41 @@
 function game3(game_score) {
   clearInterval(interval);
   var score2 = game_score
+
+  var game2_time = 120;
+  var timeCount = $('.second_top-time span'); //倒數計時dom
+  timeCount.text(game2_time);
+  //第二關遊戲循環倒數
+  var interval;
+  var intervalCall = function() {
+    if (game2_time >= 0) { 
+      timeCount.text(game2_time);
+      game2_time--
+      clearInterval(interval);
+      interval = setInterval(intervalCall, 1000);
+    }else{
+      clearInterval(interval);
+      alert("第二關遊戲結束");
+      $('#game3').css('display', 'none');
+      $('#game4').css('display', 'block');
+    }
+  };
+  interval = setInterval(intervalCall, 1000); 
+
   $('#game_score').text(score2)
   var vocabulary = [
-    "apple",
-    "banana",
-    "orange"
+    {
+      tw:"蘋果(n)",
+      en:"apple"
+    },
+    {
+      tw:"香蕉(n)",
+      en:"banana"
+    },
+    {
+      tw:"橘子(n)",
+      en:"orange"
+    }
   ];
   var newobj = [];
   var obj = [];
@@ -30,59 +60,12 @@ function game3(game_score) {
     return result;
   }
 
-  //下一題涵式
-  function next_word() {
-    newobj = [];
-    $('#data_v').html('');
-    $('.in').removeClass('pointer_none');
-    
-    // 切割新單字丟回陣列
-    var game2_now_word = vocabulary[game2_number].split("");
-    for ( var i = 0; i < game2_now_word.length; i++ ) {
-       var new_words = {
-         type: game2_now_word[i],
-         word: game2_now_word[i]
-       };
-       newobj.push(new_words);
-    }
-    
-    // 剩餘的空格補亂數單字
-    game2_now_word_length = game2_now_word.length;
-    game2_word_left_length = 9 - game2_now_word_length;
-    game2_word_left = makeid(game2_word_left_length);
-    var abc = game2_word_left.split("");
-    for ( var i = 0; i < abc.length; i++ ) {
-       var xxx = {
-         type: abc[i],
-         word: abc[i]
-       };
-       newobj.push(xxx);
-    }
-    
-    newobj.sort(randomsort);
-    newobj.reverse();
-    
-    // 渲染回宮格上面
-    $(".in").each(function( index ) {
-      $(this).removeData('value');
-      $(this).html('<h3>' + newobj[index]["word"] + '</h3>');
-      $(this).attr('data-value', newobj[index]["word"]);
-    });
-       
-   // DOM渲染亂數單字
-    $('#aaa').html(game2_word_left);
-  }
-
-  // 下一題點擊之後
-  $('#game2_next_btn').on( "click", function() {
-    game2_number+=1;
-    next_word();
-  })
-
+  //第一題涵式
   function game2_init() {
     newobj = [];
     // 切割新單字丟回陣列
-    var game2_now_word = vocabulary[game2_number].split("");
+    $("#data_tw").html(vocabulary[game2_number].tw)
+    var game2_now_word = vocabulary[game2_number].en.split("");
     for ( var i = 0; i < game2_now_word.length; i++ ) {
        var new_words = {
          type: game2_now_word[i],
@@ -90,10 +73,16 @@ function game3(game_score) {
        };
        newobj.push(new_words);
     }
+
+    $('#game2_support').append(game2_now_word[0])
+    for ( var i = 1; i < game2_now_word.length-1; i++ ) {
+      $('#game2_support').append(" _ ")
+    }
+    $('#game2_support').append(game2_now_word[game2_now_word.length-1])
     
     // 剩餘的空格補亂數單字
     game2_now_word_length = game2_now_word.length;
-    game2_word_left_length = 9 - game2_now_word_length;
+    game2_word_left_length = 16 - game2_now_word_length;
     game2_word_left = makeid(game2_word_left_length);
     var abc = game2_word_left.split("");
     for ( var i = 0; i < abc.length; i++ ) {
@@ -115,10 +104,77 @@ function game3(game_score) {
     });
             
     // DOM渲染亂數單字
-    $('#aaa').html(game2_word_left);
-  }  
+    // $('#aaa').html(game2_word_left);
+  }   
 
-  game2_init();
+  //下一題涵式
+  function next_word() {
+    newobj = [];
+    $('#data_v').html('');
+    $('.in').removeClass('pointer_none');
+    
+    // 切割新單字丟回陣列
+    $("#data_tw").html(vocabulary[game2_number].tw)
+    var game2_now_word = vocabulary[game2_number].en.split("");
+    for ( var i = 0; i < game2_now_word.length; i++ ) {
+       var new_words = {
+         type: game2_now_word[i],
+         word: game2_now_word[i]
+       };
+       newobj.push(new_words);
+    }
+
+    $('#game2_support').html('')
+    $('#game2_support').append(game2_now_word[0])
+    for ( var i = 1; i < game2_now_word.length-1; i++ ) {
+      $('#game2_support').append(" _ ")
+    }
+    $('#game2_support').append(game2_now_word[game2_now_word.length-1])    
+    
+    // 剩餘的空格補亂數單字
+    game2_now_word_length = game2_now_word.length;
+    game2_word_left_length = 16 - game2_now_word_length;
+    game2_word_left = makeid(game2_word_left_length);
+    var abc = game2_word_left.split("");
+    for ( var i = 0; i < abc.length; i++ ) {
+       var xxx = {
+         type: abc[i],
+         word: abc[i]
+       };
+       newobj.push(xxx);
+    }
+    
+    newobj.sort(randomsort);
+    newobj.reverse();
+    
+    // 渲染回宮格上面
+    $(".in").each(function( index ) {
+      $(this).removeData('value');
+      $(this).html('<h3>' + newobj[index]["word"] + '</h3>');
+      $(this).attr('data-value', newobj[index]["word"]);
+    });
+       
+   // DOM渲染亂數單字
+    // $('#aaa').html(game2_word_left);
+  }
+
+  function game2_check(){
+    if(game2_number===(vocabulary.length)){
+      setTimeout(function () {
+        alert("第二關遊戲結束")
+        clearInterval(interval);
+        $('#game3').css('display', 'none');
+        $('#game4').css('display', 'block');
+      }, 500);
+    }
+  }
+
+  // 下一題點擊之後
+  $('#game2_next_btn').on( "click", function() {
+    game2_number+=1;
+    game2_check()
+    next_word();
+  })
 
   //隨機排列陣列
   // newobj.sort(randomsort);
@@ -148,15 +204,21 @@ function game3(game_score) {
 
   // 提交點擊之後
   $('#game2_submit_btn').on( "click", function() {
-    if($('#data_v').html()===vocabulary[game2_number]){
+    if($('#data_v').html()===vocabulary[game2_number].en){
       alert("答對了!");
       game2_number+=1;
+      score2 += 50
+      game2_check()
+      $('#game_score').text(score2)
       next_word()
     }else{
       alert("答錯了!");
       game2_number+=1;
+      game2_check()
       next_word()
     };
   });
+
+  game2_init();  
 
 };

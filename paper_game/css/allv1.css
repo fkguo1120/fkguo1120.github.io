@@ -351,6 +351,7 @@
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
   border: 3px solid #9e0015;
+  background-color: #fff;
 }
 
 .btn-list {

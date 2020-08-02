@@ -10,10 +10,11 @@ function game2(game_score) {
   //   // $('.loading_mask').addClass('fadeOut').show().delay(500).fadeOut(0);
   //   setTimeout(animation, 400);
   // })
+  $('#qa_total').hide();
   var score1 = game_score
   function animation() {
     var game1_right_total = 0
-    var game1_time = 10;
+    var game1_time = 180;
     var timeCount = $('.second_top-time span'); //倒數計時dom
     timeCount.text(game1_time);
     //第一關遊戲循環倒數
@@ -173,6 +174,7 @@ function game2(game_score) {
           if(game1_right_total===9){
             setTimeout(function () {
               alert("第一關遊戲結束")
+              clearInterval(interval);
               $('#game2').css('display', 'none');
               $('#game3').css('display', 'block');
               game3(score1)
