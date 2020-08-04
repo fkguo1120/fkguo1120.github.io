@@ -1,0 +1,247 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>paper_game</title>
+	<meta property="og:title" content="全民搶搶搶">
+	<meta property="og:description" content="台北市6小時到貨(試營運)，全台灣24小時到貨！" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit|ie-comp|ie-stand">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="format-detection" content="address=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, shrink-to-fit=no, user-scalable=0">
+	<!--CSS-->
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.css">
+	<link type="text/css" rel="stylesheet" href="css/animate.css">
+	<link type="text/css" rel="stylesheet" href="css/magnific-popup.css">
+	<link type="text/css" rel="stylesheet" href="css/allv1.css">
+	<link type="text/css" rel="stylesheet" href="css/allv2.css">
+	<link type="text/css" rel="stylesheet" href="css/allv3.css">
+	<!-- <link type="text/css" rel="stylesheet" href="css/layout_1225.css">
+	<link tpye="text/css" rel="stylesheet" href="css/all_1226v2.css"> -->
+	<style>
+		.clause_support,.img_support,.word_support{
+			display: none;
+		}
+		#game2_next_btn,#game2_reset_btn,#game2_submit_btn{
+			height:40px;
+			margin: 0 5px;
+		}
+		.btn-outline-success.disabled, .btn-outline-success:disabled {
+			color: #808080;
+			background-color: #d4d4d4;
+			border-color: #888;
+		}
+		#game2,#mission_score_box{
+			display: none;
+		}
+		#game_score_box{
+			display:block;
+		}
+
+		#data_v{
+			border: 1px #000 solid;
+    		padding: 1px 5px 10px 5px;
+			height:60px;
+			margin-top: 130px!important;
+		}
+	</style>
+</head>
+
+<body class="bg-light">
+	<header class="blog-header py-3">
+		<div class="container">
+			<div class="row flex-nowrap justify-content-between align-items-center">
+				<div class="col-4 text-left"></div>
+				<div>
+					<button type="button" class="btn  btn-success text-center second_top-time">
+						<h3><span>30</span>s</h3>
+					</button>
+				</div>
+				<div id="mission_score_box" class="col-4 text-right">
+					<button type="button" class="btn btn-labeled btn-danger">
+						<span class="btn-label">任務得分：</span><span id="score">1000</span>
+					</button>
+				</div>
+				<div id="game_score_box" class="col-4 text-right">
+					<button type="button" class="btn btn-labeled btn-info">
+						<span class="btn-label">遊戲得分：</span><span id="game_score">0</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div id="stock">
+		
+	</div>
+
+	
+	<main id="game4" role="main" class="container" >
+		<div class="row">
+			<div class="col-12">
+				<div class="button text-center">
+					<button onClick="startGame()">Replay</button>
+				  </div>
+			</div>
+		</div>
+		<table>
+			<tr>
+			  <td class="cell" id="0"></td>
+			  <td class="cell" id="1"></td>
+			  <td class="cell" id="2"></td>
+			  <td class="cell" id="3"></td>
+			</tr>
+			<tr>
+			  <td class="cell" id="4"></td>
+			  <td class="cell" id="5"></td>
+			  <td class="cell" id="6"></td>
+			  <td class="cell" id="7"></td>
+			</tr>
+			<tr>
+			  <td class="cell" id="8"></td>
+			  <td class="cell" id="9"></td>
+			  <td class="cell" id="10"></td>
+			  <td class="cell" id="11"></td>
+			</tr>
+			 <tr>
+			  <td class="cell" id="12"></td>
+			  <td class="cell" id="13"></td>
+			  <td class="cell" id="14"></td>
+			  <td class="cell" id="15"></td>
+			</tr>
+		  </table>
+		  <div class="endgame">
+			<div class="text"></div>
+		  </div>
+
+	</main>
+
+	<!--popUp-->
+	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+		  <div class="modal-content">
+			<div class="modal-body p-5">
+				<div class="wrong_support">
+
+				</div>
+				<div class="wrong_support_toggle">
+					<div class="row align-items-end">
+						<button class="wrong_support_translate_toggle col-4 btn btn-lg shadow-sm btn-outline-success p-5">文章翻譯</button>
+						<button class="wrong_support_word_toggle col-4 btn btn-lg shadow-sm btn-outline-success p-5">單字提示</button>
+						<button class="wrong_support_clause_toggle col-4 btn btn-lg shadow-sm btn-outline-success p-5">文法提示</button>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-secondary next_q" data-dismiss="modal">下一題</button>
+			</div>
+		  </div>
+		</div>
+	</div>
+
+
+
+
+	<!--JS-->
+	<script type="text/javascript" src="js/jquery.3.2.1min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+	<script type="text/javascript" src="js/allv1.js"></script>
+	<script type="text/javascript" src="js/allv2.js"></script>
+	<script>
+		var origBoard;
+		var score = 0
+		const huPlayer = 'O';
+		const aiPlayer = 'X';
+		const winCombos = [
+			[0, 1, 2, 3],
+			[4, 5, 6, 7],
+			[8, 9, 10, 11],
+			[12, 13, 14, 15],
+			[0, 4, 8, 12],
+			[1, 5, 9, 13],
+			[2, 6, 10, 14],
+			[3, 7, 11, 15],
+			[0, 5, 10, 15],
+			[3, 6, 9, 12],
+		]
+
+		const cells = document.querySelectorAll('.cell');
+		startGame();
+
+		function startGame() {
+			document.querySelector(".endgame").style.display = "none"
+			origBoard = Array.from(Array(16).keys()); //create array 0:0, 1:1, 2:2 ...
+		console.log(origBoard)
+			for (var i = 0; i < cells.length; i++) {
+			cells[i].innerText = '';
+			cells[i].style.removeProperty('background-color');
+			cells[i].addEventListener('click', turnClick, false);
+		}
+		}
+
+		function turnClick(square) {
+		console.log("square.target.id",square.target.id);
+		if (typeof origBoard[square.target.id] == 'number') {
+			turn(square.target.id, huPlayer);
+		}
+		}
+
+		function turn(squareId, player) {
+		origBoard[squareId] = player;
+		document.getElementById(squareId).innerText = player;
+		let gameWon = checkWin(origBoard, player);
+		if (gameWon) gameOver(gameWon);
+		}
+
+		function checkWin(board, player) {
+		console.log(board)
+		let plays = board.reduce((a, e, i) =>(e === player) ? a.concat(i) : a, []); //e:element []:축적할 배열
+		console.log("plays",plays)
+		
+		
+		let gameWon = null;
+		console.log("winCombos.entries()", winCombos.entries())
+		for (let [index, win] of winCombos.entries()) {
+			// if (win.every(elem => plays.indexOf(elem) > -1)) {
+			// gameWon = {index: index, player: player};
+			// console.log("www",winCombos)
+			// console.log("gameWon",gameWon)
+			// break;
+			// }
+			if (win.every(elem => plays.indexOf(elem) > -1)) {
+			   gameWon = {index: index, player: player};
+			   score += 50
+			   winCombos.splice(index, 1);
+			   console.log("www",winCombos)
+			   console.log("score",score)
+			   // return gameWon;
+			}
+		}
+		// console.log("gameWon",gameWon)
+		// return gameWon;
+		// return 111
+		}
+
+		function gameOver(gameWon) {
+		for (let index of winCombos[gameWon.index]) {
+			document.getElementById(index).style.backgroundColor =
+			gameWon.player == huPlayer ? "blue" : "red";
+		}
+		for(var i = 0; i < cells.length; i++) {
+			cells[i].removeEventListener('click', turnClick, false);
+		}
+		declareWinner(gameWon.player == huPlayer ? "闖關成功!" : "闖關失敗!");
+		}
+
+		function declareWinner(who) {
+		document.querySelector(".endgame").style.display = "block";
+		document.querySelector(".endgame .text").innerText = who;
+		}
+	</script>
+</body>
+
+</html>
