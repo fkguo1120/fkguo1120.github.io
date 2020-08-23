@@ -8,7 +8,7 @@
 
 	var time = 30; //倒數計時
 	var timeCount = $('.second_top-time span'); //倒數計時dom
-	var question = $('.question h3'); 
+	var question = $('.question h5'); 
 	var btn = $('.answers button'); //答案按鈕
 	var btn1 = $('.answers .btn1'); //答案按鈕1
 	var btn2 = $('.answers .btn2'); //答案按鈕2

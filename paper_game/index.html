@@ -21,6 +21,9 @@
 	<!-- <link type="text/css" rel="stylesheet" href="css/layout_1225.css">
 	<link tpye="text/css" rel="stylesheet" href="css/all_1226v2.css"> -->
 	<style>
+		body{
+			font-family: "微軟正黑體";
+		}
 		.clause_support,.img_support,.word_support{
 			display: none;
 		}
@@ -42,69 +45,139 @@
 			height:60px;
 			margin-top: 130px!important;
 		}
+		#game1-content{
+			background-image: url("images/game1_bg.png");
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: center top;
+			height: 100vh;
+		}
+		#game1{
+			background-color: #ffffffcc;
+			top:55%;
+			transform:translateY(-55%);
+			position: relative;
+			/* transform: translate(0%, 40%); */
+		}
+		@media (max-width: 1366px) {
+			#game1{
+				top:00%;
+				transform:translateY(40%);
+			}
+		}
+		#game1 header{
+			background-color: #ffffff85;
+			margin: 0 -15px;
+			padding: 0 35px;
+		}
+		#game1 #qa_total{
+			font-weight: 700;
+			letter-spacing: -2px;
+		}
+		#game1 .countdown-box{
+			background-color: #277b75;
+			color: #fff;
+			padding: 5px 0;
+			border-radius: 10px;
+			width: 150px;
+			text-align: center;
+		}
+		#game1 .countdown-box h4{
+			font-weight: 700;
+			margin-bottom: 0;
+		}
+		#game1 .countdown-box h4 span{
+			margin-left: 5px;
+		}
+		#game1 #mission_score_box h5, #game1 #game_score_box h5{
+			font-weight: 700;
+			letter-spacing: -1px;
+		}
+		#game1 main{
+			padding: 25px 30px;
+		}
+		#game1 main{
+			padding: 25px 30px;
+		}
+		#game1 main .question h5{
+			font-weight: 700;
+			font-size: 17px;
+    		line-height: 24px;
+		}
+		#game1 main .blog-main .row .btn{
+			width: 48%;
+			margin: 0 1%;
+		}
+		#game1 main .row >div button{
+			font-weight: 700;
+			font-size: 18px;
+		}
+		#game1 .btn.disabled, #game1 .btn:disabled {
+			opacity: 0.3;
+		}
 	</style>
 </head>
 
 <body class="bg-light">
-	<header class="blog-header py-3">
-		<div class="container">
-			<div class="row flex-nowrap justify-content-between align-items-center">
-				<div class="col-4 text-left">
-					<button id="qa_total" class="btn btn-labeled btn-success" type="button">
-						<span class="btn-label">題數：</span><span id="topic">1</span><span> / </span><span> 6 </span>
-					</button>
-				</div>
-				<div>
-					<button type="button" class="btn  btn-success text-center second_top-time">
-						<h3><span>30</span>s</h3>
-					</button>
-				</div>
-				<div id="mission_score_box" class="col-4 text-right">
-					<button type="button" class="btn btn-labeled btn-danger">
-						<span class="btn-label">任務得分：</span><span id="score">1000</span>
-					</button>
-				</div>
-				<div id="game_score_box" class="col-4 text-right">
-					<button type="button" class="btn btn-labeled btn-info">
-						<span class="btn-label">遊戲得分：</span><span id="game_score">0</span>
-					</button>
-				</div>
-			</div>
-		</div>
-	</header>
+<div id="game1-content">
 
 	<div id="game1" class="container">
+		<header class="blog-header py-3">
+			<div class="container">
+				<div class="row flex-nowrap justify-content-between align-items-center">
+					<div class="col-4 text-left">
+						<h5 id="qa_total" class="mb-0">
+							<span>題數：</span><span id="topic">1</span><span> / </span><span> 6 </span>
+						</h5>
+					</div>
+					<div>
+						<div class="second_top-time countdown-box">
+							<h4>倒數:<span>30</span>秒</h4>
+						</div>
+					</div>
+					<div id="mission_score_box" class="col-4 text-right">
+						<h5 class="mb-0">
+							<span>任務得分：</span><span id="score">1000</span>
+						</h5>
+					</div>
+					<div id="game_score_box" class="col-4 text-right">
+						<h5 class="mb-0">
+							<span class="btn-label">遊戲得分：</span><span id="game_score">0</span>
+						</h5>
+					</div>
+				</div>
+			</div>
+		</header>
+	
 		<main role="main" class="container">
 			<div class="row align-items-end">
-				<!-- <div class="col-md-1 blog-main">
-					<button class="light-3 col-12 btn btn-lg btn-outline-success my-2"> </button>
-					<button class="light-2 col-12 btn btn-lg btn-outline-success my-2"> </button>
-					<button class="light-1 col-12 btn btn-lg btn-outline-success my-2"> </button>
-				</div> -->
 				<div class="col-md-4 blog-main">
 					<img class="img_support" width="100%" src="" />
 					<div class="word_support"></div>
 					<div class="clause_support"></div>
-					<button class="image_toggle col-12 btn btn-lg shadow-sm btn-outline-success my-2">圖片提示</button>
-					<button class="word_toggle col-12 btn btn-lg shadow-sm btn-outline-success my-2">單字提示</button>
-					<button class="clause_toggle col-12 btn btn-lg shadow-sm btn-outline-success my-2">主要子句提示</button>
-					<button class="remove_toggle col-12 btn btn-lg shadow-sm btn-outline-success my-2">刪去選項</button>					
+					<div class="row">
+						<button class="image_toggle btn btn-lg shadow-sm btn-light my-2">圖片提示</button>
+						<button class="word_toggle btn btn-lg shadow-sm btn-light my-2">單字提示</button>
+						<button class="clause_toggle btn btn-lg shadow-sm btn-light my-2">主要子句提示</button>
+						<button class="remove_toggle btn btn-lg shadow-sm btn-light my-2">刪去選項</button>
+					</div>						
 				</div>
 				<div class="col-md-8 question">
-					<div style="display: flex;height: 200px;">
-						<h3 class="text-break" style="align-self: flex-end;"></h3>
+					<div style="display: flex; height: 120px;">
+						<h5 class="text-break" style="align-self: flex-start;"></h5>
 					</div>
 
 					<div class="answers">
-						<button class="col-12 btn btn-lg btns btn1 shadow-sm btn-outline-success text-left my-2" type="button"></button>
-						<button class="col-12 btn btn-lg btn-lgbtns btn2 shadow-sm btn-outline-success text-left my-2"></button>
-						<button class="col-12 btn btn-lg btns btn3 shadow-sm btn-outline-success text-left my-2"></button>
-						<button class="col-12 btn btn-lg btns btn4 shadow-sm btn-outline-success text-left my-2"></button>
+						<button class="col-12 btn btn-lg btns btn1 shadow-sm btn-light text-left my-2" type="button"></button>
+						<button class="col-12 btn btn-lg btn-lgbtns btn2 shadow-sm btn-light text-left my-2"></button>
+						<button class="col-12 btn btn-lg btns btn3 shadow-sm btn-light text-left my-2"></button>
+						<button class="col-12 btn btn-lg btns btn4 shadow-sm btn-light text-left my-2"></button>
 					</div>
 				</div>
 			</div>
 		</main>
 	</div>
+</div>
 	<div id="stock">
 		
 	</div>
