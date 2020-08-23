@@ -268,7 +268,7 @@
 .flip_card-container {
   position: relative;
   width: 100%;
-  height:170px;
+  height:180px;
   z-index: 1;
   margin-bottom: 15px;
   -webkit-perspective: 1000;
@@ -277,6 +277,9 @@
 
 .flip_card-container img {
   display: block;
+  height: 180px;
+  position: absolute;
+  left: -8px;
 }
 
 @media (max-width: 500px) {
@@ -294,18 +297,21 @@
           transform-style: preserve-3d;
   -webkit-transition: all 0.3s linear;
   transition: all 0.3s linear;
-  border-radius: 23px;
+  /* border-radius: 23px; */
+  border-radius: 5px;
 }
 
 @media (min-width: 500px) {
   .flip_card-item {
-    border-radius: 30px;
+    /* border-radius: 30px; */
+    border-radius: 5px;
   }
 }
 
 @media (min-width: 768px) {
   .flip_card-item {
-    border-radius: 38px;
+    /* border-radius: 38px; */
+    border-radius: 5px;
   }
 }
 
@@ -330,19 +336,19 @@
   height: 100%;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-  border-radius: 23px;
+  border-radius: 5px;
   overflow: hidden;
 }
 
 @media (min-width: 500px) {
   .face {
-    border-radius: 30px;
+    border-radius: 5px;
   }
 }
 
 @media (min-width: 768px) {
   .face {
-    border-radius: 38px;
+    border-radius: 5px;
   }
 }
 
