@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 
-<head>
+<head id="myvideo">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>paper_game</title>
 	<meta property="og:title" content="全民搶搶搶">
@@ -47,6 +47,24 @@
 			height:60px;
 			margin-top: 130px!important;
 		}
+
+		#game3_popup{
+			display: none;
+			position: absolute;
+			z-index: 999999;
+			background-color: #ffffffeb;
+			width: 100%;
+			height: 100%;
+			top: 0px;
+		}
+		.cell img{
+			width: 100%;
+		}
+		#game4_popup_img img{
+			border: 2px solid black;
+			box-shadow: inset 0 0 0 2px black, inset 6px 6px 0 rgba(30, 144, 255, 0.2), 3px 3px 0 rgba(30, 144, 255, 0.2);
+			max-width: 375px!important;
+		}	
 	</style>
 </head>
 
@@ -54,9 +72,13 @@
 	<header class="blog-header py-3">
 		<div class="container">
 			<div class="row flex-nowrap justify-content-between align-items-center">
-				<div class="col-4 text-left"></div>
+				<div class="col-4 text-left">
+					<button type="button" class="btn btn-labeled btn-info">
+						<span class="btn-label">賓果線：</span><span id="bingo_line"></span><span>條</span>
+					</button>
+				</div>
 				<div>
-					<button type="button" class="btn  btn-success text-center second_top-time">
+					<button type="button" class="btn  btn-success text-center third_top-time">
 						<h3><span>30</span>s</h3>
 					</button>
 				</div>
@@ -130,6 +152,31 @@
 
 	</main>
 
+	<div id="game3_popup">
+		<div class="container" style="max-width:600px;height:100%;">
+			<div class="row align-items-center" style="height:100%;">
+				<div class="col-12">
+					<div id="game4_popup_img" class="text-center mb-3">
+					</div>
+					<p id="answer"></p>
+
+					<div class="controls text-center">
+						<button id="play" type="submit">聽發音</button>
+					</div>
+					<div class="game4_title">
+
+					</div>
+					<div class="form-item">
+						<label>請輸入單字</label>
+						<div class="input-wrapper"><input class="game4_input" type="text" name="username" id="username" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" /></div>
+					</div>
+					<button id="game4_submit">提交答案</button>
+					<button id="game4_cancel">放棄</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<!--popUp-->
 	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
@@ -163,8 +210,30 @@
 	<script type="text/javascript" src="js/allv1.js"></script>
 	<script type="text/javascript" src="js/allv2.js"></script>
 	<script>
+
+  var game3_time = 300;
+  var timeCount = $('.third_top-time span'); //倒數計時dom
+  timeCount.text(game3_time);
+  //第二關遊戲循環倒數
+  var interval;
+  var intervalCall = function() {
+    if (game3_time >= 0) { 
+      timeCount.text(game3_time);
+      game3_time--
+      clearInterval(interval);
+      interval = setInterval(intervalCall, 1000);
+    }else{
+      clearInterval(interval);
+      alert("第三關遊戲結束");
+      $('#game4').css('display', 'none');
+    }
+  };
+  interval = setInterval(intervalCall, 1000); 
 		var origBoard;
 		var score = 0
+		var targetId = "";
+		var game4_answer_voice = "";
+		var bingo_line = 0
 		const huPlayer = 'O';
 		const aiPlayer = 'X';
 		const winCombos = [
@@ -180,6 +249,160 @@
 			[4, 9, 14, 19, 24],
 			[0, 6, 12, 18, 24],
 			[4, 8, 12, 16, 20]
+		];
+
+
+		var game4Array = [
+			{
+				img: 'fruit_1.jpg',
+				title: '',
+				answer: 'banana',
+				voice: 'banana'
+			},
+			{
+				img: 'fruit_2.jpg',
+				title: '',
+				answer: 'kiwi',
+				voice: 'kiwi'
+			},
+			{
+				img: 'fruit_3.jpg',
+				title: '',
+				answer: 'orange',
+				voice: 'orange'
+			},
+			{
+				img: 'fruit_4.jpg',
+				title: '',
+				answer: 'papaya',
+				voice: 'papaya'
+			},
+			{
+				img: 'fruit_5.jpg',
+				title: '',
+				answer: 'pineapple',
+				voice: 'pineapple'
+			},
+			{
+				img: 'fruit_6.jpg',
+				title: '',
+				answer: 'watermelon',
+				voice: 'watermelon'
+			},
+			{
+				img: 'fruit_7.jpg',
+				title: '',
+				answer: 'tomato',
+				voice: 'tomato'
+			},
+			{
+				img: 'fruit_8.jpg',
+				title: '',
+				answer: 'strawberry',
+				voice: 'strawberry'
+			},
+			{
+				img: 'fruit_9.jpg',
+				title: '',
+				answer: 'grapes',
+				voice: 'grapes'
+			},
+			{
+				img: 'fruit_10.jpg',
+				title: '',
+				answer: 'pear',
+				voice: 'pear'
+			},
+			{
+				img: 'fruit_11.jpg',
+				title: '',
+				answer: 'passion fruit',
+				voice: 'passion fruit'
+			},
+			{
+				img: 'fruit_12.jpg',
+				title: '',
+				answer: 'rambutan',
+				voice: 'rambutan'
+			},
+			{
+				img: 'fruit_13.jpg',
+				title: '',
+				answer: 'grapefruit',
+				voice: 'grapefruit'
+			},
+			{
+				img: 'fruit_14.jpg',
+				title: '',
+				answer: 'cantaloupe',
+				voice: 'cantaloupe'
+			},
+			{
+				img: 'fruit_15.jpg',
+				title: '',
+				answer: 'coconut',
+				voice: 'coconut'
+			},
+			{
+				img: 'fruit_11.jpg',
+				title: '',
+				answer: 'passion fruit',
+				voice: 'passion fruit'
+			},
+			{
+				img: 'fruit_9.jpg',
+				title: '',
+				answer: 'grapes',
+				voice: 'grapes'
+			},
+			{
+				img: 'fruit_7.jpg',
+				title: '',
+				answer: 'tomato',
+				voice: 'tomato'
+			},
+			{
+				img: 'fruit_6.jpg',
+				title: '',
+				answer: 'watermelon',
+				voice: 'watermelon'
+			},
+			{
+				img: 'fruit_4.jpg',
+				title: '',
+				answer: 'papaya',
+				voice: 'papaya'
+			},
+			{
+				img: 'fruit_15.jpg',
+				title: '',
+				answer: 'coconut',
+				voice: 'coconut'
+			},
+			{
+				img: 'fruit_14.jpg',
+				title: '',
+				answer: 'cantaloupe',
+				voice: 'cantaloupe'
+			},
+			{
+				img: 'fruit_13.jpg',
+				title: '',
+				answer: 'grapefruit',
+				voice: 'grapefruit'
+			},
+			{
+				img: '22.jpg',
+				title: 'When John was an __________ ______, he did not like Mary',
+				answer: 'elementary student',
+				voice: 'When John was an elementary student, he did not like Mary'
+			},
+			{
+				img: '11.jpg',
+				title: 'Mary does not study very hard but she can ______ high scores from all tests',
+				answer: 'obtain',
+				voice: 'Mary does not study very hard but she can obtain high scores from all tests'
+			},
 		]
 
 		const cells = document.querySelectorAll('.cell');
@@ -190,18 +413,40 @@
 			origBoard = Array.from(Array(25).keys()); //create array 0:0, 1:1, 2:2 ...
 			console.log(origBoard)
 			for (var i = 0; i < cells.length; i++) {
-				cells[i].innerText = "";
+				// cells[i].innerText = "apple";
+				cells[i].innerHTML='<img class="cell_img" id="'+ i + '" src="images/' + game4Array[i].img + '"/>';
 				cells[i].style.removeProperty('background-color');
-				cells[i].addEventListener('click', turnClick, false);
+				// cells[i].addEventListener('click', turnClick, false);
 			}
+			const cells_img = document.querySelectorAll('.cell_img');
+			for (var i = 0; i < cells_img.length; i++) {
+				cells_img[i].addEventListener('click', turnClick, false);
+			}
+			$('#bingo_line').html(bingo_line);
+
 		}
 
 		function turnClick(square) {
-			console.log("square.target.id",square.target.id);
-			if (typeof origBoard[square.target.id] == 'number') {
-				turn(square.target.id, huPlayer);
+			targetId = square.target.id
+			console.log("square.target.id",targetId);
+			$("#game3_popup").css("display","block");
+			$('.game4_title').html('<p>'+ game4Array[targetId].title+'</p>')
+			$("#game4_popup_img").html('<img  src="images/' + game4Array[targetId].img + '"/>')
+			// if (typeof origBoard[square.target.id] == 'number') {
+			// 	turn(square.target.id, huPlayer);
+			// 	if (!checkTie()) turn(bestSpot(), aiPlayer); 
+			// }
+		}
+
+		function submitClick(targetId) {
+			$("#game3_popup").css("display","none");
+			// console.log($("input[type=text][name=username]").val(''))
+			console.log(document.getElementById("username").value)
+			if (typeof origBoard[targetId] == 'number') {
+				turn(targetId, huPlayer);
 				if (!checkTie()) turn(bestSpot(), aiPlayer); 
 			}
+			alert("答題正確")
 		}
 
 		function turn(squareId, player) {
@@ -241,7 +486,9 @@
 
 					// gameWon = {index: index, player: huPlayer};
 					score += 50
+					bingo_line ++
 					$('#game_score').html(score);
+					$('#bingo_line').html(bingo_line);
 					winCombos.splice(index, 1);
 					console.log("www",winCombos);
 					console.log("score",score);
@@ -292,6 +539,103 @@
 		// }
 		return false;
 		}
+
+
+		$('#game4_cancel').on( "click", function() {
+			$("#game3_popup").css("display","none");
+		});
+
+		$('#game4_submit').on( "click", function() {
+			if($("input[type=text][name=username]").val()===game4Array[targetId].answer){
+				$("input[type=text][name=username]").val('')
+				submitClick(targetId)
+				$("#game3_popup").css("display","none");
+			}else{
+				$("input[type=text][name=username]").val('')
+				alert("答題錯誤")
+			}
+		});
+
+		var synth = window.speechSynthesis;
+
+		var inputForm = document.querySelector('form');
+		var inputTxt = document.getElementById("answer");
+
+		var voices = [];
+		function populateVoiceList() {
+			voices = synth.getVoices().sort(function (a, b) {
+				const aname = a.name.toUpperCase(), bname = b.name.toUpperCase();
+				if ( aname < bname ) return -1;
+				else if ( aname == bname ) return 0;
+				else return +1;
+			});
+		}
+
+		populateVoiceList();
+		if (speechSynthesis.onvoiceschanged !== undefined) {
+			speechSynthesis.onvoiceschanged = populateVoiceList;
+		}
+		function speak(){
+			if (synth.speaking) {
+				console.error('speechSynthesis.speaking');
+				return;
+			}
+			if (inputTxt.value !== '') {
+				var utterThis = new SpeechSynthesisUtterance(game4_answer_voice);
+				utterThis.onend = function (event) {
+					console.log('SpeechSynthesisUtterance.onend');
+				}
+				utterThis.onerror = function (event) {
+					console.error('SpeechSynthesisUtterance.onerror');
+				}
+
+				utterThis.voice = voices[20];
+				utterThis.pitch = 1;
+				utterThis.rate = 0.7;
+				synth.speak(utterThis);
+			}
+		}		
+
+		$('#play').on( "click", function(e) {
+			game4_answer_voice = game4Array[targetId].voice
+			e.preventDefault();
+
+			speak();
+
+			$("input[type=text][name=username]").blur();
+		});
+	
+
+		// $(document).keydown(function (event) {
+		// 	if (event.keyCode == 123) { // Prevent F12
+		// 		return false;
+		// 	} else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) { // Prevent Ctrl+Shift+I        
+		// 		return false;
+		// 	}
+		// });
+
+var elem = document.getElementById("myvideo");
+function openFullscreen() {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.mozRequestFullScreen) { /* Firefox */
+    elem.mozRequestFullScreen();
+  } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE/Edge */
+    elem.msRequestFullscreen();
+  }
+}
+// addEventListener("click", function() {
+//     var
+//           el = document.documentElement
+//         , rfs =
+//                el.requestFullScreen
+//             || el.webkitRequestFullScreen
+//             || el.mozRequestFullScreen
+//     ;
+//     rfs.call(el);
+// });
 	</script>
 </body>
 
