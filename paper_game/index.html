@@ -61,8 +61,8 @@
 		}
 		@media (max-width: 1366px) {
 			#game1-content > div{
-				top:00%;
-				transform:translateY(5%);
+				top:75%;
+				transform:translateY(-75%);
 			}
 		}
 		#game1-content header{
@@ -122,6 +122,7 @@
 
 <body class="bg-light">
 <div id="game1-content">
+	<button type="button" onclick="saveStaticDataToFile();">Click to Save</button>
 
 	<div class="container">
 		<header class="blog-header py-3">
@@ -178,6 +179,8 @@
 				</div>
 			</div>
 		</main>
+
+
 		<main id="game2" role="main" class="container" >
 			<!-- END 翻轉成功燈箱 -->
 			<div id="cardcard" class="row">
@@ -243,7 +246,7 @@
 		</div>
 	</main>
 
-	<!--popUp-->
+	<!--任務測驗popUp-->
 	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 		  <div class="modal-content">
@@ -253,9 +256,9 @@
 				</div>
 				<div class="wrong_support_toggle">
 					<div class="row align-items-end">
-						<button class="wrong_support_translate_toggle col-4 btn btn-lg shadow-sm btn-outline-success p-5">文章翻譯</button>
-						<button class="wrong_support_word_toggle col-4 btn btn-lg shadow-sm btn-outline-success p-5">單字提示</button>
-						<button class="wrong_support_clause_toggle col-4 btn btn-lg shadow-sm btn-outline-success p-5">文法提示</button>
+						<button class="wrong_support_translate_toggle btn btn-lg shadow-sm btn-light p-4" style="width: 31%;margin: 0 1.1%;">文章翻譯</button>
+						<button class="wrong_support_word_toggle btn btn-lg shadow-sm btn-light p-4" style="width: 31%;margin: 0 1.1%;">單字提示</button>
+						<button class="wrong_support_clause_toggle btn btn-lg shadow-sm btn-light p-4" style="width: 31%;margin: 0 1.1%;">文法提示</button>
 					</div>
 				</div>
 			</div>
@@ -272,10 +275,19 @@
 	<!--JS-->
 	<script type="text/javascript" src="js/jquery.3.2.1min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script src="js/FileSaver.js"></script>
 	<script type="text/javascript" src="js/common.js"></script>
 	<script type="text/javascript" src="js/common2.js"></script>
 	<script type="text/javascript" src="js/allv1.js"></script>
 	<script type="text/javascript" src="js/allv2.js"></script>
+	<script>
+
+        function saveStaticDataToFile() {
+            var blob = new Blob(logFile,{ type: "text/plain;charset=utf-8" });
+            saveAs(blob, "static.txt");
+        }
+		
+    </script>
 </body>
 
 </html>

@@ -10,6 +10,7 @@ function game2(game_score) {
   //   // $('.loading_mask').addClass('fadeOut').show().delay(500).fadeOut(0);
   //   setTimeout(animation, 400);
   // })
+  logFile.push("第1關遊戲開始\n")
   $('#qa_total').hide();
   var score1 = game_score
   function animation() {
@@ -160,8 +161,10 @@ function game2(game_score) {
       console.log(count)
       $(this).addClass('rotation');
       thisValue = $(this).data('value');
+      logFile.push(game1_time + "秒-------------->翻出" + thisValue + "\n")
       if (count % 2 !== 0 && thisValue !== nowValue) {
         //條件符合則全部關閉
+        logFile.push("配對失敗\n")
         allFlipBack(thisValue);
       } else {
         count++;
@@ -171,10 +174,14 @@ function game2(game_score) {
           score1+=50
           $('#game_score').text(score1)
           borderLight();
+          logFile.push("配對成功\n")
           if(game1_right_total===9){
             setTimeout(function () {
               alert("第一關遊戲結束")
               clearInterval(interval);
+              logFile.push("遊戲得分:" + score1 + "\n")
+              logFile.push("第1關遊戲結束\n")
+              logFile.push("\n")
               $('#game2').css('display', 'none');
               $('#game3').css('display', 'block');
               game3(score1)

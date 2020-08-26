@@ -279,7 +279,7 @@
   display: block;
   height: 180px;
   position: absolute;
-  left: -8px;
+  left: -7px;
 }
 
 @media (max-width: 500px) {
@@ -290,6 +290,7 @@
 
 .flip_card-item {
   position: absolute;
+  z-index: 999999;
   width: 100%;
   top: 0;
   bottom: 0;
