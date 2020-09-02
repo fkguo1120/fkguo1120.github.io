@@ -275,7 +275,7 @@
           perspective: 1000;
 }
 
-.flip_card-container img {
+.flip_card-container .front.face img {
   display: block;
   height: 180px;
   position: absolute;
@@ -317,8 +317,8 @@
 }
 
 .box-shadow {
-  -webkit-box-shadow: 0 0 0 2px #fff,0 0 10px 5px #fff;
-          box-shadow: 0 0 0 2px #fff,0 0 10px 5px #fff;
+  /* -webkit-box-shadow: 0 0 0 2px #fff,0 0 10px 5px #fff;
+          box-shadow: 0 0 0 2px #fff,0 0 10px 5px #fff; */
 }
 
 .rotation {
@@ -357,8 +357,12 @@
   display: block;
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
-  border: 3px solid #9e0015;
+  /* border: 3px solid #9e0015; */
   background-color: #fff;
+}
+
+.face.back h3{
+  font-size: 30px;
 }
 
 .btn-list {

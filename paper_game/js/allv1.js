@@ -10,7 +10,8 @@ function game2(game_score) {
   //   // $('.loading_mask').addClass('fadeOut').show().delay(500).fadeOut(0);
   //   setTimeout(animation, 400);
   // })
-  logFile.push("第1關遊戲開始\n")
+  logFile.push("第1關遊戲開始(A)\n")
+  logFileSimple.push("A")
   $('#qa_total').hide();
   var score1 = game_score
   function animation() {
@@ -41,75 +42,75 @@ function game2(game_score) {
     var obj = [
       {
         type: 1,
-        img: '1',
+        text: 'purchase',
       },
       {
         type: 1,
-        img: '1',
+        img: 'purchase.png',
       },
       {
         type: 2,
-        img: '2',
+        text: 'jealous',
       },
       {
         type: 2,
-        img: '2',
+        img: 'jealous.png',
       },
       {
         type: 3,
-        img: '3',
+        text: 'lonely',
       },
       {
         type: 3,
-        img: '3',
+        img: 'lonely.png',
       },
       {
         type: 4,
-        img: '4',
+        text: 'vehicles',
       },
       {
         type: 4,
-        img: '4',
+        img: 'vehicles.png',
       }, 
       {
         type: 5,
-        img: '5',
+        text: 'target',
       },
       {
         type: 5,
-        img: '5',
+        img: 'target.png',
       },
       {
         type: 6,
-        img: '6',
+        text: 'theater',
       },
       {
         type: 6,
-        img: '6',
+        img: 'theater.png',
       }, 
       {
         type: 7,
-        img: '7',
+        text: 'elementary student',
       },
       {
         type: 7,
-        img: '7',
+        img: 'elementary_student.png',
       },
       {
         type: 8,
-        img: '8',
+        text: 'persuade',
       },
       {
         type: 8,
-        img: '8',
+        img: 'persuade.png',
       },
       {
         type: 9,
-        img: '9',
+        text: 'basketball',
       },
       {
         type: 9,
-        img: '9',
+        img: 'basketball.png',
       }                                   
     ]
     //隨機排列陣列
@@ -128,7 +129,11 @@ function game2(game_score) {
             htmlPD += '<img src="images/card.png">'
           htmlPD += '</div>'
           htmlPD += '<div class="back face">'
-            htmlPD += '<h1 class="facevalue">' + obj[index]["img"] + '</h1>'
+            if(obj[index].hasOwnProperty('text')){
+              htmlPD += '<h3 class="facevalue">' + obj[index]["text"] + '</h3>'
+            }else{
+              htmlPD += '<img width="100%" src="images/' + obj[index]["img"] + '"/>'
+            }
           htmlPD += '</div>'          
       htmlPD += '</div><img src="images/card_height.png"></div></div>';
     });
@@ -164,7 +169,8 @@ function game2(game_score) {
       logFile.push(game1_time + "秒-------------->翻出" + thisValue + "\n")
       if (count % 2 !== 0 && thisValue !== nowValue) {
         //條件符合則全部關閉
-        logFile.push("配對失敗\n")
+        logFile.push("配對失敗(C)\n")
+        logFileSimple.push("C")
         allFlipBack(thisValue);
       } else {
         count++;
@@ -174,14 +180,16 @@ function game2(game_score) {
           score1+=50
           $('#game_score').text(score1)
           borderLight();
-          logFile.push("配對成功\n")
+          logFile.push("配對成功(M)\n")
+          logFileSimple.push("M")
           if(game1_right_total===9){
             setTimeout(function () {
               alert("第一關遊戲結束")
               clearInterval(interval);
               logFile.push("遊戲得分:" + score1 + "\n")
-              logFile.push("第1關遊戲結束\n")
+              logFile.push("第1關遊戲結束(F)\n")
               logFile.push("\n")
+              logFileSimple.push("F")
               $('#game2').css('display', 'none');
               $('#game3').css('display', 'block');
               game3(score1)
