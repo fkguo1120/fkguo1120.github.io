@@ -1,6 +1,7 @@
 // (function () {
 
 function game2(game_score) {
+  clearInterval(interval);
   // // ie GG
   // if (navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > 0) {
   //   $('.ie-mask').css('display', 'block');
@@ -14,30 +15,34 @@ function game2(game_score) {
   logFileSimple.push("A")
   $('#qa_total').hide();
   var score1 = game_score
+  var game1_time = 180;
+  var timeCount = $('.second_top-time span'); //倒數計時dom
+  timeCount.text(game1_time);
+  //第一關遊戲循環倒數
+  var interval;
+  var intervalCall = function() {
+    if (game1_time >= 0) { 
+      timeCount.text(game1_time);
+      game1_time--
+      clearInterval(interval);
+      interval = setInterval(intervalCall, 1000);
+    }else{
+      clearInterval(interval);
+      alert("第一關遊戲結束");
+      $('#game2').css('display', 'none');
+      $('#game3').css('display', 'block');
+      game3(score1)
+      $('#game1-content').css("background-image", "url('images/game3_bg.jpg')");
+      $('#game1-content > div').css("background-color", "transparent");
+      
+    }
+  };
+
+  interval = setInterval(intervalCall, 1000);
+
+
   function animation() {
     var game1_right_total = 0
-    var game1_time = 180;
-    var timeCount = $('.second_top-time span'); //倒數計時dom
-    timeCount.text(game1_time);
-    //第一關遊戲循環倒數
-    var interval;
-    var intervalCall = function() {
-      if (game1_time >= 0) { 
-        timeCount.text(game1_time);
-        game1_time--
-        clearInterval(interval);
-        interval = setInterval(intervalCall, 1000);
-      }else{
-        clearInterval(interval);
-        alert("第一關遊戲結束");
-        $('#game2').css('display', 'none');
-        $('#game3').css('display', 'block');
-        game3(score1)
-      }
-    };
-
-    interval = setInterval(intervalCall, 1000);
-
 
     var obj = [
       {
@@ -193,6 +198,8 @@ function game2(game_score) {
               $('#game2').css('display', 'none');
               $('#game3').css('display', 'block');
               game3(score1)
+              $('#game1-content').css("background-image", "url('images/game2_bg.jpg')");
+              $('#game1-content > div').css("background-color", "transparent");
             }, 1500);
           }
         }

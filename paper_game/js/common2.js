@@ -159,6 +159,7 @@
 			$('#mission_score_box').css('display', 'none');
 			$('#game_score_box').css('display', 'block');
 			game2(game_score)
+			$('#game1-content').css("background-image", "url('images/game2_bg.jpg')"); 
 			return
 		}
 		$('#topic').html(topic)
@@ -244,10 +245,15 @@
 			timeCount.text(time);
 			time--
 		}else{
-			time = 30
-			timeCount.text(time);
-			qaStart++
-			showgame2(qaStart)
+			if(topic>(qatatle+1)){
+				clearInterval(interval);
+				return
+			}else{
+				time = 30
+				timeCount.text(time);
+				qaStart++
+				showgame2(qaStart)
+			}
 		}
 		clearInterval(interval);
 		interval = setInterval(intervalCall, 1000);

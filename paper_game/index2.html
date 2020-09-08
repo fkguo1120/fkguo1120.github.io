@@ -41,86 +41,169 @@
 		}
 
 		#data_v{
-			border: 1px #000 solid;
-    		padding: 1px 5px 10px 5px;
-			height:60px;
+			border: 3px #379e93 solid;
+			padding: 1px 5px 10px 5px;
+			height: 60px;
 			margin-top: 130px!important;
+			background-color: #122e31;
 		}
+		#game1-content{
+			background-image: url('images/CoffeeShop.png');
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: center top;
+			height: 100vh;
+		}
+		#game1-content > div{
+			/* background-color: #ffffffcc; */
+			top:55%;
+			transform:translateY(-55%);
+			position: relative;
+			/* transform: translate(0%, 40%); */
+		}
+		#game1-content header{
+			background-color: #ffffff85;
+			margin: 0 -15px;
+			padding: 0 35px;
+		}
+		#game1-content #qa_total{
+			font-weight: 700;
+			letter-spacing: -2px;
+		}
+		#game1-content .countdown-box{
+			background-color: #277b75;
+			color: #fff;
+			padding: 5px 0;
+			border-radius: 10px;
+			width: 150px;
+			text-align: center;
+		}
+		#game1-content .countdown-box h4{
+			font-weight: 700;
+			margin-bottom: 0;
+		}
+		#game1-content .countdown-box h4 span{
+			margin-left: 5px;
+		}
+		#game1-content #mission_score_box h5, #game1-content #game_score_box h5{
+			font-weight: 700;
+			letter-spacing: -1px;
+		}
+		#game1-content main{
+			padding: 25px 30px;
+		}
+
+		#game1-content main .question h5{
+			font-weight: 700;
+			font-size: 17px;
+    		line-height: 24px;
+		}
+		#game1-content main .blog-main .row .btn{
+			width: 48%;
+			margin: 0 1%;
+		}
+		#game1-content main .row >div button{
+			font-weight: 700;
+			font-size: 18px;
+		}
+		#game1-content .btn.disabled, #game1-content .btn:disabled {
+			opacity: 0.3;
+		}
+		@media (max-width: 1366px) {
+			#game1-content > div{
+				top:75%;
+				transform:translateY(-75%);
+			}
+		}
+        .in {
+			background-color: #122e31;
+			border-radius: 10px;
+			margin: 5px;
+			color: #fff;
+			border: solid 3px #35afa4;
+        }
+        .ddd {
+			background-color: #251c0bad;
+            padding: 20px;
+			color:#fff;
+			font-weight: 700;
+        }
 	</style>
 </head>
 
-<body class="bg-light">
-	<header class="blog-header py-3">
+<body>
+
+
+	<div id="game1-content">
 		<div class="container">
-			<div class="row flex-nowrap justify-content-between align-items-center">
-				<div class="col-4 text-left">
-					<button type="button" class="btn btn-labeled btn-success">
-						<span class="btn-label">題數：</span><span id="topic">1</span><span> / </span><span> 6 </span>
-					</button>
+			<header class="blog-header py-3">
+				<div class="container">
+					<div class="row flex-nowrap justify-content-between align-items-center">
+						<div class="col-4 text-left">
+							<h5 id="qa_total" class="mb-0">
+								<span>題數：</span><span id="topic">1</span><span> / </span><span id="qatotal"> 6 </span>
+							</h5>
+						</div>
+						<div>
+							<div class="second_top-time countdown-box">
+								<h4>倒數:<span>30</span>秒</h4>
+							</div>
+						</div>
+						<div id="mission_score_box" class="col-4 text-right">
+							<h5 class="mb-0">
+								<span>任務得分：</span><span id="score">1000</span>
+							</h5>
+						</div>
+						<div id="game_score_box" class="col-4 text-right">
+							<h5 class="mb-0">
+								<span class="btn-label">遊戲得分：</span><span id="game_score">0</span>
+							</h5>
+						</div>
+					</div>
 				</div>
-				<div>
-					<button type="button" class="btn  btn-success text-center second_top-time">
-						<h3><span>30</span>s</h3>
-					</button>
-				</div>
-				<div id="mission_score_box" class="col-4 text-right">
-					<button type="button" class="btn btn-labeled btn-danger">
-						<span class="btn-label">任務得分：</span><span id="score">1000</span>
-					</button>
-				</div>
-				<div id="game_score_box" class="col-4 text-right">
-					<button type="button" class="btn btn-labeled btn-info">
-						<span class="btn-label">遊戲得分：</span><span id="game_score">0</span>
-					</button>
-				</div>
-			</div>
-		</div>
-	</header>
+			</header>
 
-	<div id="stock">
-		
+			<main id="game3" role="main" class="container" >
+				<div class="row">
+				<div class="col-6">
+					<div class="out">
+						<div class="in"><h3>1</h3></div>
+						<div class="in"><h3>1</h3></div>
+						<div class="in"><h3>1</h3></div>
+						<div class="in"><h3>1</h3></div>
+						<div class="in"><h3>1</h3></div>
+						<div class="in"><h3>1</h3></div>
+						<div class="in"><h3>1</h3></div>
+						<div class="in"><h3>1</h3></div>
+						<div class="in"><h3>1</h3></div>
+						<div class="in"><h3>1</h3></div>
+						<div class="in"><h3>1</h3></div>
+						<div class="in"><h3>1</h3></div>
+						<div class="in"><h3>1</h3></div>
+						<div class="in"><h3>1</h3></div>
+						<div class="in"><h3>1</h3></div>
+						<div class="in"><h3>1</h3></div>
+					</div>
+				</div>
+				<div class="col-5">
+
+					<div class="ddd">
+						<h1 id="data_tw" class="mt-3"></h1>
+						<h1 id="game2_support" class="mt-3"></h1>
+						<h1 id="data_v" class="mt-3" style="margin-top: 130px;"></h1>
+					</div>
+
+					<div style="margin-top: 114px;">
+						<div id="aaa"></div>
+						<button id="game2_next_btn" type="button">下一題</button>
+						<button id="game2_reset_btn" type="button">重新拼字</button>
+						<button id="game2_submit_btn" type="button">送出</button>
+					</div>			
+				</div>	
+				</div>
+			</main>
+		</div>
 	</div>
-
-	
-	<main id="game3" role="main" class="container" >
-		<div class="row">
-		<div class="col-8">
-			<div class="out">
-				<div class="in"><h3>1</h3></div>
-				<div class="in"><h3>1</h3></div>
-				<div class="in"><h3>1</h3></div>
-				<div class="in"><h3>1</h3></div>
-				<div class="in"><h3>1</h3></div>
-				<div class="in"><h3>1</h3></div>
-				<div class="in"><h3>1</h3></div>
-				<div class="in"><h3>1</h3></div>
-				<div class="in"><h3>1</h3></div>
-				<div class="in"><h3>1</h3></div>
-				<div class="in"><h3>1</h3></div>
-				<div class="in"><h3>1</h3></div>
-				<div class="in"><h3>1</h3></div>
-				<div class="in"><h3>1</h3></div>
-				<div class="in"><h3>1</h3></div>
-				<div class="in"><h3>1</h3></div>
-			</div>
-		</div>
-		<div class="col-4">
-
-			<div>
-				<h1 id="data_tw" class="mt-3"></h1>
-				<h1 id="game2_support" class="mt-3"></h1>
-				<h1 id="data_v" class="mt-3" style="margin-top: 130px;"></h1>
-			</div>
-
-			<div style="margin-top: 130px;">
-				<div id="aaa"></div>
-				<button id="game2_next_btn" type="button">下一題</button>
-				<button id="game2_reset_btn" type="button">重新拼字</button>
-				<button id="game2_submit_btn" type="button">送出</button>
-			</div>			
-		</div>	
-		</div>
-	</main>
 
 	<!--popUp-->
 	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -151,13 +234,23 @@
 	<!--JS-->
 	<script type="text/javascript" src="js/jquery.3.2.1min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script src="js/FileSaver.js"></script>
 	<script type="text/javascript" src="js/common.js"></script>
-	<script type="text/javascript" src="js/common2.js"></script>
+	<!-- <script type="text/javascript" src="js/common2.js"></script> -->
 	<script type="text/javascript" src="js/allv1.js"></script>
 	<script type="text/javascript" src="js/allv2.js"></script>
 	<script>
 		$('#game_score_box').css('display', 'block');
+		var logFile = []
+		var logFileSimple = []
 		game3(0)
+		
+		function saveStaticDataToFile() {
+			var blob = new Blob(logFile,{ type: "text/plain;charset=utf-8" });
+			var blobSimple = new Blob(logFileSimple,{ type: "text/plain;charset=utf-8" });
+			saveAs(blob, "Log_Detail.txt");
+			saveAs(blobSimple, "Log_simple_new.txt");
+        }
 	</script>
 </body>
 

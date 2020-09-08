@@ -1,225 +1,18 @@
-﻿<!DOCTYPE html>
-<html>
+function game4(game_score) {
+  clearInterval(interval);
+  
+  var score4 = game_score
+  $('#game_score').text(score4)
 
-<head id="myvideo">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>paper_game</title>
-	<meta property="og:title" content="全民搶搶搶">
-	<meta property="og:description" content="台北市6小時到貨(試營運)，全台灣24小時到貨！" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="renderer" content="webkit|ie-comp|ie-stand">
-	<meta name="format-detection" content="telephone=no">
-	<meta name="format-detection" content="address=no">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, shrink-to-fit=no, user-scalable=0">
-	<!--CSS-->
-	<link type="text/css" rel="stylesheet" href="css/bootstrap.css">
-	<link type="text/css" rel="stylesheet" href="css/animate.css">
-	<link type="text/css" rel="stylesheet" href="css/magnific-popup.css">
-	<link type="text/css" rel="stylesheet" href="css/allv1.css">
-	<link type="text/css" rel="stylesheet" href="css/allv2.css">
-	<link type="text/css" rel="stylesheet" href="css/allv3.css">
-	<!-- <link type="text/css" rel="stylesheet" href="css/layout_1225.css">
-	<link tpye="text/css" rel="stylesheet" href="css/all_1226v2.css"> -->
-	<style>
-		.clause_support,.img_support,.word_support{
-			display: none;
-		}
-		#game2_next_btn,#game2_reset_btn,#game2_submit_btn{
-			height:40px;
-			margin: 0 5px;
-		}
-		.btn-outline-success.disabled, .btn-outline-success:disabled {
-			color: #808080;
-			background-color: #d4d4d4;
-			border-color: #888;
-		}
-		#game2,#mission_score_box{
-			display: none;
-		}
-		#game_score_box{
-			display:block;
-		}
-
-		#data_v{
-			border: 1px #000 solid;
-    		padding: 1px 5px 10px 5px;
-			height:60px;
-			margin-top: 130px!important;
-		}
-
-		#game3_popup{
-			display: none;
-			position: absolute;
-			z-index: 999999;
-			background-color: #ffffffeb;
-			width: 100%;
-			height: 100%;
-			top: 0px;
-		}
-		.cell img{
-			width: 100%;
-		}
-		#game4_popup_img img{
-			border: 2px solid black;
-			box-shadow: inset 0 0 0 2px black, inset 6px 6px 0 rgba(30, 144, 255, 0.2), 3px 3px 0 rgba(30, 144, 255, 0.2);
-			max-width: 375px!important;
-		}	
-	</style>
-</head>
-
-<body class="bg-light">
-	<header class="blog-header py-3">
-		<div class="container">
-			<div class="row flex-nowrap justify-content-between align-items-center">
-				<div class="col-4 text-left">
-					<button type="button" class="btn btn-labeled btn-info">
-						<span class="btn-label">賓果線：</span><span id="bingo_line"></span><span>條</span>
-					</button>
-				</div>
-				<div>
-					<button type="button" class="btn  btn-success text-center third_top-time">
-						<h3><span>30</span>s</h3>
-					</button>
-				</div>
-				<div id="mission_score_box" class="col-4 text-right">
-					<button type="button" class="btn btn-labeled btn-danger">
-						<span class="btn-label">任務得分：</span><span id="score">1000</span>
-					</button>
-				</div>
-				<div id="game_score_box" class="col-4 text-right">
-					<button type="button" class="btn btn-labeled btn-info">
-						<span class="btn-label">遊戲得分：</span><span id="game_score">0</span>
-					</button>
-				</div>
-			</div>
-		</div>
-	</header>
-
-	<div id="stock">
-		
-	</div>
-
-	
-	<main id="game4" role="main" class="container" >
-		<!-- <div class="row">
-			<div class="col-12">
-				<div class="button text-center">
-					<button onClick="startGame()">Replay</button>
-				  </div>
-			</div>
-		</div> -->
-		<table>
-			<tr>
-			  <td class="cell" id="0"></td>
-			  <td class="cell" id="1"></td>
-			  <td class="cell" id="2"></td>
-			  <td class="cell" id="3"></td>
-			  <td class="cell" id="4"></td>
-			</tr>
-			<tr>
-			  <td class="cell" id="5"></td>
-			  <td class="cell" id="6"></td>
-			  <td class="cell" id="7"></td>
-			  <td class="cell" id="8"></td>
-			  <td class="cell" id="9"></td>
-			</tr>
-			<tr>
-			  <td class="cell" id="10"></td>
-			  <td class="cell" id="11"></td>
-			  <td class="cell" id="12"></td>
-			  <td class="cell" id="13"></td>
-			  <td class="cell" id="14"></td>
-			</tr>
-			 <tr>
-			  <td class="cell" id="15"></td>
-			  <td class="cell" id="16"></td>
-			  <td class="cell" id="17"></td>
-			  <td class="cell" id="18"></td>
-			  <td class="cell" id="19"></td>
-			</tr>
-			<tr>
-				<td class="cell" id="20"></td>
-				<td class="cell" id="21"></td>
-				<td class="cell" id="22"></td>
-				<td class="cell" id="23"></td>
-				<td class="cell" id="24"></td>
-			  </tr>
-		  </table>
-		  <div class="endgame">
-			<div class="text"></div>
-		  </div>
-
-	</main>
-
-	<div id="game3_popup">
-		<div class="container" style="max-width:600px;height:100%;">
-			<div class="row align-items-center" style="height:100%;">
-				<div class="col-12">
-					<div id="game4_popup_img" class="text-center mb-3">
-					</div>
-					<p id="answer"></p>
-
-					<div class="controls text-center">
-						<button id="play" type="submit">聽發音</button>
-					</div>
-					<div class="game4_title">
-
-					</div>
-					<div class="form-item">
-						<label>請輸入單字</label>
-						<div class="input-wrapper"><input class="game4_input" type="text" name="username" id="username" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" /></div>
-					</div>
-					<button id="game4_submit">提交答案</button>
-					<button id="game4_cancel">放棄</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!--popUp-->
-	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-		  <div class="modal-content">
-			<div class="modal-body p-5">
-				<div class="wrong_support">
-
-				</div>
-				<div class="wrong_support_toggle">
-					<div class="row align-items-end">
-						<button class="wrong_support_translate_toggle col-4 btn btn-lg shadow-sm btn-outline-success p-5">文章翻譯</button>
-						<button class="wrong_support_word_toggle col-4 btn btn-lg shadow-sm btn-outline-success p-5">單字提示</button>
-						<button class="wrong_support_clause_toggle col-4 btn btn-lg shadow-sm btn-outline-success p-5">文法提示</button>
-					</div>
-				</div>
-			</div>
-			<div class="modal-footer">
-			  <button type="button" class="btn btn-secondary next_q" data-dismiss="modal">下一題</button>
-			</div>
-		  </div>
-		</div>
-	</div>
-
-
-
-
-	<!--JS-->
-	<script type="text/javascript" src="js/jquery.3.2.1min.js"></script>
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
-
-	<script type="text/javascript" src="js/allv1.js"></script>
-	<script type="text/javascript" src="js/allv2.js"></script>
-	<script>
-
-  var game3_time = 300;
-  var timeCount = $('.third_top-time span'); //倒數計時dom
-  timeCount.text(game3_time);
-  //第二關遊戲循環倒數
+  var game4_time = 300;
+  var timeCount = $('.second_top-time span'); //倒數計時dom
+  timeCount.text(game4_time);
+  //第三關遊戲循環倒數
   var interval;
   var intervalCall = function() {
-    if (game3_time >= 0) { 
-      timeCount.text(game3_time);
-      game3_time--
+    if (game4_time >= 0) { 
+      timeCount.text(game4_time);
+      game4_time--
       clearInterval(interval);
       interval = setInterval(intervalCall, 1000);
     }else{
@@ -229,6 +22,7 @@
     }
   };
   interval = setInterval(intervalCall, 1000); 
+
 		var origBoard;
 		var score = 0
 		var targetId = "";
@@ -253,7 +47,7 @@
 
 
 		var game4Array = [
-		{
+			{
 				img: '01.jpg',
 				title: '',
 				answer: 'banana',
@@ -405,9 +199,9 @@
 			},
 		]
 
-		const cells = document.querySelectorAll('.cell');
-		startGame();
-
+    const cells = document.querySelectorAll('.cell');
+    console.log("cellscells",cells)
+    
 		function startGame() {
 			document.querySelector(".endgame").style.display = "none"
 			origBoard = Array.from(Array(25).keys()); //create array 0:0, 1:1, 2:2 ...
@@ -429,7 +223,7 @@
 		function turnClick(square) {
 			targetId = square.target.id
 			console.log("square.target.id",targetId);
-			$("#game3_popup").css("display","block");
+			$("#game4_popup").css("display","block");
 			$('.game4_title').html('<p>'+ game4Array[targetId].title+'</p>')
 			$("#game4_popup_img").html('<img  src="images/' + game4Array[targetId].img + '"/>')
 			// if (typeof origBoard[square.target.id] == 'number') {
@@ -439,7 +233,7 @@
 		}
 
 		function submitClick(targetId) {
-			$("#game3_popup").css("display","none");
+			$("#game4_popup").css("display","none");
 			// console.log($("input[type=text][name=username]").val(''))
 			console.log(document.getElementById("username").value)
 			if (typeof origBoard[targetId] == 'number') {
@@ -542,14 +336,14 @@
 
 
 		$('#game4_cancel').on( "click", function() {
-			$("#game3_popup").css("display","none");
+			$("#game4_popup").css("display","none");
 		});
 
 		$('#game4_submit').on( "click", function() {
 			if($("input[type=text][name=username]").val()===game4Array[targetId].answer){
 				$("input[type=text][name=username]").val('')
 				submitClick(targetId)
-				$("#game3_popup").css("display","none");
+				$("#game4_popup").css("display","none");
 			}else{
 				$("input[type=text][name=username]").val('')
 				alert("答題錯誤")
@@ -603,40 +397,8 @@
 			speak();
 
 			$("input[type=text][name=username]").blur();
-		});
-	
+    });
+    
+    startGame();
 
-		// $(document).keydown(function (event) {
-		// 	if (event.keyCode == 123) { // Prevent F12
-		// 		return false;
-		// 	} else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) { // Prevent Ctrl+Shift+I        
-		// 		return false;
-		// 	}
-		// });
-
-var elem = document.getElementById("myvideo");
-function openFullscreen() {
-  if (elem.requestFullscreen) {
-    elem.requestFullscreen();
-  } else if (elem.mozRequestFullScreen) { /* Firefox */
-    elem.mozRequestFullScreen();
-  } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
-    elem.webkitRequestFullscreen();
-  } else if (elem.msRequestFullscreen) { /* IE/Edge */
-    elem.msRequestFullscreen();
-  }
-}
-// addEventListener("click", function() {
-//     var
-//           el = document.documentElement
-//         , rfs =
-//                el.requestFullScreen
-//             || el.webkitRequestFullScreen
-//             || el.mozRequestFullScreen
-//     ;
-//     rfs.call(el);
-// });
-	</script>
-</body>
-
-</html>
+};

@@ -1,10 +1,20 @@
 function game3(game_score) {
   clearInterval(interval);
-  var score2 = game_score
+  
+  logFile.push("第1關遊戲開始(A)\n")
+  logFileSimple.push("A")
 
   var game2_time = 120;
+  var score2 = game_score
+  $('#qa_total').show();
+  var game2_topic = 1
+  $('#topic').html(game2_topic)
+  var game2_qatatle = 9
+  $("#qatotal").html(game2_qatatle)
   var timeCount = $('.second_top-time span'); //倒數計時dom
   timeCount.text(game2_time);
+
+
   //第二關遊戲循環倒數
   var interval;
   var intervalCall = function() {
@@ -18,6 +28,10 @@ function game3(game_score) {
       alert("第二關遊戲結束");
       $('#game3').css('display', 'none');
       $('#game4').css('display', 'block');
+      $('.bingo_line').css('display', 'inline-block');
+      $('.base_qa_line').css('display', 'none');
+      game4(score2)
+      $('#game1-content').css("background-image", "url('images/game4_bg.jpg')");
     }
   };
   interval = setInterval(intervalCall, 1000); 
@@ -25,16 +39,40 @@ function game3(game_score) {
   $('#game_score').text(score2)
   var vocabulary = [
     {
-      tw:"蘋果(n)",
-      en:"apple"
+      tw:"多樣的(adj)",
+      en:"diverse"
     },
     {
-      tw:"香蕉(n)",
-      en:"banana"
+      tw:"課外的(adj)",
+      en:"extracurricular"
     },
     {
-      tw:"橘子(n)",
-      en:"orange"
+      tw:"奉獻(v)",
+      en:"devote"
+    },
+    {
+      tw:"金融的(adj)",
+      en:"financial"
+    },
+    {
+      tw:"忌妒的(adj)",
+      en:"jealous"
+    },
+    {
+      tw:"興趣(n)",
+      en:"hobby"
+    },
+    {
+      tw:"購買(v)",
+      en:"purchase"
+    },
+    {
+      tw:"原始的(adj)",
+      en:"original"
+    },
+    {
+      tw:"厭惡的(adj)",
+      en:"disfavored"
     }
   ];
   var newobj = [];
@@ -165,13 +203,20 @@ function game3(game_score) {
         clearInterval(interval);
         $('#game3').css('display', 'none');
         $('#game4').css('display', 'block');
+        $('.bingo_line').css('display', 'inline-block');
+        $('.base_qa_line').css('display', 'none');
+        game4(score2)
+        $('#game1-content').css("background-image", "url('images/game4_bg.jpg')");
       }, 500);
+    }else{
+      $('#topic').html(game2_topic)
     }
   }
 
   // 下一題點擊之後
   $('#game2_next_btn').on( "click", function() {
     game2_number+=1;
+    game2_topic+=1
     game2_check()
     next_word();
   })
@@ -208,12 +253,16 @@ function game3(game_score) {
       alert("答對了!");
       game2_number+=1;
       score2 += 50
+      game2_topic+=1
+      $('#topic').html(game2_topic)
       game2_check()
       $('#game_score').text(score2)
       next_word()
     }else{
       alert("答錯了!");
       game2_number+=1;
+      game2_topic+=1
+      $('#topic').html(game2_topic)
       game2_check()
       next_word()
     };
