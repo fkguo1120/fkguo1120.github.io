@@ -71,11 +71,11 @@ function game2(game_score) {
       },
       {
         type: 4,
-        text: 'vehicles',
+        text: 'creative',
       },
       {
         type: 4,
-        img: 'vehicles.png',
+        img: 'creative.png',
       }, 
       {
         type: 5,
@@ -87,11 +87,11 @@ function game2(game_score) {
       },
       {
         type: 6,
-        text: 'theater',
+        text: 'examination',
       },
       {
         type: 6,
-        img: 'theater.png',
+        img: 'examination.png',
       }, 
       {
         type: 7,
