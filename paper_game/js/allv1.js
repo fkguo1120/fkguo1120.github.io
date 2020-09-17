@@ -29,6 +29,10 @@ function game2(game_score) {
     }else{
       clearInterval(interval);
       alert("第一關遊戲結束");
+      logFile.push("遊戲得分:" + score1 + "\n")
+      logFile.push("第一關遊戲結束-配對未完成(W)\n")
+      logFile.push("\n")
+      logFileSimple.push("W")
       $('#game2').css('display', 'none');
       $('#game3').css('display', 'block');
       game3(score1)
@@ -192,7 +196,7 @@ function game2(game_score) {
               alert("第一關遊戲結束")
               clearInterval(interval);
               logFile.push("遊戲得分:" + score1 + "\n")
-              logFile.push("第1關遊戲結束(F)\n")
+              logFile.push("第一關遊戲結束-配對皆完成(F)\n")
               logFile.push("\n")
               logFileSimple.push("F")
               $('#game2').css('display', 'none');

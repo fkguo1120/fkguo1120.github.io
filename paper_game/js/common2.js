@@ -26,6 +26,7 @@
 	var wrongSupport = 0
 	var crossNext = true
 
+	//隨機亂數
     function getRandom(min, max) {
 		return Math.floor(Math.random() * (max - min + 1)) + min;
 	};
@@ -249,6 +250,8 @@
 				clearInterval(interval);
 				return
 			}else{
+				logFile.push(time + "秒-------------->時間到未答題正確(U)\n")
+				logFileSimple.push("U")
 				time = 30
 				timeCount.text(time);
 				qaStart++
