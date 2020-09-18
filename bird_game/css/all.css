@@ -608,6 +608,11 @@ img {
   background-position: bottom center;
   overflow: hidden;
 }
+@media screen and (max-height: 769px) {
+  .game5_content{
+    height: 420px;
+  }
+}
 
 @media screen and (max-width: 767.98px) {
   .footer {

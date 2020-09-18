@@ -11,7 +11,7 @@ function game2(game_score) {
   //   // $('.loading_mask').addClass('fadeOut').show().delay(500).fadeOut(0);
   //   setTimeout(animation, 400);
   // })
-  logFile.push("第1關遊戲開始(A)\n")
+  logFile.push("第一關遊戲開始(A)\n")
   logFileSimple.push("A")
   $('#qa_total').hide();
   var score1 = game_score
@@ -29,7 +29,7 @@ function game2(game_score) {
     }else{
       clearInterval(interval);
       alert("第一關遊戲結束");
-      logFile.push("遊戲得分:" + score1 + "\n")
+      logFile.push("遊戲分數:" + score1 + "\n")
       logFile.push("第一關遊戲結束-配對未完成(W)\n")
       logFile.push("\n")
       logFileSimple.push("W")
@@ -195,7 +195,7 @@ function game2(game_score) {
             setTimeout(function () {
               alert("第一關遊戲結束")
               clearInterval(interval);
-              logFile.push("遊戲得分:" + score1 + "\n")
+              logFile.push("遊戲分數:" + score1 + "\n")
               logFile.push("第一關遊戲結束-配對皆完成(F)\n")
               logFile.push("\n")
               logFileSimple.push("F")

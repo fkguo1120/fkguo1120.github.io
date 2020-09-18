@@ -1,6 +1,9 @@
 function game4(game_score) {
   clearInterval(interval);
   
+  logFile.push("第三關遊戲開始(b)\n")
+  logFileSimple.push("b")
+
   var score4 = game_score
   $('#game_score').text(score4)
 
@@ -17,7 +20,11 @@ function game4(game_score) {
       interval = setInterval(intervalCall, 1000);
     }else{
       clearInterval(interval);
-      alert("第三關遊戲結束");
+	  alert("第三關遊戲結束");
+	  logFile.push("遊戲分數:" + score4 + "\n")
+	  logFile.push("第三關遊戲結束-時間到，題目未作答完(o)\n")
+	  logFile.push("\n")
+	  logFileSimple.push("o")
       $('#game4').css('display', 'none');
     }
   };
@@ -241,6 +248,8 @@ function game4(game_score) {
 				if (!checkTie()) turn(bestSpot(), aiPlayer); 
 			}
 			alert("答題正確")
+			logFile.push(game4_time + "秒-------------->提交答案-答題正確(s)\n")
+			logFileSimple.push("s")
 		}
 
 		function turn(squareId, player) {
@@ -283,6 +292,8 @@ function game4(game_score) {
 					bingo_line ++
 					$('#game_score').html(score);
 					$('#bingo_line').html(bingo_line);
+					logFile.push(game4_time + "秒-------------->得到賓果線(r)\n")
+					logFileSimple.push("r")
 					winCombos.splice(index, 1);
 					console.log("www",winCombos);
 					console.log("score",score);
@@ -336,6 +347,8 @@ function game4(game_score) {
 
 
 		$('#game4_cancel').on( "click", function() {
+			logFile.push(game4_time + "秒-------------->放棄按鈕(g)\n")
+			logFileSimple.push("g")
 			$("#game4_popup").css("display","none");
 		});
 
@@ -347,6 +360,8 @@ function game4(game_score) {
 			}else{
 				$("input[type=text][name=username]").val('')
 				alert("答題錯誤")
+				logFile.push(game4_time + "秒-------------->提交答案-答題錯誤(w)\n")
+				logFileSimple.push("w")
 			}
 		});
 
@@ -392,6 +407,8 @@ function game4(game_score) {
 
 		$('#play').on( "click", function(e) {
 			game4_answer_voice = game4Array[targetId].voice
+			logFile.push(game4_time + "秒-------------->發音按鈕(v)\n")
+			logFileSimple.push("v")
 			e.preventDefault();
 
 			speak();
