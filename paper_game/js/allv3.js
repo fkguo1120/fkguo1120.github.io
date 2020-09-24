@@ -291,8 +291,8 @@ function game4(game_score) {
 					bingo_line ++
 					$('#game_score').html(score4);
 					$('#bingo_line').html(bingo_line);
-					logFile.push(game4_time + "秒-------------->得到賓果線(r)\n");
-					logFileSimple.push("r");
+					logFile.push(game4_time + "秒-------------->得到賓果線(r)\n")
+					logFileSimple.push("r")
 					winCombos.splice(index, 1);
 					// console.log("www",winCombos);
 					// console.log("score4",score4);

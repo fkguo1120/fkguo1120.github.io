@@ -1,5 +1,8 @@
 function game5(game_score) {
   clearInterval(interval);
+
+  logFile.push("第四關遊戲開始(a)\n")
+  logFileSimple.push("a")
   
   var score5 = game_score
   $('#game_score').text(score5)
@@ -208,6 +211,8 @@ function game5(game_score) {
           setTimeout(function () {
             $("#boxman_value").attr("src","img/boxman.png")
           }, 600);
+          logFile.push(game5_time + "秒-------------->撞到障礙物(c)\n")
+          logFileSimple.push("c")
           if(life===0){
             game.gameLose();
           }
@@ -232,6 +237,8 @@ function game5(game_score) {
             $('#game_score').text(score5)
             game5_topic ++
             $('#topic').html(game5_topic)
+            logFile.push(game5_time + "秒-------------->吸入氣球答題正確(y)\n")
+            logFileSimple.push("y")
             //****boxman給予data-value正確答案****//
             $('#boxman_value').data("value",game5AnswerArray[String(title_index)][right_index])
             //****print題目****//
@@ -251,10 +258,16 @@ function game5(game_score) {
               $("#boxman_value").attr("src","img/boxman.png")
               _this.$el.remove();
             }, 600);
+            logFile.push(game5_time + "秒-------------->吸入氣球答題錯誤(n)\n")
+            logFileSimple.push("n")
           }
           // _this.$el.remove();
           _this = null
           if(life===0){
+            logFile.push("遊戲分數:" + score5 + "\n")
+            logFile.push("第四關遊戲結束-沒血量(h)\n")
+            logFile.push("\n")
+            logFileSimple.push("h")
             game.gameLose();
           }
         }
@@ -317,6 +330,10 @@ function game5(game_score) {
           if (_this.gameTime < 0) {
             _this.gameSuccess();
             clearInterval(timer);
+            logFile.push("遊戲分數:" + score5 + "\n")
+            logFile.push("第四關遊戲結束-時間到，題目未作答完(z)\n")
+            logFile.push("\n")
+            logFileSimple.push("z")
           }
         }, 1000);
       }
