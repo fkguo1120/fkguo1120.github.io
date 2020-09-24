@@ -22,7 +22,7 @@ var testArray = [
 			},
 			{
 				id: 'D',
-				answer:'.....',
+				answer:'None of the above.',
 				isright: false
 			}
 		],
@@ -52,7 +52,7 @@ var testArray = [
 			},
 			{
 				id: 'D',
-				answer:'.....',
+				answer:'None of the above.',
 				isright: false
 			}
 		],
@@ -82,7 +82,7 @@ var testArray = [
 			},
 			{
 				id: 'D',
-				answer:'.....',
+				answer:'None of the above.',
 				isright: false
 			}
 		],
@@ -112,7 +112,7 @@ var testArray = [
 			},
 			{
 				id: 'D',
-				answer:'....',
+				answer:'None of the above.',
 				isright: false
 			}
 		],
@@ -142,7 +142,7 @@ var testArray = [
 			},
 			{
 				id: 'D',
-				answer:'.....',
+				answer:'None of the above.',
 				isright: false
 			}
 		],
@@ -172,7 +172,7 @@ var testArray = [
 			},
 			{
 				id: 'D',
-				answer:'....',
+				answer:'None of the above.',
 				isright: false
 			}
 		],
@@ -202,7 +202,7 @@ var testArray = [
 			},
 			{
 				id: 'D',
-				answer:'....',
+				answer:'None of the above.',
 				isright: false
 			}
 		],
@@ -232,7 +232,7 @@ var testArray = [
 			},
 			{
 				id: 'D',
-				answer:'....',
+				answer:'None of the above.',
 				isright: false
 			}
 		],
@@ -262,7 +262,7 @@ var testArray = [
 			},
 			{
 				id: 'D',
-				answer:'....',
+				answer:'None of the above.',
 				isright: false
 			}
 		],
@@ -292,7 +292,7 @@ var testArray = [
 			},
 			{
 				id: 'D',
-				answer:'....',
+				answer:'None of the above.',
 				isright: false
 			}
 		],
@@ -322,7 +322,7 @@ var testArray = [
 			},
 			{
 				id: 'D',
-				answer:'....',
+				answer:'None of the above.',
 				isright: false
 			}
 		],
@@ -352,7 +352,7 @@ var testArray = [
 			},
 			{
 				id: 'D',
-				answer:'....',
+				answer:'None of the above.',
 				isright: false
 			}
 		],
@@ -382,7 +382,7 @@ var testArray = [
 			},
 			{
 				id: 'D',
-				answer:'....',
+				answer:'None of the above.',
 				isright: false
 			}
 		],
@@ -412,7 +412,7 @@ var testArray = [
 			},
 			{
 				id: 'D',
-				answer:'....',
+				answer:'None of the above.',
 				isright: false
 			}
 		],
@@ -442,7 +442,7 @@ var testArray = [
 			},
 			{
 				id: 'D',
-				answer:'....',
+				answer:'None of the above.',
 				isright: false
 			}
 		],
@@ -472,7 +472,7 @@ var testArray = [
 			},
 			{
 				id: 'D',
-				answer:'....',
+				answer:'None of the above.',
 				isright: false
 			}
 		],
@@ -502,7 +502,7 @@ var testArray = [
 			},
 			{
 				id: 'D',
-				answer:'....',
+				answer:'None of the above.',
 				isright: false
 			}
 		],
@@ -532,7 +532,7 @@ var testArray = [
 			},
 			{
 				id: 'D',
-				answer:'....',
+				answer:'None of the above.',
 				isright: false
 			}
 		],

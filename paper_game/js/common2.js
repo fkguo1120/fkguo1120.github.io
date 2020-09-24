@@ -19,7 +19,7 @@
 	var wordSupport = $('.word_support'); //單字提示文字解釋
 	var clauseSupport = $('.clause_support');//子句提示解釋
 	var qaStart = 0; //開始題數
-	var qatatle = 5; //總題數
+	var qatatle = 15; //總題數
 	var score = 1000 //任務起始得分
 	var game_score = 0 //遊戲起始得分
 	var topic = 1 //題目數
@@ -37,6 +37,7 @@
 		imgSupport.show();
 		$('.text_toggle').attr('disabled', false);
 		clauseSupport.hide();
+		$('.clause_toggle').attr('disabled', false);
 		$('.word_toggle').attr('disabled', false);
 		wordSupport.hide();
 		score-=50
@@ -52,6 +53,7 @@
 		imgSupport.hide();
 		$('.text_toggle').attr('disabled', false);
 		clauseSupport.hide();
+		$('.clause_toggle').attr('disabled', false);
 		score-=30
 		$('#score').html(score)
 		logFile.push(time + "秒-------------->單字提示(V)\n")
@@ -83,6 +85,9 @@
 		}
 		logFile.push(time + "秒-------------->刪去選項(R)\n")
 		logFileSimple.push("R")
+		$('.clause_toggle').attr('disabled', false);
+		$('.image_toggle').attr('disabled', false);
+		$('.word_toggle').attr('disabled', false);
 	});
 
 	//初始化遊戲

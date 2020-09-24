@@ -267,19 +267,19 @@
 
 .flip_card-container {
   position: relative;
-  width: 100%;
-  height:180px;
+  width: 150px;
+  height:170px;
   z-index: 1;
-  margin-bottom: 15px;
+  /* margin-bottom: 5px; */
   -webkit-perspective: 1000;
           perspective: 1000;
 }
 
 .flip_card-container .front.face img {
   display: block;
-  height: 180px;
+  height: 170px;
   position: absolute;
-  left: -7px;
+  /* left: -7px; */
 }
 
 @media (max-width: 500px) {
@@ -362,7 +362,8 @@
 }
 
 .face.back h3{
-  font-size: 30px;
+  font-size: 24px;
+  font-weight: 700;
 }
 
 .btn-list {

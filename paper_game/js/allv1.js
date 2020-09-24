@@ -2,6 +2,7 @@
 
 function game2(game_score) {
   clearInterval(interval);
+  $('#game1-content').addClass("game2-content");
   // // ie GG
   // if (navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > 0) {
   //   $('.ie-mask').css('display', 'block');
@@ -11,7 +12,7 @@ function game2(game_score) {
   //   // $('.loading_mask').addClass('fadeOut').show().delay(500).fadeOut(0);
   //   setTimeout(animation, 400);
   // })
-  logFile.push("第1關遊戲開始(A)\n")
+  logFile.push("第一關遊戲開始(A)\n")
   logFileSimple.push("A")
   $('#qa_total').hide();
   var score1 = game_score
@@ -29,7 +30,7 @@ function game2(game_score) {
     }else{
       clearInterval(interval);
       alert("第一關遊戲結束");
-      logFile.push("遊戲得分:" + score1 + "\n")
+      logFile.push("遊戲分數:" + score1 + "\n")
       logFile.push("第一關遊戲結束-配對未完成(W)\n")
       logFile.push("\n")
       logFileSimple.push("W")
@@ -131,7 +132,7 @@ function game2(game_score) {
       // var backHtml = 
       // $(this).html('<h1 class="facevalue">' + obj[index]["img"] + '</h1>');
       // $(this).parent().attr('data-value', obj[index].type);
-      htmlPD += '<div class="col-2">';
+      htmlPD += '<div class="col-22">';
       htmlPD += '<div class="flip_card-container">'
         htmlPD += '<div class="flip_card-item" data-value="' + obj[index].type + '">'
           htmlPD += '<div class="front face">'
@@ -172,7 +173,7 @@ function game2(game_score) {
     var $cardItem = $('.flip_card-item');
 
     function flipCard() {
-      console.log(count)
+      // console.log(count)
       $(this).addClass('rotation');
       thisValue = $(this).data('value');
       logFile.push(game1_time + "秒-------------->翻出" + thisValue + "\n")
@@ -195,7 +196,7 @@ function game2(game_score) {
             setTimeout(function () {
               alert("第一關遊戲結束")
               clearInterval(interval);
-              logFile.push("遊戲得分:" + score1 + "\n")
+              logFile.push("遊戲分數:" + score1 + "\n")
               logFile.push("第一關遊戲結束-配對皆完成(F)\n")
               logFile.push("\n")
               logFileSimple.push("F")
@@ -242,7 +243,7 @@ function game2(game_score) {
       }, 400)
     };
     function borderLight() {
-      console.log('success');
+      // console.log('success');
       var nowValue2 = nowValue;
       setTimeout(function () {
         $('.flip_card-item[data-value="' + nowValue2 + '"]').addClass('box-shadow');

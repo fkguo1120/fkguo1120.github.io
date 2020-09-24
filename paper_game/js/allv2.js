@@ -1,8 +1,8 @@
 function game3(game_score) {
   clearInterval(interval);
-  
-  logFile.push("第1關遊戲開始(A)\n")
-  logFileSimple.push("A")
+  $('#game1-content').removeClass("game2-content");
+  logFile.push("第二關遊戲開始(H)\n")
+  logFileSimple.push("H")
 
   var game2_time = 120;
   var score2 = game_score
@@ -26,6 +26,10 @@ function game3(game_score) {
     }else{
       clearInterval(interval);
       alert("第二關遊戲結束");
+      logFile.push("遊戲分數:" + score2 + "\n")
+      logFile.push("第二關遊戲結束-時間到，題目未作答完(Q)\n")
+      logFile.push("\n")
+      logFileSimple.push("Q")
       $('#game3').css('display', 'none');
       $('#game4').css('display', 'block');
       $('.bingo_line').css('display', 'inline-block');
@@ -47,32 +51,60 @@ function game3(game_score) {
       en:"extracurricular"
     },
     {
+      tw:"參與(v)",
+      en:"participate"
+    },
+    {
       tw:"奉獻(v)",
       en:"devote"
     },
     {
-      tw:"金融的(adj)",
+      tw:"積極的(adj)",
+      en:"motivated"
+    },
+    {
+      tw:"財務的(adj)",
       en:"financial"
     },
     {
-      tw:"忌妒的(adj)",
-      en:"jealous"
+      tw:"態度(n)",
+      en:"attitude"
     },
     {
       tw:"興趣(n)",
       en:"hobby"
     },
     {
-      tw:"購買(v)",
-      en:"purchase"
+      tw:"堂兄弟(n)",
+      en:"cousin"
     },
     {
-      tw:"原始的(adj)",
-      en:"original"
+      tw:"批判的(adj)",
+      en:"critical"
     },
     {
-      tw:"厭惡的(adj)",
-      en:"disfavored"
+      tw:"耗盡(v)",
+      en:"exhaust"
+    },
+    {
+      tw:"討厭(v)",
+      en:"disfavor"
+    },
+    {
+      tw:"保險(n)",
+      en:"insurance"
+    },
+    {
+      tw:"非凡的(adj)",
+      en:"remarkable"
+    },
+    {
+      tw:"同時地(adv)",
+      en:"concurrently"
+    },
+    {
+      tw:"不必要的(adj)",
+      en:"needless"
     }
   ];
   var newobj = [];
@@ -201,6 +233,10 @@ function game3(game_score) {
       setTimeout(function () {
         alert("第二關遊戲結束")
         clearInterval(interval);
+        logFile.push("遊戲分數:" + score2 + "\n")
+        logFile.push("第二關遊戲結束-全部題目作答完(Z)\n")
+        logFile.push("\n")
+        logFileSimple.push("Z")
         $('#game3').css('display', 'none');
         $('#game4').css('display', 'block');
         $('.bingo_line').css('display', 'inline-block');
@@ -215,9 +251,11 @@ function game3(game_score) {
 
   // 下一題點擊之後
   $('#game2_next_btn').on( "click", function() {
+    logFile.push(game2_time + "秒-------------->下一題按鈕(I)\n")
+    logFileSimple.push("I")
     game2_number+=1;
-    game2_topic+=1
-    game2_check()
+    game2_topic+=1;
+    game2_check();
     next_word();
   })
 
@@ -238,11 +276,13 @@ function game3(game_score) {
     $(this).addClass('pointer_none');
     var bcc = $(this).data('value');
     $('#data_v').append(bcc);
-    console.log(bcc);
+    // console.log(bcc);
   });
 
   // 重新輸入單字按鈕
   $('#game2_reset_btn').on( "click", function() {
+    logFile.push(game2_time + "秒-------------->重新拼字(J)\n")
+    logFileSimple.push("J")
     $('#data_v').html('');
     $('.in').removeClass('pointer_none');
   });
@@ -255,6 +295,8 @@ function game3(game_score) {
       score2 += 50
       game2_topic+=1
       $('#topic').html(game2_topic)
+      logFile.push(game2_time + "秒-------------->送出-答題正確(K)\n")
+      logFileSimple.push("K")
       game2_check()
       $('#game_score').text(score2)
       next_word()
@@ -263,6 +305,8 @@ function game3(game_score) {
       game2_number+=1;
       game2_topic+=1
       $('#topic').html(game2_topic)
+      logFile.push(game2_time + "秒-------------->送出-答題錯誤(L)\n")
+      logFileSimple.push("L")
       game2_check()
       next_word()
     };

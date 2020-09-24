@@ -1,6 +1,9 @@
 function game4(game_score) {
   clearInterval(interval);
   
+  logFile.push("第三關遊戲開始(b)\n")
+  logFileSimple.push("b")
+
   var score4 = game_score
   $('#game_score').text(score4)
 
@@ -17,14 +20,17 @@ function game4(game_score) {
       interval = setInterval(intervalCall, 1000);
     }else{
       clearInterval(interval);
-      alert("第三關遊戲結束");
+	  alert("第三關遊戲結束");
+	  logFile.push("遊戲分數:" + score4 + "\n")
+	  logFile.push("第三關遊戲結束-時間到，題目未作答完(o)\n")
+	  logFile.push("\n")
+	  logFileSimple.push("o")
       $('#game4').css('display', 'none');
     }
   };
   interval = setInterval(intervalCall, 1000); 
 
 		var origBoard;
-		var score = 0
 		var targetId = "";
 		var game4_answer_voice = "";
 		var bingo_line = 0
@@ -49,163 +55,163 @@ function game4(game_score) {
 		var game4Array = [
 			{
 				img: '01.jpg',
-				title: '',
-				answer: 'banana',
-				voice: 'banana'
-			},
-			{
-				img: '02.jpg',
-				title: '',
-				answer: 'kiwi',
-				voice: 'kiwi'
-			},
-			{
-				img: '03.jpg',
-				title: '',
-				answer: 'orange',
-				voice: 'orange'
-			},
-			{
-				img: '04.jpg',
-				title: '',
-				answer: 'papaya',
-				voice: 'papaya'
-			},
-			{
-				img: '05.jpg',
-				title: '',
-				answer: 'pineapple',
-				voice: 'pineapple'
-			},
-			{
-				img: '06.jpg',
-				title: '',
-				answer: 'watermelon',
-				voice: 'watermelon'
-			},
-			{
-				img: '07.jpg',
-				title: '',
-				answer: 'tomato',
-				voice: 'tomato'
-			},
-			{
-				img: '08.jpg',
-				title: '',
-				answer: 'strawberry',
-				voice: 'strawberry'
-			},
-			{
-				img: '09.jpg',
-				title: '',
-				answer: 'grapes',
-				voice: 'grapes'
-			},
-			{
-				img: '10.jpg',
-				title: '',
-				answer: 'pear',
-				voice: 'pear'
-			},
-			{
-				img: '11.jpg',
-				title: '',
-				answer: 'passion fruit',
-				voice: 'passion fruit'
-			},
-			{
-				img: '12.jpg',
-				title: '',
-				answer: 'rambutan',
-				voice: 'rambutan'
-			},
-			{
-				img: '13.jpg',
-				title: '',
-				answer: 'grapefruit',
-				voice: 'grapefruit'
-			},
-			{
-				img: '14.jpg',
-				title: '',
-				answer: 'cantaloupe',
-				voice: 'cantaloupe'
-			},
-			{
-				img: '15.jpg',
-				title: '',
-				answer: 'coconut',
-				voice: 'coconut'
-			},
-			{
-				img: '16.jpg',
-				title: '',
-				answer: 'passion fruit',
-				voice: 'passion fruit'
+				title: 'When John was an elementary student, John did not like Mary because she always had ________ colors in her hair.',
+				answer: 'diverse',
+				voice: 'When John was an elementary student, John did not like Mary because she always had diverse colors in her hair.'
 			},
 			{
 				img: '01.jpg',
-				title: '',
-				answer: 'grapes',
-				voice: 'grapes'
+				title: 'When John was an ________ student, John did not like Mary because she always had diverse colors in her hair.',
+				answer: 'elementary',
+				voice: 'When John was an elementary student, John did not like Mary because she always had diverse colors in her hair.'
 			},
 			{
 				img: '02.jpg',
-				title: '',
-				answer: 'tomato',
-				voice: 'tomato'
+				title: 'Mary has not eaten any food for two days but she is very pleased and extremely happy to take part in __________ activities.',
+				answer: 'extracurricular',
+				voice: 'Mary has not eaten any food for two days but she is very pleased and extremely happy to take part in extracurricular activities.'
+			},
+			{
+				img: '02.jpg',
+				title: 'Mary really enjoys the time spent in the extracurricular activities in which she __________.',
+				answer: 'participates',
+				voice: 'Mary really enjoys the time spent in the extracurricular activities in which she participates.'
 			},
 			{
 				img: '03.jpg',
-				title: '',
-				answer: 'watermelon',
-				voice: 'watermelon'
+				title: 'Mary could not ________ herself to doing great works for her PhD study.',
+				answer: 'devote',
+				voice: 'Mary could not devote herself to doing great works for her PhD study.'
+			},
+			{
+				img: '03.jpg',
+				title: 'Mary is not ________ to complete her PhD study.',
+				answer: 'motivated',
+				voice: 'Mary is not motivated to complete her PhD study.'
 			},
 			{
 				img: '04.jpg',
-				title: '',
-				answer: 'papaya',
-				voice: 'papaya'
+				title: 'Mary’s parents are very unsatisfied with her performance and decide to stop ________ support for her completely.',
+				answer: 'financial',
+				voice: 'Mary’s parents are very unsatisfied with her performance and decide to stop financial support for her completely.'
+			},
+			{
+				img: '04.jpg',
+				title: 'Mary’s parents want to change her wrong ________ toward her PhD.',
+				answer: 'attitudes',
+				voice: 'Mary’s parents want to change her wrong attitudes toward her PhD.'
 			},
 			{
 				img: '05.jpg',
-				title: '',
-				answer: 'coconut',
-				voice: 'coconut'
+				title: 'All students are very ________ of her intelligence.',
+				answer: 'jealous',
+				voice: 'All students are very jealous of her intelligence.'
 			},
 			{
 				img: '06.jpg',
-				title: '',
-				answer: 'cantaloupe',
-				voice: 'cantaloupe'
+				title: 'Mary is not ________ at all due to the fact that she enjoys reading.',
+				answer: 'lonely',
+				voice: 'Mary is not lonely at all due to the fact that she enjoys reading.'
+			},
+			{
+				img: '06.jpg',
+				title: 'Mary’s favorite ________ is reading.',
+				answer: 'hobby',
+				voice: 'Mary’s favorite hobby is reading.'
 			},
 			{
 				img: '07.jpg',
-				title: '',
-				answer: 'grapefruit',
-				voice: 'grapefruit'
+				title: 'Mary’s hobbies include attending the church and playing a variety of digital games with her ________',
+				answer: 'cousins',
+				voice: 'Mary’s hobbies include attending the church and playing a variety of digital games with her cousins'
 			},
 			{
 				img: '08.jpg',
-				title: 'When John was an __________ ______, he did not like Mary',
-				answer: 'elementary student',
-				voice: 'When John was an elementary student, he did not like Mary'
+				title: 'Digital games help Mary have ________ imagination.',
+				answer: 'creative',
+				voice: 'Digital games help Mary have creative imagination.'
+			},
+			{
+				img: '08.jpg',
+				title: 'Digital games are useful vehicles to develop ________ thinking.',
+				answer: 'critical',
+				voice: 'Digital games are useful vehicles to develop critical thinking.'
 			},
 			{
 				img: '09.jpg',
-				title: 'Mary does not study very hard but she can ______ high scores from all tests',
-				answer: 'obtain',
-				voice: 'Mary does not study very hard but she can obtain high scores from all tests'
+				title: 'Mary has enough money to ________ a lot of clothes that she did not need.',
+				answer: 'purchase',
+				voice: 'Mary has enough money to purchase a lot of clothes that she did not need.'
 			},
+			{
+				img: '09.jpg',
+				title: 'Mary successfully passed the ________.',
+				answer: 'examination',
+				voice: 'Mary successfully passed the examination.'
+			},
+			{
+				img: '10.jpg',
+				title: 'Mary could ________ her financial resources.',
+				answer: 'exhaust',
+				voice: 'Mary could exhaust her financial resources.'
+			},
+			{
+				img: '11.jpg',
+				title: 'John sometimes plays ________ with his classmates.',
+				answer: 'basketball',
+				voice: 'John sometimes plays basketball with his classmates.'
+			},
+			{
+				img: '11.jpg',
+				title: 'The library is their ________ place.',
+				answer: 'disfavored',
+				voice: 'The library is their disfavored place.'
+			},
+			{
+				img: '12.jpg',
+				title: 'The hospital could charge your ________.',
+				answer: 'insurance',
+				voice: 'The hospital could charge your insurance.'
+			},
+			{
+				img: '13.jpg',
+				title: 'Mary can achieve her ________ because her parents provide a lot of financial support and offer constructive advice.',
+				answer: 'targets',
+				voice: 'Mary can achieve her targets because her parents provide a lot of financial support and offer constructive advice.'
+			},
+			{
+				img: '13.jpg',
+				title: 'A lot of people know that Mary has ________ parents.',
+				answer: 'remarkable',
+				voice: 'A lot of people know that Mary has remarkable parents.'
+			},
+			{
+				img: '14.jpg',
+				title: 'There is no way to ________ Mary to drink milk is needed.',
+				answer: 'persuade',
+				voice: 'There is no way to persuade Mary to drink milk is needed.'
+			},
+			{
+				img: '15.jpg',
+				title: 'The future of work lies in learning, working, and playing ________ so we cannot ignore any aspect.',
+				answer: 'concurrently',
+				voice: 'The future of work lies in learning, working, and playing concurrently so we cannot ignore any aspect.'
+			},
+			{
+				img: '16.jpg',
+				title: 'It is ________ to say that most people are not as lazy as Mary.',
+				answer: 'needless',
+				voice: 'It is needless to say that most people are not as lazy as Mary.'
+			}
 		]
 
     const cells = document.querySelectorAll('.cell');
-    console.log("cellscells",cells)
+    // console.log("cellscells",cells)
     
 		function startGame() {
 			document.querySelector(".endgame").style.display = "none"
 			origBoard = Array.from(Array(25).keys()); //create array 0:0, 1:1, 2:2 ...
-			console.log(origBoard)
+			// console.log(origBoard)
 			for (var i = 0; i < cells.length; i++) {
 				// cells[i].innerText = "apple";
 				cells[i].innerHTML='<img class="cell_img" id="'+ i + '" src="images/' + game4Array[i].img + '"/>';
@@ -222,7 +228,7 @@ function game4(game_score) {
 
 		function turnClick(square) {
 			targetId = square.target.id
-			console.log("square.target.id",targetId);
+			// console.log("square.target.id",targetId);
 			$("#game4_popup").css("display","block");
 			$('.game4_title').html('<p>'+ game4Array[targetId].title+'</p>')
 			$("#game4_popup_img").html('<img  src="images/' + game4Array[targetId].img + '"/>')
@@ -235,12 +241,14 @@ function game4(game_score) {
 		function submitClick(targetId) {
 			$("#game4_popup").css("display","none");
 			// console.log($("input[type=text][name=username]").val(''))
-			console.log(document.getElementById("username").value)
+			// console.log(document.getElementById("username").value)
 			if (typeof origBoard[targetId] == 'number') {
 				turn(targetId, huPlayer);
 				if (!checkTie()) turn(bestSpot(), aiPlayer); 
 			}
 			alert("答題正確")
+			logFile.push(game4_time + "秒-------------->提交答案-答題正確(s)\n")
+			logFileSimple.push("s")
 		}
 
 		function turn(squareId, player) {
@@ -251,14 +259,14 @@ function game4(game_score) {
 		}
 
 		function checkWin(board, player) {
-			console.log(board)
+			// console.log(board)
 			let plays = board.reduce((a, e, i) =>(e === huPlayer) ? a.concat(i) : a, []); //e:element []:축적할 배열
-			console.log("plays",plays)
+			// console.log("plays",plays)
 
 			
 			// let gameWon = null;
 			let gameWon = [];
-			console.log("winCombos.entries()", winCombos.entries())
+			// console.log("winCombos.entries()", winCombos.entries())
 			for (let [index, win] of winCombos.entries()) {
 				// if (win.every(elem => plays.indexOf(elem) > -1)) {
 				// 	gameWon = {index: index, player: player};
@@ -272,20 +280,22 @@ function game4(game_score) {
 						index: index, player: huPlayer
 					}
 					gameWon.push(aaa)
-					console.log("gameWongameWongameWon",gameWon)
+					// console.log("gameWongameWongameWon",gameWon)
 					for (var i = 0; i < winCombos[index].length; i++) {
 						var bbb = winCombos[index][i]
 						document.getElementById(bbb).style.backgroundColor = "blue"
 					}
 
 					// gameWon = {index: index, player: huPlayer};
-					score += 50
+					score4+= 50
 					bingo_line ++
-					$('#game_score').html(score);
+					$('#game_score').html(score4);
 					$('#bingo_line').html(bingo_line);
+					logFile.push(game4_time + "秒-------------->得到賓果線(r)\n");
+					logFileSimple.push("r");
 					winCombos.splice(index, 1);
-					console.log("www",winCombos);
-					console.log("score",score);
+					// console.log("www",winCombos);
+					// console.log("score4",score4);
 					// return gameWon;
 				}
 			}
@@ -299,7 +309,7 @@ function game4(game_score) {
 		}
 
 		function gameOver(gameWon) {
-			console.log("gameWongameWongameWongameWon",gameWon)
+			// console.log("gameWongameWongameWongameWon",gameWon)
 			for (let index of winCombos[gameWon.index]) {
 				document.getElementById(index).style.backgroundColor = gameWon.player == huPlayer ? "blue" : "red";
 			}
@@ -336,6 +346,8 @@ function game4(game_score) {
 
 
 		$('#game4_cancel').on( "click", function() {
+			logFile.push(game4_time + "秒-------------->放棄按鈕(g)\n")
+			logFileSimple.push("g")
 			$("#game4_popup").css("display","none");
 		});
 
@@ -347,6 +359,8 @@ function game4(game_score) {
 			}else{
 				$("input[type=text][name=username]").val('')
 				alert("答題錯誤")
+				logFile.push(game4_time + "秒-------------->提交答案-答題錯誤(w)\n")
+				logFileSimple.push("w")
 			}
 		});
 
@@ -377,7 +391,7 @@ function game4(game_score) {
 			if (inputTxt.value !== '') {
 				var utterThis = new SpeechSynthesisUtterance(game4_answer_voice);
 				utterThis.onend = function (event) {
-					console.log('SpeechSynthesisUtterance.onend');
+					// console.log('SpeechSynthesisUtterance.onend');
 				}
 				utterThis.onerror = function (event) {
 					console.error('SpeechSynthesisUtterance.onerror');
@@ -392,12 +406,14 @@ function game4(game_score) {
 
 		$('#play').on( "click", function(e) {
 			game4_answer_voice = game4Array[targetId].voice
+			logFile.push(game4_time + "秒-------------->發音按鈕(v)\n")
+			logFileSimple.push("v")
 			e.preventDefault();
 
 			speak();
 
 			$("input[type=text][name=username]").blur();
-    });
+		});
     
     startGame();
 
