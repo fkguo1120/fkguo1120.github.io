@@ -188,17 +188,20 @@ function game5(game_score) {
     Block.prototype.move = function () {
       var _this = this;
       var moveTimer = setInterval(function () {
+
         _this.position.x -= game.blockv;
+
         if (_this.position.x < -(_this.size.width)) {
           _this.$el.remove();
         }
         _this.updateCss();
+
         if (game.gameTime > 0 && _this.collide1(box)) {
           life -= 20
           $('#barr').attr('aria-valuenow', life).css('width', life+'%');
           _this.$el.children('img').attr("src","img/cloud_v3.png")
           _this.$el.addClass('ooo')
-          _this = null
+          // _this = null
           clearInterval(moveTimer)
           $("#boxman_value").attr("src","img/boxman4.png")
           setTimeout(function () {
@@ -209,7 +212,7 @@ function game5(game_score) {
           }, 400);
           setTimeout(function () {
             $("#boxman_value").attr("src","img/boxman.png")
-              _this.$el.remove();
+            _this.$el.remove();
           }, 600);
           logFile.push(game5_time + "秒-------------->撞到障礙物(c)\n")
           logFileSimple.push("c")
@@ -220,6 +223,7 @@ function game5(game_score) {
         if (game.gameTime > 0 && _this.collide2(box)) {
           TweenMax.to(_this.$el, 0.1, { scale: 0});
           if($('#boxman_value').data("value")===_this.$el[0].attributes["2"].value){
+            clearInterval(moveTimer)
             $("#boxman_value").attr("src","img/boxman3.png")
             setTimeout(function () {
               $("#boxman_value").attr("src","img/boxman.png")
@@ -245,8 +249,9 @@ function game5(game_score) {
             $('.game5_question').html('<h5 style="font-weight: 700;">' + game5QuestionArray[title_index].title + '</h5>')
             // $('#rrrrr').html(game5AnswerArray[String(title_index)][right_index])
           }else{
+            clearInterval(moveTimer)
             life -= 20
-            $('#barr').attr('aria-valuenow', life).css('width', life+'%');
+            $('#barr').attr('aria-valuenow', life).css('width', life + '%');
             $("#boxman_value").attr("src","img/boxman2.png")
             setTimeout(function () {
               $("#boxman_value").attr("src","img/boxman.png")
@@ -262,7 +267,7 @@ function game5(game_score) {
             logFileSimple.push("n")
           }
           // _this.$el.remove();
-          _this = null
+          // _this = null
           if(life===0){
             logFile.push("遊戲分數:" + score5 + "\n")
             logFile.push("第四關遊戲結束-沒血量(h)\n")
