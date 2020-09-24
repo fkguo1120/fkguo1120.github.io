@@ -142,6 +142,7 @@ body{
 
 <body class="bg-light">  
 <div id="game1-content">
+  <!-- <button type="button" onclick="saveStaticDataToFile();">Click to Save</button> -->
   <div class="container">
     <header class="blog-header py-3">
       <div class="container">
@@ -241,10 +242,16 @@ body{
 <script>
       $('#mission_score_box').css('display', 'none');
       $('.countdown-box').css('display', 'none');
-		$('#game_score_box').css('display', 'block');
-		var logFile = []
-		var logFileSimple = []
-game5(0)
+      $('#game_score_box').css('display', 'block');
+      var logFile = []
+      var logFileSimple = []
+      game5(0)
+      function saveStaticDataToFile() {
+        var blob = new Blob(logFile,{ type: "text/plain;charset=utf-8" });
+        var blobSimple = new Blob(logFileSimple,{ type: "text/plain;charset=utf-8" });
+        saveAs(blob, "Log_Detail5.txt");
+        saveAs(blobSimple, "Log_simple_new5.txt");
+      }
 
 </script>
   </body>

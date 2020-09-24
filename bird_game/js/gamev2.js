@@ -53,7 +53,7 @@ function game5(game_score) {
     "9":["goes","was","is","goes",0]
   }
 
-  var game5_time = 10;
+  var game5_time = 60;
   $('#qa_total').show();
   var game5_topic = 1
   $('#topic').html(game5_topic)
@@ -198,7 +198,6 @@ function game5(game_score) {
           $('#barr').attr('aria-valuenow', life).css('width', life+'%');
           _this.$el.children('img').attr("src","img/cloud_v3.png")
           _this.$el.addClass('ooo')
-          // _this.$el.remove();
           _this = null
           clearInterval(moveTimer)
           $("#boxman_value").attr("src","img/boxman4.png")
@@ -210,6 +209,7 @@ function game5(game_score) {
           }, 400);
           setTimeout(function () {
             $("#boxman_value").attr("src","img/boxman.png")
+              _this.$el.remove();
           }, 600);
           logFile.push(game5_time + "秒-------------->撞到障礙物(c)\n")
           logFileSimple.push("c")
@@ -321,6 +321,7 @@ function game5(game_score) {
       }, 500);
       function countDown() {
         var timer = setInterval(function () {
+          game5_time = _this.gameTime
           $('.game__time').text(_this.gameTime);
           _this.gameTime--;
           if (_this.isFalse == true) {
