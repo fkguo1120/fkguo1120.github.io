@@ -2,6 +2,10 @@
 
 function game2(game_score) {
   clearInterval(interval);
+  var highestIntervalId = setInterval(";");
+  for (var i = 0 ; i < highestIntervalId ; i++) {
+      clearInterval(i); 
+  }
   $('#game1-content').addClass("game2-content");
   // // ie GG
   // if (navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > 0) {

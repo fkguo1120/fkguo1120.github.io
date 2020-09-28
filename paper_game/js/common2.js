@@ -1,10 +1,6 @@
-// $(function () {
-	$('#game2').css('display', 'none');
+
 	$('#game_score_box').css('display', 'none');
-	// function countDown() {	
-	// 	timeCount.text(time);
-	// 	time--
-	// }
+
 	var logFile = ["任務測驗開始(D)\n"]
 	var logFileSimple = ["D"]
 	var time = 30; //倒數計時
@@ -19,7 +15,7 @@
 	var wordSupport = $('.word_support'); //單字提示文字解釋
 	var clauseSupport = $('.clause_support');//子句提示解釋
 	var qaStart = 0; //開始題數
-	var qatatle = 15; //總題數
+	var qatatle = 0//總題數
 	var score = 1000 //任務起始得分
 	var game_score = 0 //遊戲起始得分
 	var topic = 1 //題目數
@@ -236,13 +232,13 @@
 		clauseSupport.hide();
 		imgSupport.hide();
 		wordSupport.hide();
-		wrongSupport=0
-		crossNext = true
-		$('.wrong_support_toggle').show()
-		$('.wrong_support').hide()
-		$('#score').text(score)
-		showgame2(qaStart)
-	}
+		wrongSupport=0;
+		crossNext = true;
+		$('.wrong_support_toggle').show();
+		$('.wrong_support').hide();
+		$('#score').text(score);
+		showgame2(qaStart);
+	};
 
 	//循環倒數
 	var interval;
@@ -269,4 +265,3 @@
 	interval = setInterval(intervalCall, 1000);
 
 	showgame()
-// });

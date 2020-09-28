@@ -1,5 +1,9 @@
 function game3(game_score) {
   clearInterval(interval);
+  var highestIntervalId = setInterval(";");
+  for (var i = 0 ; i < highestIntervalId ; i++) {
+      clearInterval(i); 
+  }
   $('#game1-content').removeClass("game2-content");
   logFile.push("第二關遊戲開始(H)\n")
   logFileSimple.push("H")

@@ -1,6 +1,9 @@
 function game4(game_score) {
   clearInterval(interval);
-  
+  var highestIntervalId = setInterval(";");
+  for (var i = 0 ; i < highestIntervalId ; i++) {
+	  clearInterval(i); 
+  }
   logFile.push("第三關遊戲開始(b)\n")
   logFileSimple.push("b")
 
@@ -25,7 +28,11 @@ function game4(game_score) {
 	  logFile.push("第三關遊戲結束-時間到，題目未作答完(o)\n")
 	  logFile.push("\n")
 	  logFileSimple.push("o")
-      $('#game4').css('display', 'none');
+	  $('#game4').css('display', 'none');
+	  $('#game5').css('display', 'block');
+	  game5(score4)
+      $('.countdown-box').css('display', 'none');
+	  $('#game1-content').css("background-image", "none");
     }
   };
   interval = setInterval(intervalCall, 1000); 
@@ -229,6 +236,7 @@ function game4(game_score) {
 		function turnClick(square) {
 			targetId = square.target.id
 			// console.log("square.target.id",targetId);
+			$('.game4_input').val('');
 			$("#game4_popup").css("display","block");
 			$('.game4_title').html('<p>'+ game4Array[targetId].title+'</p>')
 			$("#game4_popup_img").html('<img  src="images/' + game4Array[targetId].img + '"/>')
@@ -244,7 +252,7 @@ function game4(game_score) {
 			// console.log(document.getElementById("username").value)
 			if (typeof origBoard[targetId] == 'number') {
 				turn(targetId, huPlayer);
-				if (!checkTie()) turn(bestSpot(), aiPlayer); 
+				if (!checkTie()) turn(bestSpot(), aiPlayer);
 			}
 			alert("答題正確")
 			logFile.push(game4_time + "秒-------------->提交答案-答題正確(s)\n")
@@ -362,6 +370,11 @@ function game4(game_score) {
 				logFile.push(game4_time + "秒-------------->提交答案-答題錯誤(w)\n")
 				logFileSimple.push("w")
 			}
+		});
+
+		$('.game4_input').focus(function() {
+			logFile.push(game4_time + "秒-------------->輸入單字(i)\n")
+			logFileSimple.push("i")
 		});
 
 		var synth = window.speechSynthesis;
