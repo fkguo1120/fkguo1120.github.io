@@ -5,10 +5,12 @@ function game3(game_score) {
       clearInterval(i); 
   }
   $('#game1-content').removeClass("game2-content");
+  $('#game1-content').css("background-image", "url('images/game3_bg.jpg')");
+  $('#game1-content > div').css("background-color", "transparent");
   logFile.push("第二關遊戲開始(H)\n")
   logFileSimple.push("H")
 
-  var game2_time = 120;
+  var game2_time = 180;
   var score2 = game_score
   $('#qa_total').show();
   var game2_topic = 1
@@ -39,7 +41,6 @@ function game3(game_score) {
       $('.bingo_line').css('display', 'inline-block');
       $('.base_qa_line').css('display', 'none');
       game4(score2)
-      $('#game1-content').css("background-image", "url('images/game4_bg.jpg')");
     }
   };
   interval = setInterval(intervalCall, 1000); 
@@ -246,7 +247,6 @@ function game3(game_score) {
         $('.bingo_line').css('display', 'inline-block');
         $('.base_qa_line').css('display', 'none');
         game4(score2)
-        $('#game1-content').css("background-image", "url('images/game4_bg.jpg')");
       }, 500);
     }else{
       $('#topic').html(game2_topic)

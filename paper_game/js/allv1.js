@@ -20,7 +20,7 @@ function game2(game_score) {
   logFileSimple.push("A")
   $('#qa_total').hide();
   var score1 = game_score
-  var game1_time = 180;
+  var game1_time = 90;
   var timeCount = $('.second_top-time span'); //倒數計時dom
   timeCount.text(game1_time);
   //第一關遊戲循環倒數
@@ -40,10 +40,7 @@ function game2(game_score) {
       logFileSimple.push("W")
       $('#game2').css('display', 'none');
       $('#game3').css('display', 'block');
-      game3(score1)
-      $('#game1-content').css("background-image", "url('images/game3_bg.jpg')");
-      $('#game1-content > div').css("background-color", "transparent");
-      
+      game3(score1)      
     }
   };
 
@@ -207,8 +204,6 @@ function game2(game_score) {
               $('#game2').css('display', 'none');
               $('#game3').css('display', 'block');
               game3(score1)
-              $('#game1-content').css("background-image", "url('images/game2_bg.jpg')");
-              $('#game1-content > div').css("background-color", "transparent");
             }, 1500);
           }
         }

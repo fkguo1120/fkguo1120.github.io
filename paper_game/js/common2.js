@@ -3,7 +3,7 @@
 
 	var logFile = ["任務測驗開始(D)\n"]
 	var logFileSimple = ["D"]
-	var time = 30; //倒數計時
+	var time = 120; //倒數計時
 	var timeCount = $('.second_top-time span'); //倒數計時dom
 	var question = $('.question h5'); 
 	var btn = $('.answers button'); //答案按鈕
@@ -112,7 +112,7 @@
 		if(testArray[qaStart].answers[select].isright === true){
 			// testArray.splice(qatatle, 1);
 			qaStart++
-			time = 30
+			time = 120
 			timeCount.text(time);
 
 			imgSupport.hide();
@@ -226,7 +226,7 @@
 
 	function next_q() {
 		qaStart++
-		time = 30
+		time = 120
 		timeCount.text(time);
 		interval = setInterval(intervalCall, 1000);
 		clauseSupport.hide();
@@ -253,7 +253,7 @@
 			}else{
 				logFile.push(time + "秒-------------->時間到未答題正確(U)\n")
 				logFileSimple.push("U")
-				time = 30
+				time = 120
 				timeCount.text(time);
 				qaStart++
 				showgame2(qaStart)

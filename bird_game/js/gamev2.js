@@ -153,7 +153,7 @@ function game5(game_score) {
       this.updateCss();
     }
     // [類別] 創造boxman
-    var box = new Box({ width: 100, height: 100 }, { x: 10, y: 200 }, '.game__boxman');
+    var box = new Box({ width: 102, height: 150 }, { x: 10, y: 200 }, '.game__boxman');
     //****boxman給予data-value正確答案****//
     $('#boxman_value').data("value",game5AnswerArray[String(title_index)][right_index])
 
@@ -367,7 +367,7 @@ function game5(game_score) {
           // }
         }
         $('.game5_content').append($block);
-        var block = new Block({ width: 100, height: 77 }, '#' + id + '');
+        var block = new Block({ width: 100, height: 91 }, '#' + id + '');
         id++;
         tt_index++;
         if(tt_index===4){

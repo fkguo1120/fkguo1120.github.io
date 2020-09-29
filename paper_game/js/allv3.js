@@ -4,6 +4,7 @@ function game4(game_score) {
   for (var i = 0 ; i < highestIntervalId ; i++) {
 	  clearInterval(i); 
   }
+  $('#game1-content').css("background-image", "url('images/game4_bg.jpg')");
   logFile.push("第三關遊戲開始(b)\n")
   logFileSimple.push("b")
 
