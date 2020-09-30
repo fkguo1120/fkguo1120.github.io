@@ -1,9 +1,11 @@
 ﻿<!DOCTYPE html>
-<html>
+<html translate="no">
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>paper_game</title>
+	<meta name="google" content="notranslate">
+	<meta name="google" content="nopagereadaloud" />
 	<meta property="og:title" content="paper_game">
 	<meta property="og:description" content="paper_game" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -163,7 +165,7 @@
 	</style>
 </head>
 
-<body class="bg-light">
+<body class="bg-light"  onbeforeunload="return myFunction()">
 <div id="game1-content">
 	<!-- <button type="button" onclick="saveStaticDataToFile();">Click to Save</button> -->
 
@@ -447,7 +449,69 @@
 			saveAs(blobSimple, "Log_simple_new.txt");
 		}
 		
+		// 鎖住鍵盤特定按鍵 //
+		$(document).keydown(function (event) {
+			if (event.keyCode < 65 && event.keyCode != 8 && event.keyCode != 20 && event.keyCode != 32 ) { 
+				return false;
+			}else if ( event.keyCode > 90 && event.keyCode != 8 && event.keyCode != 20 && event.keyCode != 32 ) {
+			   return false;
+		   }
+		});
 		
+		// 禁止複製+鎖右鍵+禁止全選-IE﹑Firefox﹑Chrome﹑Safari﹑Opera //
+		function iEsc(){ 
+			return false; 
+		}
+
+		function iRec(){ 
+			return true; 
+		}
+
+		function DisableKeys() {
+		if(event.ctrlKey || event.shiftKey || event.altKey) {
+			window.event.returnValue=false;
+			iEsc();}
+		}
+		document.ondragstart=iEsc;
+		document.onkeydown=DisableKeys;
+		document.oncontextmenu=iEsc;
+		if (typeof document.onselectstart !="undefined")
+			document.onselectstart=iEsc;
+		else{
+			document.onmousedown=iEsc;
+			document.onmouseup=iRec;
+		}
+		function DisableRightClick(qsyzDOTnet){
+			if (window.Event){
+				if (qsyzDOTnet.which == 2 || qsyzDOTnet.which == 3)
+					iEsc();
+			}
+			else
+				if (event.button == 2 || event.button == 3){
+					event.cancelBubble = true;
+					event.returnValue = false;
+					iEsc();
+				}
+		}
+
+		// 關閉視窗前的警告 //
+		function myFunction() {
+			return false;
+		}
+
+		// 全螢幕事件 //
+		addEventListener("click", function() {
+			var elem = document.documentElement
+			if (elem.requestFullscreen) {
+				elem.requestFullscreen();
+			} else if (elem.mozRequestFullScreen) { /* Firefox */
+				elem.mozRequestFullScreen();
+			} else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+				elem.webkitRequestFullscreen();
+			} else if (elem.msRequestFullscreen) { /* IE/Edge */
+				elem.msRequestFullscreen();
+			}
+		});		
     </script>
 </body>
 
