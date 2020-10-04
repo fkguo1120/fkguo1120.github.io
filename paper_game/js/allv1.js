@@ -33,14 +33,18 @@ function game2(game_score) {
       interval = setInterval(intervalCall, 1000);
     }else{
       clearInterval(interval);
-      alert("第一關遊戲結束");
+      $('#nextModalMessage').html("遊戲結束。\n</br>即將進入下一關遊戲")
+      $('#nextModal').modal({backdrop: 'static', keyboard: false}) 
+      // alert("第一關遊戲結束");
       logFile.push("遊戲分數:" + score1 + "\n")
       logFile.push("第一關遊戲結束-配對未完成(W)\n")
       logFile.push("\n")
       logFileSimple.push("W")
-      $('#game2').css('display', 'none');
-      $('#game3').css('display', 'block');
-      game3(score1)      
+      $('#nextModal').on('hidden.bs.modal', function (e) {
+        $('#game2').css('display', 'none');
+        $('#game3').css('display', 'block');
+        game3(score1)
+      });      
     }
   };
 
@@ -195,15 +199,19 @@ function game2(game_score) {
           logFileSimple.push("M")
           if(game1_right_total===9){
             setTimeout(function () {
-              alert("第一關遊戲結束")
+              // alert("第一關遊戲結束")
+              $('#nextModalMessage').html("遊戲結束。\n</br>即將進入下一關遊戲")
+              $('#nextModal').modal({backdrop: 'static', keyboard: false})        
               clearInterval(interval);
               logFile.push("遊戲分數:" + score1 + "\n")
               logFile.push("第一關遊戲結束-配對皆完成(F)\n")
               logFile.push("\n")
               logFileSimple.push("F")
-              $('#game2').css('display', 'none');
-              $('#game3').css('display', 'block');
-              game3(score1)
+              $('#nextModal').on('hidden.bs.modal', function (e) {
+                $('#game2').css('display', 'none');
+                $('#game3').css('display', 'block');
+                game3(score1)
+              });
             }, 1500);
           }
         }

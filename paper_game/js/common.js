@@ -7,7 +7,7 @@ var testArray = [
 		answers: [
 			{
 				id: 'A',
-				answer:"In consequence, John was Mary’s good friend in the elementary school.",
+				answer:"In consequence, John was Mary's good friend in the elementary school.",
 				isright: false
 			},
 			{

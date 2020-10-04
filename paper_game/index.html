@@ -379,14 +379,26 @@
 	</div>
 </div>
 
-
+	<!-- 任務測驗 alert popup -->
+	<div class="modal fade" id="alertModal" tabindex="-1" role="dialog" data-target=".bd-example-modal-sm" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+			<div class="modal-content">
+				<div id="alertModalMessage" class="modal-body" style="text-align: center;font-size: 1.4em;">
+					
+				</div>
+				<div class="modal-footer" style="padding:10px;">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">知道了</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!--任務測驗popUp-->
 	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 		  <div class="modal-content">
 			<div class="modal-body p-5">
-				<div class="wrong_support">
-
+				<div class="wrong_support" style="text-align: center;font-size: 1.4em;margin-bottom:15px;">
+					答錯2次了! 加強學習吧!
 				</div>
 				<div class="wrong_support_toggle">
 					<div class="row align-items-end">
@@ -400,6 +412,20 @@
 			  <button type="button" class="btn btn-secondary next_q" data-dismiss="modal">下一題</button>
 			</div>
 		  </div>
+		</div>
+	</div>
+
+	<!-- 下一關popup -->
+	<div class="modal fade" id="nextModal" tabindex="-1" role="dialog" data-target=".bd-example-modal-sm" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+			<div class="modal-content">
+				<div id="nextModalMessage" class="modal-body" style="text-align: center;font-size: 1.4em;">
+					
+				</div>
+				<div class="modal-footer" style="padding:10px;">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">下一關</button>
+				</div>
+			</div>
 		</div>
 	</div>
 
@@ -460,11 +486,11 @@
 		
 		// 禁止複製+鎖右鍵+禁止全選-IE﹑Firefox﹑Chrome﹑Safari﹑Opera //
 		function iEsc(){ 
-			return false; 
+			return false;
 		}
 
 		function iRec(){ 
-			return true; 
+			return true;
 		}
 
 		function DisableKeys() {
@@ -511,7 +537,9 @@
 			} else if (elem.msRequestFullscreen) { /* IE/Edge */
 				elem.msRequestFullscreen();
 			}
-		});		
+		});	
+
+
     </script>
 </body>
 

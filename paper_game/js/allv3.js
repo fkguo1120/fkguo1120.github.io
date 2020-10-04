@@ -23,17 +23,21 @@ function game4(game_score) {
       clearInterval(interval);
       interval = setInterval(intervalCall, 1000);
     }else{
-      clearInterval(interval);
-	  alert("第三關遊戲結束");
+	  clearInterval(interval);
+	  $('#nextModalMessage').html("遊戲結束。\n</br>即將進入下一關遊戲")
+	  $('#nextModal').modal({backdrop: 'static', keyboard: false}) 
+		//   alert("第三關遊戲結束");
 	  logFile.push("遊戲分數:" + score4 + "\n")
 	  logFile.push("第三關遊戲結束-時間到，題目未作答完(o)\n")
 	  logFile.push("\n")
 	  logFileSimple.push("o")
-	  $('#game4').css('display', 'none');
-	  $('#game5').css('display', 'block');
-	  game5(score4)
-      $('.countdown-box').css('display', 'none');
-	  $('#game1-content').css("background-image", "none");
+	  $('#nextModal').on('hidden.bs.modal', function (e) {
+		$('#game4').css('display', 'none');
+		$('#game5').css('display', 'block');
+		game5(score4)
+		$('.countdown-box').css('display', 'none');
+		$('#game1-content').css("background-image", "none");
+	  });
     }
   };
   interval = setInterval(intervalCall, 1000); 

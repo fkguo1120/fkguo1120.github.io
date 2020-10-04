@@ -31,16 +31,20 @@ function game3(game_score) {
       interval = setInterval(intervalCall, 1000);
     }else{
       clearInterval(interval);
-      alert("第二關遊戲結束");
+      $('#nextModalMessage').html("遊戲結束。\n</br>即將進入下一關遊戲")
+      $('#nextModal').modal({backdrop: 'static', keyboard: false}) 
+      // alert("第二關遊戲結束");
       logFile.push("遊戲分數:" + score2 + "\n")
       logFile.push("第二關遊戲結束-時間到，題目未作答完(Q)\n")
       logFile.push("\n")
       logFileSimple.push("Q")
-      $('#game3').css('display', 'none');
-      $('#game4').css('display', 'block');
-      $('.bingo_line').css('display', 'inline-block');
-      $('.base_qa_line').css('display', 'none');
-      game4(score2)
+      $('#nextModal').on('hidden.bs.modal', function (e) {
+        $('#game3').css('display', 'none');
+        $('#game4').css('display', 'block');
+        $('.bingo_line').css('display', 'inline-block');
+        $('.base_qa_line').css('display', 'none');
+        game4(score2)
+      });
     }
   };
   interval = setInterval(intervalCall, 1000); 
@@ -236,17 +240,21 @@ function game3(game_score) {
   function game2_check(){
     if(game2_number===(vocabulary.length)){
       setTimeout(function () {
-        alert("第二關遊戲結束")
+        $('#nextModalMessage').html("遊戲結束。\n</br>即將進入下一關遊戲")
+        $('#nextModal').modal({backdrop: 'static', keyboard: false}) 
+        // alert("第二關遊戲結束")
         clearInterval(interval);
         logFile.push("遊戲分數:" + score2 + "\n")
         logFile.push("第二關遊戲結束-全部題目作答完(Z)\n")
         logFile.push("\n")
         logFileSimple.push("Z")
-        $('#game3').css('display', 'none');
-        $('#game4').css('display', 'block');
-        $('.bingo_line').css('display', 'inline-block');
-        $('.base_qa_line').css('display', 'none');
-        game4(score2)
+        $('#nextModal').on('hidden.bs.modal', function (e) {
+          $('#game3').css('display', 'none');
+          $('#game4').css('display', 'block');
+          $('.bingo_line').css('display', 'inline-block');
+          $('.base_qa_line').css('display', 'none');
+          game4(score2)
+        });
       }, 500);
     }else{
       $('#topic').html(game2_topic)
