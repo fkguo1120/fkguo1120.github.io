@@ -1,12 +1,29 @@
+function game3s(game_score) {
+  var s3 = game_score
+  $('#game1-content').removeClass("game2-content");
+  $('#game1-content').css("background-image", "url('images/game3_bg.jpg')");
+  $('#game1-content > div').css("background-color", "transparent");
+
+  $('header').css('display', 'none');
+  $('#game2StartPage').css('display', 'none');
+  $('#game3StartPage').css('display', 'block');
+
+  //遊戲關卡一開始
+  $('#game3StartBtn').on("click",function() {
+    $('#game3StartPage').css('display', 'none');
+    $('header').css('display', 'block');
+    $('#game3').css('display', 'block');
+    game3(s3)
+  })
+}
+
 function game3(game_score) {
   clearInterval(interval);
   var highestIntervalId = setInterval(";");
   for (var i = 0 ; i < highestIntervalId ; i++) {
       clearInterval(i); 
   }
-  $('#game1-content').removeClass("game2-content");
-  $('#game1-content').css("background-image", "url('images/game3_bg.jpg')");
-  $('#game1-content > div').css("background-color", "transparent");
+
   logFile.push("第二關遊戲開始(H)\n")
   logFileSimple.push("H")
 

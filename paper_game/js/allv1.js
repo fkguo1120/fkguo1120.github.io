@@ -1,4 +1,20 @@
-// (function () {
+function game2s(game_score) {
+  var s2 = game_score
+  $('#game1-content').addClass("game2-content");
+  $('#game1-content').css("background-image", "url('images/game2_bg.jpg')");
+
+  $('header').css('display', 'none');
+  $('#game2StartPage').css('display', 'block');
+
+  //遊戲關卡一開始
+  $('#game2StartBtn').on("click",function() {
+    $('#game2StartPage').css('display', 'none');
+    $('header').css('display', 'block');
+    $('#game2').css('display', 'block');
+    game2(s2)
+  })
+}
+
 
 function game2(game_score) {
   clearInterval(interval);
@@ -6,7 +22,7 @@ function game2(game_score) {
   for (var i = 0 ; i < highestIntervalId ; i++) {
       clearInterval(i); 
   }
-  $('#game1-content').addClass("game2-content");
+
   // // ie GG
   // if (navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > 0) {
   //   $('.ie-mask').css('display', 'block');
@@ -42,8 +58,7 @@ function game2(game_score) {
       logFileSimple.push("W")
       $('#nextModal').on('hidden.bs.modal', function (e) {
         $('#game2').css('display', 'none');
-        $('#game3').css('display', 'block');
-        game3(score1)
+        game3s(score1)
       });      
     }
   };
@@ -209,8 +224,7 @@ function game2(game_score) {
               logFileSimple.push("F")
               $('#nextModal').on('hidden.bs.modal', function (e) {
                 $('#game2').css('display', 'none');
-                $('#game3').css('display', 'block');
-                game3(score1)
+                game3s(score1)
               });
             }, 1500);
           }
@@ -265,5 +279,5 @@ function game2(game_score) {
   }
   animation()
 };
-// })();
+
 

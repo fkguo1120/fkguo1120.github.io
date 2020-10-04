@@ -1,8 +1,17 @@
+var logFile = ["任務測驗開始(D)\n"]
+var logFileSimple = ["D"]
+$('#game1StartPage').css('display', 'block');
 
-	$('#game_score_box').css('display', 'none');
+//學習任務開始
+$('#game1StartBtn').on("click",function() {
+	$('#game1StartPage').css('display', 'none');
+	$('header').css('display', 'block');
+	$('#game1').css('display', 'block');
+	game1()
+})
 
-	var logFile = ["任務測驗開始(D)\n"]
-	var logFileSimple = ["D"]
+
+function game1() {	
 	var time = 120; //倒數計時
 	var timeCount = $('.second_top-time span'); //倒數計時dom
 	var question = $('.question h5'); 
@@ -22,6 +31,32 @@
 	var wrongSupport = 0
 	var crossNext = true
 
+	$('#game_score_box').css('display', 'none');
+
+	//任務測驗循環倒數
+	var interval;
+	var intervalCall = function() {
+		if (time >= 0) { 
+			timeCount.text(time);
+			time--
+		}else{
+			if(topic>(qatatle+1)){
+				clearInterval(interval);
+				return
+			}else{
+				logFile.push(time + "秒-------------->時間到未答題正確(U)\n")
+				logFileSimple.push("U")
+				time = 120
+				timeCount.text(time);
+				qaStart++
+				showgame2(qaStart)
+			}
+		}
+		clearInterval(interval);
+		interval = setInterval(intervalCall, 1000);
+	};
+	interval = setInterval(intervalCall, 1000);
+
 	//隨機亂數
     function getRandom(min, max) {
 		return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -40,6 +75,7 @@
 		$('#score').html(score)
 		logFile.push(time + "秒-------------->圖片提示(P)\n")
 		logFileSimple.push("P")
+		check_score()
 	});
 	//單字提示按鈕開啟時
 	$('.word_toggle').on("click", function() {
@@ -54,6 +90,7 @@
 		$('#score').html(score)
 		logFile.push(time + "秒-------------->單字提示(V)\n")
 		logFileSimple.push("V")
+		check_score()
 	});
 	//子句提示按鈕開啟時
 	$('.clause_toggle').on("click", function() {
@@ -67,6 +104,7 @@
 		$('#score').html(score)
 		logFile.push(time + "秒-------------->主要子句提示(S)\n")
 		logFileSimple.push("S")
+		check_score()
 	});
 	//刪去選項按鈕開啟時
 	$('.remove_toggle').on("click", function() {
@@ -84,6 +122,7 @@
 		$('.clause_toggle').attr('disabled', false);
 		$('.image_toggle').attr('disabled', false);
 		$('.word_toggle').attr('disabled', false);
+		check_score()
 	});
 
 	//初始化遊戲
@@ -171,10 +210,10 @@
 				$('#game2').css('display', 'block');
 				$('#mission_score_box').css('display', 'none');
 				$('#game_score_box').css('display', 'block');
-				game2(game_score)
+				game2s(game_score)
 			});
 
-			$('#game1-content').css("background-image", "url('images/game2_bg.jpg')");
+			
 
 			return
 		}
@@ -254,28 +293,26 @@
 		showgame2(qaStart);
 	};
 
-	//循環倒數
-	var interval;
-	var intervalCall = function() {
-		if (time >= 0) { 
-			timeCount.text(time);
-			time--
-		}else{
-			if(topic>(qatatle+1)){
-				clearInterval(interval);
-				return
-			}else{
-				logFile.push(time + "秒-------------->時間到未答題正確(U)\n")
-				logFileSimple.push("U")
-				time = 120
-				timeCount.text(time);
-				qaStart++
-				showgame2(qaStart)
-			}
-		}
-		clearInterval(interval);
-		interval = setInterval(intervalCall, 1000);
-	};
-	interval = setInterval(intervalCall, 1000);
+	function check_score() {
+		if(score<=0){
+			score = 0
+			$('#score').html(score)
+			$('#nextModalMessage').html("任務得分為0。\n</br>即將進入下一關遊戲")
+			$('#nextModal').modal({backdrop: 'static', keyboard: false})
+			logFile.push("任務得分:" + score + "\n")
+			logFile.push("任務測驗結束(E)\n")
+			logFile.push("\n")
+			logFileSimple.push("E")
 
-	showgame()
+			$('#nextModal').on('hidden.bs.modal', function (e) {
+				$('#game1').css('display', 'none');
+				$('#game2').css('display', 'block');
+				$('#mission_score_box').css('display', 'none');
+				$('#game_score_box').css('display', 'block');
+				game2s(game_score)
+			});
+		}
+	}
+
+	showgame();
+};
