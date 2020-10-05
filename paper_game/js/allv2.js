@@ -57,10 +57,7 @@ function game3(game_score) {
       logFileSimple.push("Q")
       $('#nextModal').on('hidden.bs.modal', function (e) {
         $('#game3').css('display', 'none');
-        $('#game4').css('display', 'block');
-        $('.bingo_line').css('display', 'inline-block');
-        $('.base_qa_line').css('display', 'none');
-        game4(score2)
+        game4s(score2)
       });
     }
   };
@@ -267,10 +264,7 @@ function game3(game_score) {
         logFileSimple.push("Z")
         $('#nextModal').on('hidden.bs.modal', function (e) {
           $('#game3').css('display', 'none');
-          $('#game4').css('display', 'block');
-          $('.bingo_line').css('display', 'inline-block');
-          $('.base_qa_line').css('display', 'none');
-          game4(score2)
+          game4s(score2)
         });
       }, 500);
     }else{
@@ -319,7 +313,10 @@ function game3(game_score) {
   // 提交點擊之後
   $('#game2_submit_btn').on( "click", function() {
     if($('#data_v').html()===vocabulary[game2_number].en){
-      alert("答對了!");
+      if(game2_number<=(vocabulary.length)){
+        $('#alertModalMessage').html("很棒!答對了!")
+        $('#alertModal').modal({backdrop: 'static', keyboard: false})
+      }
       game2_number+=1;
       score2 += 50
       game2_topic+=1
@@ -330,7 +327,10 @@ function game3(game_score) {
       $('#game_score').text(score2)
       next_word()
     }else{
-      alert("答錯了!");
+      if(game2_number<=(vocabulary.length)){
+        $('#alertModalMessage').html("答錯了!")
+        $('#alertModal').modal({backdrop: 'static', keyboard: false})
+      }
       game2_number+=1;
       game2_topic+=1
       $('#topic').html(game2_topic)

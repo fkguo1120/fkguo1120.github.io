@@ -1,15 +1,34 @@
+function game4s(game_score) {
+	var s4 = game_score
+	$('#game1-content').css("background-image", "url('images/game4_bg.jpg')");
+  
+	$('header').css('display', 'none');
+	$('#game3StartPage').css('display', 'none');
+	$('#game4StartPage').css('display', 'block');
+  
+	//遊戲關卡一開始
+	$('#game4StartBtn').on("click",function() {
+	  $('#game4StartPage').css('display', 'none');
+	  $('header').css('display', 'block');
+	  $('#game4').css('display', 'block');
+	  $('.bingo_line').css('display', 'inline-block');
+	  $('.base_qa_line').css('display', 'none');
+	  game4(s4)
+	})
+}
+
 function game4(game_score) {
   clearInterval(interval);
   var highestIntervalId = setInterval(";");
   for (var i = 0 ; i < highestIntervalId ; i++) {
 	  clearInterval(i); 
   }
-  $('#game1-content').css("background-image", "url('images/game4_bg.jpg')");
+
   logFile.push("第三關遊戲開始(b)\n")
   logFileSimple.push("b")
 
   var score4 = game_score
-  $('#game_score').text(score4)
+  $('#game_score').text(score4);
 
   var game4_time = 300;
   var timeCount = $('.second_top-time span'); //倒數計時dom
@@ -34,7 +53,7 @@ function game4(game_score) {
 	  $('#nextModal').on('hidden.bs.modal', function (e) {
 		$('#game4').css('display', 'none');
 		$('#game5').css('display', 'block');
-		game5(score4)
+		game5s(score4)
 		$('.countdown-box').css('display', 'none');
 		$('#game1-content').css("background-image", "none");
 	  });
@@ -259,7 +278,8 @@ function game4(game_score) {
 				turn(targetId, huPlayer);
 				if (!checkTie()) turn(bestSpot(), aiPlayer);
 			}
-			alert("答題正確")
+			$('#alertModalMessage').html("很棒!答對了!")
+			$('#alertModal').modal({backdrop: 'static', keyboard: false})
 			logFile.push(game4_time + "秒-------------->提交答案-答題正確(s)\n")
 			logFileSimple.push("s")
 		}
@@ -371,7 +391,8 @@ function game4(game_score) {
 				$("#game4_popup").css("display","none");
 			}else{
 				$("input[type=text][name=username]").val('')
-				alert("答題錯誤")
+				$('#alertModalMessage').html("答錯了!")
+				$('#alertModal').modal({backdrop: 'static', keyboard: false})
 				logFile.push(game4_time + "秒-------------->提交答案-答題錯誤(w)\n")
 				logFileSimple.push("w")
 			}

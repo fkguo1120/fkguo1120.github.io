@@ -1,3 +1,23 @@
+function game5s(game_score) {
+	var s5 = game_score
+  $('.countdown-box').css('display', 'none');
+  $('.bingo_line').css('display', 'none');
+	$('#game1-content').css("background-image", "none");
+  
+	$('header').css('display', 'none');
+	$('#game4StartPage').css('display', 'none');
+	$('#game5StartPage').css('display', 'block');
+  
+	//遊戲關卡一開始
+	$('#game5StartBtn').on("click",function() {
+	  $('#game5StartPage').css('display', 'none');
+	  $('header').css('display', 'block');
+	  $('#game5').css('display', 'block');
+	  game5(s5)
+	})
+}
+
+
 function game5(game_score) {
   clearInterval(interval);
   var highestIntervalId = setInterval(";");
