@@ -253,33 +253,35 @@ function game3(game_score) {
 
   function game2_check(){
     if(game2_number===(vocabulary.length)){
-      setTimeout(function () {
-        $('#nextModalMessage').html("遊戲結束。\n</br>即將進入下一關遊戲")
-        $('#nextModal').modal({backdrop: 'static', keyboard: false}) 
-        // alert("第二關遊戲結束")
-        clearInterval(interval);
-        logFile.push("遊戲分數:" + score2 + "\n")
-        logFile.push("第二關遊戲結束-全部題目作答完(Z)\n")
-        logFile.push("\n")
-        logFileSimple.push("Z")
-        $('#nextModal').on('hidden.bs.modal', function (e) {
-          $('#game3').css('display', 'none');
-          game4s(score2)
-        });
-      }, 500);
+      $('#nextModalMessage').html("遊戲結束。\n</br>即將進入下一關遊戲")
+      $('#nextModal').modal({backdrop: 'static', keyboard: false}) 
+      // alert("第二關遊戲結束")
+      clearInterval(interval);
+      logFile.push("遊戲分數:" + score2 + "\n")
+      logFile.push("第二關遊戲結束-全部題目作答完(Z)\n")
+      logFile.push("\n")
+      logFileSimple.push("Z")
+      $('#nextModal').on('hidden.bs.modal', function (e) {
+        $('#game3').css('display', 'none');
+        game4s(score2)
+      });
     }else{
       $('#topic').html(game2_topic)
+      next_word();
     }
   }
 
   // 下一題點擊之後
   $('#game2_next_btn').on( "click", function() {
-    logFile.push(game2_time + "秒-------------->下一題按鈕(I)\n")
-    logFileSimple.push("I")
-    game2_number+=1;
-    game2_topic+=1;
-    game2_check();
-    next_word();
+    if(game2_number<=(vocabulary.length)){
+      logFile.push(game2_time + "秒-------------->下一題按鈕(I)\n")
+      logFileSimple.push("I")
+      game2_number+=1;
+      game2_topic+=1;
+      game2_check();
+    }else{
+      game2_check();
+    }
   })
 
   //隨機排列陣列

@@ -30,7 +30,7 @@ function game4(game_score) {
   var score4 = game_score
   $('#game_score').text(score4);
 
-  var game4_time = 300;
+  var game4_time = 10;
   var timeCount = $('.second_top-time span'); //倒數計時dom
   timeCount.text(game4_time);
   //第三關遊戲循環倒數
@@ -52,10 +52,7 @@ function game4(game_score) {
 	  logFileSimple.push("o")
 	  $('#nextModal').on('hidden.bs.modal', function (e) {
 		$('#game4').css('display', 'none');
-		$('#game5').css('display', 'block');
 		game5s(score4)
-		$('.countdown-box').css('display', 'none');
-		$('#game1-content').css("background-image", "none");
 	  });
     }
   };

@@ -19,7 +19,6 @@ function game5s(game_score) {
 
 
 function game5(game_score) {
-  clearInterval(interval);
   var highestIntervalId = setInterval(";");
   for (var i = 0 ; i < highestIntervalId ; i++) {
       clearInterval(i); 
