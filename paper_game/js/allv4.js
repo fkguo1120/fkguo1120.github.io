@@ -103,6 +103,7 @@ function game5(game_score) {
 
   var life = 100
   var title_index = 0
+  var total_indedx = game5QuestionArray.length - 1
   var right_index = game5AnswerArray[String(title_index)][4]
 
   var $startTitle = $('.start__title');
@@ -175,7 +176,7 @@ function game5(game_score) {
       this.updateCss();
     }
     // [類別] 創造boxman
-    var box = new Box({ width: 100, height: 100 }, { x: 10, y: 200 }, '.game__boxman');
+    var box = new Box({ width: 100, height: 155 }, { x: 10, y: 200 }, '.game__boxman');
     //****boxman給予data-value正確答案****//
     $('#boxman_value').data("value",game5AnswerArray[String(title_index)][right_index])
 
@@ -271,7 +272,7 @@ function game5(game_score) {
             //****print題目****//
             $('.game5_question').html('<h5 style="font-weight: 700;">' + game5QuestionArray[title_index].title + '</h5>')
             // $('#rrrrr').html(game5AnswerArray[String(title_index)][right_index])
-            if (title_index === 1){
+            if (title_index === total_indedx){
               alert("第四關遊戲結束")
 
               logFile.push("遊戲分數:" + score5 + "\n")
@@ -282,35 +283,35 @@ function game5(game_score) {
               for (var i = 0 ; i < highestIntervalId ; i++) {
                   clearInterval(i); 
               }
-              // $('#game5').css('display', 'none');
+              $('#game5').css('display', 'none');
             }
           }else{
-            clearInterval(moveTimer)
             life -= 20
+            clearInterval(moveTimer)
+            _this.$el.children('img').attr("src","img/cloud_v2.png")
             $('#barr').attr('aria-valuenow', life).css('width', life + '%');
-            $("#boxman_value").attr("src","img/boxman2.png")
-            setTimeout(function () {
-              $("#boxman_value").attr("src","img/boxman.png")
-            }, 200);
-            setTimeout(function () {
-              $("#boxman_value").attr("src","img/boxman2.png")
-            }, 400);
-            setTimeout(function () {
-              $("#boxman_value").attr("src","img/boxman.png")
-              _this.$el.remove();
-            }, 600);
             logFile.push(game5_time + "秒-------------->吸入氣球答題錯誤(n)\n")
             logFileSimple.push("n")
-          }
-          // _this.$el.remove();
-          // _this = null
-          if(life===0){
-            logFile.push("遊戲分數:" + score5 + "\n")
-            logFile.push("第四關遊戲結束-沒血量(h)\n")
-            logFile.push("\n")
-            logFileSimple.push("h")
-            game.gameLose();
-          }
+            if(life===0){
+              logFile.push("遊戲分數:" + score5 + "\n")
+              logFile.push("第四關遊戲結束-沒血量(h)\n")
+              logFile.push("\n")
+              logFileSimple.push("h")
+              game.gameLose();
+            }else{
+              $("#boxman_value").attr("src","img/boxman2.png")
+              setTimeout(function () {
+                $("#boxman_value").attr("src","img/boxman.png")
+              }, 200);
+              setTimeout(function () {
+                $("#boxman_value").attr("src","img/boxman2.png")
+              }, 400);
+              setTimeout(function () {
+                $("#boxman_value").attr("src","img/boxman.png")
+                _this.$el.remove();
+              }, 600);
+            }
+          }          
         }
         // if (game.gameTime > 0 && _this.collideright(box)) {
         //   if($('#boxman_value').data("value")===_this.$el[0].attributes["2"].value){
@@ -440,6 +441,7 @@ function game5(game_score) {
       this.blockv = 0;
       this.boxv = 0;
       this.isFalse = true;
+      $("#boxman_value").attr("src","img/boxman5.png")
       console.log('lose');
       TweenMax.pauseAll();
       $('.game__btn').css('pointer-events', 'none');
@@ -465,9 +467,15 @@ function game5(game_score) {
       $('.pop').removeClass('hide');
     }
     function gameLosePop() {
-      $('.pop__top > img').attr('src', 'img/pop_top-lose.png');
-      $('.pop__top--content').remove();
-      $('.pop').removeClass('hide');
+      $('#finalModalMessage').html("所有測驗已結束\n</br>請通知主測者")
+      $('#finalModal').modal({backdrop: 'static', keyboard: false})  
+      $('#game5').css('display', 'none');
+      $('header').css('display', 'none');
+
+      saveStaticDataToFile()
+      // $('.pop__top > img').attr('src', 'img/pop_top-lose.png');
+      // $('.pop__top--content').remove();
+      // $('.pop').removeClass('hide');
     }
     $('.btn__reload').on('click', function () {
       location.reload();

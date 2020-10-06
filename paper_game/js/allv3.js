@@ -30,7 +30,7 @@ function game4(game_score) {
   var score4 = game_score
   $('#game_score').text(score4);
 
-  var game4_time = 10;
+  var game4_time = 1;
   var timeCount = $('.second_top-time span'); //倒數計時dom
   timeCount.text(game4_time);
   //第三關遊戲循環倒數
@@ -50,6 +50,7 @@ function game4(game_score) {
 	  logFile.push("第三關遊戲結束-時間到，題目未作答完(o)\n")
 	  logFile.push("\n")
 	  logFileSimple.push("o")
+	  $("#game4_popup").css("display","none");
 	  $('#nextModal').on('hidden.bs.modal', function (e) {
 		$('#game4').css('display', 'none');
 		game5s(score4)
@@ -363,15 +364,15 @@ function game4(game_score) {
 		}
 
 		function checkTie() {
-		// if (emptySquares().length == 0) {
-		// 	for (var i = 0; i < cells.length; i++) {
-		// 		cells[i].style.backgroundColor = "green";
-		// 		cells[i].removeEventListener('click', turnClick, false);
-		// 	}
-		// 	declareWinner("Tie Game!");
-		// 	return true;
-		// }
-		return false;
+			// if (emptySquares().length == 0) {
+			// 	for (var i = 0; i < cells.length; i++) {
+			// 		cells[i].style.backgroundColor = "green";
+			// 		cells[i].removeEventListener('click', turnClick, false);
+			// 	}
+			// 	declareWinner("Tie Game!");
+			// 	return true;
+			// }
+			return false;
 		}
 
 
