@@ -2,7 +2,8 @@ function game5s(game_score) {
 	var s5 = game_score
   $('.countdown-box').css('display', 'none');
   $('.bingo_line').css('display', 'none');
-	$('#game1-content').css("background-image", "none");
+  $('#game1-content').css("background-image", "none");
+  $('#game1-content').css("background-color", "#a9d1dd");
   
 	$('header').css('display', 'none');
 	$('#game4StartPage').css('display', 'none');
@@ -11,7 +12,6 @@ function game5s(game_score) {
 	//遊戲關卡一開始
 	$('#game5StartBtn').on("click",function() {
 	  $('#game5StartPage').css('display', 'none');
-	  $('header').css('display', 'block');
 	  $('#game5').css('display', 'block');
 	  game5(s5)
 	})
@@ -27,7 +27,7 @@ function game5(game_score) {
   logFileSimple.push("a")
   
   var score5 = game_score
-  $('#game_score').text(score5)
+  $('#game5_score').text(score5)
 
   var game5QuestionArray = [
     {
@@ -262,7 +262,7 @@ function game5(game_score) {
             title_index +=1
             right_index = game5AnswerArray[String(title_index)][4]
             score5 += 50
-            $('#game_score').text(score5)
+            $('#game5_score').text(score5)
             game5_topic ++
             $('#topic').html(game5_topic)
             logFile.push(game5_time + "秒-------------->吸入氣球答題正確(y)\n")
@@ -471,12 +471,18 @@ function game5(game_score) {
       $('#finalModal').modal({backdrop: 'static', keyboard: false})  
       $('#game5').css('display', 'none');
       $('header').css('display', 'none');
-
-      saveStaticDataToFile()
+      save_a()
+      save_b()
       // $('.pop__top > img').attr('src', 'img/pop_top-lose.png');
       // $('.pop__top--content').remove();
       // $('.pop').removeClass('hide');
     }
+
+    $('#finalModal').on('click', function () {
+      save_a()
+      save_b()
+    })
+    
     $('.btn__reload').on('click', function () {
       location.reload();
     })

@@ -167,10 +167,22 @@
     }
     .progress{
       width: 200px;
-      top: 30px;
-      right: 26px;
+      top: 35px;
+      right: 180px;
       position: absolute;
       z-index: 99999;
+	}
+	#game5_score_box{
+		position: absolute;
+		top: 30px;
+		right: 50px;
+		font-weight: 700;
+	}
+	#game5_score{
+		position: absolute;
+		top: 30px;
+		right: 35px;
+		font-weight: 700;
 	}
 	#nextModal{
 		z-index: 999997!important;
@@ -420,6 +432,7 @@
 					<div id="barr" class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 100%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">血量</div>
 				  </div>        
 				  <p class="game__time">60</p>
+				  <span id="game5_score_box" class="btn-label">遊戲得分：</span><span id="game5_score">0</span>
 				  <div class="game__boxman"><img id="boxman_value" src="img/boxman.png"></div>
 				</div>
 				<div class="panel_bottom">
@@ -548,12 +561,21 @@
 	<script type="text/javascript" src="js/allv3.js"></script>
 	<script type="text/javascript" src="js/allv4.js"></script>
 	<script>
-
+		var save_number = localStorage.getItem("testNumber")
+		var save_name = localStorage.getItem("testName")
         function saveStaticDataToFile() {
 			var blob = new Blob(logFile,{ type: "text/plain;charset=utf-8" });
 			var blobSimple = new Blob(logFileSimple,{ type: "text/plain;charset=utf-8" });
 			saveAs(blob, "Log_Detail.txt");
 			saveAs(blobSimple, "Log_simple_new.txt");
+		}
+		function save_a() {
+			var blob = new Blob(logFile,{ type: "text/plain;charset=utf-8" });
+			saveAs(blob, save_number + "_" + save_name + "_Log_Detail.txt");
+		}
+		function save_b() {
+			var blobSimple = new Blob(logFileSimple,{ type: "text/plain;charset=utf-8" });
+			saveAs(blobSimple, save_number + "_" + save_name + "_Log_Simple.txt");
 		}
 		
 		// 鎖住鍵盤特定按鍵 //
