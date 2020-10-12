@@ -24,7 +24,7 @@ function game1() {
 	var wordSupport = $('.word_support'); //單字提示文字解釋
 	var clauseSupport = $('.clause_support');//子句提示解釋
 	var qaStart = 0; //開始題數
-	var qatatle = 0;//總題數
+	var qatatle = 15;//總題數
 	var score = 1000 //任務起始得分
 	var game_score = 0 //遊戲起始得分
 	var topic = 1 //題目數
@@ -136,7 +136,7 @@ function game1() {
 		btn4.text("D. "+ testArray[qaStart].answers[3].answer);
 		imgSupport.attr('src',testArray[qaStart].img);
 		clauseSupport.text(testArray[qaStart].support);
-		wordSupport.text(testArray[qaStart].wordSupport);
+		wordSupport.html(testArray[qaStart].wordSupport);
 		// $('.wrong_support').html("<h5>文章翻譯:</h5>"+testArray[qaStart].translateSupport+"</br></br>"+"<h5>文法提示:</h5>"+testArray[qaStart].support+"</br></br>"+"<h5>單字提示:</h5>"+testArray[qaStart].wordSupport);
 	}
 
@@ -235,7 +235,7 @@ function game1() {
 		btn4.text("D. "+ testArray[qaStart].answers[3].answer);
 		clauseSupport.text(testArray[qaStart].support);
 		imgSupport.attr('src',testArray[qaStart].img);
-		wordSupport.text(testArray[qaStart].wordSupport);
+		wordSupport.html(testArray[qaStart].wordSupport);
 		logFile.push("第" + topic + "題\n")
 		// $('.wrong_support').html("<h5>文章翻譯:</h5>"+testArray[qaStart].translateSupport+"</br></br>"+"<h5>文法提示:</h5>"+testArray[qaStart].support+"</br></br>"+"<h5>單字提示:</h5>"+testArray[qaStart].wordSupport);
 	}
