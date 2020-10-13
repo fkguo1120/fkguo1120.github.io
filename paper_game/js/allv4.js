@@ -127,7 +127,7 @@ function game5(game_score) {
     $('.game5_question').html('<h5 style="font-weight: 700;">' + game5QuestionArray[title_index].title + '</h5>')
 
     //背景動畫及月亮
-    TweenMax.to(".game5_content", 15, { backgroundPositionX: "-768px", ease: Linear.easeNone, repeat: -1 });
+    TweenMax.to(".game5_content", 15, { backgroundPositionX: "-1050px", ease: Linear.easeNone, repeat: -1 });
 
     // 遊戲物件
     var GameObj = function (size, position, el) {
@@ -176,7 +176,7 @@ function game5(game_score) {
       this.updateCss();
     }
     // [類別] 創造boxman
-    var box = new Box({ width: 100, height: 155 }, { x: 10, y: 200 }, '.game__boxman');
+    var box = new Box({ width: 80, height: 124 }, { x: 10, y: 200 }, '.game__boxman');
     //****boxman給予data-value正確答案****//
     $('#boxman_value').data("value",game5AnswerArray[String(title_index)][right_index])
 
