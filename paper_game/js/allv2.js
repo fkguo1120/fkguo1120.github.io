@@ -27,7 +27,7 @@ function game3(game_score) {
   logFile.push("第二關遊戲開始(H)\n")
   logFileSimple.push("H")
 
-  var game2_time = 1;
+  var game2_time = 180;
   var score2 = game_score
   $('#qa_total').show();
   var game2_topic = 1

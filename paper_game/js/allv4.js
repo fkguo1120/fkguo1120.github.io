@@ -75,7 +75,7 @@ function game5(game_score) {
     "9":["goes","was","is","goes",0]
   }
 
-  var game5_time = 60;
+  var game5_time = 270;
   $('#qa_total').show();
   var game5_topic = 1
   $('#topic').html(game5_topic)
@@ -283,7 +283,7 @@ function game5(game_score) {
               for (var i = 0 ; i < highestIntervalId ; i++) {
                   clearInterval(i); 
               }
-              $('#game5').css('display', 'none');
+              gameLosePop
             }
           }else{
             life -= 20
@@ -335,7 +335,7 @@ function game5(game_score) {
       this.boxv = 6;
       this.blockv = 1;
       this.touch = false;
-      this.gameTime = 60;
+      this.gameTime = 270;
       this.isFalse = false;
     }
     // 遊戲本體--// 按鈕控制
@@ -377,6 +377,7 @@ function game5(game_score) {
             logFile.push("第四關遊戲結束-時間到，題目未作答完(z)\n")
             logFile.push("\n")
             logFileSimple.push("z")
+            gameLosePop()
           }
         }, 1000);
       }

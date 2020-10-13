@@ -30,7 +30,7 @@ function game4(game_score) {
   var score4 = game_score
   $('#game_score').text(score4);
 
-  var game4_time = 1;
+  var game4_time = 300;
   var timeCount = $('.second_top-time span'); //倒數計時dom
   timeCount.text(game4_time);
   //第三關遊戲循環倒數
@@ -330,10 +330,20 @@ function game4(game_score) {
 					// return gameWon;
 				}
 			}
-			// if(plays.length==8){
-			// 	console.log("gameWongameWongameWongameWon",gameWon)
-			// 	return gameWon;
-			// }
+			if(plays.length==13){
+				clearInterval(interval);
+				$('#nextModalMessage').html("遊戲結束。\n</br>即將進入下一關遊戲")
+				$('#nextModal').modal({backdrop: 'static', keyboard: false}) 
+				// alert("第二關遊戲結束");
+				logFile.push("遊戲分數:" + score4 + "\n")
+				logFile.push("第三關遊戲結束-全部題目作答完(e)\n")
+				logFile.push("\n")
+				logFileSimple.push("e")
+				$('#nextModal').on('hidden.bs.modal', function (e) {
+				  $('#game4').css('display', 'none');
+				  game5s(score4)
+				});
+			}
 			// console.log("gameWon",gameWon)
 			// return gameWon;
 			// return 111
