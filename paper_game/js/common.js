@@ -27,7 +27,7 @@ var testArray = [
 			}
 		],
 		wordSupport:'elementary(adj): 初級的 \n</br>diverse(adj): 多樣的',
-		support:'who 引導形容詞子句，其先行詞為 I，子句的動詞應依先行詞變化，所以用 am',
+		support:'when為引導時間的副詞子句。',
 		translateSupport:'John還是小學生時，John不喜歡Mary，因為她的頭髮總是有三個顏色。'
 	},
 	{
@@ -57,8 +57,8 @@ var testArray = [
 			}
 		],
 		wordSupport:'extremely(adv): 非常地 \n</br>extracurricular(adj): 課外的',
-		support:'satisfying,現在分詞表示主動的意義，通常指某物使某人產生某種感覺。',
-		translateSupport:'Mary已經兩天沒吃任何食物，但她非常高興和樂意參加課外活動'
+		support:'此處的but當連接副詞，用來轉折語氣。意思為"然而,但"。',
+		translateSupport:'Mary已經兩天沒吃任何食物，但她非常高興和樂意參加課外活動。'
 	},
 	{
 		id:3,
@@ -87,7 +87,7 @@ var testArray = [
 			}
 		],
 		wordSupport:'motivated(adj): 積極的',
-		support:'who 引導形容詞子句，其先行詞為 I，子句的動詞應依先行詞變化，所以用 am',
+		support:'devote (sb) to doing，致力於...。',
 		translateSupport:'Mary花了很多時間參加課外活動，所以他不能全心投入到他的博士研究中。'
 	},
 	{
@@ -117,7 +117,7 @@ var testArray = [
 			}
 		],
 		wordSupport:'financial(adj): 不滿意的 \n</br>attitude(n): 態度',
-		support:'satisfying,現在分詞表示主動的意義，通常指某物使某人產生某種感覺。',
+		support:'due to the fact that意思為:由於有...這樣的事，that後面的子句引導的所講的事',
 		translateSupport:'Mary的父母對他的表現非常不滿意並決定完全停止對她的經濟支持。'
 	},
 	{
@@ -147,7 +147,7 @@ var testArray = [
 			}
 		],
 		wordSupport:'jealous(adj): 嫉妒的',
-		support:'who 引導形容詞子句，其先行詞為 I，子句的動詞應依先行詞變化，所以用 am',
+		support:'make friends with (sb)意思為: 與...交朋友。',
 		translateSupport:'Mary不是很努力學習，但她可以從所參加的考試中獲得最高分。因此，所有學生都不想要和他做朋友。'
 	},
 	{
@@ -177,7 +177,7 @@ var testArray = [
 			}
 		],
 		wordSupport:'lonely(adj): 孤單的 \n</br>hobby(n): 興趣',
-		support:'satisfying,現在分詞表示主動的意義，通常指某物使某人產生某種感覺。',
+		support:'used to...過去習慣 ; is used to...現在習慣 ; is used to...開始習慣',
 		translateSupport:'Mary並不寂寞，因為她喜歡讀書，這是他十年來最喜歡的愛好。'
 	},
 	{
@@ -207,7 +207,7 @@ var testArray = [
 			}
 		],
 		wordSupport:'church(n): 教堂 \</br>cousins(n): 堂兄弟',
-		support:'satisfying,現在分詞表示主動的意義，通常指某物使某人產生某種感覺。',
+		support:'apart from與except，意思皆為: 除…以外。',
 		translateSupport:'除了閱讀，Mary的嗜好包括參加教堂和與堂兄弟一起玩各種數位遊戲。'
 	},
 	{
@@ -237,7 +237,7 @@ var testArray = [
 			}
 		],
 		wordSupport:'creative(adj): 有創造力的 \n</br>critical thinking(n): 批判性思考',
-		support:'satisfying,現在分詞表示主動的意義，通常指某物使某人產生某種感覺。',
+		support:'not only A but (also) B ，意指「不只是 A 而且連 B 都 …」，即A和B兩者都有。',
 		translateSupport:'數位遊戲讓Mary更開心且幫助他不只有創造性的想像力而且還能培養批判性的思維。'
 	},
 	{
@@ -267,7 +267,7 @@ var testArray = [
 			}
 		],
 		wordSupport:'examination(n): 考試 \n</br>purchase(v): 購買',
-		support:'satisfying,現在分詞表示主動的意義，通常指某物使某人產生某種感覺。',
+		support:'此處的that為同位語引導名詞子句，用來補充前面名詞的內容。',
 		translateSupport:'在Mary成功通過考試後，用信用卡買很多她不需要的衣服。'
 	},
 	{
@@ -297,7 +297,7 @@ var testArray = [
 			}
 		],
 		wordSupport:'exhaust(v): 耗盡',
-		support:'satisfying,現在分詞表示主動的意義，通常指某物使某人產生某種感覺。',
+		support:'此處的that為同位語引導名詞子句，用來補充前面名詞的內容。',
 		translateSupport:'Mary做了一件蠢事，因為她以低於成本的價格賣出她的衣服。'
 	},
 	{
@@ -327,7 +327,7 @@ var testArray = [
 			}
 		],
 		wordSupport:'basketball(n): 偶爾 \n</br>disfavor(v): 討厭',
-		support:'satisfying,現在分詞表示主動的意義，通常指某物使某人產生某種感覺。',
+		support:'while可引導的時間副詞子句。',
 		translateSupport:'Mary 偶爾會去電影院看免費電影，而John有時會跟他的同學一起打籃球，但他們從沒從圖書館借書。'
 	},
 	{
@@ -357,7 +357,7 @@ var testArray = [
 			}
 		],
 		wordSupport:'insurance(n): 保險',
-		support:'satisfying,現在分詞表示主動的意義，通常指某物使某人產生某種感覺。',
+		support:'the longer A, the more B，意思為: A的時間越久，就越可能B',
 		translateSupport:'在怎麼強調醫院住的時間越長，醫院就會向你和你的保險收越多的費用也不為過，反之亦然。'
 	},
 	{
@@ -387,7 +387,7 @@ var testArray = [
 			}
 		],
 		wordSupport:'target(n): 目標 \n</br>remarkable(adj): 非凡的',
-		support:'satisfying,現在分詞表示主動的意義，通常指某物使某人產生某種感覺。',
+		support:'few幾乎沒有的 ; a few一些的 ; a lot of很多的',
 		translateSupport:'眾所皆知，Mary可以實現你的目標，因為她的父母提供大量的經濟支持並提供建設性的建議。'
 	},
 	{
@@ -417,7 +417,7 @@ var testArray = [
 			}
 		],
 		wordSupport:'persuade(v): 說服',
-		support:'satisfying,現在分詞表示主動的意義，通常指某物使某人產生某種感覺。',
+		support:'so that，意思為: 以至於，當連接詞用。',
 		translateSupport:'雖然我喜歡牛奶，但是沒有辦法說服Mary喝牛奶，以至於我每天都要為他早餐製作熱巧克力而不是牛奶。'
 	},
 	{
@@ -447,7 +447,7 @@ var testArray = [
 			}
 		],
 		wordSupport:'concurrently(adv): 同時地',
-		support:'satisfying,現在分詞表示主動的意義，通常指某物使某人產生某種感覺。',
+		support:'brings home to (sb)，意思為: 讓..深刻認識到..',
 		translateSupport:'Mary的成功讓大家了解：工作的未來在於學習、工作和娛樂兼顧，所以我們不能忽視任何方面。'
 	},
 	{
@@ -477,7 +477,7 @@ var testArray = [
 			}
 		],
 		wordSupport:'needless(adj): 不需要的',
-		support:'satisfying,現在分詞表示主動的意義，通常指某物使某人產生某種感覺。',
+		support:'goes without saying，意思為: 不用多說...',
 		translateSupport:'不言而喻Mary可能是John見過最懶的人，因為她總是喜歡躺在床上看電視。'
 	},
 ]
