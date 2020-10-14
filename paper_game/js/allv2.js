@@ -179,11 +179,11 @@ function game3(game_score) {
     game2_word_left = makeid(game2_word_left_length);
     var abc = game2_word_left.split("");
     for ( var i = 0; i < abc.length; i++ ) {
-       var xxx = {
-         type: abc[i],
-         word: abc[i]
-       };
-       newobj.push(xxx);
+      var xxx = {
+        type: abc[i],
+        word: abc[i]
+      };
+      newobj.push(xxx);
     }
     
     newobj.sort(randomsort);
@@ -273,6 +273,9 @@ function game3(game_score) {
 
   // 下一題點擊之後
   $('#game2_next_btn').on( "click", function() {
+    $('#game3NextModal').modal({backdrop: 'static', keyboard: false})
+  })
+  $('#game3NextRight').on( "click", function() {
     if(game2_number<=(vocabulary.length)){
       logFile.push(game2_time + "秒-------------->下一題按鈕(I)\n")
       logFileSimple.push("I")
@@ -282,6 +285,9 @@ function game3(game_score) {
     }else{
       game2_check();
     }
+  })
+  $('#game3NextCancel').on( "click", function() {
+    $('#game3NextModal').modal('hide')
   })
 
   //隨機排列陣列
@@ -330,7 +336,7 @@ function game3(game_score) {
       next_word()
     }else{
       if(game2_number<=(vocabulary.length)){
-        $('#alertModalMessage').html("答錯了!")
+        $('#alertModalMessage').html("答錯了!\n</br>正確答案為: "+vocabulary[game2_number].en)
         $('#alertModal').modal({backdrop: 'static', keyboard: false})
       }
       game2_number+=1;

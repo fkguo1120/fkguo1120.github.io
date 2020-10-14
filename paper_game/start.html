@@ -65,6 +65,16 @@
 					<span>姓名: </span><input type="text" name='nam' id='nam' /> 
 				</label>
 			</div>
+			<div style="margin-bottom: 15px;">
+				<label class="text">
+					<span>性別: </span>
+					<select name="gender" id="gender">
+						<option value="" selected>請選擇性別</option>
+						<option value="男">男</option>
+						<option value="女">女</option>
+					</select>
+				</label>
+			</div>
 		</div>
 		<!-- <a href="#" target="popup" onclick='processFormData();' onclick="window.open('index.html','name','toolbar=no,location=no,directories=no,menubar=no,scrollbars=no,resizable=no,status=no')">開始遊戲</a> -->
 		<div style="text-align: center;">
@@ -146,8 +156,14 @@
 				alert("請輸入您的姓名");
 				return
 			}
+			const genderElement = document.getElementById("gender").value
+			if (genderElement === ""){
+				alert("請選擇您的性別");
+				return
+			}
 			localStorage.setItem("testNumber", number)
 			localStorage.setItem("testName", name)
+			localStorage.setItem("testGender", genderElement)
 			window.open('index.html','name','toolbar=no,location=no,directories=no,menubar=no,scrollbars=no,resizable=no,status=no')
 		}
 	</script>

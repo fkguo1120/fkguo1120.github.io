@@ -512,6 +512,21 @@
 		</div>
 	</div>
 
+	<!-- game3 下一題 popup -->
+	<div class="modal fade" id="game3NextModal" tabindex="-1" role="dialog" data-target=".bd-example-modal-sm" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+			<div class="modal-content">
+				<div id="game3NextModalMessage" class="modal-body" style="text-align: center;font-size: 1.4em;">
+					放棄此題將無法再回答?
+				</div>
+				<div class="modal-footer" style="padding:10px;">
+					<button id="game3NextRight" type="button" class="btn btn-primary" data-dismiss="modal">確定</button>
+					<button id="game3NextCancel" type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<!-- 結束測驗 popup -->
 	<div class="modal fade" id="finalModal" tabindex="-1" role="dialog" data-target=".bd-example-modal-sm" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
@@ -542,7 +557,7 @@
 						<div class="input-wrapper"><input class="game4_input" type="text" name="username" id="username" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" /></div>
 					</div>
 					<button id="game4_submit">提交答案</button>
-					<button id="game4_cancel">放棄</button>
+					<button id="game4_cancel">離開</button>
 				</div>
 			</div>
 		</div>
@@ -563,6 +578,7 @@
 	<script>
 		var save_number = localStorage.getItem("testNumber")
 		var save_name = localStorage.getItem("testName")
+		var save_gender = localStorage.getItem("testGender")
         function saveStaticDataToFile() {
 			var blob = new Blob(logFile,{ type: "text/plain;charset=utf-8" });
 			var blobSimple = new Blob(logFileSimple,{ type: "text/plain;charset=utf-8" });
@@ -571,11 +587,11 @@
 		}
 		function save_a() {
 			var blob = new Blob(logFile,{ type: "text/plain;charset=utf-8" });
-			saveAs(blob, save_number + "_" + save_name + "_Log_Detail.txt");
+			saveAs(blob, save_number + "_" + save_name + "_" + save_gender + "_Log_Detail.txt");
 		}
 		function save_b() {
 			var blobSimple = new Blob(logFileSimple,{ type: "text/plain;charset=utf-8" });
-			saveAs(blobSimple, save_number + "_" + save_name + "_Log_Simple.txt");
+			saveAs(blobSimple, save_number + "_" + save_name + "_" + save_gender + "_Log_Simple.txt");
 		}
 		
 		// 鎖住鍵盤特定按鍵 //
