@@ -191,6 +191,7 @@ function game2(game_score) {
     //目前的data-value
     var nowValue = '';
     var $cardItem = $('.flip_card-item');
+    var randomNumberArray = [];
 
     function flipCard() {
       // console.log(count)
@@ -213,20 +214,7 @@ function game2(game_score) {
           logFile.push("配對成功(M)\n")
           logFileSimple.push("M")
           if(game1_right_total===9){
-            setTimeout(function () {
-              // alert("第一關遊戲結束")
-              $('#nextModalMessage').html("遊戲結束。\n</br>即將進入下一關遊戲")
-              $('#nextModal').modal({backdrop: 'static', keyboard: false})        
-              clearInterval(interval);
-              logFile.push("遊戲分數:" + score1 + "\n")
-              logFile.push("第一關遊戲結束-配對皆完成(F)\n")
-              logFile.push("\n")
-              logFileSimple.push("F")
-              $('#nextModal').on('hidden.bs.modal', function (e) {
-                $('#game2').css('display', 'none');
-                game3s(score1)
-              });
-            }, 1500);
+            finishCountGame()
           }
         }
         if (count === 6) {
@@ -264,18 +252,73 @@ function game2(game_score) {
       }, 400)
     };
     function borderLight() {
-      // console.log('success');
       var nowValue2 = nowValue;
+      randomNumberArray.push(nowValue)
       setTimeout(function () {
-        $('.flip_card-item[data-value="' + nowValue2 + '"]').addClass('box-shadow');
+        $('.flip_card-item[data-value="' + nowValue2 + '"]').addClass('success-shadow');
       }, 300);
     }
+
     $cardItem.on("click",flipCard);
+
+    //消除一組配對
+    $('#game2-match-btn').on("click",function() {
+      gameMatch()
+    });
+    //消除一組配對
+    function gameMatch() {
+      $('#game2-match-btn').attr('disabled', true);
+      var game2RandomNumber = game2Random(1,9);
+      if (randomNumberArray.length >= 1){
+        var i;
+        for (i = 0; i < randomNumberArray.length; i++) {
+          if(randomNumberArray[i]===game2RandomNumber){
+            gameMatch()
+            return
+          }
+        }
+        $('.flip_card-item[data-value="' + game2RandomNumber + '"]').addClass('rotation').addClass('success-shadow');
+        game1_right_total++
+        randomNumberArray.push(game2RandomNumber)
+        $('#game2-match-btn').attr('disabled', false);
+      }else{
+        $('.flip_card-item[data-value="' + game2RandomNumber + '"]').addClass('rotation').addClass('success-shadow');
+        game1_right_total++
+        randomNumberArray.push(game2RandomNumber)
+        $('#game2-match-btn').attr('disabled', false);
+      }
+      if(game1_right_total===9){
+        $('#game2-match-btn').attr('disabled', true);
+        finishCountGame()
+      }
+    }
+    
+    //已達滿次結束遊戲
+    function finishCountGame() {
+      setTimeout(function () {
+        // alert("第一關遊戲結束")
+        $('#nextModalMessage').html("遊戲結束。\n</br>即將進入下一關遊戲")
+        $('#nextModal').modal({backdrop: 'static', keyboard: false})        
+        clearInterval(interval);
+        logFile.push("遊戲分數:" + score1 + "\n")
+        logFile.push("第一關遊戲結束-配對皆完成(F)\n")
+        logFile.push("\n")
+        logFileSimple.push("F")
+        $('#nextModal').on('hidden.bs.modal', function (e) {
+          $('#game2').css('display', 'none');
+          game3s(score1)
+        });
+      }, 1500);
+    }
 
     //用Math.random()函式生成0~1之間的隨機數與0.5比較，返回-1或1
     function randomsort(a, b) {
       return Math.random() > .5 ? -1 : 1;
     }
+
+    function game2Random(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }  
   }
   animation()
 };

@@ -12,7 +12,7 @@ $('#game1StartBtn').on("click",function() {
 
 
 function game1() {	
-	var time = 120; //倒數計時
+	var time = 90; //倒數計時
 	var timeCount = $('.second_top-time span'); //倒數計時dom
 	var question = $('.question h5'); 
 	var btn = $('.answers button'); //答案按鈕
