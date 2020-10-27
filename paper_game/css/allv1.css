@@ -321,9 +321,9 @@
   box-shadow: 0 0 0 2px #0a7500, 0 0 0 5px #09ff05;
 }
 
-.error-shadow {
-  -webkit-box-shadow: 0 0 0 2px #000, 0 0 0 5px #000;
-  box-shadow: 0 0 0 2px #000, 0 0 0 5px #000;
+.support-shadow {
+  -webkit-box-shadow: 0 0 0 2px #0f90ff, 0 0 0 5px #0f90ff;
+  box-shadow: 0 0 0 2px #0f90ff, 0 0 0 5px #0f90ff;
 }
 
 .rotation {

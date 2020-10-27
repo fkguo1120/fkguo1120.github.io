@@ -71,74 +71,92 @@ function game2(game_score) {
 
     var obj = [
       {
+        index: 0,
         type: 1,
         text: 'purchase',
       },
       {
+        index: 1,
         type: 1,
         img: 'purchase.png',
       },
       {
+        index: 2,
         type: 2,
         text: 'jealous',
       },
       {
+        index: 3,
         type: 2,
         img: 'jealous.png',
       },
       {
+        index: 4,
         type: 3,
         text: 'lonely',
       },
       {
+        index: 5,
         type: 3,
         img: 'lonely.png',
       },
       {
+        index: 6,
         type: 4,
         text: 'creative',
       },
       {
+        index: 7,
         type: 4,
         img: 'creative.png',
       }, 
       {
+        index: 8,
         type: 5,
         text: 'target',
       },
       {
+        index: 9,
         type: 5,
         img: 'target.png',
       },
       {
+        index: 10,
         type: 6,
         text: 'examination',
       },
       {
+        index: 11,
         type: 6,
         img: 'examination.png',
       }, 
       {
+        index: 12,
         type: 7,
         text: 'elementary student',
       },
       {
+        index: 13,
         type: 7,
         img: 'elementary_student.png',
       },
       {
+        index: 14,
         type: 8,
         text: 'persuade',
       },
       {
+        index: 15,
         type: 8,
         img: 'persuade.png',
       },
       {
+        index: 16,
         type: 9,
         text: 'basketball',
       },
       {
+        index: 17,
         type: 9,
         img: 'basketball.png',
       }                                   
@@ -146,15 +164,20 @@ function game2(game_score) {
     //隨機排列陣列
     obj.sort(randomsort);
 
+    $('#game2-half-btn').attr('disabled', true);
+
     //印出&於父層加入屬性data-value
     var htmlPD = '';
     $.each(obj,function ( index, item ) {
       // var backHtml = 
       // $(this).html('<h1 class="facevalue">' + obj[index]["img"] + '</h1>');
       // $(this).parent().attr('data-value', obj[index].type);
+      if(index==0||index==6||index==12){
+        htmlPD += '<div class="half-line half-line-' + index + ' row">'
+      }
       htmlPD += '<div class="col-22">';
       htmlPD += '<div class="flip_card-container">'
-        htmlPD += '<div class="flip_card-item" data-value="' + obj[index].type + '">'
+        htmlPD += '<div class="flip_card-item" data-index="' + obj[index].index + '" data-value="' + obj[index].type + '">'
           htmlPD += '<div class="front face">'
             htmlPD += '<img src="images/card.png">'
           htmlPD += '</div>'
@@ -166,6 +189,9 @@ function game2(game_score) {
             }
           htmlPD += '</div>'          
       htmlPD += '</div><img src="images/card_height.png"></div></div>';
+      if(index==5||index==11||index==17){
+        htmlPD += '</div>'
+      }
     });
     $('#cardcard').html(htmlPD);
 
@@ -189,6 +215,9 @@ function game2(game_score) {
     //點擊卡片數量
     var count = 0;
     //目前的data-value
+    var thisValue = Number;
+    var thisIndex = Number;
+    var isSupport = false
     var nowValue = '';
     var $cardItem = $('.flip_card-item');
     var randomNumberArray = [];
@@ -197,22 +226,37 @@ function game2(game_score) {
       // console.log(count)
       $(this).addClass('rotation');
       thisValue = $(this).data('value');
+      thisIndex = $(this).data('index');
       logFile.push(game1_time + "秒-------------->翻出" + thisValue + "\n")
+      $('#game2-half-btn').attr('disabled', false);
+      $('#game2-match-btn').attr('disabled', true);
       if (count % 2 !== 0 && thisValue !== nowValue) {
         //條件符合則全部關閉
         logFile.push("配對失敗(C)\n")
         logFileSimple.push("C")
         allFlipBack(thisValue);
+        $('#game2-half-btn').attr('disabled', true);
+        $('#game2-match-btn').attr('disabled', false);
+        $('.half-line').removeClass('support-shadow');
+        isSupport = false
       } else {
         count++;
         nowValue = thisValue;
         if (count > 0 && count % 2 == 0) {
           game1_right_total++
-          score1+=50
+          if(!isSupport){
+            score1+=50
+          }else{
+            score1+=25
+          }
           $('#game_score').text(score1)
           borderLight();
           logFile.push("配對成功(M)\n")
           logFileSimple.push("M")
+          $('#game2-half-btn').attr('disabled', true);
+          $('#game2-match-btn').attr('disabled', false);
+          $('.half-line').removeClass('support-shadow');
+          isSupport = false
           if(game1_right_total===9){
             finishCountGame()
           }
@@ -290,6 +334,27 @@ function game2(game_score) {
       if(game1_right_total===9){
         $('#game2-match-btn').attr('disabled', true);
         finishCountGame()
+      }
+    }
+
+    //左右範圍提示
+    $('#game2-half-btn').on("click",function() {
+      gameHalf()
+      $('#game2-half-btn').attr('disabled', true);
+      isSupport = true
+    });
+
+    //左右範圍提示
+    function gameHalf() {
+      var itemHalfIndex = obj.findIndex((item)=>{
+        return item.index != thisIndex && item.type == thisValue
+      })
+      if(itemHalfIndex>=0&&itemHalfIndex<6){
+        $('.half-line-0').addClass('support-shadow');
+      }else if(itemHalfIndex>=6&&itemHalfIndex<12){
+        $('.half-line-6').addClass('support-shadow');
+      }else if(itemHalfIndex>=12&&itemHalfIndex<18){
+        $('.half-line-12').addClass('support-shadow');
       }
     }
     
