@@ -137,6 +137,7 @@ function game3(game_score) {
   var game2_now_word_length = Number
   var game2_word_left = ""
   var game2_word_left_length = Number
+  var game2_isSupport = false
   
   //用Math.random()函式生成0~1之間的隨機數與0.5比較，返回-1或1
   function randomsort(a, b) {
@@ -290,6 +291,37 @@ function game3(game_score) {
     $('#game3NextModal').modal('hide')
   })
 
+  // 提示單字
+  $('#game2_support_btn').on( "click", function() {
+    game2_isSupport = true
+    game2_support_word()
+  })
+  function game2_support_word(){
+    var game2_now_word = vocabulary[game2_number].en.split("");
+    if(game2_now_word.length%2===0){
+      var half_word = game2_now_word.length/2
+      $('#game2_support').html('')
+      for ( var i = 0; i < half_word; i++ ) {
+        $('#game2_support').append(game2_now_word[i])
+      }
+      for ( var k = half_word; k < game2_now_word.length-1; k++ ) {
+        $('#game2_support').append(" _ ")
+      }
+      $('#game2_support').append(game2_now_word[game2_now_word.length-1])
+    }else{
+      var odd_word = Math.round(game2_now_word.length/2)
+      $('#game2_support').html('')
+      for ( var i = 0; i < odd_word; i++ ) {
+        $('#game2_support').append(game2_now_word[i])
+      }
+      for ( var k = odd_word; k < game2_now_word.length-1; k++ ) {
+        $('#game2_support').append(" _ ")
+      }
+      $('#game2_support').append(game2_now_word[game2_now_word.length-1])
+    }
+
+  }
+
   //隨機排列陣列
   // newobj.sort(randomsort);
   // $('.out').html('')
@@ -326,7 +358,12 @@ function game3(game_score) {
         $('#alertModal').modal({backdrop: 'static', keyboard: false})
       }
       game2_number+=1;
-      score2 += 50
+      if(!game2_isSupport){
+        score2 += 50
+      }else{
+        score2 += 25
+      }
+      
       game2_topic+=1
       $('#topic').html(game2_topic)
       logFile.push(game2_time + "秒-------------->送出-答題正確(K)\n")
@@ -347,6 +384,7 @@ function game3(game_score) {
       game2_check()
       next_word()
     };
+    game2_isSupport = false
   });
 
   game2_init();  

@@ -32,7 +32,7 @@
 		.clause_support,.img_support,.word_support{
 			display: none;
 		}
-		#game2_next_btn,#game2_reset_btn,#game2_submit_btn{
+		#game2_next_btn,#game2_support_btn,#game2_reset_btn,#game2_submit_btn{
 			height:40px;
 			margin: 0 5px;
 		}
@@ -300,8 +300,8 @@
 		</main>
 	
 		<main id="game3" role="main" class="container" >
-			<div class="row">
-			<div class="col-7" style="max-width: 560px;">
+			<div class="row flex-nowrap">
+			<div class="col-7" style="max-width: 524px;">
 				<div class="out">
 					<div class="in"><h3>1</h3></div>
 					<div class="in"><h3>1</h3></div>
@@ -330,7 +330,8 @@
 	
 				<div style="margin-top: 114px;">
 					<div id="aaa"></div>
-					<button id="game2_next_btn" type="button">下一題</button>
+					<button id="game2_next_btn" type="button">下一題(+0)</button>
+					<button id="game2_support_btn" type="button">提示單字(+25)</button>
 					<button id="game2_reset_btn" type="button">重新拼字</button>
 					<button id="game2_submit_btn" type="button">送出</button>
 				</div>			
@@ -647,18 +648,7 @@
 		}
 
 		// 全螢幕事件 //
-		addEventListener("click", function() {
-			var elem = document.documentElement
-			if (elem.requestFullscreen) {
-				elem.requestFullscreen();
-			} else if (elem.mozRequestFullScreen) { /* Firefox */
-				elem.mozRequestFullScreen();
-			} else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
-				elem.webkitRequestFullscreen();
-			} else if (elem.msRequestFullscreen) { /* IE/Edge */
-				elem.msRequestFullscreen();
-			}
-		});	
+
 
 
     </script>
