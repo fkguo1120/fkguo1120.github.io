@@ -81,8 +81,7 @@ function game5(game_score) {
   $('#topic').html(game5_topic)
   var game5_qatatle = 10
   $("#qatotal").html(game5_qatatle)
-  var game5_support_hp = 0
-  var game5_support_time = 0
+  var game5_bonus = 0
   // var timeCount = $('.second_top-time span'); //倒數計時dom
   // timeCount.text(game5_time);
 
@@ -241,7 +240,7 @@ function game5(game_score) {
           }, 600);
           logFile.push(game5_time + "秒-------------->撞到障礙物(c)\n")
           logFileSimple.push("c")
-          if(life===0){
+          if(life<=0){
             game.gameLose();
           }
         }
@@ -399,13 +398,7 @@ function game5(game_score) {
             $("#boxman_value").attr("src","img/boxman.png")
             _this.$el.remove();
           }, 600);    
-          if(Number(_this.$el[0].id)%2===0){
-            game5_support_hp += 1
-            console.log("game5_support_hp",game5_support_hp)
-          }else{
-            game5_support_time += 1
-            console.log("game5_support_time",game5_support_time)
-          }
+          game5_bonus += 1
         }
       }, 10)
     }
@@ -592,6 +585,25 @@ function game5(game_score) {
     $('#finalModal').on('click', function () {
       save_a()
       save_b()
+    })
+
+    $('#game5_hp_btn').on('click', function () {
+      if(game5_bonus>0){
+        game5_bonus -= 1;
+        life += 30
+        if(life>=100){
+          life = 100
+        }
+        $('#barr').attr('aria-valuenow', life).css('width', life + '%');
+      }
+    })
+
+    $('#game5_time_btn').on('click', function () {
+      if(game5_bonus>0){
+        game5_bonus -= 1;
+        game.gameTime += 30;
+        $('.game__time').text(game.gameTime);
+      }
     })
     
     $('.btn__reload').on('click', function () {
