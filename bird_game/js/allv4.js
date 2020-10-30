@@ -82,6 +82,9 @@ function game5(game_score) {
   var game5_qatatle = 10
   $("#qatotal").html(game5_qatatle)
   var game5_bonus = 0
+  $('#game5_bonus_count').text(game5_bonus);
+  $('#game5_hp_btn').attr('disabled', true);
+  $('#game5_time_btn').attr('disabled', true);
   // var timeCount = $('.second_top-time span'); //倒數計時dom
   // timeCount.text(game5_time);
 
@@ -399,6 +402,9 @@ function game5(game_score) {
             _this.$el.remove();
           }, 600);    
           game5_bonus += 1
+          $('#game5_bonus_count').text(game5_bonus);
+          $('#game5_hp_btn').attr('disabled', false);
+          $('#game5_time_btn').attr('disabled', false);
         }
       }, 10)
     }
@@ -558,7 +564,7 @@ function game5(game_score) {
       this.boxv = 0;
       console.log('success');
       TweenMax.pauseAll();
-      $('.block').remove();;
+      $('.block').remove();
       $('.game__btn').css('pointer-events', 'none');
       TweenMax.to(".game__boxman", 3, { y: '+=40', ease: Elastic.easeOut.config(1, 0.3), delay: 1 });
       TweenMax.to(".game__boxman", 0.5, { x: 800, ease: Power1.easeIn, delay: 2.5, onComplete: gameWinPop });
@@ -596,6 +602,7 @@ function game5(game_score) {
         }
         $('#barr').attr('aria-valuenow', life).css('width', life + '%');
       }
+      checkBonus()
     })
 
     $('#game5_time_btn').on('click', function () {
@@ -604,7 +611,17 @@ function game5(game_score) {
         game.gameTime += 30;
         $('.game__time').text(game.gameTime);
       }
+      checkBonus()
     })
+
+    function checkBonus(){
+      if(game5_bonus<=0){
+        game5_bonus = 0
+        $('#game5_bonus_count').text(game5_bonus);
+        $('#game5_hp_btn').attr('disabled', true);
+        $('#game5_time_btn').attr('disabled', true);
+      }
+    }
     
     $('.btn__reload').on('click', function () {
       location.reload();
