@@ -5,6 +5,7 @@ function game2s(game_score) {
 
   $('header').css('display', 'none');
   $('#game2StartPage').css('display', 'block');
+  $('#game-notify').css('display', 'none');
 
   //遊戲關卡一開始
   $('#game2StartBtn').on("click",function() {
@@ -39,6 +40,11 @@ function game2(game_score) {
   var game1_time = 90;
   var timeCount = $('.second_top-time span'); //倒數計時dom
   timeCount.text(game1_time);
+
+  //第一關遊戲提示
+  $('#game-notify').css('display', 'block');
+  $("#game-notify-text").text("請選擇一張牌。");
+
   //第一關遊戲循環倒數
   var interval;
   var intervalCall = function() {
@@ -230,11 +236,13 @@ function game2(game_score) {
       logFile.push(game1_time + "秒-------------->翻出" + thisValue + "\n")
       $('#game2-half-btn').attr('disabled', false);
       $('#game2-match-btn').attr('disabled', true);
+      $("#game-notify-text").text("再選擇一張牌，若完成相同單字與圖像，即可得分。");
       if (count % 2 !== 0 && thisValue !== nowValue) {
         //條件符合則全部關閉
         logFile.push("配對失敗(C)\n")
         logFileSimple.push("C")
         allFlipBack(thisValue);
+        $("#game-notify-text").text("請選擇一張牌。");
         $('#game2-half-btn').attr('disabled', true);
         $('#game2-match-btn').attr('disabled', false);
         $('.half-line').removeClass('support-shadow');
@@ -253,6 +261,7 @@ function game2(game_score) {
           borderLight();
           logFile.push("配對成功(M)\n")
           logFileSimple.push("M")
+          $("#game-notify-text").text("請選擇一張牌。");
           $('#game2-half-btn').attr('disabled', true);
           $('#game2-match-btn').attr('disabled', false);
           $('.half-line').removeClass('support-shadow');
@@ -360,6 +369,7 @@ function game2(game_score) {
     
     //已達滿次結束遊戲
     function finishCountGame() {
+      $('#game-notify').css('display', 'none');
       setTimeout(function () {
         // alert("第一關遊戲結束")
         $('#nextModalMessage').html("遊戲結束。\n</br>即將進入下一關遊戲")
