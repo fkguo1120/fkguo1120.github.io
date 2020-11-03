@@ -196,22 +196,13 @@
 <body class="bg-light"  onbeforeunload="return myFunction()">
 <div id="game1-content">
 	<!-- <button type="button" onclick="saveStaticDataToFile();">Click to Save</button> -->
-
+	<div id="game-notify" class="alert alert-info" role="alert">
+		<strong id="game-notify-text"></strong>
+	</div>
 	<div class="container">
 		<header class="blog-header py-3">
 			<div class="container">
 				<div class="row flex-nowrap justify-content-between align-items-center">
-					<div class="col-4 text-left">
-						<h5 id="qa_total" class="mb-0">
-							<span class="btn-label bingo_line">賓果線：</span><span id="bingo_line" class="bingo_line"></span><span class="bingo_line"> 條</span>
-							<span class="base_qa_line">題數：</span><span id="topic" class="base_qa_line">1</span><span class="base_qa_line"> / </span><span class="base_qa_line"> 16 </span>
-						</h5>
-					</div>
-					<div>
-						<div class="second_top-time countdown-box">
-							<h4>倒數:<span>90</span>秒</h4>
-						</div>
-					</div>
 					<div id="mission_score_box" class="col-4 text-right">
 						<h5 class="mb-0">
 							<span>任務得分：</span><span id="score">1000</span>
@@ -220,6 +211,17 @@
 					<div id="game_score_box" class="col-4 text-right">
 						<h5 class="mb-0">
 							<span class="btn-label">遊戲得分：</span><span id="game_score">0</span>
+						</h5>
+					</div>
+					<div>
+						<div class="second_top-time countdown-box">
+							<h4>倒數:<span>90</span>秒</h4>
+						</div>
+					</div>
+					<div class="col-4 text-left">
+						<h5 id="qa_total" class="mb-0">
+							<span class="btn-label bingo_line">賓果線：</span><span id="bingo_line" class="bingo_line"></span><span class="bingo_line"> 條</span>
+							<span class="base_qa_line">題數：</span><span id="topic" class="base_qa_line">1</span><span class="base_qa_line"> / </span><span class="base_qa_line"> 16 </span>
 						</h5>
 					</div>
 				</div>
@@ -233,10 +235,10 @@
 					<div class="word_support"></div>
 					<div class="clause_support"></div>
 					<div class="row">
-						<button class="image_toggle btn btn-lg shadow-sm btn-light my-2">圖片提示</button>
-						<button class="word_toggle btn btn-lg shadow-sm btn-light my-2">單字提示</button>
-						<button class="clause_toggle btn btn-lg shadow-sm btn-light my-2">文法提示</button> 
-						<button class="remove_toggle btn btn-lg shadow-sm btn-light my-2">刪去選項</button>
+						<button class="image_toggle btn btn-lg shadow-sm btn-light my-2">圖片提示(-30)</button>
+						<button class="word_toggle btn btn-lg shadow-sm btn-light my-2">單字提示(-30)</button>
+						<button class="clause_toggle btn btn-lg shadow-sm btn-light my-2">文法提示(-30)</button> 
+						<button class="remove_toggle btn btn-lg shadow-sm btn-light my-2">刪去選項(-30)</button>
 					</div>						
 				</div>
 				<div class="col-md-8 question">

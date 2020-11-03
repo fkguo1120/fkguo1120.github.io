@@ -1,6 +1,7 @@
 var logFile = ["任務測驗開始(D)\n"]
 var logFileSimple = ["D"]
 $('#game1StartPage').css('display', 'block');
+$('#game-notify').css('display', 'none');
 
 //學習任務開始
 $('#game1StartBtn').on("click",function() {
@@ -31,7 +32,12 @@ function game1() {
 	var wrongSupport = 0
 	var crossNext = true
 
+	// 遊戲分數先隱藏
 	$('#game_score_box').css('display', 'none');
+
+	//學習任務提示
+	$('#game-notify').css('display', 'block');
+	$("#game-notify-text").text("請於右下方4個選項選擇1項答案，若答題困難，可於左下方使用輔助提示功能。")
 
 	//任務測驗循環倒數
 	var interval;
@@ -71,7 +77,7 @@ function game1() {
 		$('.clause_toggle').attr('disabled', false);
 		$('.word_toggle').attr('disabled', false);
 		wordSupport.hide();
-		score-=50
+		score-=30
 		$('#score').html(score)
 		logFile.push(time + "秒-------------->圖片提示(P)\n")
 		logFileSimple.push("P")
@@ -117,6 +123,8 @@ function game1() {
 				btn3.attr('disabled', true);
 			}
 		}
+		score-=30
+		$('#score').html(score)
 		logFile.push(time + "秒-------------->刪去選項(R)\n")
 		logFileSimple.push("R")
 		$('.clause_toggle').attr('disabled', false);

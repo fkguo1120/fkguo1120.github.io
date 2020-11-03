@@ -92,12 +92,12 @@ var testArray = [
 	},
 	{
 		id:4,
-		question: 'Mary’s parents are very unsatisfied with her performance and decide to stop financial support for her completely.',
+		question: "Mary's parents are very unsatisfied with her performance and decide to stop financial support for her completely.",
 		img: 'images/04.jpg',
 		answers: [
 			{
 				id: 'A',
-				answer:'This is due to the fact that Mary’s parents become poor so they do not have money.',
+				answer:"This is due to the fact that Mary's parents become poor so they do not have money.",
 				isright: false
 			},
 			{
@@ -107,7 +107,7 @@ var testArray = [
 			},
 			{
 				id: 'C',
-				answer:'This is due to the fact that Mary’s parents do not care about her financial support at all.',
+				answer:"This is due to the fact that Mary's parents do not care about her financial support at all.",
 				isright: false
 			},
 			{
@@ -182,7 +182,7 @@ var testArray = [
 	},
 	{
 		id:7,
-		question: 'In addition to reading, Mary’s hobbies include attending the church and playing a variety of digital games with her cousins.',
+		question: "In addition to reading, Mary's hobbies include attending the church and playing a variety of digital games with her cousins.",
 		img: 'images/07.jpg',
 		answers: [
 			{
@@ -422,7 +422,7 @@ var testArray = [
 	},
 	{
 		id:15,
-		question: 'Mary’s success brings home to people the fact that the future of work lies in learning, working, and playing concurrently so we cannot ignore any aspect.',
+		question: "Mary's success brings home to people the fact that the future of work lies in learning, working, and playing concurrently so we cannot ignore any aspect.",
 		img: 'images/15.jpg',
 		answers: [
 			{
