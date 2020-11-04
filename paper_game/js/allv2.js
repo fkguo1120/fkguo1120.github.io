@@ -4,6 +4,8 @@ function game3s(game_score) {
   $('#game1-content').css("background-image", "url('images/game3_bg.jpg')");
   $('#game1-content > div').css("background-color", "transparent");
 
+  $('#game-notify').css('display', 'none');
+
   $('header').css('display', 'none');
   $('#game2StartPage').css('display', 'none');
   $('#game3StartPage').css('display', 'block');
@@ -37,6 +39,9 @@ function game3(game_score) {
   var timeCount = $('.second_top-time span'); //倒數計時dom
   timeCount.text(game2_time);
 
+  //第二關遊戲提示
+  $('#game-notify').css('display', 'block');
+  $("#game-notify-text").text("根據題目區的單字，從左下方按鍵區依序點擊字母。");
 
   //第二關遊戲循環倒數
   var interval;
@@ -134,6 +139,7 @@ function game3(game_score) {
   var obj = [];
   var game2_number = 0
   var game2_now_word = []
+  var game2_word_index = []
   var game2_now_word_length = Number
   var game2_word_left = ""
   var game2_word_left_length = Number
@@ -195,6 +201,7 @@ function game3(game_score) {
       $(this).removeData('value');
       $(this).html('<h3>' + newobj[index]["word"] + '</h3>');
       $(this).data('value', newobj[index]["word"]);
+      $(this).data('index', index);
     });
             
     // DOM渲染亂數單字
@@ -206,6 +213,8 @@ function game3(game_score) {
     newobj = [];
     $('#data_v').html('');
     $('.in').removeClass('pointer_none');
+
+    $("#game-notify-text").text("根據題目區的單字，從左下方按鍵區依序點擊字母。");
     
     // 切割新單字丟回陣列
     $("#data_tw").html(vocabulary[game2_number].tw)
@@ -339,6 +348,9 @@ function game3(game_score) {
     $(this).addClass('pointer_none');
     var bcc = $(this).data('value');
     $('#data_v').append(bcc);
+    var ecc = $(this).data('index');
+    game2_word_index.push(ecc)
+    $("#game-notify-text").text("每題只有1次答題機會，送出前請多確認。");
     // console.log(bcc);
   });
 
@@ -349,6 +361,21 @@ function game3(game_score) {
     $('#data_v').html('');
     $('.in').removeClass('pointer_none');
   });
+
+  // 刪除一個字母
+  $('#game2_backspace_btn').on("click", function() {
+    if($('#data_v').text().length > 1){
+      var splice_word = $('#data_v').text().slice(0, -1);
+      $('#data_v').text(splice_word);
+    }
+
+    if(game2_word_index.length>1){
+      var kkk = game2_word_index[game2_word_index.length - 1]
+      $('.in').eq(kkk).removeClass('pointer_none');
+      game2_word_index.splice(-1,1);
+    }
+
+  })
 
   // 提交點擊之後
   $('#game2_submit_btn').on( "click", function() {
@@ -377,12 +404,12 @@ function game3(game_score) {
         $('#alertModal').modal({backdrop: 'static', keyboard: false})
       }
       game2_number+=1;
-      game2_topic+=1
-      $('#topic').html(game2_topic)
+      game2_topic+=1;
+      $('#topic').html(game2_topic);
       logFile.push(game2_time + "秒-------------->送出-答題錯誤(L)\n")
-      logFileSimple.push("L")
-      game2_check()
-      next_word()
+      logFileSimple.push("L");
+      game2_check();
+      next_word();
     };
     game2_isSupport = false
   });
