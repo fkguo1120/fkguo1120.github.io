@@ -364,12 +364,12 @@ function game3(game_score) {
 
   // 刪除一個字母
   $('#game2_backspace_btn').on("click", function() {
-    if($('#data_v').text().length > 1){
+    if($('#data_v').text().length >= 1){
       var splice_word = $('#data_v').text().slice(0, -1);
       $('#data_v').text(splice_word);
     }
 
-    if(game2_word_index.length>1){
+    if(game2_word_index.length >= 1){
       var kkk = game2_word_index[game2_word_index.length - 1]
       $('.in').eq(kkk).removeClass('pointer_none');
       game2_word_index.splice(-1,1);
