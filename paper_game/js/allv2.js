@@ -41,7 +41,7 @@ function game3(game_score) {
 
   //第二關遊戲提示
   $('#game-notify').css('display', 'block');
-  $("#game-notify-text").text("根據題目區的單字，從左下方按鍵區依序點擊字母。");
+  $("#game-notify-text").text("根據題目區的單字，從左下方按鍵區依序點擊字母並送出。");
 
   //第二關遊戲循環倒數
   var interval;
@@ -164,7 +164,7 @@ function game3(game_score) {
   function game2_init() {
     newobj = [];
     // 切割新單字丟回陣列
-    $("#data_tw").html(vocabulary[game2_number].tw)
+    $("#data_tw").html(game2_number+1+". "+vocabulary[game2_number].tw)
     var game2_now_word = vocabulary[game2_number].en.split("");
     for ( var i = 0; i < game2_now_word.length; i++ ) {
        var new_words = {
@@ -217,7 +217,7 @@ function game3(game_score) {
     $("#game-notify-text").text("根據題目區的單字，從左下方按鍵區依序點擊字母。");
     
     // 切割新單字丟回陣列
-    $("#data_tw").html(vocabulary[game2_number].tw)
+    $("#data_tw").html(game2_number+1+". "+vocabulary[game2_number].tw)
     var game2_now_word = vocabulary[game2_number].en.split("");
     for ( var i = 0; i < game2_now_word.length; i++ ) {
        var new_words = {

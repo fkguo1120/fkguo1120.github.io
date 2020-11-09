@@ -4,6 +4,9 @@ function game2s(game_score) {
   $('#game1-content').css("background-image", "url('images/game2_bg.jpg')");
 
   $('header').css('display', 'none');
+  $('#game2-default-btn').css('display', 'none');
+  $('#game2-half-btn').css('display', 'none');
+  $('#game2-match-btn').css('display', 'none');
   $('#game2StartPage').css('display', 'block');
   $('#game-notify').css('display', 'none');
 
@@ -11,6 +14,9 @@ function game2s(game_score) {
   $('#game2StartBtn').on("click",function() {
     $('#game2StartPage').css('display', 'none');
     $('header').css('display', 'block');
+    $('#game2-default-btn').css('display', 'block');
+    $('#game2-half-btn').css('display', 'inline-block');
+    $('#game2-match-btn').css('display', 'inline-block');
     $('#game2').css('display', 'block');
     game2(s2)
   })

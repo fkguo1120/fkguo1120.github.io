@@ -32,7 +32,7 @@
 		.clause_support,.img_support,.word_support{
 			display: none;
 		}
-		#game2_next_btn,#game2_support_btn,#game2_reset_btn,#game2_submit_btn{
+		#game2_next_btn,#game2_support_btn,#game2_reset_btn,#game2_backspace_btn,#game2_submit_btn{
 			height:40px;
 			margin: 0 5px;
 		}
@@ -67,6 +67,14 @@
 			position: relative;
 			/* transform: translate(0%, 40%); */
 		}
+		#game-notify-container{
+			margin-top: 10px;
+		}
+		/* #game1-content #game-notify-container{
+			top: 55%;
+			transform: translateY(-650%);
+			position: relative;
+		} */
 		@media (max-width: 1366px) {
 			#game1-content > div{
 				top:50%;
@@ -76,6 +84,11 @@
 		#game1-content.game2-content > div{
 			background-color: transparent;
 		}
+		/* #game1-content.game2-content #game-notify-container{
+			top: 45%;
+			transform: translateY(-650%);
+			position: relative;
+		} */
 		@media (max-width: 1366px) {
 			#game1-content.game2-content > div{
 				top:47%;
@@ -196,9 +209,6 @@
 <body class="bg-light"  onbeforeunload="return myFunction()">
 <div id="game1-content">
 	<!-- <button type="button" onclick="saveStaticDataToFile();">Click to Save</button> -->
-	<div id="game-notify" class="alert alert-info" role="alert">
-		<strong id="game-notify-text"></strong>
-	</div>
 	<div class="container">
 		<header class="blog-header py-3">
 			<div class="container">
@@ -227,6 +237,12 @@
 				</div>
 			</div>
 		</header>
+		<h6 id="game-notify-container" class="container" style="max-width: 760px;">
+			<div id="game-notify" class="alert alert-info" role="alert">
+				<strong>提示: </strong>
+				<strong id="game-notify-text"></strong>
+			</div>
+		</h6>
 	
 		<main id="game1" role="main" class="container">
 			<div class="row align-items-end">
@@ -269,8 +285,9 @@
 
 
 		<main id="game2" role="main" class="container" >
+
 			<!-- END 翻轉成功燈箱 -->
-			<div id="cardcard">
+			<div id="cardcard" style="display: inline-block;">
 				<!-- 卡片1 -->
 				<!-- <div class="col-3">
 					<div class="flip_card-container">
@@ -286,8 +303,12 @@
 					</div>
 				</div>	 -->
 			</div>
-			<button id="game2-match-btn" type="button">消除一組配對(+0)</button>
-			<button id="game2-half-btn" type="button">提示範圍(+25)</button>
+			<div style="width: 146px;display: inline-block;margin-left: 20px;">
+				<h6 id="game2-default-btn" style="color:#fff;font-weight: 700;">一般完成配對(+50)</h6>
+				<button id="game2-half-btn" class="my-2" type="button">提示範圍(+25)</button>
+				<button id="game2-match-btn" class="my-2" type="button">消除一組配對(+0)</button>
+			</div>
+
 		</main>
 
 		<main id="game2StartPage" role="main" class="container">
@@ -330,14 +351,19 @@
 					<h1 id="data_v" class="mt-3" style="margin-top: 130px;"></h1>
 				</div>
 	
-				<div style="margin-top: 114px;">
+				<div style="margin-top: 20px;display:inline-block;">
 					<div id="aaa"></div>
-					<button id="game2_next_btn" type="button">下一題(+0)</button>
-					<button id="game2_support_btn" type="button">提示單字(+25)</button>
 					<button id="game2_reset_btn" type="button">重新拼字</button>
 					<button id="game2_backspace_btn" type="button">清除字母</button>
 					<button id="game2_submit_btn" type="button">送出</button>
-				</div>			
+				</div>
+				<div style="margin-top: 20px;display:inline-block; float:right;">
+					<h6 id="game2-default-btn" style="color:#fff;font-weight: 700;">一般答題正確(+50)</h6>
+					<div>
+						<button id="game2_support_btn" type="button">提示單字(+25)</button>
+					</div>
+					<button id="game2_next_btn" type="button">下一題(+0)</button>
+				</div>	
 			</div>	
 			</div>
 		</main>

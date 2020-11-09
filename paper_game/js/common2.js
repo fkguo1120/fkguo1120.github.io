@@ -37,7 +37,7 @@ function game1() {
 
 	//學習任務提示
 	$('#game-notify').css('display', 'block');
-	$("#game-notify-text").text("請於右下方4個選項選擇1項答案，若答題困難，可於左下方使用輔助提示功能。")
+	$("#game-notify-text").text("請於右下方4個選項中，選擇1項答案，若答題困難，可於左下方使用輔助提示功能。")
 
 	//任務測驗循環倒數
 	var interval;
@@ -52,7 +52,7 @@ function game1() {
 			}else{
 				logFile.push(time + "秒-------------->時間到未答題正確(U)\n")
 				logFileSimple.push("U")
-				time = 120
+				time = 90
 				timeCount.text(time);
 				qaStart++
 				showgame2(qaStart)
@@ -108,7 +108,7 @@ function game1() {
 		wordSupport.hide();
 		score-=30
 		$('#score').html(score)
-		logFile.push(time + "秒-------------->主要子句提示(S)\n")
+		logFile.push(time + "秒-------------->文法提示(S)\n")
 		logFileSimple.push("S")
 		check_score()
 	});
@@ -137,7 +137,7 @@ function game1() {
 	function showgame() {
 		// iii = getRandom(0 , qatatle);
 		logFile.push("第1題\n")
-		question.text(testArray[qaStart].question);
+		question.text(topic+". "+testArray[qaStart].question);
 		btn1.text("A. "+ testArray[qaStart].answers[0].answer);
 		btn2.text("B. "+ testArray[qaStart].answers[1].answer);
 		btn3.text("C. "+ testArray[qaStart].answers[2].answer);
@@ -159,7 +159,7 @@ function game1() {
 		if(testArray[qaStart].answers[select].isright === true){
 			// testArray.splice(qatatle, 1);
 			qaStart++
-			time = 120
+			time = 90
 			timeCount.text(time);
 
 			imgSupport.hide();
@@ -236,7 +236,7 @@ function game1() {
 		$('.word_toggle').attr('disabled', false);
 		$('.clause_toggle').attr('disabled', false);
 		$('.remove_toggle').attr('disabled', false);
-		question.text(testArray[qaStart].question);
+		question.text(topic+". "+testArray[qaStart].question);
 		btn1.text("A. "+ testArray[qaStart].answers[0].answer);
 		btn2.text("B. "+ testArray[qaStart].answers[1].answer);
 		btn3.text("C. "+ testArray[qaStart].answers[2].answer);
@@ -287,7 +287,7 @@ function game1() {
 
 	function next_q() {
 		qaStart++
-		time = 120
+		time = 90
 		timeCount.text(time);
 		interval = setInterval(intervalCall, 1000);
 		clauseSupport.hide();
