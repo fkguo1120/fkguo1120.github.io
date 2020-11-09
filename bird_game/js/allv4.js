@@ -127,8 +127,9 @@ function game5(game_score) {
   function startGame() {
     var gameHeight = $('.game5_content').height();
     var moveHeight = gameHeight + 60
+    var iiiii = title_index+1
     //****print題目****//
-    $('.game5_question').html('<h5 style="font-weight: 700;">' + game5QuestionArray[title_index].title + '</h5>')
+    $('.game5_question').html('<h5 style="font-weight: 700;">' + iiiii + ". " + game5QuestionArray[title_index].title + '</h5>')
 
     //背景動畫及月亮
     TweenMax.to(".game5_content", 15, { backgroundPositionX: "-1050px", ease: Linear.easeNone, repeat: -1 });
@@ -273,8 +274,9 @@ function game5(game_score) {
             logFileSimple.push("y")
             //****boxman給予data-value正確答案****//
             $('#boxman_value').data("value",game5AnswerArray[String(title_index)][right_index])
+            var iiiii = title_index+1
             //****print題目****//
-            $('.game5_question').html('<h5 style="font-weight: 700;">' + game5QuestionArray[title_index].title + '</h5>')
+            $('.game5_question').html('<h5 style="font-weight: 700;">' + iiiii + ". " + game5QuestionArray[title_index].title + '</h5>')
             // $('#rrrrr').html(game5AnswerArray[String(title_index)][right_index])
             if (title_index === total_indedx){
               alert("第四關遊戲結束")
@@ -365,20 +367,19 @@ function game5(game_score) {
         if (game.gameTime > 0 && _this.collide1(box)) {
           life -= 20
           $('#barr').attr('aria-valuenow', life).css('width', life+'%');
-          _this.$el.children('img').attr("src","img/cloud_v3.png")
           _this.$el.addClass('ooo')
           // _this = null
           clearInterval(moveTimer)
           $("#boxman_value").attr("src","img/boxman4.png")
           setTimeout(function () {
             $("#boxman_value").attr("src","img/boxman.png")
+            _this.$el.remove();
           }, 200);
           setTimeout(function () {
             $("#boxman_value").attr("src","img/boxman4.png")
           }, 400);
           setTimeout(function () {
             $("#boxman_value").attr("src","img/boxman.png")
-            _this.$el.remove();
           }, 600);
           logFile.push(game5_time + "秒-------------->撞到障礙物(c)\n")
           logFileSimple.push("c")
@@ -509,9 +510,9 @@ function game5(game_score) {
         var blockType = R(0, 1);
         //****print障礙物-附加data-value****//
         if (blockType == 0) {
-          var $block = $('<div class="block" id="' + id + '" data-value="' + game5AnswerArray[String(title_index)][tt_index] + '"><p>' + game5AnswerArray[String(title_index)][tt_index] +'</p><img src="img/cloud_v3.png"></div>');
+          var $block = $('<div class="block" id="' + id + '" data-value="' + game5AnswerArray[String(title_index)][tt_index] + '"><img src="img/bonus.png"></div>');
         } else {
-          var $block = $('<div class="block" id="' + id + '" data-value="' + game5AnswerArray[String(title_index)][tt_index] + '"><p>' + game5AnswerArray[String(title_index)][tt_index] +'</p><img src="img/cloud_v3.png"></div>');
+          var $block = $('<div class="block" id="' + id + '" data-value="' + game5AnswerArray[String(title_index)][tt_index] + '"><img src="img/bonus.png"></div>');
         }
         $('.game5_content').append($block);
         var block = new SupportBlock({ width: 75, height: 75 }, '#' + id + '');

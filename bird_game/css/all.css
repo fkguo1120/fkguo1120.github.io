@@ -644,7 +644,7 @@ img {
 .game__btn {
   position: absolute;
   width: 10%;
-  bottom: 2%;
+  bottom: 25%;
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);

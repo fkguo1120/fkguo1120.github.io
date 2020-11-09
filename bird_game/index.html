@@ -204,7 +204,7 @@ body{
           <!-- 遊戲畫面 -->
           <div class="game5_content">
             <div style="top: 20px;right: 336px;position: absolute;">
-              <img src="img/cloud_v3.png" width="50">
+              <img src="img/bonus.png" width="50">
               X <span id="game5_bonus_count">0</span>
             </div>
             <div class="progress">
@@ -215,8 +215,10 @@ body{
           </div>
           <div class="panel_bottom">
             <div class="game__btn" href="javascript:;"><img src="img/btn1.png"></div>
-            <button id="game5_hp_btn" type="button">補血</button>
-            <button id="game5_time_btn" type="button">加時間</button>
+            <div style="position: absolute;bottom: 0%;left: 50%;-webkit-transform: translateX(-50%);transform: translateX(-50%);z-index: 20;">
+              <button id="game5_hp_btn" type="button">補血+30</button>
+              <button id="game5_time_btn" type="button">時間+30秒</button>
+            </div>
             <img src="img/panel_down.png" alt=""/>
           </div>
           <!-- game5題目區 -->
