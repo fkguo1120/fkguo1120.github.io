@@ -4,7 +4,7 @@ function game5s(game_score) {
   $('.bingo_line').css('display', 'none');
   $('#game1-content').css("background-image", "none");
   $('#game1-content').css("background-color", "#a9d1dd");
-  
+  $('#game-notify-container').css('display', 'none');
 	$('header').css('display', 'none');
 	$('#game4StartPage').css('display', 'none');
 	$('#game5StartPage').css('display', 'block');
@@ -81,6 +81,10 @@ function game5(game_score) {
   $('#topic').html(game5_topic)
   var game5_qatatle = 10
   $("#qatotal").html(game5_qatatle)
+  var game5_bonus = 0
+  $('#game5_bonus_count').text(game5_bonus);
+  $('#game5_hp_btn').attr('disabled', true);
+  $('#game5_time_btn').attr('disabled', true);
   // var timeCount = $('.second_top-time span'); //倒數計時dom
   // timeCount.text(game5_time);
 
@@ -123,8 +127,9 @@ function game5(game_score) {
   function startGame() {
     var gameHeight = $('.game5_content').height();
     var moveHeight = gameHeight + 60
+    var iiiii = title_index+1
     //****print題目****//
-    $('.game5_question').html('<h5 style="font-weight: 700;">' + game5QuestionArray[title_index].title + '</h5>')
+    $('.game5_question').html('<h5 style="font-weight: 700;">' + iiiii + ". " + game5QuestionArray[title_index].title + '</h5>')
 
     //背景動畫及月亮
     TweenMax.to(".game5_content", 15, { backgroundPositionX: "-1050px", ease: Linear.easeNone, repeat: -1 });
@@ -239,7 +244,7 @@ function game5(game_score) {
           }, 600);
           logFile.push(game5_time + "秒-------------->撞到障礙物(c)\n")
           logFileSimple.push("c")
-          if(life===0){
+          if(life<=0){
             game.gameLose();
           }
         }
@@ -269,8 +274,9 @@ function game5(game_score) {
             logFileSimple.push("y")
             //****boxman給予data-value正確答案****//
             $('#boxman_value').data("value",game5AnswerArray[String(title_index)][right_index])
+            var iiiii = title_index+1
             //****print題目****//
-            $('.game5_question').html('<h5 style="font-weight: 700;">' + game5QuestionArray[title_index].title + '</h5>')
+            $('.game5_question').html('<h5 style="font-weight: 700;">' + iiiii + ". " + game5QuestionArray[title_index].title + '</h5>')
             // $('#rrrrr').html(game5AnswerArray[String(title_index)][right_index])
             if (title_index === total_indedx){
               alert("第四關遊戲結束")
@@ -325,11 +331,92 @@ function game5(game_score) {
       }, 10)
     }
 
+    // [類別] 輔助物品
+    var SupportBlock = function (size, selector) {
+      this.position = { x: 1150, y: 0 }
+      GameObj.call(this, size, this.position, selector);
+      this.initPosition();
+    }
+    SupportBlock.prototype = Object.create(GameObj.prototype);
+    SupportBlock.prototype.constructor = SupportBlock.contructor;
+    // [類別] 輔助物品--// 判斷初始位置
+    SupportBlock.prototype.initPosition = function () {
+      var $gameHeight = $('.game5_content').height();
+      var isTop = R(1, 2);
+      this.updateCss();
+      this.move();
+      if (isTop == 1) {
+        this.position.y = ($gameHeight / 3) - this.size.height
+      }else{
+        this.position.y = ($gameHeight / 2) + (this.size.height / 2)
+      }
+      
+    }
+    // [類別] 輔助物品--// 移動
+    SupportBlock.prototype.move = function () {
+      var _this = this;
+      var moveTimer = setInterval(function () {
+
+        _this.position.x -= game.blockv;
+
+        if (_this.position.x < -(_this.size.width)) {
+          _this.$el.remove();
+        }
+        _this.updateCss();
+
+        if (game.gameTime > 0 && _this.collide1(box)) {
+          life -= 20
+          $('#barr').attr('aria-valuenow', life).css('width', life+'%');
+          _this.$el.addClass('ooo')
+          // _this = null
+          clearInterval(moveTimer)
+          $("#boxman_value").attr("src","img/boxman4.png")
+          setTimeout(function () {
+            $("#boxman_value").attr("src","img/boxman.png")
+            _this.$el.remove();
+          }, 200);
+          setTimeout(function () {
+            $("#boxman_value").attr("src","img/boxman4.png")
+          }, 400);
+          setTimeout(function () {
+            $("#boxman_value").attr("src","img/boxman.png")
+          }, 600);
+          logFile.push(game5_time + "秒-------------->撞到障礙物(c)\n")
+          logFileSimple.push("c")
+          if(life===0){
+            game.gameLose();
+          }
+        }
+
+        if (game.gameTime > 0 && _this.collide2(box)) {
+          TweenMax.to(_this.$el, 0.1, { scale: 0});
+          clearInterval(moveTimer)
+          $("#boxman_value").attr("src","img/boxman3.png")
+          setTimeout(function () {
+            $("#boxman_value").attr("src","img/boxman.png")
+          }, 200);
+          setTimeout(function () {
+            $("#boxman_value").attr("src","img/boxman3.png")
+          }, 400);
+          setTimeout(function () {
+            $("#boxman_value").attr("src","img/boxman.png")
+            _this.$el.remove();
+          }, 600);    
+          game5_bonus += 1
+          $('#game5_bonus_count').text(game5_bonus);
+          $('#game5_hp_btn').attr('disabled', false);
+          $('#game5_time_btn').attr('disabled', false);
+        }
+      }, 10)
+    }
+
+
 
     // 遊戲本體
     var Game = function () {
       this.btnControl();
       this.createBlock();
+      this.createSupportBlock();
       this.startGame();
       this.startGameMain();
       this.boxv = 6;
@@ -413,6 +500,29 @@ function game5(game_score) {
         }
       }, 3000)
     }
+    // 遊戲本體--// 創造輔助物品
+    Game.prototype.createSupportBlock = function () {
+      var id = 101;
+      var tt_index = 0;
+      var _this = this;
+      var createTimer = setInterval(function () {
+        
+        var blockType = R(0, 1);
+        //****print障礙物-附加data-value****//
+        if (blockType == 0) {
+          var $block = $('<div class="block" id="' + id + '" data-value="' + game5AnswerArray[String(title_index)][tt_index] + '"><img src="img/bonus.png"></div>');
+        } else {
+          var $block = $('<div class="block" id="' + id + '" data-value="' + game5AnswerArray[String(title_index)][tt_index] + '"><img src="img/bonus.png"></div>');
+        }
+        $('.game5_content').append($block);
+        var block = new SupportBlock({ width: 75, height: 75 }, '#' + id + '');
+        id++;
+        tt_index++;
+        if(tt_index===4){
+          tt_index=0
+        }
+      }, 10000)
+    }
     // 遊戲本體--// 主要時間函數
     Game.prototype.startGameMain = function () {
       var _this = this;
@@ -455,7 +565,7 @@ function game5(game_score) {
       this.boxv = 0;
       console.log('success');
       TweenMax.pauseAll();
-      $('.block').remove();;
+      $('.block').remove();
       $('.game__btn').css('pointer-events', 'none');
       TweenMax.to(".game__boxman", 3, { y: '+=40', ease: Elastic.easeOut.config(1, 0.3), delay: 1 });
       TweenMax.to(".game__boxman", 0.5, { x: 800, ease: Power1.easeIn, delay: 2.5, onComplete: gameWinPop });
@@ -483,6 +593,36 @@ function game5(game_score) {
       save_a()
       save_b()
     })
+
+    $('#game5_hp_btn').on('click', function () {
+      if(game5_bonus>0){
+        game5_bonus -= 1;
+        life += 30
+        if(life>=100){
+          life = 100
+        }
+        $('#barr').attr('aria-valuenow', life).css('width', life + '%');
+      }
+      checkBonus()
+    })
+
+    $('#game5_time_btn').on('click', function () {
+      if(game5_bonus>0){
+        game5_bonus -= 1;
+        game.gameTime += 30;
+        $('.game__time').text(game.gameTime);
+      }
+      checkBonus()
+    })
+
+    function checkBonus(){
+      if(game5_bonus<=0){
+        game5_bonus = 0
+        $('#game5_bonus_count').text(game5_bonus);
+        $('#game5_hp_btn').attr('disabled', true);
+        $('#game5_time_btn').attr('disabled', true);
+      }
+    }
     
     $('.btn__reload').on('click', function () {
       location.reload();

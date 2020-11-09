@@ -460,6 +460,10 @@
 				</div>     
 				<!-- 遊戲畫面 -->
 				<div class="game5_content">
+					<div style="top: 20px;right: 400px;position: absolute;">
+					<img src="img/bonus.png" width="50">
+					X <span id="game5_bonus_count">0</span>
+					</div>
 				  <div class="progress">
 					<div id="barr" class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 100%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">血量</div>
 				  </div>        
@@ -469,6 +473,10 @@
 				</div>
 				<div class="panel_bottom">
 				  <div class="game__btn" href="javascript:;"><img src="img/btn1.png"></div>
+				  <div style="position: absolute;bottom: 0%;left: 50%;-webkit-transform: translateX(-50%);transform: translateX(-50%);z-index: 20;">
+					<button id="game5_hp_btn" type="button">補血+30</button>
+					<button id="game5_time_btn" type="button">時間+30秒</button>
+				  </div>
 				  <img src="img/panel_down.png" alt=""/>
 				</div>
 				<!-- game5題目區 -->
