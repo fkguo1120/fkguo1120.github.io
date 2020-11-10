@@ -21,7 +21,7 @@ function game5s(game_score) {
 function game5(game_score) {
   var highestIntervalId = setInterval(";");
   for (var i = 0 ; i < highestIntervalId ; i++) {
-      clearInterval(i); 
+      clearInterval(i);
   }
   logFile.push("第四關遊戲開始(a)\n")
   logFileSimple.push("a")
@@ -78,7 +78,7 @@ function game5(game_score) {
   var game5_time = 270;
   $('#qa_total').show();
   var game5_topic = 1
-  $('#topic').html(game5_topic)
+  $('#game5_topic').html(game5_topic)
   var game5_qatatle = 10
   $("#qatotal").html(game5_qatatle)
   var game5_bonus = 0
@@ -128,6 +128,8 @@ function game5(game_score) {
     var gameHeight = $('.game5_content').height();
     var moveHeight = gameHeight + 60
     var iiiii = title_index+1
+    $("#game-notify-text").text("點擊中間下方圓形按鈕，控制角色飛行高度，於氣球前方近距離及同一水平線上，即可吸入。");
+
     //****print題目****//
     $('.game5_question').html('<h5 style="font-weight: 700;">' + iiiii + ". " + game5QuestionArray[title_index].title + '</h5>')
 
@@ -269,7 +271,7 @@ function game5(game_score) {
             score5 += 50
             $('#game5_score').text(score5)
             game5_topic ++
-            $('#topic').html(game5_topic)
+            $('#game5_topic').html(game5_topic)
             logFile.push(game5_time + "秒-------------->吸入氣球答題正確(y)\n")
             logFileSimple.push("y")
             //****boxman給予data-value正確答案****//
@@ -456,6 +458,9 @@ function game5(game_score) {
           if (_this.isFalse == true) {
             clearInterval(timer);
             console.log('lose');
+          }
+          if (_this.gameTime == 250) {
+            $("#game-notify-text").text("若吸入bonus，可使用圓形按鈕下方輔助功能。");
           }
           if (_this.gameTime < 0) {
             _this.gameSuccess();
