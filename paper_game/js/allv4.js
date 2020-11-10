@@ -128,7 +128,7 @@ function game5(game_score) {
     var gameHeight = $('.game5_content').height();
     var moveHeight = gameHeight + 60
     var iiiii = title_index+1
-    $("#game-notify-text").text("點擊中間下方圓形按鈕，控制角色飛行高度，於氣球前方近距離及同一水平線上，即可吸入。");
+    $("#game5-notify-text").text("點擊中間下方圓形按鈕，控制角色飛行高度，於氣球前方近距離及同一水平線上，即可吸入。");
 
     //****print題目****//
     $('.game5_question').html('<h5 style="font-weight: 700;">' + iiiii + ". " + game5QuestionArray[title_index].title + '</h5>')
@@ -460,7 +460,7 @@ function game5(game_score) {
             console.log('lose');
           }
           if (_this.gameTime == 250) {
-            $("#game-notify-text").text("若吸入bonus，可使用圓形按鈕下方輔助功能。");
+            $("#game5-notify-text").text("若吸入bonus，可使用圓形按鈕下方輔助功能。");
           }
           if (_this.gameTime < 0) {
             _this.gameSuccess();
