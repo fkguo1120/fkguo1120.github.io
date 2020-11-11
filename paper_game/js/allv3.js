@@ -287,15 +287,15 @@ function game4(game_score) {
 				xtoo_mode = false;
 				for (var i = 0; i < origBoard.length; i++) {
 				if(typeof origBoard[i] == 'number'){
-					cells[i].classList.remove("pointer_none");
+					cells[i].classList.remove("ooxx_pointer_none");
 				}else if(origBoard[i] == winPlayer){
-					cells[i].classList.remove("pointer_none");
+					cells[i].classList.remove("ooxx_pointer_none");
 					cells[i].classList.remove("ready_pointer");
 				}else if(origBoard[i] == huPlayer){
-					cells[i].classList.remove("pointer_none");
+					cells[i].classList.remove("ooxx_pointer_none");
 					cells[i].classList.remove("ready_pointer");
 				}else if(origBoard[i] == aiPlayer){
-					cells[i].classList.remove("pointer_none");
+					cells[i].classList.remove("ooxx_pointer_none");
 					cells[i].classList.remove("ready_pointer");
 				}
 				}
@@ -311,10 +311,10 @@ function game4(game_score) {
 					for (var i = 0; i < origBoard.length; i++) {
 						if(origBoard[i] == huPlayer){
 						cells[i].classList.add("ready_pointer");
-						cells[i].classList.remove("pointer_none");
+						cells[i].classList.remove("ooxx_pointer_none");
 						}else if(origBoard[i] == aiPlayer){
 						cells[i].classList.remove("ready_pointer");
-						cells[i].classList.add("pointer_none");
+						cells[i].classList.add("ooxx_pointer_none");
 						}
 					} 
 					x_ex_o_step = 2
@@ -329,15 +329,15 @@ function game4(game_score) {
 					turn(x_ex_o_step2, aiPlayer);
 					for (var i = 0; i < origBoard.length; i++) {
 						if(typeof origBoard[i] == 'number'){
-							cells[i].classList.remove("pointer_none");
+							cells[i].classList.remove("ooxx_pointer_none");
 						}else if(origBoard[i] == winPlayer){
-							cells[i].classList.remove("pointer_none");
+							cells[i].classList.remove("ooxx_pointer_none");
 							cells[i].classList.remove("ready_pointer");
 						}else if(origBoard[i] == huPlayer){
-							cells[i].classList.remove("pointer_none");
+							cells[i].classList.remove("ooxx_pointer_none");
 							cells[i].classList.remove("ready_pointer");
 						}else if(origBoard[i] == aiPlayer){
-							cells[i].classList.remove("pointer_none");
+							cells[i].classList.remove("ooxx_pointer_none");
 							cells[i].classList.remove("ready_pointer");
 						}
 						
@@ -477,9 +477,9 @@ function game4(game_score) {
 					}
 					for (var i = 0; i < origBoard.length; i++) {
 						if(typeof origBoard[i] == 'number'){
-							cells[i].classList.add("pointer_none");
+							cells[i].classList.add("ooxx_pointer_none");
 						}else if(origBoard[i] == huPlayer){
-							cells[i].classList.add("pointer_none");
+							cells[i].classList.add("ooxx_pointer_none");
 						}else if(origBoard[i] == aiPlayer){
 							cells[i].classList.add("ready_pointer");
 						}
@@ -512,11 +512,11 @@ function game4(game_score) {
 					}
 					for (var i = 0; i < origBoard.length; i++) {
 						if(typeof origBoard[i] == 'number'){
-							cells[i].classList.add("pointer_none");
+							cells[i].classList.add("ooxx_pointer_none");
 						}else if(origBoard[i] == winPlayer){
-							cells[i].classList.add("pointer_none");
+							cells[i].classList.add("ooxx_pointer_none");
 						}else if(origBoard[i] == huPlayer){
-							cells[i].classList.add("pointer_none");
+							cells[i].classList.add("ooxx_pointer_none");
 						}else if(origBoard[i] == aiPlayer){
 							cells[i].classList.add("ready_pointer");
 						}

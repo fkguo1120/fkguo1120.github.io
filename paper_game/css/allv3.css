@@ -204,7 +204,7 @@ label[id="password"], .game4_input[id="password"], #game4_submit[id="password"] 
 }
 
 /*新*/
-.pointer_none {
+.ooxx_pointer_none {
   pointer-events: none;
   background-color: #f1f1f1;
   opacity: 0.3;
