@@ -2,9 +2,14 @@ function game4s(game_score) {
 	var s4 = game_score
 	$('#game1-content').css("background-image", "url('images/game4_bg.jpg')");
   
+	$('#game-notify').css('display', 'none');
+
 	$('header').css('display', 'none');
 	$('#game3StartPage').css('display', 'none');
 	$('#game4StartPage').css('display', 'block');
+
+	$("#xtoo_btn").attr('disabled', true);
+	$("#x_ex_o_btn").attr('disabled', true);
   
 	//遊戲關卡一開始
 	$('#game4StartBtn').on("click",function() {
@@ -15,6 +20,7 @@ function game4s(game_score) {
 	  $('.base_qa_line').css('display', 'none');
 	  game4(s4)
 	})
+	
 }
 
 function game4(game_score) {
@@ -23,6 +29,10 @@ function game4(game_score) {
   for (var i = 0 ; i < highestIntervalId ; i++) {
 	  clearInterval(i); 
   }
+
+  //第三關遊戲提示
+  $('#game-notify').css('display', 'block');
+  $("#game-notify-text").text("請點選1項方格，並回答該方格的問題，若達成賓果線，即可得分。");
 
   logFile.push("第三關遊戲開始(b)\n")
   logFileSimple.push("b")
@@ -63,6 +73,18 @@ function game4(game_score) {
 		var targetId = "";
 		var game4_answer_voice = "";
 		var bingo_line = 0
+
+		//新
+		var bingo_bonus = 3
+		var xtoo_mode = false;
+		var x_ex_o_mode = false;
+		var x_ex_o_step = 1;
+		var x_ex_o_step1 = 30;
+		var x_ex_o_step2 = 31;
+		var xtoo_btn = document.getElementById("xtoo_btn");
+		var x_ex_o_btn = document.getElementById("x_ex_o_btn");
+		const winPlayer = '☆';
+
 		const huPlayer = 'O';
 		const aiPlayer = 'X';
 		const winCombos = [
@@ -120,15 +142,15 @@ function game4(game_score) {
 			},
 			{
 				img: '04.jpg',
-				title: 'Mary’s parents are very unsatisfied with her performance and decide to stop ________ support for her completely.',
+				title: "Mary's parents are very unsatisfied with her performance and decide to stop ________ support for her completely.",
 				answer: 'financial',
-				voice: 'Mary’s parents are very unsatisfied with her performance and decide to stop financial support for her completely.'
+				voice: "Mary's parents are very unsatisfied with her performance and decide to stop financial support for her completely."
 			},
 			{
 				img: '04.jpg',
-				title: 'Mary’s parents want to change her wrong ________ toward her PhD.',
+				title: "Mary's parents want to change her wrong ________ toward her PhD.",
 				answer: 'attitudes',
-				voice: 'Mary’s parents want to change her wrong attitudes toward her PhD.'
+				voice: "Mary's parents want to change her wrong attitudes toward her PhD."
 			},
 			{
 				img: '05.jpg',
@@ -144,15 +166,15 @@ function game4(game_score) {
 			},
 			{
 				img: '06.jpg',
-				title: 'Mary’s favorite ________ is reading.',
+				title: "Mary's favorite ________ is reading.",
 				answer: 'hobby',
-				voice: 'Mary’s favorite hobby is reading.'
+				voice: "Mary's favorite hobby is reading."
 			},
 			{
 				img: '07.jpg',
-				title: 'Mary’s hobbies include attending the church and playing a variety of digital games with her ________',
+				title: "Mary's hobbies include attending the church and playing a variety of digital games with her ________",
 				answer: 'cousins',
-				voice: 'Mary’s hobbies include attending the church and playing a variety of digital games with her cousins'
+				voice: "Mary's hobbies include attending the church and playing a variety of digital games with her cousins"
 			},
 			{
 				img: '08.jpg',
@@ -234,8 +256,8 @@ function game4(game_score) {
 			}
 		]
 
-    const cells = document.querySelectorAll('.cell');
-    // console.log("cellscells",cells)
+		const cells = document.querySelectorAll('.cell');
+		// console.log("cellscells",cells)
     
 		function startGame() {
 			document.querySelector(".endgame").style.display = "none"
@@ -247,21 +269,96 @@ function game4(game_score) {
 				cells[i].style.removeProperty('background-color');
 				// cells[i].addEventListener('click', turnClick, false);
 			}
-			const cells_img = document.querySelectorAll('.cell_img');
+			const cells_img = document.querySelectorAll('.cell');
 			for (var i = 0; i < cells_img.length; i++) {
 				cells_img[i].addEventListener('click', turnClick, false);
 			}
 			$('#bingo_line').html(bingo_line);
+			$('#op_line').html(bingo_bonus);
 
 		}
 
 		function turnClick(square) {
 			targetId = square.target.id
 			// console.log("square.target.id",targetId);
-			$('.game4_input').val('');
-			$("#game4_popup").css("display","block");
-			$('.game4_title').html('<p>'+ game4Array[targetId].title+'</p>')
-			$("#game4_popup_img").html('<img  src="images/' + game4Array[targetId].img + '"/>')
+			//新
+			if(xtoo_mode){
+				turn(square.target.id, huPlayer);
+				xtoo_mode = false;
+				for (var i = 0; i < origBoard.length; i++) {
+				if(typeof origBoard[i] == 'number'){
+					cells[i].classList.remove("pointer_none");
+				}else if(origBoard[i] == winPlayer){
+					cells[i].classList.remove("pointer_none");
+					cells[i].classList.remove("ready_pointer");
+				}else if(origBoard[i] == huPlayer){
+					cells[i].classList.remove("pointer_none");
+					cells[i].classList.remove("ready_pointer");
+				}else if(origBoard[i] == aiPlayer){
+					cells[i].classList.remove("pointer_none");
+					cells[i].classList.remove("ready_pointer");
+				}
+				}
+				xtoo_btn.disabled = false;
+				x_ex_o_btn.disabled = false;
+				return
+			}
+			//新
+			if(x_ex_o_mode){
+				if( x_ex_o_step === 1 ){
+					x_ex_o_step1 = square.target.id
+					cells[square.target.id].classList.add("x_ex_o_pointer_none");
+					for (var i = 0; i < origBoard.length; i++) {
+						if(origBoard[i] == huPlayer){
+						cells[i].classList.add("ready_pointer");
+						cells[i].classList.remove("pointer_none");
+						}else if(origBoard[i] == aiPlayer){
+						cells[i].classList.remove("ready_pointer");
+						cells[i].classList.add("pointer_none");
+						}
+					} 
+					x_ex_o_step = 2
+					$("#game-notify-text").text("再選擇要交換的O項目。"); 
+					return
+				}
+				if( x_ex_o_step === 2 ){
+					x_ex_o_step2 = square.target.id
+					cells[square.target.id].classList.add("x_ex_o_pointer_none");
+					origBoard[x_ex_o_step1] = huPlayer;
+					document.getElementById(x_ex_o_step1).innerText = huPlayer;
+					turn(x_ex_o_step2, aiPlayer);
+					for (var i = 0; i < origBoard.length; i++) {
+						if(typeof origBoard[i] == 'number'){
+							cells[i].classList.remove("pointer_none");
+						}else if(origBoard[i] == winPlayer){
+							cells[i].classList.remove("pointer_none");
+							cells[i].classList.remove("ready_pointer");
+						}else if(origBoard[i] == huPlayer){
+							cells[i].classList.remove("pointer_none");
+							cells[i].classList.remove("ready_pointer");
+						}else if(origBoard[i] == aiPlayer){
+							cells[i].classList.remove("pointer_none");
+							cells[i].classList.remove("ready_pointer");
+						}
+						
+						if(cells[i].classList.contains("x_ex_o_pointer_none")){
+							cells[i].classList.remove("x_ex_o_pointer_none");
+						}
+					}
+					x_ex_o_step = 1
+					x_ex_o_mode = false
+					xtoo_btn.disabled = false;
+					x_ex_o_btn.disabled = false;
+					return
+				}
+			}
+			if (typeof origBoard[square.target.id] == 'number') {
+				
+				$('.game4_input').val('');
+				$("#game4_popup").css("display","block");
+				$('.game4_title').html('<p>'+ game4Array[targetId].title+'</p>')
+				$("#game4_popup_img").html('<img  src="images/' + game4Array[targetId].img + '"/>')
+			}
 			// if (typeof origBoard[square.target.id] == 'number') {
 			// 	turn(square.target.id, huPlayer);
 			// 	if (!checkTie()) turn(bestSpot(), aiPlayer); 
@@ -287,6 +384,17 @@ function game4(game_score) {
 			document.getElementById(squareId).innerText = player;
 			let gameWon = checkWin(origBoard, player);
 			// if (gameWon) gameOver(gameWon);
+			if(origBoard.includes(aiPlayer)&&origBoard.includes(huPlayer)){
+				if(bingo_bonus>=1){
+					$("#xtoo_btn").attr('disabled', false);
+					$("#x_ex_o_btn").attr('disabled', false);
+					$("#game-notify-text").text("適當時機，可以使用3次機會的輔助功能，幫助你有效得到賓果線。");
+				}else{
+					$("#xtoo_btn").attr('disabled', true);
+					$("#x_ex_o_btn").attr('disabled', true);
+					$("#game-notify-text").text("請點選1項方格，並回答該方格的問題，若達成賓果線，即可得分。");
+				}
+			}
 		}
 
 		function checkWin(board, player) {
@@ -349,6 +457,79 @@ function game4(game_score) {
 			// return 111
 		}
 
+		// 新
+		function xtoo() {
+			if(origBoard.includes(aiPlayer)){
+				if(bingo_bonus>=1){
+					xtoo_btn.disabled = true;
+					x_ex_o_btn.disabled = true;
+					xtoo_mode = true
+					bingo_bonus -= 1
+					if(bingo_bonus >= 1){
+						$('#op_line').html(bingo_bonus)
+						$("#xtoo_btn").attr('disabled', false);
+						$("#x_ex_o_btn").attr('disabled', false);
+					}else{
+						bingo_bonus = 0
+						$('#op_line').html(0)
+						$("#xtoo_btn").attr('disabled', true);
+						$("#x_ex_o_btn").attr('disabled', true);
+					}
+					for (var i = 0; i < origBoard.length; i++) {
+						if(typeof origBoard[i] == 'number'){
+							cells[i].classList.add("pointer_none");
+						}else if(origBoard[i] == huPlayer){
+							cells[i].classList.add("pointer_none");
+						}else if(origBoard[i] == aiPlayer){
+							cells[i].classList.add("ready_pointer");
+						}
+					}
+					$("#game-notify-text").text("請選擇1個X項目，該項目即可變成O。");     
+				}
+			}
+		}
+		$('#xtoo_btn').on( "click", function() {
+			xtoo()
+		});
+		
+		// 新
+		function x_ex_o() {
+			if(origBoard.includes(aiPlayer)&&origBoard.includes(huPlayer)){
+				if(bingo_bonus>=1){
+					xtoo_btn.disabled = true;
+					x_ex_o_btn.disabled = true;
+					x_ex_o_mode = true
+					bingo_bonus -= 1
+					if(bingo_bonus >= 1){
+						$('#op_line').html(bingo_bonus)
+						$("#xtoo_btn").attr('disabled', false);
+						$("#x_ex_o_btn").attr('disabled', false);
+					}else{
+						bingo_bonus = 0
+						$('#op_line').html(0)
+						$("#xtoo_btn").attr('disabled', true);
+						$("#x_ex_o_btn").attr('disabled', true);
+					}
+					for (var i = 0; i < origBoard.length; i++) {
+						if(typeof origBoard[i] == 'number'){
+							cells[i].classList.add("pointer_none");
+						}else if(origBoard[i] == winPlayer){
+							cells[i].classList.add("pointer_none");
+						}else if(origBoard[i] == huPlayer){
+							cells[i].classList.add("pointer_none");
+						}else if(origBoard[i] == aiPlayer){
+							cells[i].classList.add("ready_pointer");
+						}
+					}  
+					$("#game-notify-text").text("請先選擇要交換的X項目。");        
+				}
+			}
+		}
+		$('#x_ex_o_btn').on( "click", function() {
+			x_ex_o()
+		});
+		
+
 		function gameOver(gameWon) {
 			// console.log("gameWongameWongameWongameWon",gameWon)
 			for (let index of winCombos[gameWon.index]) {
@@ -396,7 +577,6 @@ function game4(game_score) {
 			if($("input[type=text][name=username]").val()===game4Array[targetId].answer){
 				$("input[type=text][name=username]").val('')
 				submitClick(targetId)
-				$("#game4_popup").css("display","none");
 			}else{
 				$("input[type=text][name=username]").val('')
 				$('#alertModalMessage').html("答錯了!")

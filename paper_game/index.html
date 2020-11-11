@@ -50,7 +50,7 @@
 		#data_v{
 			border: 1px #000 solid;
     		padding: 1px 5px 10px 5px;
-			height:60px;
+			height: 60px;
 			margin-top: 130px!important;
 		}
 		#game1-content{
@@ -207,7 +207,7 @@
 	</style>
 </head>
 
-<body class="bg-light"  onbeforeunload="return myFunction()">
+<body class="bg-light" onbeforeunload="return myFunction()">
 <div id="game1-content">
 	<!-- <button type="button" onclick="saveStaticDataToFile();">Click to Save</button> -->
 	<div class="container">
@@ -231,7 +231,8 @@
 					</div>
 					<div class="col-4 text-left">
 						<h5 id="qa_total" class="mb-0">
-							<span class="btn-label bingo_line">賓果線：</span><span id="bingo_line" class="bingo_line"></span><span class="bingo_line"> 條</span>
+							<span class="btn-label bingo_line">賓果線：</span><span id="bingo_line" class="bingo_line"></span><span class="bingo_line">&nbsp;條</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<span class="btn-label bingo_line">機會次數：</span><span id="op_line" class="bingo_line">3;</span><span class="bingo_line">&nbsp;/&nbsp;3</span>
 							<span class="base_qa_line">題數：</span><span id="topic" class="base_qa_line">1</span><span class="base_qa_line"> / </span><span class="base_qa_line"> 16 </span>
 						</h5>
 					</div>
@@ -323,7 +324,7 @@
 			</div>
 		</main>
 	
-		<main id="game3" role="main" class="container" >
+		<main id="game3" role="main" class="container">
 			<div class="row flex-nowrap">
 			<div class="col-7" style="max-width: 524px;">
 				<div class="out">
@@ -388,46 +389,55 @@
 					  </div>
 				</div>
 			</div> -->
-			<table>
-				<tr>
-				  <td class="cell" id="0"></td>
-				  <td class="cell" id="1"></td>
-				  <td class="cell" id="2"></td>
-				  <td class="cell" id="3"></td>
-				  <td class="cell" id="4"></td>
-				</tr>
-				<tr>
-				  <td class="cell" id="5"></td>
-				  <td class="cell" id="6"></td>
-				  <td class="cell" id="7"></td>
-				  <td class="cell" id="8"></td>
-				  <td class="cell" id="9"></td>
-				</tr>
-				<tr>
-				  <td class="cell" id="10"></td>
-				  <td class="cell" id="11"></td>
-				  <td class="cell" id="12"></td>
-				  <td class="cell" id="13"></td>
-				  <td class="cell" id="14"></td>
-				</tr>
-				 <tr>
-				  <td class="cell" id="15"></td>
-				  <td class="cell" id="16"></td>
-				  <td class="cell" id="17"></td>
-				  <td class="cell" id="18"></td>
-				  <td class="cell" id="19"></td>
-				</tr>
-				<tr>
-					<td class="cell" id="20"></td>
-					<td class="cell" id="21"></td>
-					<td class="cell" id="22"></td>
-					<td class="cell" id="23"></td>
-					<td class="cell" id="24"></td>
-				</tr>
-			  </table>
-			  <div class="endgame">
-				<div class="text"></div>
-			  </div>
+			<div class="row align-items-center">
+				<table>
+					<tr>
+					<td class="cell" id="0"></td>
+					<td class="cell" id="1"></td>
+					<td class="cell" id="2"></td>
+					<td class="cell" id="3"></td>
+					<td class="cell" id="4"></td>
+					</tr>
+					<tr>
+					<td class="cell" id="5"></td>
+					<td class="cell" id="6"></td>
+					<td class="cell" id="7"></td>
+					<td class="cell" id="8"></td>
+					<td class="cell" id="9"></td>
+					</tr>
+					<tr>
+					<td class="cell" id="10"></td>
+					<td class="cell" id="11"></td>
+					<td class="cell" id="12"></td>
+					<td class="cell" id="13"></td>
+					<td class="cell" id="14"></td>
+					</tr>
+					<tr>
+					<td class="cell" id="15"></td>
+					<td class="cell" id="16"></td>
+					<td class="cell" id="17"></td>
+					<td class="cell" id="18"></td>
+					<td class="cell" id="19"></td>
+					</tr>
+					<tr>
+						<td class="cell" id="20"></td>
+						<td class="cell" id="21"></td>
+						<td class="cell" id="22"></td>
+						<td class="cell" id="23"></td>
+						<td class="cell" id="24"></td>
+					</tr>
+				</table>
+				<div class="endgame">
+					<div class="text"></div>
+				</div>
+				<div style="width:150px;margin-left: 20px;">
+					<h6 id="game2-default-btn" style="color:#fff;font-weight: 700;">1條賓果線(+50)</h6>
+					<!--新-->
+					<button id="xtoo_btn" class="my-2">X變成O</button>
+					<!--新-->
+					<button id="x_ex_o_btn" class="my-2">X與O交換</button>
+				</div>
+			</div>
 	
 		</main>
 
