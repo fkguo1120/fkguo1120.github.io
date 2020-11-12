@@ -302,6 +302,8 @@ function game3(game_score) {
 
   // 提示單字
   $('#game2_support_btn').on( "click", function() {
+    logFile.push(game2_time + "秒-------------->提示單字按鈕(J)\n")
+    logFileSimple.push("J")
     game2_isSupport = true
     game2_support_word()
   })
@@ -356,8 +358,6 @@ function game3(game_score) {
 
   // 重新輸入單字按鈕
   $('#game2_reset_btn').on( "click", function() {
-    logFile.push(game2_time + "秒-------------->重新拼字(J)\n")
-    logFileSimple.push("J")
     $('#data_v').html('');
     $('.in').removeClass('pointer_none');
   });

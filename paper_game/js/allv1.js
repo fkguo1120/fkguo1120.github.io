@@ -322,6 +322,8 @@ function game2(game_score) {
 
     //消除一組配對
     $('#game2-match-btn').on("click",function() {
+      logFile.push(game1_time + "秒-------------->消除一組配對(T)\n")
+      logFileSimple.push("T")
       gameMatch()
     });
     //消除一組配對
@@ -357,6 +359,8 @@ function game2(game_score) {
       gameHalf()
       $('#game2-half-btn').attr('disabled', true);
       isSupport = true
+      logFile.push(game1_time + "秒-------------->提示範圍(O)\n")
+      logFileSimple.push("O")
     });
 
     //左右範圍提示

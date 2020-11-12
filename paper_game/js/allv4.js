@@ -600,6 +600,8 @@ function game5(game_score) {
     })
 
     $('#game5_hp_btn').on('click', function () {
+      logFile.push(game5_time + "秒-------------->補血+30按鈕(p)\n")
+      logFileSimple.push("p")
       if(game5_bonus>0){
         game5_bonus -= 1;
         life += 30
@@ -612,6 +614,8 @@ function game5(game_score) {
     })
 
     $('#game5_time_btn').on('click', function () {
+      logFile.push(game5_time + "秒-------------->時間+30秒按鈕(t)\n")
+      logFileSimple.push("t")
       if(game5_bonus>0){
         game5_bonus -= 1;
         game.gameTime += 30;

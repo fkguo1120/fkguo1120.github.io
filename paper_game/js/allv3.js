@@ -498,6 +498,8 @@ function game4(game_score) {
 			}
 		}
 		$('#xtoo_btn').on( "click", function() {
+			logFile.push(game4_time + "秒-------------->X變成O按鈕(i)\n")
+			logFileSimple.push("i")
 			xtoo()
 		});
 		
@@ -530,6 +532,8 @@ function game4(game_score) {
 			}
 		}
 		$('#x_ex_o_btn').on( "click", function() {
+			logFile.push(game4_time + "秒-------------->X與O交換按鈕(x)\n")
+			logFileSimple.push("x")
 			x_ex_o()
 		});
 		
@@ -591,8 +595,7 @@ function game4(game_score) {
 		});
 
 		$('.game4_input').focus(function() {
-			logFile.push(game4_time + "秒-------------->輸入單字(i)\n")
-			logFileSimple.push("i")
+
 		});
 
 		var synth = window.speechSynthesis;
