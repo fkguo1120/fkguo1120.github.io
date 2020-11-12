@@ -286,21 +286,28 @@ function game4(game_score) {
 				turn(square.target.id, huPlayer);
 				xtoo_mode = false;
 				for (var i = 0; i < origBoard.length; i++) {
-				if(typeof origBoard[i] == 'number'){
-					cells[i].classList.remove("ooxx_pointer_none");
-				}else if(origBoard[i] == winPlayer){
-					cells[i].classList.remove("ooxx_pointer_none");
-					cells[i].classList.remove("ready_pointer");
-				}else if(origBoard[i] == huPlayer){
-					cells[i].classList.remove("ooxx_pointer_none");
-					cells[i].classList.remove("ready_pointer");
-				}else if(origBoard[i] == aiPlayer){
-					cells[i].classList.remove("ooxx_pointer_none");
-					cells[i].classList.remove("ready_pointer");
+					if(typeof origBoard[i] == 'number'){
+						cells[i].classList.remove("ooxx_pointer_none");
+					}else if(origBoard[i] == winPlayer){
+						cells[i].classList.remove("ooxx_pointer_none");
+						cells[i].classList.remove("ready_pointer");
+					}else if(origBoard[i] == huPlayer){
+						cells[i].classList.remove("ooxx_pointer_none");
+						cells[i].classList.remove("ready_pointer");
+					}else if(origBoard[i] == aiPlayer){
+						cells[i].classList.remove("ooxx_pointer_none");
+						cells[i].classList.remove("ready_pointer");
+					}
 				}
+				if(origBoard.includes(aiPlayer)){
+					if(bingo_bonus>=1){
+						xtoo_btn.disabled = false;
+					}else{
+						xtoo_btn.disabled = true;
+					}
+				}else{
+					xtoo_btn.disabled = true;
 				}
-				xtoo_btn.disabled = false;
-				x_ex_o_btn.disabled = false;
 				return
 			}
 			//新
@@ -347,8 +354,15 @@ function game4(game_score) {
 					}
 					x_ex_o_step = 1
 					x_ex_o_mode = false
-					xtoo_btn.disabled = false;
-					x_ex_o_btn.disabled = false;
+					if(origBoard.includes(aiPlayer)&&origBoard.includes(huPlayer)){
+						if(bingo_bonus>=1){
+							x_ex_o_btn.disabled = false;
+						}else{
+							x_ex_o_btn.disabled = true;
+						}
+					}else{
+						x_ex_o_btn.disabled = true;
+					}
 					return
 				}
 			}
@@ -461,19 +475,14 @@ function game4(game_score) {
 		function xtoo() {
 			if(origBoard.includes(aiPlayer)){
 				if(bingo_bonus>=1){
-					xtoo_btn.disabled = true;
-					x_ex_o_btn.disabled = true;
+					xtoo_btn.disabled = false;
 					xtoo_mode = true
 					bingo_bonus -= 1
 					if(bingo_bonus >= 1){
 						$('#op_line').html(bingo_bonus)
-						$("#xtoo_btn").attr('disabled', false);
-						$("#x_ex_o_btn").attr('disabled', false);
 					}else{
 						bingo_bonus = 0
 						$('#op_line').html(0)
-						$("#xtoo_btn").attr('disabled', true);
-						$("#x_ex_o_btn").attr('disabled', true);
 					}
 					for (var i = 0; i < origBoard.length; i++) {
 						if(typeof origBoard[i] == 'number'){
@@ -496,19 +505,14 @@ function game4(game_score) {
 		function x_ex_o() {
 			if(origBoard.includes(aiPlayer)&&origBoard.includes(huPlayer)){
 				if(bingo_bonus>=1){
-					xtoo_btn.disabled = true;
-					x_ex_o_btn.disabled = true;
+					x_ex_o_btn.disabled = false;
 					x_ex_o_mode = true
 					bingo_bonus -= 1
 					if(bingo_bonus >= 1){
 						$('#op_line').html(bingo_bonus)
-						$("#xtoo_btn").attr('disabled', false);
-						$("#x_ex_o_btn").attr('disabled', false);
 					}else{
 						bingo_bonus = 0
 						$('#op_line').html(0)
-						$("#xtoo_btn").attr('disabled', true);
-						$("#x_ex_o_btn").attr('disabled', true);
 					}
 					for (var i = 0; i < origBoard.length; i++) {
 						if(typeof origBoard[i] == 'number'){
