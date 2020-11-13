@@ -229,6 +229,7 @@ function game5(game_score) {
         if (game.gameTime > 0 && _this.collide1(box)) {
           life -= 20
           $('#barr').attr('aria-valuenow', life).css('width', life+'%');
+          $('#hppp').html(life)
           _this.$el.children('img').attr("src","img/cloud_v3.png")
           _this.$el.addClass('ooo')
           // _this = null
@@ -298,6 +299,7 @@ function game5(game_score) {
             clearInterval(moveTimer)
             _this.$el.children('img').attr("src","img/cloud_v2.png")
             $('#barr').attr('aria-valuenow', life).css('width', life + '%');
+            $('#hppp').html(life)
             logFile.push(game5_time + "秒-------------->吸入氣球答題錯誤(n)\n")
             logFileSimple.push("n")
             if(life===0){
@@ -369,6 +371,7 @@ function game5(game_score) {
         if (game.gameTime > 0 && _this.collide1(box)) {
           life -= 20
           $('#barr').attr('aria-valuenow', life).css('width', life+'%');
+          $('#hppp').html(life)
           _this.$el.addClass('ooo')
           // _this = null
           clearInterval(moveTimer)
@@ -609,6 +612,7 @@ function game5(game_score) {
           life = 100
         }
         $('#barr').attr('aria-valuenow', life).css('width', life + '%');
+        $('#hppp').html(life)
       }
       checkBonus()
     })
@@ -637,6 +641,7 @@ function game5(game_score) {
       location.reload();
     })
     var game = new Game();
+    $('#hppp').html(life)
     
 
     function R(min, max) {

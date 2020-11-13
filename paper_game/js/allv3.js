@@ -308,6 +308,10 @@ function game4(game_score) {
 				}else{
 					xtoo_btn.disabled = true;
 				}
+				if(bingo_bonus<1){
+					xtoo_btn.disabled = true;
+					x_ex_o_btn.disabled = true;
+				}
 				return
 			}
 			//新
@@ -361,6 +365,10 @@ function game4(game_score) {
 							x_ex_o_btn.disabled = true;
 						}
 					}else{
+						x_ex_o_btn.disabled = true;
+					}
+					if(bingo_bonus<1){
+						xtoo_btn.disabled = true;
 						x_ex_o_btn.disabled = true;
 					}
 					return
