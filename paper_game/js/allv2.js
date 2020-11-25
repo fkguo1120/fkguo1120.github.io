@@ -1,7 +1,7 @@
 function game3s(game_score) {
   var s3 = game_score
   $('#game1-content').removeClass("game2-content");
-  $('#game1-content').css("background-image", "url('images/game3_bg.jpg')");
+  $('#game1-content').css("background-image", "url('images/game3_bg.png')");
   $('#game1-content > div').css("background-color", "transparent");
 
   $('#game-notify').css('display', 'none');
