@@ -43,7 +43,7 @@ function game2(game_score) {
   logFileSimple.push("A")
   $('#qa_total').hide();
   var score1 = game_score
-  var game1_time = 90;
+  var game1_time = 180;
   var timeCount = $('.second_top-time span'); //倒數計時dom
   timeCount.text(game1_time);
 

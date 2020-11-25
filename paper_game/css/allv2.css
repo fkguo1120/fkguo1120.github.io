@@ -5,6 +5,13 @@
   padding: 20px;
   background-color: #251c0bad;
 }
+@media (min-width: 768px) and (max-width: 1080px){
+  #game3 .out {
+    width: 441px;
+    height: 440px;
+    padding: 10px;
+  }
+}
 #game3 .in {
   width: 110px;
   height: 110px;
@@ -15,6 +22,12 @@
   margin: 5px;
   color: #fff;
   border: solid 3px #35afa4;
+}
+@media (min-width: 768px) and (max-width: 1080px){
+  #game3 .in {
+    width: 95px;
+    height: 95px;
+  }
 }
 #game3 .in:hover {
   border: 3px solid #fff;
@@ -39,11 +52,10 @@
   border: 1px solid black;
 }
 #game3 #data_v{
-  border: 3px #379e93 solid;
+  border-bottom: 3px #379e93 solid;
   padding: 1px 5px 10px 5px;
   height: 60px;
-  margin-top: 130px!important;
-  background-color: #122e31;
+  /* background-color: #122e31; */
   overflow: hidden;
 }
 #game3 .ddd {

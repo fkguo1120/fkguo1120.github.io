@@ -75,7 +75,7 @@ function game5(game_score) {
     "9":["goes","was","is","goes",0]
   }
 
-  var game5_time = 270;
+  var game5_time = 480;
   $('#qa_total').show();
   var game5_topic = 1
   $('#game5_topic').html(game5_topic)
@@ -427,7 +427,7 @@ function game5(game_score) {
       this.boxv = 6;
       this.blockv = 1;
       this.touch = false;
-      this.gameTime = 270;
+      this.gameTime = 480;
       this.isFalse = false;
     }
     // 遊戲本體--// 按鈕控制
@@ -462,7 +462,7 @@ function game5(game_score) {
             clearInterval(timer);
             console.log('lose');
           }
-          if (_this.gameTime == 250) {
+          if (_this.gameTime == 440) {
             $("#game5-notify-text").text("若吸入bonus，可使用圓形按鈕下方輔助功能。");
           }
           if (_this.gameTime < 0) {

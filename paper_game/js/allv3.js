@@ -40,7 +40,7 @@ function game4(game_score) {
   var score4 = game_score
   $('#game_score').text(score4);
 
-  var game4_time = 300;
+  var game4_time = 900;
   var timeCount = $('.second_top-time span'); //倒數計時dom
   timeCount.text(game4_time);
   //第三關遊戲循環倒數
