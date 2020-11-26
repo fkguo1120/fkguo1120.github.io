@@ -175,8 +175,8 @@
     }
     .progress{
       width: 200px;
-      top: 35px;
-      right: 180px;
+      top: 33px;
+      right: 145px;
       position: absolute;
       z-index: 99999;
 	}
@@ -356,16 +356,16 @@
 					<h1 id="data_tw" class="mt-3"></h1>
 					<h1 id="game2_support" class="mt-3" style="font-size: 2.3rem;"></h1>
 					<div style="margin-top: 95px;">
-						<h5>請於左側依序鍵入(完整)單字</h5>
+						<h5>⊿請於左側依序點擊(完整)單字</h5>
 						<h1 id="data_v"></h1>
 					</div>
 				</div>
 	
 				<div style="margin-top: 20px;display:inline-block;">
 					<div id="aaa"></div>
-					<button id="game2_reset_btn" type="button">重新拼字</button>
-					<button id="game2_backspace_btn" type="button">清除字母</button>
-					<button id="game2_submit_btn" type="button">送出</button>
+					<!-- <button id="game2_reset_btn" type="button">重新拼字</button> -->
+					<button id="game2_backspace_btn" class="game2_backspace_btn" type="button">清除字母</button>
+					<button id="game2_submit_btn" class="game2_submit_btn" type="button">送出</button>
 				</div>
 				<div style="margin-top: 20px;display:inline-block; float:right;">
 					<h6 id="game2-default-btn" style="color:#fff;font-weight: 700;">一般答題正確(+50)</h6>
@@ -486,14 +486,14 @@
 				</div>     
 				<!-- 遊戲畫面 -->
 				<div class="game5_content">
-					<div style="top: 20px;right: 400px;position: absolute;">
+					<div style="top: 20px;right: 357px;position: absolute;">
 					<img src="img/bonus.png" width="50">
 					X <span id="game5_bonus_count">0</span>
 					</div>
 				  <div class="progress">
 					<div id="barr" class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 100%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"><span id="hppp"></span></div>
 				  </div>        
-				  <p class="game__time">480</p>
+				  <p class="game__time">360</p>
 				  <span id="game5_score_box" class="btn-label">遊戲得分：</span><span id="game5_score">0</span>
 				  <div class="game__boxman"><img id="boxman_value" src="img/boxman.png"></div>
 				</div>

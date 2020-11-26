@@ -39,6 +39,16 @@
   margin-top: 20%;
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
 }
+.game2_backspace_btn,.game2_submit_btn{
+  background-color: #122e31;
+  border-radius: 10px;
+  margin: 5px;
+  color: #fff;
+  border: solid 3px #35afa4;
+}
+.game2_backspace_btn:hover,.game2_submit_btn:hover{
+  border: 3px solid #fff;
+}
 #game3 .in.pointer_none {
   background-color: #35afa4;
   pointer-events: none;
