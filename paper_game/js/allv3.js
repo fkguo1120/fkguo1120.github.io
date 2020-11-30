@@ -444,7 +444,7 @@ function game4(game_score) {
 					// console.log("gameWongameWongameWon",gameWon)
 					for (var i = 0; i < winCombos[index].length; i++) {
 						var bbb = winCombos[index][i]
-						document.getElementById(bbb).style.backgroundColor = "blue"
+						document.getElementById(bbb).style.backgroundColor = "#55d6c1"
 					}
 
 					// gameWon = {index: index, player: huPlayer};

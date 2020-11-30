@@ -87,7 +87,7 @@ function game3(game_score) {
       en:"devote"
     },
     {
-      tw:"積極的(adj)",
+      tw:"被激勵的(adj)",
       en:"motivated"
     },
     {
@@ -99,14 +99,6 @@ function game3(game_score) {
       en:"attitude"
     },
     {
-      tw:"興趣(n)",
-      en:"hobby"
-    },
-    {
-      tw:"堂兄弟(n)",
-      en:"cousin"
-    },
-    {
       tw:"批判的(adj)",
       en:"critical"
     },
@@ -115,24 +107,8 @@ function game3(game_score) {
       en:"exhaust"
     },
     {
-      tw:"討厭(v)",
-      en:"disfavor"
-    },
-    {
       tw:"保險(n)",
       en:"insurance"
-    },
-    {
-      tw:"非凡的(adj)",
-      en:"remarkable"
-    },
-    {
-      tw:"同時地(adv)",
-      en:"concurrently"
-    },
-    {
-      tw:"不必要的(adj)",
-      en:"needless"
     }
   ];
   var newobj = [];
@@ -144,6 +120,8 @@ function game3(game_score) {
   var game2_word_left = ""
   var game2_word_left_length = Number
   var game2_isSupport = false
+
+  $('#qa_total_count').html(vocabulary.length)
   
   //用Math.random()函式生成0~1之間的隨機數與0.5比較，返回-1或1
   function randomsort(a, b) {
@@ -379,6 +357,11 @@ function game3(game_score) {
 
   // 提交點擊之後
   $('#game2_submit_btn').on( "click", function() {
+    $('#game3SubmitCheckModalMessage').html("您送出的拼字為: <b>"+ $('#data_v').html() + "</b>\n</br>確定送出?")
+    $('#game3SubmitCheckModal').modal({backdrop: 'static', keyboard: false})
+  });
+
+  $('#game3SubmitCheckRight').on( "click", function() {
     if($('#data_v').html()===vocabulary[game2_number].en){
       if(game2_number<=(vocabulary.length)){
         $('#alertModalMessage').html("很棒!答對了!")
@@ -412,7 +395,11 @@ function game3(game_score) {
       next_word();
     };
     game2_isSupport = false
-  });
+    $('#game3SubmitCheckModal').modal('hide')
+  })
+  $('#game3SubmitCheckCancel').on( "click", function() {
+    $('#game3SubmitCheckModal').modal('hide')
+  })
 
   game2_init();  
 

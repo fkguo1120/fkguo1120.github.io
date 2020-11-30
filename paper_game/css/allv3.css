@@ -79,25 +79,25 @@ form > * + * {
 .form-item > * + * {
   margin-top: 0.5rem;
 }
-label, .game4_input, #game4_submit, #game4_cancel {
+label, .game4_input, #game4_submit, #game4_cancel, #play {
   font-size: 1.5rem;
   font-family: monospace;
   color: var(--inputColor);
 }
-label:focus, .game4_input:focus, #game4_submit:focus, #game4_cancel:focus {
+label:focus, .game4_input:focus, #game4_submit:focus, #game4_cancel:focus, #play:focus {
   outline: 3px solid var(--outlineColor);
   outline-offset: 2px;
 }
-label::-moz-focus-inner, .game4_input::-moz-focus-inner, #game4_submit::-moz-focus-inner, #game4_cancel::-moz-focus-inner {
+label::-moz-focus-inner, .game4_input::-moz-focus-inner, #game4_submit::-moz-focus-inner, #game4_cancel::-moz-focus-inner, #play::-moz-focus-inner {
   border: none;
 }
 label[id="password"], .game4_input[id="password"], #game4_submit[id="password"] {
   color: black;
 }
-#game4_submit, #game4_cancel{
+#game4_submit, #game4_cancel, #play{
   border: none;
 }
-[id="game4_submit"],[id="game4_cancel"] {
+[id="game4_submit"],[id="game4_cancel"],[id="play"] {
   cursor: pointer;
   margin: calc(var(--spacer) * 2) 0 0 2px;
   padding: 0.75rem 1.25rem;
@@ -105,7 +105,15 @@ label[id="password"], .game4_input[id="password"], #game4_submit[id="password"] 
   background-color: var(--inputColor);
   box-shadow: 4px 4px 0 rgba(30, 144, 255, 0.2);
 }
-[id="game4_submit"]:active , [id="game4_cancel"]:active{
+[id="play"] {
+  cursor: pointer;
+  margin: 10px 0;
+  padding: 0.75rem 1.25rem;
+  color: white!important;
+  background-color: #00caaa;
+  box-shadow: 4px 4px 0 rgba(30, 144, 255, 0.2);
+}
+[id="game4_submit"]:active , [id="game4_cancel"]:active, [id="play"]:active{
   transform: translateY(1px);
 }
 .input-wrapper {

@@ -238,7 +238,7 @@
 						<h5 id="qa_total" class="mb-0">
 							<span class="btn-label bingo_line">賓果線：</span><span id="bingo_line" class="bingo_line"></span><span class="bingo_line">&nbsp;條</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<span class="btn-label bingo_line">機會次數：</span><span id="op_line" class="bingo_line">3;</span><span class="bingo_line">&nbsp;/&nbsp;3</span>
-							<span class="base_qa_line">題數：</span><span id="topic" class="base_qa_line">1</span><span class="base_qa_line"> / </span><span class="base_qa_line"> 16 </span>
+							<span class="base_qa_line">題數：</span><span id="topic" class="base_qa_line">1</span><span class="base_qa_line"> / </span><span id="qa_total_count" class="base_qa_line"> 16 </span>
 						</h5>
 					</div>
 				</div>
@@ -596,6 +596,21 @@
 		</div>
 	</div>
 
+	<!-- game3 送出鍵確認 popup -->
+	<div class="modal fade" id="game3SubmitCheckModal" tabindex="-1" role="dialog" data-target=".bd-example-modal-sm" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+			<div class="modal-content">
+				<div id="game3SubmitCheckModalMessage" class="modal-body" style="text-align: center;font-size: 1.4em;">
+					您送出的拼字為
+				</div>
+				<div class="modal-footer" style="padding:10px;">
+					<button id="game3SubmitCheckRight" type="button" class="btn btn-primary" data-dismiss="modal">確定</button>
+					<button id="game3SubmitCheckCancel" type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<!-- 結束測驗 popup -->
 	<div class="modal fade" id="finalModal" tabindex="-1" role="dialog" data-target=".bd-example-modal-sm" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
@@ -725,7 +740,7 @@
 			} else if (elem.msRequestFullscreen) { 
 				elem.msRequestFullscreen();
 			}
-		});	
+		});
 
     </script>
 </body>

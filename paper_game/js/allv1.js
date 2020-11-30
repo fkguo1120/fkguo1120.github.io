@@ -49,7 +49,7 @@ function game2(game_score) {
 
   //第一關遊戲提示
   $('#game-notify').css('display', 'block');
-  $("#game-notify-text").text("請選擇一張牌。");
+  $("#game-notify-text").text("請選擇2張牌，若選出同義的單字與圖像，即正確。");
 
   //第一關遊戲循環倒數
   var interval;
