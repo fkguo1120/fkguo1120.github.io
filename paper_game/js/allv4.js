@@ -133,6 +133,8 @@ function game5(game_score) {
 
     //****print題目****//
     $('.game5_question').html('<h5 style="font-weight: 700;">' + iiiii + ". " + game5QuestionArray[title_index].title + '</h5>')
+    logFile.push("第1題\n")
+		db.ref(fullDbUrl+"Detail").push("第1題");
 
     //背景動畫及月亮
     TweenMax.to(".game5_content", 15, { backgroundPositionX: "-1050px", ease: Linear.easeNone, repeat: -1 });
@@ -284,6 +286,8 @@ function game5(game_score) {
             //****print題目****//
             $('.game5_question').html('<h5 style="font-weight: 700;">' + iiiii + ". " + game5QuestionArray[title_index].title + '</h5>')
             // $('#rrrrr').html(game5AnswerArray[String(title_index)][right_index])
+            logFile.push("第"+(title_index+1)+"題\n")
+		        db.ref(fullDbUrl+"Detail").push("第"+(title_index+1)+"題");
             if (title_index === total_indedx){
               alert("第四關遊戲結束")
 
@@ -295,6 +299,7 @@ function game5(game_score) {
               logFileSimple.push("d")
               db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score5);
               db.ref(fullDbUrl+"Detail").push("第四關遊戲結束-全部題目作答完(d)");
+              db.ref(fullDbUrl+"Simple").push(logFileSimple);
               var highestIntervalId = setInterval(";");
               for (var i = 0 ; i < highestIntervalId ; i++) {
                   clearInterval(i); 
@@ -310,7 +315,7 @@ function game5(game_score) {
             logFile.push(game5_time + "秒-------------->吸入氣球答題錯誤(n)\n")
             logFileSimple.push("n")
             db.ref(fullDbUrl+"Detail").push(game5_time + "秒-------------->吸入氣球答題錯誤(n)");
-            if(life===0){
+            if(life<=0){
               logFile.push("遊戲分數:" + score5 + "\n")
               logFile.push("此關遊戲得分:" + (score5-game_score) + "\n")
               logFile.push("第四關遊戲結束-沒血量(h)\n")
@@ -318,6 +323,7 @@ function game5(game_score) {
               logFileSimple.push("h")
               db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score5);
               db.ref(fullDbUrl+"Detail").push("第四關遊戲結束-沒血量(h)");
+              db.ref(fullDbUrl+"Simple").push(logFileSimple);
               game.gameLose();
             }else{
               $("#boxman_value").attr("src","img/boxman2.png")
@@ -400,7 +406,7 @@ function game5(game_score) {
           logFile.push(game5_time + "秒-------------->撞到障礙物(c)\n")
           logFileSimple.push("c")
           db.ref(fullDbUrl+"Detail").push(game5_time + "秒-------------->撞到障礙物(c)");
-          if(life===0){
+          if(life<=0){
             game.gameLose();
           }
         }
@@ -487,6 +493,7 @@ function game5(game_score) {
             logFileSimple.push("z")
             db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score5);
             db.ref(fullDbUrl+"Detail").push("第四關遊戲結束-時間到，題目未作答完(z)");
+            db.ref(fullDbUrl+"Simple").push(logFileSimple);
             gameLosePop()
           }
         }, 1000);

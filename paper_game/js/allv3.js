@@ -621,6 +621,22 @@ function game4(game_score) {
 					logFileSimple.push("w")
 					db.ref(fullDbUrl+"Detail").push(game4_time + "秒-------------->提交答案-答題錯誤(w)");
 				}
+			}else if(remain==0){
+				if($("input[type=text][name=username]").val()===game4Array[targetId].answer){
+					$("input[type=text][name=username]").val('')
+					submitClick(targetId)
+				}else{
+					$("input[type=text][name=username]").val('')
+					$('#alertModalMessage').html("答錯了!")
+					$('#alertModal').modal({backdrop: 'static', keyboard: false})
+					logFile.push(game4_time + "秒-------------->提交答案-答題錯誤(w)\n")
+					logFileSimple.push("w")
+					db.ref(fullDbUrl+"Detail").push(game4_time + "秒-------------->提交答案-答題錯誤(w)");
+					remain = 3
+					$("#game4_remain").text(remain)
+					$("#game4_popup").css("display","none");
+					turn(targetId, aiPlayer);
+				}
 			}else{
 				$("input[type=text][name=username]").val('')
 				$('#alertModalMessage').html("答錯了!")

@@ -188,6 +188,9 @@ function game3(game_score) {
             
     // DOM渲染亂數單字
     // $('#aaa').html(game2_word_left);
+
+    logFile.push("第1題\n")
+		db.ref(fullDbUrl+"Detail").push("第1題");
   }   
 
   //下一題涵式
@@ -264,6 +267,8 @@ function game3(game_score) {
     }else{
       $('#topic').html(game2_topic)
       next_word();
+      logFile.push("第"+(game2_number+1)+"題\n")
+      db.ref(fullDbUrl+"Detail").push("第"+(game2_number+1)+"題");
     }
   }
 
