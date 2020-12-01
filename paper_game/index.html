@@ -637,6 +637,9 @@
 
 					</div>
 					<div class="form-item">
+						<div>答題機會:
+							<span id="game4_remain">1</span><span> / </span><span> 3 </span>
+						</div>
 						<label>請輸入單字</label>
 						<div class="input-wrapper"><input class="game4_input" type="text" name="username" id="username" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" /></div>
 					</div>
@@ -742,7 +745,32 @@
 			}
 		});
 
-    </script>
+	</script>
+	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
+	<script>
+		// Your web app's Firebase configuration
+		var firebaseConfig = {
+		  apiKey: "AIzaSyCMhrrCULGljEa3ZgxS5Hs1iCaIi8qKR5E",
+		  authDomain: "test-f37f3.firebaseapp.com",
+		  databaseURL: "https://test-f37f3.firebaseio.com",
+		  projectId: "test-f37f3",
+		  storageBucket: "test-f37f3.appspot.com",
+		  messagingSenderId: "342984671821",
+		  appId: "1:342984671821:web:2c685db94b58bef8021204"
+		};
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig);
+		var db = firebase.database()
+		var rootDoc = save_number + "_" + save_name
+		var dtt = new Date();
+		var yearr = dtt.getFullYear()
+		var monthh = dtt.getMonth() + 1
+		var dayy = dtt.getDate()
+		var fullDate = yearr + "_" + monthh + "_" + dayy
+		var fullDbUrl = '/'+ rootDoc + "/" + fullDate + "/"
+		db.ref(fullDbUrl+"Detail").push("新使用者");
+	</script>
 </body>
 
 </html>

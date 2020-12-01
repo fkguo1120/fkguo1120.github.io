@@ -41,6 +41,7 @@ function game2(game_score) {
   // })
   logFile.push("第一關遊戲開始(A)\n")
   logFileSimple.push("A")
+  db.ref(fullDbUrl+"Detail").push("第一關遊戲開始(A)\n");
   $('#qa_total').hide();
   var score1 = game_score
   var game1_time = 180;
@@ -65,9 +66,12 @@ function game2(game_score) {
       $('#nextModal').modal({backdrop: 'static', keyboard: false}) 
       // alert("第一關遊戲結束");
       logFile.push("遊戲分數:" + score1 + "\n")
+      logFile.push("此關遊戲得分:" + score1 + "\n")
       logFile.push("第一關遊戲結束-配對未完成(W)\n")
       logFile.push("\n")
       logFileSimple.push("W")
+      db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score1);
+      db.ref(fullDbUrl+"Detail").push("第一關遊戲結束-配對未完成(W)");
       $('#nextModal').on('hidden.bs.modal', function (e) {
         $('#game2').css('display', 'none');
         game3s(score1)
@@ -247,6 +251,7 @@ function game2(game_score) {
         //條件符合則全部關閉
         logFile.push("配對失敗(C)\n")
         logFileSimple.push("C")
+        db.ref(fullDbUrl+"Detail").push("配對失敗(C)");
         allFlipBack(thisValue);
         $("#game-notify-text").text("請選擇一張牌。");
         $('#game2-half-btn').attr('disabled', true);
@@ -267,6 +272,7 @@ function game2(game_score) {
           borderLight();
           logFile.push("配對成功(M)\n")
           logFileSimple.push("M")
+          db.ref(fullDbUrl+"Detail").push("配對成功(M)");
           $("#game-notify-text").text("請選擇一張牌。");
           $('#game2-half-btn').attr('disabled', true);
           $('#game2-match-btn').attr('disabled', false);
@@ -324,6 +330,7 @@ function game2(game_score) {
     $('#game2-match-btn').on("click",function() {
       logFile.push(game1_time + "秒-------------->消除一組配對(T)\n")
       logFileSimple.push("T")
+      db.ref(fullDbUrl+"Detail").push(game1_time + "秒-------------->消除一組配對(T)");
       gameMatch()
     });
     //消除一組配對
@@ -361,6 +368,7 @@ function game2(game_score) {
       isSupport = true
       logFile.push(game1_time + "秒-------------->提示範圍(O)\n")
       logFileSimple.push("O")
+      db.ref(fullDbUrl+"Detail").push(game1_time + "秒-------------->提示範圍(O)");
     });
 
     //左右範圍提示
@@ -386,9 +394,13 @@ function game2(game_score) {
         $('#nextModal').modal({backdrop: 'static', keyboard: false})        
         clearInterval(interval);
         logFile.push("遊戲分數:" + score1 + "\n")
+        logFile.push("此關遊戲得分:" + score1 + "\n")
+        logFile.push("此關花費時間:" + (180-game1_time) + "\n")
         logFile.push("第一關遊戲結束-配對皆完成(F)\n")
         logFile.push("\n")
         logFileSimple.push("F")
+        db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score1);
+        db.ref(fullDbUrl+"Detail").push("第一關遊戲結束-配對皆完成(F)");
         $('#nextModal').on('hidden.bs.modal', function (e) {
           $('#game2').css('display', 'none');
           game3s(score1)

@@ -28,6 +28,7 @@ function game3(game_score) {
 
   logFile.push("第二關遊戲開始(H)\n")
   logFileSimple.push("H")
+  db.ref(fullDbUrl+"Detail").push("第二關遊戲開始(H)");
 
   var game2_time = 600;
   var score2 = game_score
@@ -57,9 +58,12 @@ function game3(game_score) {
       $('#nextModal').modal({backdrop: 'static', keyboard: false}) 
       // alert("第二關遊戲結束");
       logFile.push("遊戲分數:" + score2 + "\n")
+      logFile.push("此關遊戲得分:" + (score2-game_score) + "\n")
       logFile.push("第二關遊戲結束-時間到，題目未作答完(Q)\n")
       logFile.push("\n")
       logFileSimple.push("Q")
+      db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score2);
+      db.ref(fullDbUrl+"Detail").push("第二關遊戲結束-時間到，題目未作答完(Q)");
       $('#nextModal').on('hidden.bs.modal', function (e) {
         $('#game3').css('display', 'none');
         game4s(score2)
@@ -246,9 +250,13 @@ function game3(game_score) {
       // alert("第二關遊戲結束")
       clearInterval(interval);
       logFile.push("遊戲分數:" + score2 + "\n")
+      logFile.push("此關遊戲得分:" + (score2-game_score) + "\n")
+      logFile.push("此關花費時間:" + (600-game2_time) + "\n")
       logFile.push("第二關遊戲結束-全部題目作答完(Z)\n")
       logFile.push("\n")
       logFileSimple.push("Z")
+      db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score2);
+      db.ref(fullDbUrl+"Detail").push("第二關遊戲結束-全部題目作答完(Z)");
       $('#nextModal').on('hidden.bs.modal', function (e) {
         $('#game3').css('display', 'none');
         game4s(score2)
@@ -267,6 +275,7 @@ function game3(game_score) {
     if(game2_number<=(vocabulary.length)){
       logFile.push(game2_time + "秒-------------->下一題按鈕(I)\n")
       logFileSimple.push("I")
+      db.ref(fullDbUrl+"Detail").push(game2_time + "秒-------------->下一題按鈕(I)");
       game2_number+=1;
       game2_topic+=1;
       game2_check();
@@ -282,6 +291,7 @@ function game3(game_score) {
   $('#game2_support_btn').on( "click", function() {
     logFile.push(game2_time + "秒-------------->提示單字按鈕(J)\n")
     logFileSimple.push("J")
+    db.ref(fullDbUrl+"Detail").push(game2_time + "秒-------------->提示單字按鈕(J)");
     game2_isSupport = true
     game2_support_word()
   })
@@ -378,6 +388,7 @@ function game3(game_score) {
       $('#topic').html(game2_topic)
       logFile.push(game2_time + "秒-------------->送出-答題正確(K)\n")
       logFileSimple.push("K")
+      db.ref(fullDbUrl+"Detail").push(game2_time + "秒-------------->送出-答題正確(K)");
       game2_check()
       $('#game_score').text(score2)
       next_word()
@@ -391,6 +402,7 @@ function game3(game_score) {
       $('#topic').html(game2_topic);
       logFile.push(game2_time + "秒-------------->送出-答題錯誤(L)\n")
       logFileSimple.push("L");
+      db.ref(fullDbUrl+"Detail").push(game2_time + "秒-------------->送出-答題錯誤(L)");
       game2_check();
       next_word();
     };

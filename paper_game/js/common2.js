@@ -32,6 +32,8 @@ function game1() {
 	var wrongSupport = 0
 	var crossNext = true
 
+	db.ref(fullDbUrl+"Detail").push("任務測驗開始(D)");
+
 	// 遊戲分數先隱藏
 	$('#game_score_box').css('display', 'none');
 
@@ -52,6 +54,7 @@ function game1() {
 			}else{
 				logFile.push(time + "秒-------------->時間到未答題正確(U)\n")
 				logFileSimple.push("U")
+				db.ref(fullDbUrl+"Detail").push(time + "秒-------------->時間到未答題正確(U)");
 				time = 90
 				timeCount.text(time);
 				qaStart++
@@ -81,6 +84,7 @@ function game1() {
 		$('#score').html(score)
 		logFile.push(time + "秒-------------->圖片提示(P)\n")
 		logFileSimple.push("P")
+		db.ref(fullDbUrl+"Detail").push(time + "秒-------------->圖片提示(P)");
 		check_score()
 	});
 	//單字提示按鈕開啟時
@@ -96,6 +100,7 @@ function game1() {
 		$('#score').html(score)
 		logFile.push(time + "秒-------------->單字提示(V)\n")
 		logFileSimple.push("V")
+		db.ref(fullDbUrl+"Detail").push(time + "秒-------------->單字提示(V)");
 		check_score()
 	});
 	//子句提示按鈕開啟時
@@ -110,6 +115,7 @@ function game1() {
 		$('#score').html(score)
 		logFile.push(time + "秒-------------->文法提示(S)\n")
 		logFileSimple.push("S")
+		db.ref(fullDbUrl+"Detail").push(time + "秒-------------->文法提示(S)");
 		check_score()
 	});
 	//刪去選項按鈕開啟時
@@ -127,6 +133,7 @@ function game1() {
 		$('#score').html(score)
 		logFile.push(time + "秒-------------->刪去選項(R)\n")
 		logFileSimple.push("R")
+		db.ref(fullDbUrl+"Detail").push(time + "秒-------------->刪去選項(R)");
 		$('.clause_toggle').attr('disabled', false);
 		$('.image_toggle').attr('disabled', false);
 		$('.word_toggle').attr('disabled', false);
@@ -137,6 +144,7 @@ function game1() {
 	function showgame() {
 		// iii = getRandom(0 , qatatle);
 		logFile.push("第1題\n")
+		db.ref(fullDbUrl+"Detail").push("第1題");
 		question.text(topic+". "+testArray[qaStart].question);
 		btn1.text("A. "+ testArray[qaStart].answers[0].answer);
 		btn2.text("B. "+ testArray[qaStart].answers[1].answer);
@@ -176,6 +184,7 @@ function game1() {
 			}
 			logFile.push(time + "秒-------------->答題正確(Y)\n")
 			logFileSimple.push("Y")
+			db.ref(fullDbUrl+"Detail").push(time + "秒-------------->答題正確(Y)");
 			showgame2(qaStart)
 		}else{
 			score-=50		
@@ -196,6 +205,7 @@ function game1() {
 			// alert("答錯了")
 			logFile.push(time + "秒-------------->答題錯誤(N)\n")
 			logFileSimple.push("N")
+			db.ref(fullDbUrl+"Detail").push(time + "秒-------------->答題錯誤(N)");
 			return false
 		}
 	}	
@@ -212,6 +222,8 @@ function game1() {
 			logFile.push("任務測驗結束(E)\n")
 			logFile.push("\n")
 			logFileSimple.push("E")
+			db.ref(fullDbUrl+"Detail").push("任務得分:" + score );
+			db.ref(fullDbUrl+"Detail").push("任務測驗結束(E)");
 
 			$('#nextModal').on('hidden.bs.modal', function (e) {
 				$('#game1').css('display', 'none');
@@ -245,6 +257,7 @@ function game1() {
 		imgSupport.attr('src',testArray[qaStart].img);
 		wordSupport.html(testArray[qaStart].wordSupport);
 		logFile.push("第" + topic + "題\n")
+		db.ref(fullDbUrl+"Detail").push("第" + topic + "題");
 		// $('.wrong_support').html("<h5>文章翻譯:</h5>"+testArray[qaStart].translateSupport+"</br></br>"+"<h5>文法提示:</h5>"+testArray[qaStart].support+"</br></br>"+"<h5>單字提示:</h5>"+testArray[qaStart].wordSupport);
 	}
 
@@ -256,6 +269,7 @@ function game1() {
 		crossNext = false
 		logFile.push(time + "秒-------------->答錯2次選擇文章翻譯(T)\n")
 		logFileSimple.push("T")
+		db.ref(fullDbUrl+"Detail").push(time + "秒-------------->答錯2次選擇文章翻譯(T)");
 	});
 	//popup單字提示開啟時
 	$('.wrong_support_word_toggle').on("click", function() {
@@ -265,6 +279,7 @@ function game1() {
 		crossNext = false
 		logFile.push(time + "秒-------------->答錯2次選擇單字提示(B)\n")
 		logFileSimple.push("B")
+		db.ref(fullDbUrl+"Detail").push(time + "秒-------------->答錯2次選擇單字提示(B)");
 	});
 	//popup文法提示開啟時
 	$('.wrong_support_clause_toggle').on("click", function() {
@@ -274,6 +289,7 @@ function game1() {
 		crossNext = false
 		logFile.push(time + "秒-------------->答錯2次選擇文法提示(G)\n")
 		logFileSimple.push("G")
+		db.ref(fullDbUrl+"Detail").push(time + "秒-------------->答錯2次選擇文法提示(G)");
 	});	
 
 	//錯誤兩次出現的popup 下一題按鈕
@@ -281,6 +297,7 @@ function game1() {
 		if(crossNext){
 			logFile.push(time + "秒-------------->答錯2次直接選擇下一題(X)\n")
 			logFileSimple.push("X")
+			db.ref(fullDbUrl+"Detail").push(time + "秒-------------->答錯2次直接選擇下一題(X)");
 		}
 		next_q();
 	})
@@ -311,7 +328,8 @@ function game1() {
 			logFile.push("任務測驗結束(E)\n")
 			logFile.push("\n")
 			logFileSimple.push("E")
-
+			db.ref(fullDbUrl+"Detail").push("任務得分:" + score);
+			db.ref(fullDbUrl+"Detail").push("任務測驗結束(E)");
 			$('#nextModal').on('hidden.bs.modal', function (e) {
 				$('#game1').css('display', 'none');
 				$('#game2').css('display', 'block');

@@ -36,6 +36,7 @@ function game4(game_score) {
 
   logFile.push("第三關遊戲開始(b)\n")
   logFileSimple.push("b")
+  db.ref(fullDbUrl+"Detail").push("第三關遊戲開始(b)");
 
   var score4 = game_score
   $('#game_score').text(score4);
@@ -57,9 +58,12 @@ function game4(game_score) {
 	  $('#nextModal').modal({backdrop: 'static', keyboard: false}) 
 		//   alert("第三關遊戲結束");
 	  logFile.push("遊戲分數:" + score4 + "\n")
+	  logFile.push("此關遊戲得分:" + (score4-game_score) + "\n")
 	  logFile.push("第三關遊戲結束-時間到，題目未作答完(o)\n")
 	  logFile.push("\n")
 	  logFileSimple.push("o")
+	  db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score4);
+	  db.ref(fullDbUrl+"Detail").push("第三關遊戲結束-時間到，題目未作答完(o)");
 	  $("#game4_popup").css("display","none");
 	  $('#nextModal').on('hidden.bs.modal', function (e) {
 		$('#game4').css('display', 'none');
@@ -81,6 +85,8 @@ function game4(game_score) {
 		var x_ex_o_step = 1;
 		var x_ex_o_step1 = 30;
 		var x_ex_o_step2 = 31;
+		var remain = 3
+		$("#game4_remain").text(remain)
 		var xtoo_btn = document.getElementById("xtoo_btn");
 		var x_ex_o_btn = document.getElementById("x_ex_o_btn");
 		const winPlayer = '☆';
@@ -399,6 +405,9 @@ function game4(game_score) {
 			$('#alertModal').modal({backdrop: 'static', keyboard: false})
 			logFile.push(game4_time + "秒-------------->提交答案-答題正確(s)\n")
 			logFileSimple.push("s")
+			db.ref(fullDbUrl+"Detail").push(game4_time + "秒-------------->提交答案-答題正確(s)");
+			remain = 3
+			$("#game4_remain").text(remain)
 		}
 
 		function turn(squareId, player) {
@@ -454,6 +463,7 @@ function game4(game_score) {
 					$('#bingo_line').html(bingo_line);
 					logFile.push(game4_time + "秒-------------->得到賓果線(r)\n")
 					logFileSimple.push("r")
+					db.ref(fullDbUrl+"Detail").push(game4_time + "秒-------------->得到賓果線(r)");
 					winCombos.splice(index, 1);
 					// console.log("www",winCombos);
 					// console.log("score4",score4);
@@ -466,9 +476,13 @@ function game4(game_score) {
 				$('#nextModal').modal({backdrop: 'static', keyboard: false}) 
 				// alert("第二關遊戲結束");
 				logFile.push("遊戲分數:" + score4 + "\n")
+				logFile.push("此關遊戲得分:" + (score4-game_score) + "\n")
+      			logFile.push("此關花費時間:" + (900-game4_time) + "\n")
 				logFile.push("第三關遊戲結束-全部題目作答完(e)\n")
 				logFile.push("\n")
 				logFileSimple.push("e")
+				db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score4);
+				db.ref(fullDbUrl+"Detail").push("第三關遊戲結束-全部題目作答完(e)");
 				$('#nextModal').on('hidden.bs.modal', function (e) {
 				  $('#game4').css('display', 'none');
 				  game5s(score4)
@@ -508,6 +522,7 @@ function game4(game_score) {
 		$('#xtoo_btn').on( "click", function() {
 			logFile.push(game4_time + "秒-------------->X變成O按鈕(i)\n")
 			logFileSimple.push("i")
+			db.ref(fullDbUrl+"Detail").push(game4_time + "秒-------------->X變成O按鈕(i)");
 			xtoo()
 		});
 		
@@ -542,6 +557,7 @@ function game4(game_score) {
 		$('#x_ex_o_btn').on( "click", function() {
 			logFile.push(game4_time + "秒-------------->X與O交換按鈕(x)\n")
 			logFileSimple.push("x")
+			db.ref(fullDbUrl+"Detail").push(game4_time + "秒-------------->X與O交換按鈕(x)");
 			x_ex_o()
 		});
 		
@@ -586,19 +602,36 @@ function game4(game_score) {
 		$('#game4_cancel').on( "click", function() {
 			logFile.push(game4_time + "秒-------------->放棄按鈕(g)\n")
 			logFileSimple.push("g")
+			db.ref(fullDbUrl+"Detail").push(game4_time + "秒-------------->放棄按鈕(g)");
 			$("#game4_popup").css("display","none");
 		});
 
 		$('#game4_submit').on( "click", function() {
-			if($("input[type=text][name=username]").val()===game4Array[targetId].answer){
-				$("input[type=text][name=username]").val('')
-				submitClick(targetId)
+			remain--
+			$("#game4_remain").text(remain)
+			if(remain>0){
+				if($("input[type=text][name=username]").val()===game4Array[targetId].answer){
+					$("input[type=text][name=username]").val('')
+					submitClick(targetId)
+				}else{
+					$("input[type=text][name=username]").val('')
+					$('#alertModalMessage').html("答錯了!")
+					$('#alertModal').modal({backdrop: 'static', keyboard: false})
+					logFile.push(game4_time + "秒-------------->提交答案-答題錯誤(w)\n")
+					logFileSimple.push("w")
+					db.ref(fullDbUrl+"Detail").push(game4_time + "秒-------------->提交答案-答題錯誤(w)");
+				}
 			}else{
 				$("input[type=text][name=username]").val('')
 				$('#alertModalMessage').html("答錯了!")
 				$('#alertModal').modal({backdrop: 'static', keyboard: false})
 				logFile.push(game4_time + "秒-------------->提交答案-答題錯誤(w)\n")
 				logFileSimple.push("w")
+				db.ref(fullDbUrl+"Detail").push(game4_time + "秒-------------->提交答案-答題錯誤(w)");
+				remain = 3
+				$("#game4_remain").text(remain)
+				$("#game4_popup").css("display","none");
+				turn(targetId, aiPlayer);
 			}
 		});
 
@@ -650,6 +683,7 @@ function game4(game_score) {
 			game4_answer_voice = game4Array[targetId].voice
 			logFile.push(game4_time + "秒-------------->發音按鈕(v)\n")
 			logFileSimple.push("v")
+			db.ref(fullDbUrl+"Detail").push(game4_time + "秒-------------->發音按鈕(v)");
 			e.preventDefault();
 
 			speak();

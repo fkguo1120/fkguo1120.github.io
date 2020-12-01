@@ -25,6 +25,7 @@ function game5(game_score) {
   }
   logFile.push("第四關遊戲開始(a)\n")
   logFileSimple.push("a")
+  db.ref(fullDbUrl+"Detail").push("第四關遊戲開始(a)");
   
   var score5 = game_score
   $('#game5_score').text(score5)
@@ -247,6 +248,7 @@ function game5(game_score) {
           }, 600);
           logFile.push(game5_time + "秒-------------->撞到障礙物(c)\n")
           logFileSimple.push("c")
+          db.ref(fullDbUrl+"Detail").push(game5_time + "秒-------------->撞到障礙物(c)");
           if(life<=0){
             game.gameLose();
           }
@@ -275,6 +277,7 @@ function game5(game_score) {
             $('#game5_topic').html(game5_topic)
             logFile.push(game5_time + "秒-------------->吸入氣球答題正確(y)\n")
             logFileSimple.push("y")
+            db.ref(fullDbUrl+"Detail").push(game5_time + "秒-------------->吸入氣球答題正確(y)");
             //****boxman給予data-value正確答案****//
             $('#boxman_value').data("value",game5AnswerArray[String(title_index)][right_index])
             var iiiii = title_index+1
@@ -285,9 +288,13 @@ function game5(game_score) {
               alert("第四關遊戲結束")
 
               logFile.push("遊戲分數:" + score5 + "\n")
+              logFile.push("此關遊戲得分:" + (score5-game_score) + "\n")
+      			  logFile.push("此關花費時間:" + (900-game5_time) + "\n")
               logFile.push("第四關遊戲結束-全部題目作答完(d)\n")
               logFile.push("\n")
               logFileSimple.push("d")
+              db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score5);
+              db.ref(fullDbUrl+"Detail").push("第四關遊戲結束-全部題目作答完(d)");
               var highestIntervalId = setInterval(";");
               for (var i = 0 ; i < highestIntervalId ; i++) {
                   clearInterval(i); 
@@ -302,11 +309,15 @@ function game5(game_score) {
             $('#hppp').html(life)
             logFile.push(game5_time + "秒-------------->吸入氣球答題錯誤(n)\n")
             logFileSimple.push("n")
+            db.ref(fullDbUrl+"Detail").push(game5_time + "秒-------------->吸入氣球答題錯誤(n)");
             if(life===0){
               logFile.push("遊戲分數:" + score5 + "\n")
+              logFile.push("此關遊戲得分:" + (score5-game_score) + "\n")
               logFile.push("第四關遊戲結束-沒血量(h)\n")
               logFile.push("\n")
               logFileSimple.push("h")
+              db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score5);
+              db.ref(fullDbUrl+"Detail").push("第四關遊戲結束-沒血量(h)");
               game.gameLose();
             }else{
               $("#boxman_value").attr("src","img/boxman2.png")
@@ -388,6 +399,7 @@ function game5(game_score) {
           }, 600);
           logFile.push(game5_time + "秒-------------->撞到障礙物(c)\n")
           logFileSimple.push("c")
+          db.ref(fullDbUrl+"Detail").push(game5_time + "秒-------------->撞到障礙物(c)");
           if(life===0){
             game.gameLose();
           }
@@ -469,9 +481,12 @@ function game5(game_score) {
             _this.gameSuccess();
             clearInterval(timer);
             logFile.push("遊戲分數:" + score5 + "\n")
+            logFile.push("此關遊戲得分:" + (score5-game_score) + "\n")
             logFile.push("第四關遊戲結束-時間到，題目未作答完(z)\n")
             logFile.push("\n")
             logFileSimple.push("z")
+            db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score5);
+            db.ref(fullDbUrl+"Detail").push("第四關遊戲結束-時間到，題目未作答完(z)");
             gameLosePop()
           }
         }, 1000);
@@ -605,6 +620,7 @@ function game5(game_score) {
     $('#game5_hp_btn').on('click', function () {
       logFile.push(game5_time + "秒-------------->補血+30按鈕(p)\n")
       logFileSimple.push("p")
+      db.ref(fullDbUrl+"Detail").push(game5_time + "秒-------------->補血+30按鈕(p)");
       if(game5_bonus>0){
         game5_bonus -= 1;
         life += 30
@@ -620,6 +636,7 @@ function game5(game_score) {
     $('#game5_time_btn').on('click', function () {
       logFile.push(game5_time + "秒-------------->時間+30秒按鈕(t)\n")
       logFileSimple.push("t")
+      db.ref(fullDbUrl+"Detail").push(game5_time + "秒-------------->時間+30秒按鈕(t)");
       if(game5_bonus>0){
         game5_bonus -= 1;
         game.gameTime += 30;
