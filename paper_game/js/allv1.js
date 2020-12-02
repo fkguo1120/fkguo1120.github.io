@@ -50,7 +50,7 @@ function game2(game_score) {
 
   //第一關遊戲提示
   $('#game-notify').css('display', 'block');
-  $("#game-notify-text").text("請選擇2張牌，若選出同義的單字與圖像，即正確。");
+  $("#game-notify-text").text("請選擇2張牌，若選出同義的單字與圖像即正確，若選出不同義則翻回。");
 
   //第一關遊戲循環倒數
   var interval;
@@ -72,6 +72,7 @@ function game2(game_score) {
       logFileSimple.push("W")
       db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score1);
       db.ref(fullDbUrl+"Detail").push("第一關遊戲結束-配對未完成(W)");
+      db.ref(fullDbUrl+"Simple1").push(logFileSimple);
       $('#nextModal').on('hidden.bs.modal', function (e) {
         $('#game2').css('display', 'none');
         game3s(score1)
@@ -246,14 +247,13 @@ function game2(game_score) {
       logFile.push(game1_time + "秒-------------->翻出" + thisValue + "\n")
       $('#game2-half-btn').attr('disabled', false);
       $('#game2-match-btn').attr('disabled', true);
-      $("#game-notify-text").text("再選擇一張牌，若完成相同單字與圖像，即可得分。");
+      $("#game-notify-text").text("請選擇2張牌，若選出同義的單字與圖像即正確，若選出不同義則翻回。");
       if (count % 2 !== 0 && thisValue !== nowValue) {
         //條件符合則全部關閉
         logFile.push("配對失敗(C)\n")
         logFileSimple.push("C")
         db.ref(fullDbUrl+"Detail").push("配對失敗(C)");
         allFlipBack(thisValue);
-        $("#game-notify-text").text("請選擇一張牌。");
         $('#game2-half-btn').attr('disabled', true);
         $('#game2-match-btn').attr('disabled', false);
         $('.half-line').removeClass('support-shadow');
@@ -273,7 +273,6 @@ function game2(game_score) {
           logFile.push("配對成功(M)\n")
           logFileSimple.push("M")
           db.ref(fullDbUrl+"Detail").push("配對成功(M)");
-          $("#game-notify-text").text("請選擇一張牌。");
           $('#game2-half-btn').attr('disabled', true);
           $('#game2-match-btn').attr('disabled', false);
           $('.half-line').removeClass('support-shadow');
@@ -401,6 +400,7 @@ function game2(game_score) {
         logFileSimple.push("F")
         db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score1);
         db.ref(fullDbUrl+"Detail").push("第一關遊戲結束-配對皆完成(F)");
+        db.ref(fullDbUrl+"Simple1").push(logFileSimple);
         $('#nextModal').on('hidden.bs.modal', function (e) {
           $('#game2').css('display', 'none');
           game3s(score1)

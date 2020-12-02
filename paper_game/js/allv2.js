@@ -64,6 +64,7 @@ function game3(game_score) {
       logFileSimple.push("Q")
       db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score2);
       db.ref(fullDbUrl+"Detail").push("第二關遊戲結束-時間到，題目未作答完(Q)");
+      db.ref(fullDbUrl+"Simple2").push(logFileSimple);
       $('#nextModal').on('hidden.bs.modal', function (e) {
         $('#game3').css('display', 'none');
         game4s(score2)
@@ -260,6 +261,7 @@ function game3(game_score) {
       logFileSimple.push("Z")
       db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score2);
       db.ref(fullDbUrl+"Detail").push("第二關遊戲結束-全部題目作答完(Z)");
+      db.ref(fullDbUrl+"Simple2").push(logFileSimple);
       $('#nextModal').on('hidden.bs.modal', function (e) {
         $('#game3').css('display', 'none');
         game4s(score2)

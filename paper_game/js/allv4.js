@@ -299,7 +299,7 @@ function game5(game_score) {
               logFileSimple.push("d")
               db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score5);
               db.ref(fullDbUrl+"Detail").push("第四關遊戲結束-全部題目作答完(d)");
-              db.ref(fullDbUrl+"Simple").push(logFileSimple);
+              db.ref(fullDbUrl+"Simple4").push(logFileSimple);
               var highestIntervalId = setInterval(";");
               for (var i = 0 ; i < highestIntervalId ; i++) {
                   clearInterval(i); 
@@ -323,7 +323,7 @@ function game5(game_score) {
               logFileSimple.push("h")
               db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score5);
               db.ref(fullDbUrl+"Detail").push("第四關遊戲結束-沒血量(h)");
-              db.ref(fullDbUrl+"Simple").push(logFileSimple);
+              db.ref(fullDbUrl+"Simple4").push(logFileSimple);
               game.gameLose();
             }else{
               $("#boxman_value").attr("src","img/boxman2.png")
@@ -493,7 +493,7 @@ function game5(game_score) {
             logFileSimple.push("z")
             db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score5);
             db.ref(fullDbUrl+"Detail").push("第四關遊戲結束-時間到，題目未作答完(z)");
-            db.ref(fullDbUrl+"Simple").push(logFileSimple);
+            db.ref(fullDbUrl+"Simple4").push(logFileSimple);
             gameLosePop()
           }
         }, 1000);

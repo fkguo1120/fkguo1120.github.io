@@ -15,11 +15,19 @@
   font-size: 50px;
   cursor: pointer;
 }
-@media (min-width: 768px) and (max-width: 992px){
+@media (min-width: 915px) and (max-width: 992px){
   #game4 td.cell {
     border: 6px solid #1d295b;
     height: 99px;
     width: 138px;
+  }
+}
+@media screen and (max-width: 915px){
+  #game4 td.cell {
+    border: 6px solid #1d295b;
+    height: 64px;
+    width: 110px;
+    font-size: 39px;
   }
 }
 

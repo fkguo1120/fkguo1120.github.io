@@ -205,10 +205,14 @@
 	}
 	@media (max-width: 918px){
 		.container {
-			width: 918px!important;
+			width: 100%!important;
 			max-width: 918px!important;
 		}
+		.text-right h5,.text-left h5{
+			font-size: 1.1rem;
+		}
 	}
+
 	</style>
 </head>
 
@@ -637,10 +641,7 @@
 
 					</div>
 					<div class="form-item">
-						<div>答題機會:
-							<span id="game4_remain">1</span><span> / </span><span> 3 </span>
-						</div>
-						<label>請輸入單字</label>
+						<label>請輸入單字</label><span style="float:right">答題機會:<span id="game4_remain">1</span><span> / </span><span> 3 </span></span>
 						<div class="input-wrapper"><input class="game4_input" type="text" name="username" id="username" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" /></div>
 					</div>
 					<button id="game4_submit">提交答案</button>
@@ -767,7 +768,9 @@
 		var yearr = dtt.getFullYear()
 		var monthh = dtt.getMonth() + 1
 		var dayy = dtt.getDate()
-		var fullDate = yearr + "_" + monthh + "_" + dayy
+		var hourr = dtt.getHours()
+		var minn = dtt.getMinutes()
+		var fullDate = yearr + "_" + monthh + "_" + dayy + "_" + hourr + "_" + minn
 		var fullDbUrl = '/'+ rootDoc + "/" + fullDate + "/"
 		db.ref(fullDbUrl+"Detail").push("新使用者");
 	</script>

@@ -224,7 +224,7 @@ function game1() {
 			logFileSimple.push("E")
 			db.ref(fullDbUrl+"Detail").push("任務得分:" + score );
 			db.ref(fullDbUrl+"Detail").push("任務測驗結束(E)");
-
+			db.ref(fullDbUrl+"Simple0").push(logFileSimple);
 			$('#nextModal').on('hidden.bs.modal', function (e) {
 				$('#game1').css('display', 'none');
 				$('#game2').css('display', 'block');
@@ -330,6 +330,7 @@ function game1() {
 			logFileSimple.push("E")
 			db.ref(fullDbUrl+"Detail").push("任務得分:" + score);
 			db.ref(fullDbUrl+"Detail").push("任務測驗結束(E)");
+			db.ref(fullDbUrl+"Simple0").push(logFileSimple);
 			$('#nextModal').on('hidden.bs.modal', function (e) {
 				$('#game1').css('display', 'none');
 				$('#game2').css('display', 'block');
