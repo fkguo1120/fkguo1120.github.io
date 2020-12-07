@@ -611,10 +611,11 @@ function game5(game_score) {
       $('#game5').css('display', 'none');
       $('header').css('display', 'none');
       if(pre_post_mode==1){
+        $('#finalllllModal').modal({backdrop: 'static', keyboard: false})
         db.ref(fullDbUrl+"Astep").set({step:2});
         localStorage.setItem("Astep", 2)
         // window.location.replace("step.html");
-        history.go(-1)
+        // history.go(-1)
         pre_post_mode = 2
         logFile.push(logFileSimple.join(''))
         save_a()

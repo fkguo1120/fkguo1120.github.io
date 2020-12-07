@@ -33,7 +33,7 @@ function game4(game_score) {
 
   //第三關遊戲提示
   $('#game-notify').css('display', 'block');
-  $("#game-notify-text").text("請點選1項方格，並回答該方格的問題，若達成賓果線，即可得分。");
+  $("#game-notify-text").text("點選1個方格並回答該格的問題，若達成賓果線即可得分，得到4條賓果線則完成遊戲。");
 
   logFile.push("第三關遊戲開始(b)\n")
   logFileSimple.push("b")
@@ -401,7 +401,7 @@ function game4(game_score) {
 			// console.log(document.getElementById("username").value)
 			if (typeof origBoard[targetId] == 'number') {
 				turn(targetId, huPlayer);
-				if (!checkTie()) turn(bestSpot(), aiPlayer);
+				// if (!checkTie()) turn(bestSpot(), aiPlayer);
 			}
 			$('#alertModalMessage').html("很棒!答對了!")
 			$('#alertModal').modal({backdrop: 'static', keyboard: false})
@@ -472,9 +472,9 @@ function game4(game_score) {
 					// return gameWon;
 				}
 			}
-			if(plays.length==13){
+			if(bingo_line>=4){
 				clearInterval(interval);
-				$('#nextModalMessage').html("遊戲結束。\n</br>即將進入下一關遊戲")
+				$('#nextModalMessage').html("恭喜得到4條賓果線\n遊戲結束\n</br>即將進入下一關遊戲")
 				$('#nextModal').modal({backdrop: 'static', keyboard: false}) 
 				// alert("第二關遊戲結束");
 				logFile.push("遊戲分數:" + score4 + "\n")
