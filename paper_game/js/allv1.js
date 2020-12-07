@@ -9,6 +9,7 @@ function game2s(game_score) {
   $('#game2-match-btn').css('display', 'none');
   $('#game2StartPage').css('display', 'block');
   $('#game-notify').css('display', 'none');
+  $('#game2').css('display', 'none');
 
   //遊戲關卡一開始
   $('#game2StartBtn').on("click",function() {
@@ -249,13 +250,13 @@ function game2(game_score) {
       $('#game2-match-btn').attr('disabled', true);
       $("#game-notify-text").text("請選擇2張牌，若選出同義的單字與圖像即正確，若選出不同義則翻回。");
       if (count % 2 !== 0 && thisValue !== nowValue) {
+        $('#game2-match-btn').attr('disabled', true);
         //條件符合則全部關閉
         logFile.push("配對失敗(C)\n")
         logFileSimple.push("C")
         db.ref(fullDbUrl+"Detail").push("配對失敗(C)");
         allFlipBack(thisValue);
         $('#game2-half-btn').attr('disabled', true);
-        $('#game2-match-btn').attr('disabled', false);
         $('.half-line').removeClass('support-shadow');
         isSupport = false
       } else {
@@ -300,6 +301,7 @@ function game2(game_score) {
         $cardItem.removeClass('pointer_none');
         count = 0;
         nowValue = '';
+        $('#game2-match-btn').attr('disabled', false);
       }, 1000);
     }
 

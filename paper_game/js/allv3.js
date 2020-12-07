@@ -1,5 +1,6 @@
 function game4s(game_score) {
 	var s4 = game_score
+	$('#game4').css('display', 'none');
 	$('#game1-content').css("background-image", "url('images/game4_bg.jpg')");
   
 	$('#game-notify').css('display', 'none');

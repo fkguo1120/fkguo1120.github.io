@@ -1,15 +1,18 @@
-var logFile = ["任務測驗開始(D)\n"]
-var logFileSimple = ["D"]
-$('#game1StartPage').css('display', 'block');
-$('#game-notify').css('display', 'none');
+var logFile = []
+var logFileSimple = []
+var pre_post_mode = localStorage.getItem("pre_post_mode")
 
-//學習任務開始
-$('#game1StartBtn').on("click",function() {
-	$('#game1StartPage').css('display', 'none');
-	$('header').css('display', 'block');
-	$('#game1').css('display', 'block');
-	game1()
-})
+// $('#game1StartPage').css('display', 'block');
+// $('#game-notify').css('display', 'none');
+function game1s() {
+	//學習任務開始
+	$('#game1StartBtn').on("click",function() {
+		$('#game1StartPage').css('display', 'none');
+		$('header').css('display', 'block');
+		$('#game1').css('display', 'block');
+		game1()
+	})
+}
 
 
 function game1() {	
@@ -32,6 +35,8 @@ function game1() {
 	var wrongSupport = 0
 	var crossNext = true
 
+	logFile.push("任務測驗開始(D)\n")
+	logFileSimple.push("D")
 	db.ref(fullDbUrl+"Detail").push("任務測驗開始(D)");
 
 	// 遊戲分數先隱藏
@@ -230,7 +235,12 @@ function game1() {
 				$('#game2').css('display', 'block');
 				$('#mission_score_box').css('display', 'none');
 				$('#game_score_box').css('display', 'block');
-				game2s(game_score)
+				db.ref(fullDbUrl+"Astep").set({step:3});
+				localStorage.setItem("Astep", 3)
+				pre_post_mode = 2
+				logFile.push(logFileSimple.join(''))
+				save_a()
+				history.go(-1)
 			});
 
 			
@@ -336,7 +346,12 @@ function game1() {
 				$('#game2').css('display', 'block');
 				$('#mission_score_box').css('display', 'none');
 				$('#game_score_box').css('display', 'block');
-				game2s(game_score)
+				db.ref(fullDbUrl+"Astep").set({step:3});
+				localStorage.setItem("Astep", 3)
+				pre_post_mode = 2
+				logFile.push(logFileSimple.join(''))
+				save_a()
+				history.go(-1)
 			});
 		}
 	}

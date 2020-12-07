@@ -164,7 +164,19 @@
 			localStorage.setItem("testNumber", number)
 			localStorage.setItem("testName", name)
 			localStorage.setItem("testGender", genderElement)
-			window.open('index.html','name','toolbar=no,location=no,directories=no,menubar=no,scrollbars=no,resizable=no,status=no')
+			var dtt = new Date();
+			var yearr = dtt.getFullYear()
+			var monthh = dtt.getMonth() + 1
+			var dayy = dtt.getDate()
+			var hourr = dtt.getHours()
+			var minn = dtt.getMinutes()
+			localStorage.setItem("yearr", yearr)
+			localStorage.setItem("monthh", monthh)
+			localStorage.setItem("dayy", dayy)
+			localStorage.setItem("hourr", hourr)
+			localStorage.setItem("minn", minn)
+			localStorage.setItem("Astep", 1)
+			window.open('step.html','name','toolbar=no,location=no,directories=no,menubar=no,scrollbars=no,resizable=no,status=no')
 		}
 	</script>
 

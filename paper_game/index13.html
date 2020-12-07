@@ -216,7 +216,7 @@
 	</style>
 </head>
 
-<body class="bg-light" onbeforeunload="return myFunction()">
+<body class="bg-light">
 <div id="game1-content">
 	<!-- <button type="button" onclick="saveStaticDataToFile();">Click to Save</button> -->
 	<div class="container">
@@ -675,12 +675,12 @@
 		}
 		function save_a() {
 			var blob = new Blob(logFile,{ type: "text/plain;charset=utf-8" });
-			saveAs(blob, save_number + "_" + save_name + "_" + save_gender + "_Log_Detail.txt");
+			saveAs(blob, save_number + "_" + save_name + "_" + save_gender + "_Log_Detail_遊戲二.txt");
 		}
-		function save_b() {
+		/*function save_b() {
 			var blobSimple = new Blob(logFileSimple,{ type: "text/plain;charset=utf-8" });
 			saveAs(blobSimple, save_number + "_" + save_name + "_" + save_gender + "_Log_Simple.txt");
-		}
+		}*/
 		
 		// 鎖住鍵盤特定按鍵 //
 		$(document).keydown(function (event) {
@@ -728,9 +728,9 @@
 		}
 
 		// 關閉視窗前的警告 //
-		function myFunction() {
-			return false;
-		}
+		//function myFunction() {
+			//return false;
+		//}
 
 		// 全螢幕事件 //
 		addEventListener("click", function() {
