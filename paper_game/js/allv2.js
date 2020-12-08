@@ -36,7 +36,7 @@ function game3(game_score) {
   $('#qa_total').show();
   var game2_topic = 1
   $('#topic').html(game2_topic)
-  var game2_qatatle = 9
+  var game2_qatatle = 11
   $("#qatotal").html(game2_qatatle)
   var timeCount = $('.second_top-time span'); //倒數計時dom
   timeCount.text(game2_time);
@@ -64,8 +64,9 @@ function game3(game_score) {
       logFile.push("\n")
       logFileSimple.push("Q")
       db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score2);
+      db.ref(fullDbUrl+"Detail").push("此關遊戲得分:" + (score2-game_score) + "\n");
       db.ref(fullDbUrl+"Detail").push("第二關遊戲結束-時間到，題目未作答完(Q)");
-      db.ref(fullDbUrl+"Simple2").push(logFileSimple);
+      // db.ref(fullDbUrl+"Simple2").push(logFileSimple);
       $('#nextModal').on('hidden.bs.modal', function (e) {
         $('#game3').css('display', 'none');
         game4s(score2)
@@ -115,8 +116,19 @@ function game3(game_score) {
     {
       tw:"保險(n)",
       en:"insurance"
+    },
+    {
+      tw:"討厭(v)",
+      en:"disfavor"
+    },
+    {
+      tw:"非凡的(adj)",
+      en:"remarkable"
     }
   ];
+  if(pre_post_mode==2){
+    vocabulary = vocabulary.reverse();
+  }
   var newobj = [];
   var obj = [];
   var game2_number = 0
@@ -261,8 +273,10 @@ function game3(game_score) {
       logFile.push("\n")
       logFileSimple.push("Z")
       db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score2);
+      db.ref(fullDbUrl+"Detail").push("此關遊戲得分:" + (score2-game_score) + "\n");
+      db.ref(fullDbUrl+"Detail").push("此關花費時間:" + (600-game2_time) + "\n");
       db.ref(fullDbUrl+"Detail").push("第二關遊戲結束-全部題目作答完(Z)");
-      db.ref(fullDbUrl+"Simple2").push(logFileSimple);
+      // db.ref(fullDbUrl+"Simple2").push(logFileSimple);
       $('#nextModal').on('hidden.bs.modal', function (e) {
         $('#game3').css('display', 'none');
         game4s(score2)

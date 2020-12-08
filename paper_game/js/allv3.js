@@ -42,7 +42,7 @@ function game4(game_score) {
   var score4 = game_score
   $('#game_score').text(score4);
 
-  var game4_time = 900;
+  var game4_time = 720;
   var timeCount = $('.second_top-time span'); //倒數計時dom
   timeCount.text(game4_time);
   //第三關遊戲循環倒數
@@ -64,8 +64,9 @@ function game4(game_score) {
 	  logFile.push("\n")
 	  logFileSimple.push("o")
 	  db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score4);
+	  db.ref(fullDbUrl+"Detail").push("此關遊戲得分:" + (score4-game_score) + "\n");
 	  db.ref(fullDbUrl+"Detail").push("第三關遊戲結束-時間到，題目未作答完(o)");
-	  db.ref(fullDbUrl+"Simple3").push(logFileSimple);
+	//   db.ref(fullDbUrl+"Simple3").push(logFileSimple);
 	  $("#game4_popup").css("display","none");
 	  $('#nextModal').on('hidden.bs.modal', function (e) {
 		$('#game4').css('display', 'none');
@@ -118,48 +119,28 @@ function game4(game_score) {
 				answer: 'diverse',
 				voice: 'When John was an elementary student, John did not like Mary because she always had diverse colors in her hair.'
 			},
-			{
-				img: '01.jpg',
-				title: 'When John was an ________ student, John did not like Mary because she always had diverse colors in her hair.',
-				answer: 'elementary',
-				voice: 'When John was an elementary student, John did not like Mary because she always had diverse colors in her hair.'
-			},
+
 			{
 				img: '02.jpg',
 				title: 'Mary has not eaten any food for two days but she is very pleased and extremely happy to take part in __________ activities.',
 				answer: 'extracurricular',
 				voice: 'Mary has not eaten any food for two days but she is very pleased and extremely happy to take part in extracurricular activities.'
 			},
-			{
-				img: '02.jpg',
-				title: 'Mary really enjoys the time spent in the extracurricular activities in which she __________.',
-				answer: 'participates',
-				voice: 'Mary really enjoys the time spent in the extracurricular activities in which she participates.'
-			},
+
 			{
 				img: '03.jpg',
 				title: 'Mary could not ________ herself to doing great works for her PhD study.',
 				answer: 'devote',
 				voice: 'Mary could not devote herself to doing great works for her PhD study.'
 			},
-			{
-				img: '03.jpg',
-				title: 'Mary is not ________ to complete her PhD study.',
-				answer: 'motivated',
-				voice: 'Mary is not motivated to complete her PhD study.'
-			},
+
 			{
 				img: '04.jpg',
 				title: "Mary's parents are very unsatisfied with her performance and decide to stop ________ support for her completely.",
 				answer: 'financial',
 				voice: "Mary's parents are very unsatisfied with her performance and decide to stop financial support for her completely."
 			},
-			{
-				img: '04.jpg',
-				title: "Mary's parents want to change her wrong ________ toward her PhD.",
-				answer: 'attitudes',
-				voice: "Mary's parents want to change her wrong attitudes toward her PhD."
-			},
+
 			{
 				img: '05.jpg',
 				title: 'All students are very ________ of her intelligence.',
@@ -172,24 +153,14 @@ function game4(game_score) {
 				answer: 'lonely',
 				voice: 'Mary is not lonely at all due to the fact that she enjoys reading.'
 			},
-			{
-				img: '06.jpg',
-				title: "Mary's favorite ________ is reading.",
-				answer: 'hobby',
-				voice: "Mary's favorite hobby is reading."
-			},
+
 			{
 				img: '07.jpg',
 				title: "Mary's hobbies include attending the church and playing a variety of digital games with her ________",
 				answer: 'cousins',
 				voice: "Mary's hobbies include attending the church and playing a variety of digital games with her cousins"
 			},
-			{
-				img: '08.jpg',
-				title: 'Digital games help Mary have ________ imagination.',
-				answer: 'creative',
-				voice: 'Digital games help Mary have creative imagination.'
-			},
+
 			{
 				img: '08.jpg',
 				title: 'Digital games are useful vehicles to develop ________ thinking.',
@@ -202,12 +173,7 @@ function game4(game_score) {
 				answer: 'purchase',
 				voice: 'Mary has enough money to purchase a lot of clothes that she did not need.'
 			},
-			{
-				img: '09.jpg',
-				title: 'Mary successfully passed the ________.',
-				answer: 'examination',
-				voice: 'Mary successfully passed the examination.'
-			},
+
 			{
 				img: '10.jpg',
 				title: 'Mary could ________ her financial resources.',
@@ -220,12 +186,7 @@ function game4(game_score) {
 				answer: 'basketball',
 				voice: 'John sometimes plays basketball with his classmates.'
 			},
-			{
-				img: '11.jpg',
-				title: 'The library is their ________ place.',
-				answer: 'disfavored',
-				voice: 'The library is their disfavored place.'
-			},
+
 			{
 				img: '12.jpg',
 				title: 'The hospital could charge your ________.',
@@ -238,12 +199,7 @@ function game4(game_score) {
 				answer: 'targets',
 				voice: 'Mary can achieve her targets because her parents provide a lot of financial support and offer constructive advice.'
 			},
-			{
-				img: '13.jpg',
-				title: 'A lot of people know that Mary has ________ parents.',
-				answer: 'remarkable',
-				voice: 'A lot of people know that Mary has remarkable parents.'
-			},
+
 			{
 				img: '14.jpg',
 				title: 'There is no way to ________ Mary to drink milk is needed.',
@@ -261,8 +217,65 @@ function game4(game_score) {
 				title: 'It is ________ to say that most people are not as lazy as Mary.',
 				answer: 'needless',
 				voice: 'It is needless to say that most people are not as lazy as Mary.'
-			}
+			},
+			{
+				img: '01.jpg',
+				title: 'When John was an ________ student, John did not like Mary because she always had diverse colors in her hair.',
+				answer: 'elementary',
+				voice: 'When John was an elementary student, John did not like Mary because she always had diverse colors in her hair.'
+			},
+			{
+				img: '02.jpg',
+				title: 'Mary really enjoys the time spent in the extracurricular activities in which she __________.',
+				answer: 'participates',
+				voice: 'Mary really enjoys the time spent in the extracurricular activities in which she participates.'
+			},
+			{
+				img: '03.jpg',
+				title: 'Mary is not ________ to complete her PhD study.',
+				answer: 'motivated',
+				voice: 'Mary is not motivated to complete her PhD study.'
+			},
+			{
+				img: '04.jpg',
+				title: "Mary's parents want to change her wrong ________ toward her PhD.",
+				answer: 'attitudes',
+				voice: "Mary's parents want to change her wrong attitudes toward her PhD."
+			},
+			{
+				img: '06.jpg',
+				title: "Mary's favorite ________ is reading.",
+				answer: 'hobby',
+				voice: "Mary's favorite hobby is reading."
+			},
+			{
+				img: '08.jpg',
+				title: 'Digital games help Mary have ________ imagination.',
+				answer: 'creative',
+				voice: 'Digital games help Mary have creative imagination.'
+			},
+			{
+				img: '09.jpg',
+				title: 'Mary successfully passed the ________.',
+				answer: 'examination',
+				voice: 'Mary successfully passed the examination.'
+			},
+			{
+				img: '11.jpg',
+				title: 'The library is their ________ place.',
+				answer: 'disfavored',
+				voice: 'The library is their disfavored place.'
+			},
+			{
+				img: '13.jpg',
+				title: 'A lot of people know that Mary has ________ parents.',
+				answer: 'remarkable',
+				voice: 'A lot of people know that Mary has remarkable parents.'
+			},
 		]
+		if(pre_post_mode==2){
+			game4Array = game4Array.reverse();
+		}
 
 		const cells = document.querySelectorAll('.cell');
 		// console.log("cellscells",cells)
@@ -484,8 +497,10 @@ function game4(game_score) {
 				logFile.push("\n")
 				logFileSimple.push("e")
 				db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score4);
+				db.ref(fullDbUrl+"Detail").push("此關遊戲得分:" + (score4-game_score) + "\n");
+				db.ref(fullDbUrl+"Detail").push("此關花費時間:" + (900-game4_time) + "\n");
 				db.ref(fullDbUrl+"Detail").push("第三關遊戲結束-全部題目作答完(e)");
-				db.ref(fullDbUrl+"Simple3").push(logFileSimple);
+				// db.ref(fullDbUrl+"Simple3").push(logFileSimple);
 				$('#nextModal').on('hidden.bs.modal', function (e) {
 				  $('#game4').css('display', 'none');
 				  game5s(score4)

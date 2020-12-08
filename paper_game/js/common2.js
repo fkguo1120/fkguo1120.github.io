@@ -60,6 +60,8 @@ function game1() {
 				logFile.push(time + "秒-------------->時間到未答題正確(U)\n")
 				logFileSimple.push("U")
 				db.ref(fullDbUrl+"Detail").push(time + "秒-------------->時間到未答題正確(U)");
+				score-=100
+				$('#score').html(score)
 				time = 90
 				timeCount.text(time);
 				qaStart++

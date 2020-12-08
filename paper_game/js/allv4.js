@@ -298,6 +298,8 @@ function game5(game_score) {
               logFile.push("\n")
               logFileSimple.push("d")
               db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score5);
+              db.ref(fullDbUrl+"Detail").push("此關遊戲得分:" + (score5-game_score) + "\n");
+              db.ref(fullDbUrl+"Detail").push("此關花費時間:" + (900-game5_time) + "\n");
               db.ref(fullDbUrl+"Detail").push("第四關遊戲結束-全部題目作答完(d)");
               db.ref(fullDbUrl+"Simple4").push(logFileSimple);
               var highestIntervalId = setInterval(";");
@@ -322,6 +324,7 @@ function game5(game_score) {
               logFile.push("\n")
               logFileSimple.push("h")
               db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score5);
+              db.ref(fullDbUrl+"Detail").push("此關遊戲得分:" + (score5-game_score) + "\n");
               db.ref(fullDbUrl+"Detail").push("第四關遊戲結束-沒血量(h)");
               db.ref(fullDbUrl+"Simple4").push(logFileSimple);
               game.gameLose();
@@ -492,6 +495,7 @@ function game5(game_score) {
             logFile.push("\n")
             logFileSimple.push("z")
             db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score5);
+            db.ref(fullDbUrl+"Detail").push("此關遊戲得分:" + (score5-game_score) + "\n");
             db.ref(fullDbUrl+"Detail").push("第四關遊戲結束-時間到，題目未作答完(z)");
             db.ref(fullDbUrl+"Simple4").push(logFileSimple);
             gameLosePop()

@@ -72,8 +72,9 @@ function game2(game_score) {
       logFile.push("\n")
       logFileSimple.push("W")
       db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score1);
+      db.ref(fullDbUrl+"Detail").push("此關遊戲得分:" + score1 + "\n");
       db.ref(fullDbUrl+"Detail").push("第一關遊戲結束-配對未完成(W)");
-      db.ref(fullDbUrl+"Simple1").push(logFileSimple);
+      // db.ref(fullDbUrl+"Simple1").push(logFileSimple);
       $('#nextModal').on('hidden.bs.modal', function (e) {
         $('#game2').css('display', 'none');
         game3s(score1)
@@ -96,7 +97,7 @@ function game2(game_score) {
       {
         index: 1,
         type: 1,
-        img: 'purchase.png',
+        img: '1.png',
       },
       {
         index: 2,
@@ -106,7 +107,7 @@ function game2(game_score) {
       {
         index: 3,
         type: 2,
-        img: 'jealous.png',
+        img: '2.png',
       },
       {
         index: 4,
@@ -116,7 +117,7 @@ function game2(game_score) {
       {
         index: 5,
         type: 3,
-        img: 'lonely.png',
+        img: '3.png',
       },
       {
         index: 6,
@@ -126,7 +127,7 @@ function game2(game_score) {
       {
         index: 7,
         type: 4,
-        img: 'creative.png',
+        img: '4.png',
       }, 
       {
         index: 8,
@@ -136,7 +137,7 @@ function game2(game_score) {
       {
         index: 9,
         type: 5,
-        img: 'target.png',
+        img: '5.png',
       },
       {
         index: 10,
@@ -146,7 +147,7 @@ function game2(game_score) {
       {
         index: 11,
         type: 6,
-        img: 'examination.png',
+        img: '6.png',
       }, 
       {
         index: 12,
@@ -156,7 +157,7 @@ function game2(game_score) {
       {
         index: 13,
         type: 7,
-        img: 'elementary_student.png',
+        img: '7.png',
       },
       {
         index: 14,
@@ -166,7 +167,7 @@ function game2(game_score) {
       {
         index: 15,
         type: 8,
-        img: 'persuade.png',
+        img: '8.png',
       },
       {
         index: 16,
@@ -176,7 +177,7 @@ function game2(game_score) {
       {
         index: 17,
         type: 9,
-        img: 'basketball.png',
+        img: '9.png',
       }                                   
     ]
     //隨機排列陣列
@@ -401,8 +402,10 @@ function game2(game_score) {
         logFile.push("\n")
         logFileSimple.push("F")
         db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score1);
+        db.ref(fullDbUrl+"Detail").push("此關遊戲得分:" + score1 + "\n");
+        db.ref(fullDbUrl+"Detail").push("此關花費時間:" + (180-game1_time) + "\n");
         db.ref(fullDbUrl+"Detail").push("第一關遊戲結束-配對皆完成(F)");
-        db.ref(fullDbUrl+"Simple1").push(logFileSimple);
+        // db.ref(fullDbUrl+"Simple1").push(logFileSimple);
         $('#nextModal').on('hidden.bs.modal', function (e) {
           $('#game2').css('display', 'none');
           game3s(score1)
