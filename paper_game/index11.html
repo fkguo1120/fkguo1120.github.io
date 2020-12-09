@@ -3,7 +3,7 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>paper_game</title>
+	<title>DGBL</title>
 	<meta name="google" content="notranslate">
 	<meta name="google" content="nopagereadaloud" />
 	<meta property="og:title" content="paper_game">
@@ -23,8 +23,6 @@
 	<link type="text/css" rel="stylesheet" href="css/allv2.css">
 	<link type="text/css" rel="stylesheet" href="css/allv3.css">
 	<link type="text/css" rel="stylesheet" href="css/allv4.css">
-	<!-- <link type="text/css" rel="stylesheet" href="css/layout_1225.css">
-	<link tpye="text/css" rel="stylesheet" href="css/all_1226v2.css"> -->
 	<style>
 		body{
 			font-family: "微軟正黑體";
@@ -671,12 +669,12 @@
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/TweenMax.min.js"></script>
 	<script type="text/javascript" src="js/FileSaver.js"></script>
-	<script type="text/javascript" src="js/common.js"></script>
-	<script type="text/javascript" src="js/common2.js"></script>
-	<script type="text/javascript" src="js/allv1.js"></script>
-	<script type="text/javascript" src="js/allv2.js"></script>
-	<script type="text/javascript" src="js/allv3.js"></script>
-	<script type="text/javascript" src="js/allv4.js"></script>
+	<script type="text/javascript" src="js/common.min.js"></script>
+	<script type="text/javascript" src="js/common2.min.js"></script>
+	<script type="text/javascript" src="js/allv1.min.js"></script>
+	<script type="text/javascript" src="js/allv2.min.js"></script>
+	<script type="text/javascript" src="js/allv3.min.js"></script>
+	<script type="text/javascript" src="js/allv4.min.js"></script>
 	<script>
 		var save_number = localStorage.getItem("testNumber")
 		var save_name = localStorage.getItem("testName")
@@ -792,6 +790,8 @@
 		$('#mission_score_box').css('display', 'none');
 		$('#game_score_box').css('display', 'block');
 		localStorage.setItem("pre_post_mode", 1)
+		logFile = []
+		sessionStorage.setItem("logFile", JSON.stringify(logFile));
 		game2s(0)
 
 	</script>

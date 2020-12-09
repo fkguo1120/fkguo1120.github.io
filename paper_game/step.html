@@ -3,7 +3,7 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>paper_game</title>
+	<title>DGBL</title>
 	<meta name="google" content="notranslate">
 	<meta name="google" content="nopagereadaloud" />
 	<meta property="og:title" content="paper_game">
@@ -23,8 +23,6 @@
 	<link type="text/css" rel="stylesheet" href="css/allv2.css">
 	<link type="text/css" rel="stylesheet" href="css/allv3.css">
 	<link type="text/css" rel="stylesheet" href="css/allv4.css">
-	<!-- <link type="text/css" rel="stylesheet" href="css/layout_1225.css">
-	<link tpye="text/css" rel="stylesheet" href="css/all_1226v2.css"> -->
 	<style>
 	body{
 		font-family: "微軟正黑體";
@@ -224,11 +222,17 @@
 	.step-btn:disabled {
 		opacity: .2;
 	}
-
+	.vertical-center{
+		min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+		min-height: 100vh; /* These two lines are counted as one :-)       */
+	  
+		display: flex;
+		align-items: center;	
+	}
 	</style>
 </head>
 
-<body class="bg-light">
+<body class="vertical-center" style="background-color:#dee7ff;" >
 	<main id="game3" role="main" class="container">
 		<div class="row flex-nowrap justify-content-center">
 			<div class="col-md-4 text-center">
@@ -248,12 +252,12 @@
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/TweenMax.min.js"></script>
 	<script type="text/javascript" src="js/FileSaver.js"></script>
-	<script type="text/javascript" src="js/common.js"></script>
-	<script type="text/javascript" src="js/common2.js"></script>
-	<script type="text/javascript" src="js/allv1.js"></script>
-	<script type="text/javascript" src="js/allv2.js"></script>
-	<script type="text/javascript" src="js/allv3.js"></script>
-	<script type="text/javascript" src="js/allv4.js"></script>
+	<script type="text/javascript" src="js/common.min.js"></script>
+	<script type="text/javascript" src="js/common2.min.js"></script>
+	<script type="text/javascript" src="js/allv1.min.js"></script>
+	<script type="text/javascript" src="js/allv2.min.js"></script>
+	<script type="text/javascript" src="js/allv3.min.js"></script>
+	<script type="text/javascript" src="js/allv4.min.js"></script>
 	<script>
 		var save_number = localStorage.getItem("testNumber")
 		var save_name = localStorage.getItem("testName")
@@ -319,7 +323,7 @@
 		}
 
 		// 全螢幕事件 //
-		/*addEventListener("click", function() {
+		addEventListener("click", function() {
 			var elem = document.documentElement
 			if (elem.requestFullscreen) {
 				elem.requestFullscreen();
@@ -330,7 +334,7 @@
 			} else if (elem.msRequestFullscreen) { 
 				elem.msRequestFullscreen();
 			}
-		});*/
+		});
 	</script>
 	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
@@ -370,6 +374,10 @@
 					$('#step-btn1').attr('disabled', true);
 					$('#step-btn2').attr('disabled', false);
 					$('#step-btn3').attr('disabled', true);
+				}else if(result.val().step==1&&localStorage.getItem("Astep")==1){
+					$('#step-btn1').attr('disabled', false);
+					$('#step-btn2').attr('disabled', true);
+					$('#step-btn3').attr('disabled', true);
 				}else if(result.val().step==3&&localStorage.getItem("Astep")==3){
 					$('#step-btn1').attr('disabled', true);
 					$('#step-btn2').attr('disabled', true);
@@ -379,6 +387,10 @@
 					$('#step-btn2').attr('disabled', true);
 					$('#step-btn3').attr('disabled', true);
 					alert("您的測驗都已完成，若想重新測驗，請回到Start Page。")
+				}
+
+				if(result.val().step!=localStorage.getItem("Astep")){
+					alert("您的測驗發生未預期的錯誤，請通知主測者。")
 				}
 			}
 		}).catch(error => {

@@ -72,7 +72,7 @@ function game2(game_score) {
       logFile.push("\n")
       logFileSimple.push("W")
       db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score1);
-      db.ref(fullDbUrl+"Detail").push("此關遊戲得分:" + score1 + "\n");
+      db.ref(fullDbUrl+"Detail").push("此關遊戲得分:" + score1);
       db.ref(fullDbUrl+"Detail").push("第一關遊戲結束-配對未完成(W)");
       // db.ref(fullDbUrl+"Simple1").push(logFileSimple);
       $('#nextModal').on('hidden.bs.modal', function (e) {
@@ -402,8 +402,8 @@ function game2(game_score) {
         logFile.push("\n")
         logFileSimple.push("F")
         db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score1);
-        db.ref(fullDbUrl+"Detail").push("此關遊戲得分:" + score1 + "\n");
-        db.ref(fullDbUrl+"Detail").push("此關花費時間:" + (180-game1_time) + "\n");
+        db.ref(fullDbUrl+"Detail").push("此關遊戲得分:" + score1);
+        db.ref(fullDbUrl+"Detail").push("此關花費時間:" + (180-game1_time));
         db.ref(fullDbUrl+"Detail").push("第一關遊戲結束-配對皆完成(F)");
         // db.ref(fullDbUrl+"Simple1").push(logFileSimple);
         $('#nextModal').on('hidden.bs.modal', function (e) {

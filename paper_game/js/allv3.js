@@ -64,7 +64,7 @@ function game4(game_score) {
 	  logFile.push("\n")
 	  logFileSimple.push("o")
 	  db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score4);
-	  db.ref(fullDbUrl+"Detail").push("此關遊戲得分:" + (score4-game_score) + "\n");
+	  db.ref(fullDbUrl+"Detail").push("此關遊戲得分:" + (score4-game_score));
 	  db.ref(fullDbUrl+"Detail").push("第三關遊戲結束-時間到，題目未作答完(o)");
 	//   db.ref(fullDbUrl+"Simple3").push(logFileSimple);
 	  $("#game4_popup").css("display","none");
@@ -239,8 +239,8 @@ function game4(game_score) {
 			{
 				img: '04.jpg',
 				title: "Mary's parents want to change her wrong ________ toward her PhD.",
-				answer: 'attitudes',
-				voice: "Mary's parents want to change her wrong attitudes toward her PhD."
+				answer: 'attitude',
+				voice: "Mary's parents want to change her wrong attitude toward her PhD."
 			},
 			{
 				img: '06.jpg',
@@ -441,6 +441,12 @@ function game4(game_score) {
 					$("#game-notify-text").text("請點選1項方格，並回答該方格的問題，若達成賓果線，即可得分。");
 				}
 			}
+			if(!origBoard.includes(aiPlayer)){
+				$("#x_ex_o_btn").attr('disabled', true);
+			}
+			if(origBoard.includes(aiPlayer)&&bingo_bonus>=1){
+				$("#xtoo_btn").attr('disabled', false);
+			}
 		}
 
 		function checkWin(board, player) {
@@ -497,8 +503,8 @@ function game4(game_score) {
 				logFile.push("\n")
 				logFileSimple.push("e")
 				db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score4);
-				db.ref(fullDbUrl+"Detail").push("此關遊戲得分:" + (score4-game_score) + "\n");
-				db.ref(fullDbUrl+"Detail").push("此關花費時間:" + (900-game4_time) + "\n");
+				db.ref(fullDbUrl+"Detail").push("此關遊戲得分:" + (score4-game_score));
+				db.ref(fullDbUrl+"Detail").push("此關花費時間:" + (900-game4_time));
 				db.ref(fullDbUrl+"Detail").push("第三關遊戲結束-全部題目作答完(e)");
 				// db.ref(fullDbUrl+"Simple3").push(logFileSimple);
 				$('#nextModal').on('hidden.bs.modal', function (e) {
