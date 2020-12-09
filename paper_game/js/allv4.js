@@ -273,7 +273,7 @@ function game5(game_score) {
             }, 600);
             title_index +=1
             right_index = game5AnswerArray[String(title_index)][4]
-            score5 += 50
+            score5 += 30
             $('#game5_score').text(score5)
             game5_topic ++
             $('#game5_topic').html(game5_topic)

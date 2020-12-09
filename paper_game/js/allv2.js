@@ -401,9 +401,9 @@ function game3(game_score) {
       }
       game2_number+=1;
       if(!game2_isSupport){
-        score2 += 50
-      }else{
         score2 += 25
+      }else{
+        score2 += 15
       }
       
       game2_topic+=1

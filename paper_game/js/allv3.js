@@ -478,7 +478,7 @@ function game4(game_score) {
 					}
 
 					// gameWon = {index: index, player: huPlayer};
-					score4+= 50
+					score4+= 75
 					bingo_line ++
 					$('#game_score').html(score4);
 					$('#bingo_line').html(bingo_line);

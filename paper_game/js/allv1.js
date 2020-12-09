@@ -266,9 +266,9 @@ function game2(game_score) {
         if (count > 0 && count % 2 == 0) {
           game1_right_total++
           if(!isSupport){
-            score1+=50
+            score1+=30
           }else{
-            score1+=25
+            score1+=15
           }
           $('#game_score').text(score1)
           borderLight();
