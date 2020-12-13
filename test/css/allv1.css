@@ -290,7 +290,7 @@
 .flip_card-container .front.face img {
   display: block;
   height: 136px;
-  position: absolute;
+  /* position: absolute; */
   /* left: -7px; */
 }
 
