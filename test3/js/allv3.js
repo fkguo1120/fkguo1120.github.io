@@ -731,10 +731,11 @@ function game4(game_score) {
 				utterThis.onerror = function (event) {
 					console.error('SpeechSynthesisUtterance.onerror');
 				}
-
+				console.log(voices)
 				utterThis.voice = voices[20];
 				utterThis.pitch = 1;
 				utterThis.rate = 0.7;
+				
 				if (navigator.userAgent.indexOf('Mac OS X') != -1) {
 					utterThis.voice = voices[0];
 					utterThis.rate = 0.9;
