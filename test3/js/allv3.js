@@ -736,7 +736,7 @@ function game4(game_score) {
 				utterThis.pitch = 1;
 				utterThis.rate = 0.7;
 				if (navigator.userAgent.indexOf('Mac OS X') != -1) {
-					utterThis.voice = voices[27];
+					utterThis.voice = voices[0];
 					utterThis.rate = 0.9;
 				}
 				synth.speak(utterThis);
