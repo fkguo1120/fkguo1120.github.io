@@ -287,10 +287,10 @@
   }
 }
 
-.flip_card-container .front.face img {
+.flip_card-container .front.face img, .flip_card-container .back.face img  {
   display: block;
   height: 136px;
-  position: absolute;
+  /* position: absolute; */
   /* left: -7px; */
 }
 
@@ -302,7 +302,7 @@
 
 .flip_card-item {
   position: absolute;
-  z-index: 999999;
+  /* z-index: 999999; */
   width: 100%;
   top: 0;
   bottom: 0;
