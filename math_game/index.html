@@ -409,13 +409,13 @@
 		}*/
 		
 		// 鎖住鍵盤特定按鍵 //
-		// $(document).keydown(function (event) {
-		// 	if (event.keyCode < 65 && event.keyCode != 8 && event.keyCode != 20 && event.keyCode != 32 ) { 
-		// 		return false;
-		// 	}else if ( event.keyCode > 90 && event.keyCode != 8 && event.keyCode != 20 && event.keyCode != 32 ) {
-		// 	   return false;
-		//    }
-		// });
+		$(document).keydown(function (event) {
+			if (event.keyCode < 65 && event.keyCode != 8 && event.keyCode != 20 && event.keyCode != 32 ) { 
+				return false;
+			}else if ( event.keyCode > 90 && event.keyCode != 8 && event.keyCode != 20 && event.keyCode != 32 ) {
+			   return false;
+		   }
+		});
 		
 		// 禁止複製+鎖右鍵+禁止全選-IE﹑Firefox﹑Chrome﹑Safari﹑Opera //
 		function iEsc(){ 
