@@ -655,7 +655,7 @@ function game5(game_score) {
       TweenMax.to(".game__boxman", 0.5, { y: '-=80px', x: '-=10px', rotation: -40, ease: Power1.easeOut, delay: 0.2, });
       TweenMax.to(".game__boxman", 0.6, { y: '+=800px', ease: Power1.easeIn, delay: 0.7, onComplete: gameLosePop })
 
-      if(score5<=120){
+      if(score5<=150){
         setTimeout(function(){ 
           $('#game-final-1').css('display', 'block');
           $('.final-q').text(game5_topic)
@@ -663,7 +663,7 @@ function game5(game_score) {
         }, 3000);
       }
 
-      if(score5>120&&score5<=240){
+      if(score5>150&&score5<=240){
         setTimeout(function(){ 
           $('#game-final-2').css('display', 'block');
           $('.final-q').text(game5_topic)
@@ -709,7 +709,7 @@ function game5(game_score) {
         }, 3000);
       }
 
-      if(score5>150&&score5<=250){
+      if(score5>150&&score5<=240){
         setTimeout(function(){ 
           $('#game-final-2').css('display', 'block');
           $('.final-q').text(game5_topic)
@@ -717,7 +717,7 @@ function game5(game_score) {
         }, 3000);
       }
 
-      if(score5>250){
+      if(score5>240){
         setTimeout(function(){ 
           $('#game-final-3').css('display', 'block');
           $('.final-q').text(game5_topic)
