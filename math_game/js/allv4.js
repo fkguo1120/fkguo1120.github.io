@@ -338,22 +338,19 @@ function game5(game_score) {
             console.log("title_index",title_index)
             console.log("total_indedx",total_indedx)
             if (title_index == total_indedx){
-              logFile.push("遊戲分數:" + score5 + "\n")
-              logFile.push("此關遊戲得分:" + (score5-game_score) + "\n")
-      			  logFile.push("此關花費時間:" + (180-game5_time) + "\n")
-              logFile.push("第四關遊戲結束-全部題目作答完(d)\n")
-              logFile.push("\n")
-              logFileSimple.push("d")
-              db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score5);
-              db.ref(fullDbUrl+"Detail").push("此關遊戲得分:" + (score5-game_score));
-              db.ref(fullDbUrl+"Detail").push("此關花費時間:" + (180-game5_time));
-              db.ref(fullDbUrl+"Detail").push("第四關遊戲結束-全部題目作答完(d)");
-              db.ref(fullDbUrl+"SimpleGame").push(logFileSimple);
-              gameLosePop()
-              var highestIntervalId = setInterval(";");
-              for (var i = 0 ; i < highestIntervalId ; i++) {
-                  clearInterval(i); 
-              }
+              // logFile.push("遊戲分數:" + score5 + "\n")
+              // logFile.push("此關遊戲得分:" + (score5-game_score) + "\n")
+      			  // logFile.push("此關花費時間:" + (180-game5_time) + "\n")
+              // logFile.push("第四關遊戲結束-全部題目作答完(d)\n")
+              // logFile.push("\n")
+              // logFileSimple.push("d")
+              // db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score5);
+              // db.ref(fullDbUrl+"Detail").push("此關遊戲得分:" + (score5-game_score));
+              // db.ref(fullDbUrl+"Detail").push("此關花費時間:" + (180-game5_time));
+              // db.ref(fullDbUrl+"Detail").push("第四關遊戲結束-全部題目作答完(d)");
+              // db.ref(fullDbUrl+"SimpleGame").push(logFileSimple);
+              game.gameSuccess()
+
               
             }
           }else{
@@ -562,7 +559,7 @@ function game5(game_score) {
             db.ref(fullDbUrl+"Detail").push("此關遊戲得分:" + (score5-game_score));
             db.ref(fullDbUrl+"Detail").push("第四關遊戲結束-時間到，題目未作答完(z)");
             db.ref(fullDbUrl+"SimpleGame").push(logFileSimple);
-            gameLosePop()
+            game.gameLose()
           }
         }, 1000);
       }
@@ -658,7 +655,7 @@ function game5(game_score) {
       if(score5<=150){
         setTimeout(function(){ 
           $('#game-final-1').css('display', 'block');
-          $('.final-q').text(game5_topic)
+          $('.final-q').text(game5_topic-1)
           $('.final-s').text(score5)
         }, 3000);
       }
@@ -666,7 +663,7 @@ function game5(game_score) {
       if(score5>150&&score5<=240){
         setTimeout(function(){ 
           $('#game-final-2').css('display', 'block');
-          $('.final-q').text(game5_topic)
+          $('.final-q').text(game5_topic-1)
           $('.final-s').text(score5)
         }, 3000);
       }
@@ -674,7 +671,7 @@ function game5(game_score) {
       if(score5>240){
         setTimeout(function(){ 
           $('#game-final-3').css('display', 'block');
-          $('.final-q').text(game5_topic)
+          $('.final-q').text(game5_topic-1)
           $('.final-s').text(score5)
         }, 3000);
       }
@@ -689,7 +686,7 @@ function game5(game_score) {
       $('.block').remove();
       $('.game__btn').css('pointer-events', 'none');
       TweenMax.to(".game__boxman", 3, { y: '+=40', ease: Elastic.easeOut.config(1, 0.3), delay: 1 });
-      TweenMax.to(".game__boxman", 0.5, { x: 800, ease: Power1.easeIn, delay: 2.5, onComplete: gameWinPop });
+      TweenMax.to(".game__boxman", 0.5, { x: 800, ease: Power1.easeIn, delay: 2.5, onComplete: gameLosePop });
     }
     function gameWinPop() {
       var r = R(0, 2);
@@ -704,7 +701,7 @@ function game5(game_score) {
       if(score5<=150){
         setTimeout(function(){ 
           $('#game-final-1').css('display', 'block');
-          $('.final-q').text(game5_topic)
+          $('.final-q').text(game5_topic-1)
           $('.final-s').text(score5)
         }, 3000);
       }
@@ -712,7 +709,7 @@ function game5(game_score) {
       if(score5>150&&score5<=240){
         setTimeout(function(){ 
           $('#game-final-2').css('display', 'block');
-          $('.final-q').text(game5_topic)
+          $('.final-q').text(game5_topic-1)
           $('.final-s').text(score5)
         }, 3000);
       }
@@ -720,10 +717,16 @@ function game5(game_score) {
       if(score5>240){
         setTimeout(function(){ 
           $('#game-final-3').css('display', 'block');
-          $('.final-q').text(game5_topic)
+          $('.final-q').text(game5_topic-1)
           $('.final-s').text(score5)
         }, 3000);
       }
+      setTimeout(function(){ 
+        var highestIntervalId = setInterval(";");
+        for (var i = 0 ; i < highestIntervalId ; i++) {
+            clearInterval(i); 
+        }
+      }, 10000);
       // db.ref(fullDbUrl+"Astep/step").once('value').then(result=>{
       //   if(result.val()==1){
       //     $('#finalllllModal').modal({backdrop: 'static', keyboard: false})
