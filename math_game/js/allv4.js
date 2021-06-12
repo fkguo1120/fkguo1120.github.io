@@ -1,23 +1,50 @@
 var logFileSimple = []
 var logFile = []
-function game5s(game_score) {
-	var s5 = game_score
-  $('.countdown-box').css('display', 'none');
-  $('.bingo_line').css('display', 'none');
-  $('#game1-content').css("background-image", "none");
-  $('#game1-content').css("background-color", "#a9d1dd");
-  $('#game-notify-container').css('display', 'none');
-	$('header').css('display', 'none');
-	$('#game4StartPage').css('display', 'none');
-	$('#game5StartPage').css('display', 'block');
-  
-	//遊戲關卡一開始
-	$('#game5StartBtn').on("click",function() {
-	  $('#game5StartPage').css('display', 'none');
-	  $('#game5').css('display', 'block');
-	  game5(s5)
-	})
-}
+$('#game5').css('display', 'block');
+
+$.preload(
+  'img/boxman.png',
+  'img/boxman2.png',
+  'img/boxman3.png',
+  'img/boxman4.png',
+  'img/boxman7.png',
+  'img/boxman9.png',
+  'img/cloud_v3.png',
+  'img/cloud_v2.png',
+  'img/cloud_v1.png',
+  'img/bonus.png',
+  'img/btn2.png',
+  'img/btn1.png',
+  'img/menu1.png',
+  'img/menu2.png',
+  'img/menu3.png',
+  'img/menu4.png',
+  'img/menu5.png',
+  'img/menu9.png',
+  'img/panel_down.png',
+  'img/game_bg.jpg',
+  'img/block_lv3-2.png',
+  'img/block_lv3-3.png',
+  'img/panel_top.png',
+);
+
+$('#game5').css('display', 'block');
+
+$('#menu-btn').on( "click", function() {
+  // $('#nextModalMessage').html("")
+  $('#title-h1').css('display', 'none');
+  $('#title-man').css('display', 'none');
+  $('#nextModal').modal({backdrop: 'static', keyboard: false})
+});
+
+$('#menu-done-btn').on( "click", function() {
+  $('#menu-btn').css('display', 'none');
+  $('.start__startgame').css('display', 'block');
+  $('.infoo').css('display', 'block');
+  $('#nextModal').modal('hide')
+  game5(0)
+})
+
 
 
 function game5(game_score) {
@@ -29,7 +56,6 @@ function game5(game_score) {
   }
   logFile.push("第四關遊戲開始(a)\n")
   logFileSimple.push("a")
-  db.ref(fullDbUrl+"Detail").push("第四關遊戲開始(a)");
   
   var score5 = game_score
   $('#game5_score').text(score5)
@@ -41,71 +67,71 @@ function game5(game_score) {
     {
       title: '一支筆的長度是17公分，也可以說是幾毫米?',
     },
-    {
-      title: '一根球棒長1公尺28公分，也可以說是幾毫米?',
-    },
-    {
-      title: '教室一面牆的長度9500毫米，也可以說是幾公分?',
-    },
-    {
-      title: '一塊巧克力重2公斤320公克，也可以說是幾公克?',
-    }, 
-    {
-      title: '37000平方公分是幾平方公尺?',
-    },
-    {
-      title: '3700000立方公分是幾立方公尺?',
-    },
-    {
-      title: '比大小: 128000公克  口  1280公斤',
-    },
-    {
-      title: "比大小: 12800公分  口  0.128公里",
-    }, 
-    {
-      title: '比大小: 1289000毫米  口  0.1289公里',
-    }, 
-    {
-      title: '比大小: 38000000立方公分  口  38立方公尺',
-    },
-    {
-      title: '比大小: 29860公分  口  2986公尺',
-    }, 
-    {
-      title: '比大小: 53000公克  口  53公斤',
-    },
-    {
-      title: '一日24小時，也可以說是幾分鐘?',
-    }, 
-    {
-      title: '比大小: 洗衣服1時22分鐘 口  烘衣服80分鐘',
-    }, 
-    {
-      title: '1時23分20秒等於幾秒?',
-    }, 
-    {
-      title: 'xxxx',
-    },    
+    // {
+    //   title: '一根球棒長1公尺28公分，也可以說是幾毫米?',
+    // },
+    // {
+    //   title: '教室一面牆的長度9500毫米，也可以說是幾公分?',
+    // },
+    // {
+    //   title: '一塊巧克力重2公斤320公克，也可以說是幾公克?',
+    // }, 
+    // {
+    //   title: '37000平方公分是幾平方公尺?',
+    // },
+    // {
+    //   title: '3700000立方公分是幾立方公尺?',
+    // },
+    // {
+    //   title: '比大小: 128000公克  口  1280公斤',
+    // },
+    // {
+    //   title: "比大小: 12800公分  口  0.128公里",
+    // }, 
+    // {
+    //   title: '比大小: 1289000毫米  口  0.1289公里',
+    // }, 
+    // {
+    //   title: '比大小: 38000000立方公分  口  38立方公尺',
+    // },
+    // {
+    //   title: '比大小: 29860公分  口  2986公尺',
+    // }, 
+    // {
+    //   title: '比大小: 53000公克  口  53公斤',
+    // },
+    // {
+    //   title: '一日24小時，也可以說是幾分鐘?',
+    // }, 
+    // {
+    //   title: '比大小: 洗衣服1時22分鐘 口  烘衣服80分鐘',
+    // }, 
+    // {
+    //   title: '1時23分20秒等於幾秒?',
+    // }, 
+    // {
+    //   title: 'xxxx',
+    // },    
   ];
 
   var game5AnswerArray = {
     "0":["540","54","5.4","5400",1],
     "1":["170","1700","17","1.7",0],
     "2":["12800","1280","128","12.8",1],
-    "3":["950","9500","95000","95",0],
-    "4":["2320","23200","232","232000",0],
-    "5":["3.7","370","3700","0.37",0],
-    "6":["3.7","370","3700","37000",0],
-    "7":[">","<","=",">",1],
-    "8":["=",">","<","<",0],
-    "9":[">","<","<","=",0],
-    "10":["=",">",">","<",0],
-    "11":["<",">",">","=",0],
-    "12":["=",">",">","<",0],
-    "13":["1440","14400","1280","12800",0],
-    "14":[">","<","=","<",0],
-    "15":["5000","6500","7200","4800",0],
-    "16":["xxx","xxx","xxx","xxx",0]
+    // "3":["950","9500","95000","95",0],
+    // "4":["2320","23200","232","232000",0],
+    // "5":["3.7","370","3700","0.37",0],
+    // "6":["3.7","370","3700","37000",0],
+    // "7":[">","<","=",">",1],
+    // "8":["=",">","<","<",0],
+    // "9":[">","<","<","=",0],
+    // "10":["=",">",">","<",0],
+    // "11":["<",">",">","=",0],
+    // "12":["=",">",">","<",0],
+    // "13":["1440","14400","1280","12800",0],
+    // "14":[">","<","=","<",0],
+    // "15":["5000","6500","7200","4800",0],
+    // "16":["xxx","xxx","xxx","xxx",0]
   }
 
   var game5_time = 180;
@@ -118,24 +144,6 @@ function game5(game_score) {
   $('#game5_bonus_count').text(game5_bonus);
   $('#game5_hp_btn').attr('disabled', true);
   $('#game5_time_btn').attr('disabled', true);
-  // var timeCount = $('.second_top-time span'); //倒數計時dom
-  // timeCount.text(game5_time);
-
-  // //第四關遊戲循環倒數
-  // var interval;
-  // var intervalCall = function() {
-  //   if (game5_time >= 0) { 
-  //     timeCount.text(game5_time);
-  //     game5_time--
-  //     clearInterval(interval);
-  //     interval = setInterval(intervalCall, 1000);
-  //   }else{
-  //     clearInterval(interval);
-  //     alert("第4關遊戲結束");
-  //     $('#game5').css('display', 'none');
-  //   }
-  // };
-  // interval = setInterval(intervalCall, 1000); 
 
 
   var life = 100
@@ -166,7 +174,6 @@ function game5(game_score) {
     //****print題目****//
     $('.game5_question').html('<h5 style="font-weight: 700;">' + iiiii + ". " + game5QuestionArray[title_index].title + '</h5>')
     logFile.push("第1題\n")
-		db.ref(fullDbUrl+"Detail").push("第1題");
 
     //背景動畫及月亮
     TweenMax.to(".game5_content", 15, { backgroundPositionX: "-1050px", ease: Linear.easeNone, repeat: -1 });
@@ -223,7 +230,7 @@ function game5(game_score) {
     $('#boxman_value').data("value",game5AnswerArray[String(title_index)][right_index])
 
 
-    // [類別] 障礙物
+    // [類別] 石頭
     var Block = function (size, selector) {
       this.position = { x: 1150, y: 0 }
       GameObj.call(this, size, this.position, selector);
@@ -231,7 +238,7 @@ function game5(game_score) {
     }
     Block.prototype = Object.create(GameObj.prototype);
     Block.prototype.constructor = Block.contructor;
-    // [類別] 障礙物--// 判斷初始位置
+    // [類別] 石頭--// 判斷初始位置
     Block.prototype.initPosition = function () {
       var $gameHeight = $('.game5_content').height();
       var isTop = R(2, 10);
@@ -249,7 +256,7 @@ function game5(game_score) {
         this.position.y = 60
       }
     }
-    // [類別] 障礙物--// 移動
+    // [類別] 石頭--// 移動
     Block.prototype.move = function () {
       var _this = this;
       var moveTimer = setInterval(function () {
@@ -283,19 +290,12 @@ function game5(game_score) {
           setTimeout(function(){ 
             $('#get-crash').css('display', 'none');
           }, 1500);
-          logFile.push(game5_time + "秒-------------->撞到障礙物(c)\n")
+          logFile.push(game5_time + "秒-------------->撞到石頭(c)\n")
           logFileSimple.push("c")
-          db.ref(fullDbUrl+"Detail").push(game5_time + "秒-------------->撞到障礙物(c)");
           if(life<=0){
             logFile.push("遊戲分數:" + score5 + "\n")
-            logFile.push("此關遊戲得分:" + (score5-game_score) + "\n")
             logFile.push("第四關遊戲結束-沒血量(h)\n")
-            logFile.push("\n")
             logFileSimple.push("h")
-            db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score5);
-            db.ref(fullDbUrl+"Detail").push("此關遊戲得分:" + (score5-game_score));
-            db.ref(fullDbUrl+"Detail").push("第四關遊戲結束-沒血量(h)");
-            db.ref(fullDbUrl+"SimpleGame").push(logFileSimple);
             game.gameLose();
           }
         }
@@ -327,7 +327,6 @@ function game5(game_score) {
             }, 1500);
             logFile.push(game5_time + "秒-------------->吸入氣球答題正確(y)\n")
             logFileSimple.push("y")
-            db.ref(fullDbUrl+"Detail").push(game5_time + "秒-------------->吸入氣球答題正確(y)");
             //****boxman給予data-value正確答案****//
             $('#boxman_value').data("value",game5AnswerArray[String(title_index)][right_index])
             var iiiii = title_index+1
@@ -335,24 +334,14 @@ function game5(game_score) {
             $('.game5_question').html('<h5 style="font-weight: 700;">' + iiiii + ". " + game5QuestionArray[title_index].title + '</h5>')
             // $('#rrrrr').html(game5AnswerArray[String(title_index)][right_index])
             logFile.push("第"+(title_index+1)+"題\n")
-            db.ref(fullDbUrl+"Detail").push("第"+(title_index+1)+"題");
-            console.log("title_index",title_index)
-            console.log("total_indedx",total_indedx)
+            // console.log("title_index",title_index)
+            // console.log("total_indedx",total_indedx)
             if (title_index == total_indedx){
-              // logFile.push("遊戲分數:" + score5 + "\n")
-              // logFile.push("此關遊戲得分:" + (score5-game_score) + "\n")
-      			  // logFile.push("此關花費時間:" + (180-game5_time) + "\n")
-              // logFile.push("第四關遊戲結束-全部題目作答完(d)\n")
-              // logFile.push("\n")
-              // logFileSimple.push("d")
-              // db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score5);
-              // db.ref(fullDbUrl+"Detail").push("此關遊戲得分:" + (score5-game_score));
-              // db.ref(fullDbUrl+"Detail").push("此關花費時間:" + (180-game5_time));
-              // db.ref(fullDbUrl+"Detail").push("第四關遊戲結束-全部題目作答完(d)");
-              // db.ref(fullDbUrl+"SimpleGame").push(logFileSimple);
+              logFile.push("遊戲分數:" + score5 + "\n")
+      			  logFile.push("此關花費時間:" + (180-game5_time) + "\n")
+              logFile.push("第四關遊戲結束-全部題目作答完(d)\n")
+              logFileSimple.push("d")
               game.gameSuccess()
-
-              
             }
           }else{
             life -= 10
@@ -373,17 +362,10 @@ function game5(game_score) {
             $('#game5_score').text(score5)
             logFile.push(game5_time + "秒-------------->吸入氣球答題錯誤(n)\n")
             logFileSimple.push("n")
-            db.ref(fullDbUrl+"Detail").push(game5_time + "秒-------------->吸入氣球答題錯誤(n)");
             if(life<=0){
               logFile.push("遊戲分數:" + score5 + "\n")
-              logFile.push("此關遊戲得分:" + (score5-game_score) + "\n")
               logFile.push("第四關遊戲結束-沒血量(h)\n")
-              logFile.push("\n")
               logFileSimple.push("h")
-              db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score5);
-              db.ref(fullDbUrl+"Detail").push("此關遊戲得分:" + (score5-game_score));
-              db.ref(fullDbUrl+"Detail").push("第四關遊戲結束-沒血量(h)");
-              db.ref(fullDbUrl+"SimpleGame").push(logFileSimple);
               game.gameLose();
             }else{
               $("#boxman_value").attr("src","img/boxman2.png")
@@ -391,21 +373,11 @@ function game5(game_score) {
                 _this.$el.remove();
                 $("#boxman_value").attr("src","img/boxman.png")
               }, 600);
-              // setTimeout(function () {
-                
-              // }, 1000);
+
             }
           }          
         }
-        // if (game.gameTime > 0 && _this.collideright(box)) {
-        //   if($('#boxman_value').data("value")===_this.$el[0].attributes["2"].value){
-        //     alert("答對了")
-        //   }else{
-        //     alert("答錯了")
-        //   }
-        //   _this.$el.remove();
-        //   clearInterval(moveTimer)
-        // }
+
       }, 10)
     }
 
@@ -461,19 +433,12 @@ function game5(game_score) {
             $("#boxman_value").attr("src","img/boxman.png")
           }, 600);
           logFile.push(game5_time + "秒-------------->吃到硬幣(p)\n")
-          logFileSimple.push("c")
-          db.ref(fullDbUrl+"Detail").push(game5_time + "秒-------------->吃到硬幣(p)");
+          logFileSimple.push("p")
 
           if(life<=0){
             logFile.push("遊戲分數:" + score5 + "\n")
-            logFile.push("此關遊戲得分:" + (score5-game_score) + "\n")
             logFile.push("第四關遊戲結束-沒血量(h)\n")
-            logFile.push("\n")
             logFileSimple.push("h")
-            db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score5);
-            db.ref(fullDbUrl+"Detail").push("此關遊戲得分:" + (score5-game_score));
-            db.ref(fullDbUrl+"Detail").push("第四關遊戲結束-沒血量(h)");
-            db.ref(fullDbUrl+"SimpleGame").push(logFileSimple);
             game.gameLose();
           }
 
@@ -552,19 +517,12 @@ function game5(game_score) {
           setTimeout(function(){ 
             $('#get-crash').css('display', 'none');
           }, 1500);
-          logFile.push(game5_time + "秒-------------->撞到障礙物(c)\n")
-          logFileSimple.push("c")
-          db.ref(fullDbUrl+"Detail").push(game5_time + "秒-------------->撞到障礙物(c)");
+          logFile.push(game5_time + "秒-------------->撞到火焰隕石(f)\n")
+          logFileSimple.push("f")
           if(life<=0){
             logFile.push("遊戲分數:" + score5 + "\n")
-            logFile.push("此關遊戲得分:" + (score5-game_score) + "\n")
             logFile.push("第四關遊戲結束-沒血量(h)\n")
-            logFile.push("\n")
             logFileSimple.push("h")
-            db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score5);
-            db.ref(fullDbUrl+"Detail").push("此關遊戲得分:" + (score5-game_score));
-            db.ref(fullDbUrl+"Detail").push("第四關遊戲結束-沒血量(h)");
-            db.ref(fullDbUrl+"SimpleGame").push(logFileSimple);
             game.gameLose();
           }
         }
@@ -624,20 +582,14 @@ function game5(game_score) {
             _this.gameSuccess();
             clearInterval(timer);
             logFile.push("遊戲分數:" + score5 + "\n")
-            logFile.push("此關遊戲得分:" + (score5-game_score) + "\n")
             logFile.push("第四關遊戲結束-時間到，題目未作答完(z)\n")
-            logFile.push("\n")
             logFileSimple.push("z")
-            db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score5);
-            db.ref(fullDbUrl+"Detail").push("此關遊戲得分:" + (score5-game_score));
-            db.ref(fullDbUrl+"Detail").push("第四關遊戲結束-時間到，題目未作答完(z)");
-            db.ref(fullDbUrl+"SimpleGame").push(logFileSimple);
             game.gameLose()
           }
         }, 1000);
       }
     }
-    // 遊戲本體--// 創造障礙物
+    // 遊戲本體--// 創造石頭
     Game.prototype.createBlock = function () {
       var id = 26;
       var tt_index = 0;
@@ -645,7 +597,7 @@ function game5(game_score) {
       var createTimer = setInterval(function () {
         
         var blockType = R(0, 1);
-        //****print障礙物-附加data-value****//
+        //****print石頭-附加data-value****//
         if (blockType == 0) {
           var $block = $('<div class="block" id="' + id + '" data-value="' + game5AnswerArray[String(title_index)][tt_index] + '"><p>' + game5AnswerArray[String(title_index)][tt_index] +'</p><img src="img/cloud_v1.png"></div>');          // tt_index+=1
           // if(tt_index===4){
@@ -674,7 +626,7 @@ function game5(game_score) {
       var createTimer = setInterval(function () {
         
         var blockType = R(0, 1);
-        //****print障礙物-附加data-value****//
+        //****print石頭-附加data-value****//
         if (blockType == 0) {
           var $block = $('<div class="block" id="' + id + '" data-value="' + game5AnswerArray[String(title_index)][tt_index] + '"><img src="img/bonus.png"></div>');
         } else {
@@ -697,7 +649,7 @@ function game5(game_score) {
       var createTimer = setInterval(function () {
         
         var blockType = R(0, 1);
-        //****print障礙物-附加data-value****//
+        //****print石頭-附加data-value****//
         if (blockType == 0) {
           var $block = $('<div class="block" id="' + id + '" data-value="' + game5AnswerArray[String(title_index)][tt_index] + '"><img src="img/block_lv3-2.png"></div>');
         } else {
@@ -823,34 +775,6 @@ function game5(game_score) {
             clearInterval(i); 
         }
       }, 10000);
-      // db.ref(fullDbUrl+"Astep/step").once('value').then(result=>{
-      //   if(result.val()==1){
-      //     $('#finalllllModal').modal({backdrop: 'static', keyboard: false})
-      //     db.ref(fullDbUrl+"Astep").set({step:2});
-      //     localStorage.setItem("Astep", 2)
-      //     // window.location.replace("step.html");
-      //     // history.go(-1)
-      //     logFile.push(logFileSimple.join(''))
-      //     // save_a()
-      //     // save_b()
-      //   }else{
-      //     $('#finalModalMessage').html("所有測驗已結束\n</br>請通知主測者")
-      //     $('#finalModal').modal({backdrop: 'static', keyboard: false})  
-      //     db.ref(fullDbUrl+"Astep").set({step:4});
-      //     localStorage.setItem("Astep", 4)
-      //     logFile.push(logFileSimple.join(''))
-      //     save_a()
-      //     db.ref(fullDbUrl+"SimpleAll").push(logFileSimple);
-      //     // save_b()
-      //   }
-      // }).catch(error => {
-      //   alert("您的網路異常無法繼續測驗，請通知主測者。")
-      // });
-
-
-      // $('.pop__top > img').attr('src', 'img/pop_top-lose.png');
-      // $('.pop__top--content').remove();
-      // $('.pop').removeClass('hide');
     }
 
     $('#finalModal').on('click', function () {
@@ -859,9 +783,8 @@ function game5(game_score) {
     })
 
     $('#game5_hp_btn').on('click', function () {
-      logFile.push(game5_time + "秒-------------->補血+30按鈕(p)\n")
-      logFileSimple.push("p")
-      db.ref(fullDbUrl+"Detail").push(game5_time + "秒-------------->補血+30按鈕(p)");
+      logFile.push(game5_time + "秒-------------->補血+30按鈕(m)\n")
+      logFileSimple.push("m")
       if(game5_bonus>0){
         game5_bonus -= 1;
         $('#game5_bonus_count').text(game5_bonus);
@@ -878,7 +801,6 @@ function game5(game_score) {
     $('#game5_time_btn').on('click', function () {
       logFile.push(game5_time + "秒-------------->時間+30秒按鈕(t)\n")
       logFileSimple.push("t")
-      db.ref(fullDbUrl+"Detail").push(game5_time + "秒-------------->時間+30秒按鈕(t)");
       if(game5_bonus>0){
         game5_bonus -= 1;
         $('#game5_bonus_count').text(game5_bonus);
@@ -907,6 +829,12 @@ function game5(game_score) {
     function R(min, max) {
       return Math.floor(Math.random() * (max - min + 1)) + min;
     }
+
+
+    $('.history-btn').on('click', function () {
+
+    })
+    
 
   }
 

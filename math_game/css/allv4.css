@@ -833,4 +833,129 @@ img {
   width: 58%;
   max-width: 100%;
 }
+
+.btn-outline-success.disabled, .btn-outline-success:disabled {
+  color: #808080;
+  background-color: #d4d4d4;
+  border-color: #888;
+}
+#game1-content{
+  background-color: #a9d1dd;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+  height: 100vh;
+}
+#game1-content > div{
+  /* background-color: #ffffffcc; */
+  top:50%;
+  transform:translateY(-55%);
+  position: relative;
+  /* transform: translate(0%, 40%); */
+}
+@media (max-width: 1366px) {
+  #game1-content > div{
+    top:50%;
+    transform:translateY(-50%);
+  }
+}
+#game1-content main .row >div button{
+  font-weight: 700;
+  font-size: 18px;
+}
+#game1-content main .row >div .start-btn{
+  font-weight: 700;
+  font-size: 18px;
+  width: 200px;
+  height: 200px;
+  padding: 0;
+  text-align: center;
+  border-radius: 59%;
+  font-size: 1.6rem;
+}
+#game1-content .btn.disabled, #game1-content .btn:disabled {
+  opacity: 0.3;
+}
+  .panel_top{
+  position: relative;
+  z-index: 555;
+  margin-bottom: -25px;
+}
+.panel_bottom{
+  position: relative;
+  z-index: 555;
+  margin-top: -25px;
+}
+.progress{
+  width: 200px;
+  top: 33px;
+  right: 145px;
+  position: absolute;
+  z-index: 99999;
+}
+#game5_score_box{
+  position: absolute;
+  top: 30px;
+  right: 50px;
+  font-weight: 700;
+  color:#fff;
+}
+#game5_score{
+  position: absolute;
+  top: 30px;
+  right: 35px;
+  font-weight: 700;
+  color:#fff;
+}
+#nextModal{
+  z-index: 999997!important;
+}
+#alertModal{
+  z-index: 999999!important;
+}
+@media (min-width: 768px) and (max-width: 992px){
+  .container {
+    max-width: 100%;
+  }
+}
+@media (max-width: 918px){
+  .container {
+    width: 100%!important;
+    max-width: 918px!important;
+  }
+  .text-right h5,.text-left h5{
+    font-size: 1.1rem;
+  }
+}
+.game5_question h5{
+  color: #0c5460;
+  font-size: 24px;
+}
+#game-final-1,#game-final-2,#game-final-3{
+  display: none;
+}
+#get-right,#get-error,#get-crash{
+  display: none;
+}
+#menu-btn{
+  color: #fff;
+  font-weight: 700;
+  margin: 0 auto;
+  position: absolute;
+  display: table;
+  bottom: 10%;
+  left: 40%;
+  font-size: 50px;
+}
+#menu-done-btn{
+  color: #fff;
+  font-weight: 700;
+  margin: 0 auto;
+  display: table;
+  font-size: 27px;
+}
+.infoo{
+  display: none;
+}
+
 /*# sourceMappingURL=all.css.map */
